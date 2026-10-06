@@ -443,6 +443,8 @@ repeticiones por título en la edición.
 - `experimentos/empaste.js`: encimado por especie.
 - `experimentos/profundidad.html` y `profundidad.js`: orden de profundidad sin ocultar, y su medición (`?aire=` para la variante).
 - `experimentos/profundidad-antes-despues.png` (semillas 3, 6, 11, 15, 10, 12), `profundidad-detalle.png` (acercamientos de 3, 10, 6) y `profundidad-aire.png` (3 y 11 con aire 0.35).
+- `experimentos/comparador/`: página para verlo en vivo (cortina, lado a lado, parpadeo, acercamiento, aire). `python3 construir.py DESTINO/index.html` la arma con el motor en línea; las fuentes van en `fonts/`. Publicada como artefacto privado: https://claude.ai/artifact/CEwb4PdGvnhZLeJamEv5HB
+- `experimentos/profundidad-parpadeo.gif`: hoy ↔ profundidad, semillas 3, 10 y 6, con detalle (9.6 s).
 - `experimentos/rejilla.html`: ocultamiento por celda (**descartado**: quitaba la perspectiva y el 3D).
 - `experimentos/rejilla-antes-despues.png`: el intento, semillas 3, 6, 11 y 15.
 - `experimentos/muestra-1-16.png`: estado final de las semillas 1–16 (`?still=1`).

@@ -1,0 +1,244 @@
+<meta charset="utf-8">
+<title>Orden de profundidad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mesa de comparación: barra de controles arriba, lámina cuadrada al centro, ficha medida abajo. */
+:root{
+  --bg:#e9e8e2; --panel:#f6f5f0; --fg:#1b1d1b; --muted:#5d625d; --line:#c9c8bf; --accent:#16707a;
+  --f-display:"Architecture Mono","IBM Plex Mono",ui-monospace,monospace;
+  --f-body:"Archivo",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141615; --panel:#1c1f1e; --fg:#e7e7e1; --muted:#9aa09a; --line:#353a38; --accent:#5cc6cf; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141615; --panel:#1c1f1e; --fg:#e7e7e1; --muted:#9aa09a; --line:#353a38; --accent:#5cc6cf; color-scheme:dark}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:grid;gap:16px}
+header{display:grid;gap:6px}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(22px,3.2vw,32px);letter-spacing:.04em;margin:0;text-wrap:balance}
+.lede{margin:0;max-width:68ch;color:var(--muted)}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:end;background:var(--panel);border:1px solid var(--line);padding:12px 14px}
+.field{display:grid;gap:4px}
+.label{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+button,input[type=number]{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);padding:5px 10px;min-height:32px}
+input[type=number]{width:7.5em;font-family:var(--f-mono)}
+button{cursor:pointer}
+button:hover{border-color:var(--accent)}
+button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chip{font-family:var(--f-mono);font-size:13px;padding:4px 9px;min-height:28px}
+input[type=range]{accent-color:var(--accent);width:160px}
+.val{font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums;min-width:3.2em;display:inline-block}
+.stage-wrap{display:grid;gap:8px}
+.stage{display:grid;gap:12px;grid-template-columns:1fr}
+.stage.lado{grid-template-columns:1fr 1fr}
+@media (max-width:640px){.stage.lado{grid-template-columns:1fr}}
+.box{position:relative;aspect-ratio:1;max-width:100%;width:100%;margin:0 auto;border:1px solid var(--line);overflow:hidden;cursor:crosshair}
+.stage:not(.lado) .box{max-width:min(100%,760px)}
+.box svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.tag{position:absolute;top:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--panel);color:var(--fg);border:1px solid var(--line);padding:2px 7px;pointer-events:none}
+.tag.l{left:8px}.tag.r{right:8px}
+.seam{position:absolute;top:0;bottom:0;width:2px;background:var(--accent);pointer-events:none;transform:translateX(-1px)}
+.cortina-row{display:flex;gap:10px;align-items:center;max-width:760px;width:100%;margin:0 auto}
+.cortina-row input{flex:1;width:auto}
+.ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.ficha div{background:var(--panel);padding:10px 12px;display:grid;gap:2px;min-width:0}
+.ficha b{font-family:var(--f-mono);font-weight:500;font-size:17px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.nota{color:var(--muted);font-size:13px;max-width:80ch;margin:0}
+.glyph{font-family:"Architecture Mono","Unicode Backup",monospace;white-space:pre}
+.fx-electronica{font-family:"Electrónica","Architecture Mono",monospace}
+.fx-egipcio{font-family:"Jeroglífico Egipcio","Unicode Backup",monospace}
+.fx-anatolio{font-family:"Jeroglífico Anatolio","Unicode Backup",monospace}
+.fx-linealb{font-family:"Lineal B","Unicode Backup",monospace}
+.cargando{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;color:var(--muted);background:var(--panel)}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>ORDEN DE PROFUNDIDAD</h1>
+    <p class="lede">Espacio escultórico, experimento L2. Las dos láminas tienen exactamente los mismos signos: ninguno se quita y la transparencia queda igual. A la izquierda, el orden de hoy (de arriba hacia abajo en pantalla). A la derecha, de atrás hacia adelante según la profundidad 3D. Mira los cruces.</p>
+  </header>
+
+  <div class="controls" role="group" aria-label="Controles">
+    <div class="field">
+      <span class="label">Semilla</span>
+      <div class="row">
+        <button id="prev" aria-label="Semilla anterior">‹</button>
+        <input id="seed" type="number" min="1" step="1" value="3" aria-label="Número de semilla">
+        <button id="next" aria-label="Semilla siguiente">›</button>
+      </div>
+    </div>
+    <div class="field">
+      <span class="label">Para empezar</span>
+      <div class="row" id="presets"></div>
+    </div>
+    <div class="field">
+      <span class="label">Comparar</span>
+      <div class="row" id="modos">
+        <button data-modo="cortina" aria-pressed="true">Cortina</button>
+        <button data-modo="lado" aria-pressed="false">Lado a lado</button>
+        <button data-modo="parpadeo" aria-pressed="false">Parpadeo</button>
+      </div>
+    </div>
+    <div class="field">
+      <span class="label">Acercar (clic en la lámina centra)</span>
+      <div class="row" id="zooms">
+        <button data-z="1" aria-pressed="true">1×</button>
+        <button data-z="2" aria-pressed="false">2×</button>
+        <button data-z="3.5" aria-pressed="false">3.5×</button>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label" for="aire">Aire (sólo derecha)</label>
+      <div class="row"><input id="aire" type="range" min="0" max="0.6" step="0.05" value="0"><span class="val" id="aireVal">0</span></div>
+    </div>
+  </div>
+
+  <div class="stage-wrap">
+    <div class="stage" id="stage"></div>
+    <div class="cortina-row" id="cortinaRow">
+      <span class="label">Hoy</span>
+      <input id="cortina" type="range" min="0" max="100" step="0.5" value="50" aria-label="Posición de la cortina">
+      <span class="label">Profundidad</span>
+    </div>
+  </div>
+
+  <div class="ficha" id="ficha"></div>
+  <p class="nota">«Al revés» cuenta los pares de signos encimados (a menos de medio cuerpo, con distinto color o glifo) en los que hoy el de atrás queda pintado encima del de adelante. La profundidad se recupera invirtiendo la proyección del motor, porque el reencuadre de página sobrescribe la coordenada 3D. Aire: la opacidad baja con la distancia, hasta 1 − aire en lo más lejano.</p>
+</div>
+
+<script>/*@@MOTOR@@*/</script>
+<script>
+(function(){
+"use strict";
+var NS="http://www.w3.org/2000/svg";
+var FONT_FILES=[["Architecture Mono","fonts/Ac437_ApricotPortable.ttf"],["Unicode Backup","fonts/Symbola.otf"],
+  ["Electrónica","fonts/ELECTRONICS.TTF"],["Jeroglífico Egipcio","fonts/NOTOSANSEGYPTIANHIEROGLYPHS-REGULAR.TTF"],
+  ["Jeroglífico Anatolio","fonts/NOTOSANSANATOLIANHIEROGLYPHS-REGULAR.TTF"],["Lineal B","fonts/NOTOSANSLINEARB-REGULAR.TTF"]];
+var FONT={egipcio:"fx-egipcio",anatolio:"fx-anatolio",linealb:"fx-linealb",electronica:"fx-electronica"};
+var PRESETS=[[3,"toro"],[10,"lazo"],[15,"nudo"],[11,"genealogía"],[6,"cúpula"],[12,"hiperboloide"]];
+var state={seed:3,modo:"cortina",zoom:1,cx:500,cy:500,aire:0,cortina:50};
+try{var saved=JSON.parse(localStorage.getItem("orden-prof")||"null");if(saved){state.modo=saved.modo||state.modo;state.aire=+saved.aire||0}}catch(e){}
+var $=function(id){return document.getElementById(id)};
+var piece,S,B,fs,timer=null;
+
+function depthOf(s,t){var p=Math.max(0,Math.min(1,t.perspective/100)),u=15,
+  dX=u*(0.035+0.765*p)*t.direction,dY=u*(0.015+0.345*p),tl=t.tilt||0,det=u*dY+dX*u*tl;
+  return (u*(-s.rawY-s.z*u)+u*tl*s.rawX)/det}
+function color(s){var c=piece.colors;if(s.anomaly)return c.anomalia;var f=s.face,r=piece.traits.alphabetRelation;
+  if(s.body==="derecha"&&r==="CARAS INVERTIDAS")f=f==="frente"?"lateral":f==="lateral"?"frente":"techo";
+  else if(s.body==="derecha"&&r==="TRADUCCIÓN MATERIAL")f=f==="frente"?"techo":f==="techo"?"frente":"lateral";
+  return c[f]||c.frente}
+
+function build(seed){
+  piece=ARQ_MOTOR.build({seed:String(seed)});
+  S=piece.surface.filter(function(s){return s.glyph});
+  var x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+  S.forEach(function(s){var x=s.rawX+s.perturbX,y=s.rawY+s.perturbY;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y});
+  var sc=Math.min(924/Math.max(1,x1-x0),924/Math.max(1,y1-y0),3.75);fs=Math.max(9,Math.min(34,13*sc));
+  var ox=38+(924-(x1-x0)*sc)/2,oy=38+(924-(y1-y0)*sc)/2,dmin=Infinity,dmax=-Infinity;
+  S.forEach(function(s){s.sx=ox+(s.rawX+s.perturbX-x0)*sc;s.sy=oy+(s.rawY+s.perturbY-y0)*sc;s.depth=depthOf(s,piece.traits);
+    if(s.depth<dmin)dmin=s.depth;if(s.depth>dmax)dmax=s.depth});
+  S.forEach(function(s){s.far=(s.depth-dmin)/Math.max(1e-9,dmax-dmin)});
+  B=S.slice().sort(function(a,b){return b.depth-a.depth});
+}
+
+function svgFor(list,useAire){
+  var svg=document.createElementNS(NS,"svg");svg.setAttribute("viewBox",viewBox());
+  svg.setAttribute("preserveAspectRatio","xMidYMid meet");svg.setAttribute("role","img");
+  var r=document.createElementNS(NS,"rect");r.setAttribute("x",-2000);r.setAttribute("y",-2000);
+  r.setAttribute("width",5000);r.setAttribute("height",5000);r.setAttribute("fill",piece.colors.papel);svg.appendChild(r);
+  var frag=document.createDocumentFragment();
+  function t(s,carbon){var n=document.createElementNS(NS,"text"),k=carbon?s.baseFontKind:s.fontKind;
+    n.setAttribute("x",(s.sx+(carbon?piece.traits.direction*3.2:0)).toFixed(2));n.setAttribute("y",(s.sy+(carbon?2.4:0)).toFixed(2));
+    n.setAttribute("font-size",fs.toFixed(2));n.setAttribute("text-anchor","middle");n.setAttribute("dominant-baseline","central");
+    n.setAttribute("class","glyph"+(k&&FONT[k]?" "+FONT[k]:""));
+    var o=carbon?0.16:s.opacity;if(useAire&&!carbon)o*=1-state.aire*s.far;
+    n.setAttribute("fill",carbon?piece.colors.carbon:(s.forcedColor||color(s)));n.setAttribute("opacity",o.toFixed(3));
+    n.textContent=carbon?s.baseGlyph:s.glyph;frag.appendChild(n)}
+  if(piece.traits.carbon)list.forEach(function(s){t(s,true)});
+  list.forEach(function(s){t(s,false)});
+  svg.appendChild(frag);return svg;
+}
+function viewBox(){var w=1000/state.zoom,x=Math.max(0,Math.min(1000-w,state.cx-w/2)),y=Math.max(0,Math.min(1000-w,state.cy-w/2));
+  return x.toFixed(1)+" "+y.toFixed(1)+" "+w.toFixed(1)+" "+w.toFixed(1)}
+
+function tag(text,side){var d=document.createElement("span");d.className="tag "+side;d.textContent=text;return d}
+function box(){var b=document.createElement("div");b.className="box";
+  b.addEventListener("click",function(e){if(state.zoom===1)return;var r=b.getBoundingClientRect(),vb=viewBox().split(" ").map(Number);
+    state.cx=vb[0]+(e.clientX-r.left)/r.width*vb[2];state.cy=vb[1]+(e.clientY-r.top)/r.height*vb[3];applyViewBox()});
+  return b}
+var svgA,svgB,boxB;
+function render(){
+  if(timer){clearInterval(timer);timer=null}
+  var st=$("stage");st.innerHTML="";st.className="stage"+(state.modo==="lado"?" lado":"");
+  svgA=svgFor(S,false);svgB=svgFor(B,state.aire>0);
+  $("cortinaRow").hidden=state.modo!=="cortina";
+  if(state.modo==="lado"){
+    var a=box();a.appendChild(svgA);a.appendChild(tag("Hoy","l"));
+    boxB=box();boxB.appendChild(svgB);boxB.appendChild(tag("Profundidad","l"));st.appendChild(a);st.appendChild(boxB);
+  }else{
+    var b=box();b.appendChild(svgA);b.appendChild(svgB);st.appendChild(b);
+    if(state.modo==="cortina"){
+      var seam=document.createElement("div");seam.className="seam";b.appendChild(seam);
+      b.appendChild(tag("Hoy","l"));b.appendChild(tag("Profundidad","r"));boxB=b;applyCortina();
+    }else{
+      var lab=tag("Hoy","l");b.appendChild(lab);var on=false;svgB.style.visibility="hidden";
+      var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+      timer=setInterval(function(){on=!on;svgB.style.visibility=on?"visible":"hidden";lab.textContent=on?"Profundidad":"Hoy"},reduce?1600:750);
+    }
+  }
+  ficha();
+}
+function applyCortina(){if(state.modo!=="cortina"||!svgB)return;var p=state.cortina;
+  svgB.style.clipPath="inset(0 0 0 "+p+"%)";var seam=boxB.querySelector(".seam");if(seam)seam.style.left=p+"%"}
+function applyViewBox(){[svgA,svgB].forEach(function(s){if(s)s.setAttribute("viewBox",viewBox())})}
+
+function reves(){
+  var cell=fs,g=new Map(),P=S.map(function(s,k){return{k:k,x:s.sx,y:s.sy,z:s.depth,c:s.anomaly?"A":(s.forcedColor||s.face+(s.body||"")),gl:s.glyph}});
+  P.forEach(function(q){var key=Math.floor(q.x/cell)+","+Math.floor(q.y/cell);if(!g.has(key))g.set(key,[]);g.get(key).push(q)});
+  var pares=0,mal=0;P.forEach(function(q){var cx=Math.floor(q.x/cell),cy=Math.floor(q.y/cell);
+    for(var dx=-1;dx<=1;dx++)for(var dy=-1;dy<=1;dy++){var L=g.get((cx+dx)+","+(cy+dy));if(!L)continue;
+      for(var i=0;i<L.length;i++){var r=L[i];if(r.k<=q.k)continue;if(Math.hypot(r.x-q.x,r.y-q.y)>=0.45*fs)continue;
+        if(r.c===q.c&&r.gl===q.gl)continue;if(r.z===q.z)continue;pares++;if(r.z>q.z)mal++}}});
+  return{pares:pares,mal:mal}
+}
+function ficha(){
+  var m=reves(),f=$("ficha");f.innerHTML="";
+  var forma=piece.geometry.genealogy?piece.geometry.genealogy.structure+" / "+piece.geometry.genealogy.crown:
+    (piece.geometry.assembly||piece.geometry.kind||piece.meta.species);
+  [["Especie",piece.meta.species],["Forma",forma],["Signos",S.length.toLocaleString("es-MX")],
+   ["Pares encimados visibles",m.pares.toLocaleString("es-MX")],
+   ["Hoy al revés",(m.pares?Math.round(100*m.mal/m.pares):0)+" %"],["Alfabeto",piece.meta.palette+" · "+piece.meta.alphabet.join(" ")]]
+  .forEach(function(kv){var d=document.createElement("div");var l=document.createElement("span");l.className="label";l.textContent=kv[0];
+    var b=document.createElement("b");b.textContent=kv[1];d.appendChild(l);d.appendChild(b);f.appendChild(d)});
+}
+
+function save(){try{localStorage.setItem("orden-prof",JSON.stringify({modo:state.modo,aire:state.aire}))}catch(e){}}
+function press(group,attr,val){Array.prototype.forEach.call($(group).querySelectorAll("button"),function(b){b.setAttribute("aria-pressed",String(b.dataset[attr]===String(val)))})}
+function go(seed){seed=Math.max(1,Math.round(+seed||1));state.seed=seed;$("seed").value=seed;build(seed);render()}
+
+PRESETS.forEach(function(p){var b=document.createElement("button");b.className="chip";b.textContent=p[0]+" · "+p[1];
+  b.addEventListener("click",function(){go(p[0])});$("presets").appendChild(b)});
+$("prev").addEventListener("click",function(){go(state.seed-1)});
+$("next").addEventListener("click",function(){go(state.seed+1)});
+$("seed").addEventListener("change",function(){go(this.value)});
+$("modos").addEventListener("click",function(e){var m=e.target.dataset&&e.target.dataset.modo;if(!m)return;state.modo=m;press("modos","modo",m);save();render()});
+$("zooms").addEventListener("click",function(e){var z=e.target.dataset&&e.target.dataset.z;if(!z)return;state.zoom=+z;press("zooms","z",z);applyViewBox()});
+$("aire").addEventListener("input",function(){state.aire=+this.value;$("aireVal").textContent=state.aire.toFixed(2);save();
+  var c=state.cortina;svgB.remove();render();state.cortina=c;applyCortina()});
+$("cortina").addEventListener("input",function(){state.cortina=+this.value;applyCortina()});
+$("aire").value=state.aire;$("aireVal").textContent=state.aire.toFixed(2);press("modos","modo",state.modo);
+
+// Las fuentes de la pieza viajan junto a la página: se leen con fetch y se registran.
+var st=$("stage");var c=document.createElement("div");c.className="box";var l=document.createElement("div");l.className="cargando";
+l.textContent="cargando fuentes de la pieza…";c.appendChild(l);st.appendChild(c);
+Promise.all(FONT_FILES.map(function(f){return fetch(f[1]).then(function(r){if(!r.ok)throw new Error(f[1]);return r.arrayBuffer()})
+  .then(function(buf){var face=new FontFace(f[0],buf);document.fonts.add(face);return face.load()}).catch(function(){return null})}))
+  .then(function(){go(state.seed)});
+})();
+</script>
