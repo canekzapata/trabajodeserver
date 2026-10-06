@@ -31,21 +31,36 @@
     ctx.restore();
   }
 
+  // De atrás hacia adelante por profundidad 3D, igual que el SVG (v0.22).
+  function paintOrder(piece) {
+    if (piece.__paintOrder) return piece.__paintOrder;
+    var order = piece.surface.map(function (item, index) { return index; });
+    order.sort(function (a, b) {
+      var da = piece.surface[a].depth || 0, db = piece.surface[b].depth || 0;
+      return db - da || a - b;
+    });
+    piece.__paintOrder = order;
+    return order;
+  }
+
   function renderFrame(ctx, width, height, piece, state, faceColor) {
     var scale = width / 1000;
+    var order = paintOrder(piece);
     ctx.globalAlpha = 1;
     ctx.fillStyle = piece.colors.papel;
     ctx.fillRect(0, 0, width, height);
 
     if (piece.traits.carbon) {
-      piece.surface.forEach(function (item, index) {
+      order.forEach(function (index) {
+        var item = piece.surface[index];
         if (!item.glyph || state[index] !== item.glyph) return;
         drawText(ctx, item, item.baseGlyph, piece.colors.carbon, 0.16, scale,
           piece.traits.direction * 3.2, 2.4, item.baseFontKind);
       });
     }
 
-    piece.surface.forEach(function (item, index) {
+    order.forEach(function (index) {
+      var item = piece.surface[index];
       if (!item.glyph || !state[index]) return;
       drawText(ctx, item, state[index], item.forcedColor || faceColor(piece, item), item.opacity, scale, 0, 0, item.fontKind);
     });

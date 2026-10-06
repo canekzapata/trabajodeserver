@@ -1414,8 +1414,29 @@
     return value < 0 ? value + 1 : value;
   }
 
+  // Paso máximo entre muestras a lo largo de una cinta, en unidades del motor
+  // (un signo mide ~0.87). Antes cada cinta llevaba un número fijo de
+  // muestras, larga o corta, y las largas quedaban punteadas: la espiral salía
+  // en rayos, los anillos en cuentas sueltas (v0.22).
+  var RIBBON_STEP = 0.62;
+
+  function pathLength(path) {
+    var length = 0, previous = path(0);
+    for (var k = 1; k <= 600; k += 1) {
+      var point = path(k / 600);
+      length += Math.sqrt(Math.pow(point.x - previous.x, 2) + Math.pow(point.y - previous.y, 2) +
+        Math.pow(point.z - previous.z, 2));
+      previous = point;
+    }
+    return length;
+  }
+
+  // Las cintas ya no se cortan para fingir que un tramo pasa por debajo de
+  // otro: el cruce lo resuelve el orden de profundidad al pintar (v0.22). Sólo
+  // guarda sus cortes la cinta que los declara camino (`keepGaps`), como el
+  // pasillo del interior mayor que el exterior.
   function addRibbonPath(builder, spec) {
-    var samples = spec.samples || 96;
+    var samples = Math.max(spec.samples || 96, Math.ceil(pathLength(spec.path) / RIBBON_STEP));
     var across = spec.across || 6;
     var depthLayers = spec.depthLayers || 2;
     var last = spec.closed ? samples - 1 : samples;
@@ -1423,7 +1444,7 @@
     for (var sample = 0; sample <= last; sample += 1) {
       var t = sample / samples;
       var p = spec.path(t);
-      if (spec.skip && spec.skip(t, sample, p)) continue;
+      if (spec.keepGaps && spec.skip && spec.skip(t, sample, p)) continue;
       var beforeT = spec.closed ? wrap01(t - delta) : clamp(t - delta, 0, 1);
       var afterT = spec.closed ? wrap01(t + delta) : clamp(t + delta, 0, 1);
       var before = spec.path(beforeT);
@@ -1853,7 +1874,8 @@
       });
       addRibbonPath(builder, {
         body: "interior-" + roomIndex, key: "larger-room-" + roomIndex,
-        path: roomPath, closed: true,
+        path: roomPath, closed: true, keepGaps: true,
+        // El pasillo: los anillos se abren alineados abajo, hacia la puerta.
         skip: function (t) { return angleDistance(t * TAU, Math.PI * 1.5) < 0.12; },
         width: rng.float(1.1, 2.4), samples: 74 + roomIndex * 8, across: 3 + (roomIndex % 2), depthLayers: 2
       });
@@ -3929,6 +3951,10 @@
       var projection = project(item, traits);
       item.rawX = projection.rawX;
       item.rawY = projection.rawY;
+      // Profundidad 3D (mayor = más lejos). fitToPage() reescribe x / y con
+      // coordenadas de página, así que se guarda aquí: la página pinta de
+      // atrás hacia adelante con ella (v0.22).
+      item.depth = item.y;
       item.glyph = glyphFor(item, traits.palette, traits);
       item.baseGlyph = item.glyph;
       item.anomaly = false;
@@ -3980,7 +4006,7 @@
         cuerpo: traits.palette.cuerpo,
         profundidad: traits.palette.profundidad,
         formGrosor: traits.formGrosor,
-        version: "0.21.0"
+        version: "0.22.0"
       },
       parameters: {
         mass: traits.mass, opening: traits.opening,

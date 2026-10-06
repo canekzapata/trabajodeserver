@@ -45,7 +45,7 @@ function contrast(a, b) {
 
 var first = motor.build({ seed: "la-clave-sostiene-el-anillo" });
 var again = motor.build({ seed: "la-clave-sostiene-el-anillo" });
-assert.strictEqual(first.meta.version, "0.21.0");
+assert.strictEqual(first.meta.version, "0.22.0");
 assert.strictEqual(first.meta.instrument, "espacio escultórico");
 assert.deepStrictEqual(first.traits, again.traits, "la misma semilla debe conservar los genes");
 assert.deepStrictEqual(first.surface, again.surface, "la misma semilla debe reconstruir la misma lámina");

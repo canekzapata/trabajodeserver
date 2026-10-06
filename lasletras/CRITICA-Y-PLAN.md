@@ -186,7 +186,7 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
   como base, y los exóticos como rareza.
 - Puntaje de rareza = suma de −log₂ de la frecuencia de cada rasgo, en `features`.
 
-**L2 — Orden de profundidad, sin ocultar nada** *(experimento hecho)*
+**L2 — Orden de profundidad, sin ocultar nada** *(integrado en v0.22, sólo el orden; el aire queda en reserva)*
 - `experimentos/profundidad.html?hash=N`: los mismos signos, ninguno se quita, pintados de
   atrás hacia adelante según su profundidad 3D. La transparencia y el encimado quedan
   iguales; sólo cambia quién queda encima.
@@ -213,7 +213,7 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
   se leía, pero **quitaba la perspectiva y el 3D**, que son el destino de la pieza. Queda en
   `experimentos/` como registro del intento (`rejilla-antes-despues.png`).
 
-**L2b — Que las curvas cierren** *(experimento hecho)*
+**L2b — Que las curvas cierren** *(integrado en v0.22, con el pasillo del interior mayor)*
 - **Causa 1, cortes falsos.** 26 cintas del motor (nudos, lazos, cápsulas, espirales,
   hélices, pasillos, el interior mayor) se cortan a propósito con una función `skip` para
   fingir que un tramo pasa por debajo de otro, o para abrir una "puerta". En el nudo de la

@@ -110,3 +110,21 @@ decidir si el interior mayor y el lazo habitable conservan sus puertas.
 **Decisión de Canek (L2b):** el interior mayor que el exterior conserva su
 pasillo (los cortes alineados abajo son un camino hacia la puerta). El parche
 lo exceptúa con `conservar: ["larger-room-"]` y sólo densifica sus anillos.
+
+## v0.22 · integrado (6 oct 2026)
+
+Canek aprueba orden de profundidad y cierre de curvas, con el pasillo del
+interior mayor. Integrado al motor: `item.depth` antes de `fitToPage`,
+`paintOrder` en verse.js y gif-export.js, cintas sin `skip` (salvo `keepGaps`)
+y paso ≤ 0.62 u. `tests/huellas.js`: las 600 semillas coinciden exactamente con
+el experimento aprobado; cambian 185 (sólo las que tienen cintas), arco y espera
+intactos. `tests/favoritas.json` queda por llenar.
+
+### Siguiente: el jardín
+
+Conversación con Canek: la serie empezó con los arcos (lo más claro) y se volvió
+espacio escultórico cuando empezó a hacer jardines. Dejar de llenar huecos con
+figuras y especializar: jardín · arco · cuerpo solo monumental; la genealogía de
+muchas partes baja. Primer paso: experimento aparte de un compositor de jardines,
+en dos variantes (Pedregal de Barragán y Goeritz; Espacio Escultórico con vacío
+central).

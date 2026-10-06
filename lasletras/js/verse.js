@@ -1,6 +1,8 @@
 /*
   verse.js — "espacio escultórico", edición para Verse (generative-verse).
 
+  Desde v0.22 los signos se pintan de atrás hacia adelante (paintOrder).
+
   Diferencias con la versión vertical de poesiasexp:
     · lámina CUADRADA (1000 × 1000), a sangre en cualquier viewport;
     · la escritura ocupa el cuadrado completo, sin ficha dentro del SVG;
@@ -220,6 +222,20 @@
     return { gifButton: gifButton };
   }
 
+  // --- Orden de pintado ------------------------------------------------------
+  // De atrás hacia adelante por profundidad 3D (v0.22). No se quita ningún
+  // signo: la transparencia queda igual, sólo cambia quién queda encima, y los
+  // cruces de nudos, lazos y hélices se leen arriba / abajo. Los índices siguen
+  // siendo los de piece.surface, así que el horario de escritura no cambia.
+  function paintOrder(piece) {
+    var order = piece.surface.map(function (item, index) { return index; });
+    order.sort(function (a, b) {
+      var da = piece.surface[a].depth || 0, db = piece.surface[b].depth || 0;
+      return db - da || a - b;
+    });
+    return order;
+  }
+
   // --- Render --------------------------------------------------------------
   function render(piece, seed, edition) {
     while (svg.firstChild) svg.removeChild(svg.firstChild);
@@ -231,9 +247,11 @@
     svg.appendChild(el("rect", { width: SIZE, height: SIZE, fill: piece.colors.papel }));
 
     var nodes = { main: {}, carbon: {} };
+    var order = paintOrder(piece);
     if (piece.traits.carbon) {
       var carbon = el("g", { id: "carbon-copy" });
-      piece.surface.forEach(function (item, index) {
+      order.forEach(function (index) {
+        var item = piece.surface[index];
         if (!item.glyph) return;
         var node = glyphNode(piece, item, true, index);
         nodes.carbon[index] = node;
@@ -243,7 +261,8 @@
     }
 
     var building = el("g", { id: "edificio" });
-    piece.surface.forEach(function (item, index) {
+    order.forEach(function (index) {
+      var item = piece.surface[index];
       if (!item.glyph) return;
       var node = glyphNode(piece, item, false, index);
       nodes.main[index] = node;

@@ -1,0 +1,5 @@
+{
+  "nota": "Semillas que Canek quiere proteger. Si una cambia, el test falla hasta anotarla en cambios_aceptados con el porqué. Lista por llenar.",
+  "semillas": [],
+  "cambios_aceptados": {}
+}

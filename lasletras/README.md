@@ -8,6 +8,42 @@ Mismo motor (`rng` + `corpus` + `architecture`), otra piel.
 
 [Vista fija de esfera monumental](preview.png)
 
+## v0.22 — lo de adelante va encima, y las curvas cierran
+
+Dos correcciones que salieron de experimentos aparte (`experimentos/`), vistas y
+aprobadas por Canek en la página de comparación antes de tocar el motor.
+
+**Orden de profundidad.** Los signos se pintaban de arriba hacia abajo en
+pantalla, y en 39–54 % de los encimados visibles el signo de atrás quedaba
+encima del de adelante: el orden era casi azar respecto a la profundidad. Ahora
+se pintan de atrás hacia adelante. No se quita ningún signo —la transparencia y
+el encimado son el destino de la pieza, lo que da la perspectiva y el 3D—; sólo
+cambia quién queda encima, y los cruces de nudos, lazos y hélices se leen
+arriba / abajo. El motor guarda `item.depth` antes de `fitToPage`, que pisaba la
+coordenada 3D; `verse.js` y el GIF pintan con `paintOrder`. El horario de
+escritura no cambia.
+
+**Las curvas cierran.** Nudos, lazos, cápsulas, espirales y hélices se cortaban
+a propósito (26 funciones `skip`) para fingir que un tramo pasaba por debajo de
+otro; en el nudo de losas, en posiciones fijas que ni coincidían con los cruces.
+Con el orden de profundidad el corte sobra: las cintas ya no se cortan. Además
+cada cinta llevaba un número fijo de muestras, larga o corta, y las largas
+quedaban punteadas (la espiral atravesada salía en rayos, los anillos en
+cuentas): ahora hay a lo más 0.62 unidades entre muestra y muestra (un signo
+mide ~0.87), y sólo se agregan donde faltan.
+
+**El interior mayor que el exterior conserva su pasillo.** Sus anillos se abren
+alineados abajo, hacia la puerta del centro: es un camino, no un hueco
+(`keepGaps`). Decisión de Canek.
+
+**Qué semillas cambian.** Sólo las que tienen cintas: 185 de las primeras 600
+(todas las entrelazadas, la mayoría de las no euclidianas, parte de las
+genealogías y de los ensamblajes; ningún arco ni espera). En ésas la forma es la
+misma, pero al haber más signos cambian de lugar los errores, la anomalía y el
+horario. `tests/huellas.js` comprueba que cada semilla coincide exactamente con
+el experimento aprobado y que arco y espera no se mueven; `tests/favoritas.json`
+protege las semillas que Canek elija.
+
 ## v0.21 — el alfabeto respeta el grosor del cuerpo, y entra el hipar de Candela
 
 Hasta ahora la semilla elegía el alfabeto del catálogo entero, sin mirar sobre
@@ -507,6 +543,7 @@ node lasletras/tests/smoke.js
 node lasletras/tests/typewriter.js
 node lasletras/tests/gif.js
 node lasletras/tests/presentation.js
+node lasletras/tests/huellas.js
 ```
 
 Para el `playground.html` de Verse, apunta el iframe a la URL de `index.html`.
