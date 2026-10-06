@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Experimento · orden de profundidad</title>
+<!-- Experimento aparte (no toca el motor). L2 de CRITICA-Y-PLAN.md.
+     Izquierda: la pieza como hoy, pintada en el orden de pantalla (rawY).
+     Derecha: los MISMOS signos, ninguno se quita, pintados de atrás hacia
+     adelante según su profundidad 3D (recuperada invirtiendo project(): una
+     y mayor sube y se corre, o sea queda más lejos). Sólo cambia quién queda
+     encima.
+     ?hash=…   ?aire=0.3 → además, opacidad que cae con la profundidad
+     (perspectiva aérea: el signo más lejano queda en 1 − aire). -->
+<style>
+@font-face{font-family:"Architecture Mono";src:url("../fonts/Ac437_ApricotPortable.ttf")}
+@font-face{font-family:"Unicode Backup";src:url("../fonts/Symbola.otf")}
+@font-face{font-family:"Electrónica";src:url("../fonts/ELECTRONICS.TTF")}
+@font-face{font-family:"Jeroglífico Egipcio";src:url("../fonts/NOTOSANSEGYPTIANHIEROGLYPHS-REGULAR.TTF")}
+@font-face{font-family:"Jeroglífico Anatolio";src:url("../fonts/NOTOSANSANATOLIANHIEROGLYPHS-REGULAR.TTF")}
+@font-face{font-family:"Lineal B";src:url("../fonts/NOTOSANSLINEARB-REGULAR.TTF")}
+html,body{margin:0;background:#111}
+.par{display:flex}
+svg{width:50vw;height:50vw;display:block}
+text{font-family:"Architecture Mono","Unicode Backup",monospace;white-space:pre}
+.fx-electronica{font-family:"Electrónica","Architecture Mono",monospace}
+.fx-egipcio{font-family:"Jeroglífico Egipcio","Unicode Backup",monospace}
+.fx-anatolio{font-family:"Jeroglífico Anatolio","Unicode Backup",monospace}
+.fx-linealb{font-family:"Lineal B","Unicode Backup",monospace}
+</style></head><body>
+<div class="par"><svg id="a" viewBox="0 0 1000 1000"></svg><svg id="b" viewBox="0 0 1000 1000"></svg></div>
+<script src="../js/rng.js"></script><script src="../js/corpus.js"></script><script src="../js/architecture.js"></script>
+<script>
+// fitToPage() sobrescribe item.x / item.y con coordenadas de página, así que la
+// profundidad 3D se recupera invirtiendo project(): conocidos rawX, rawY y z,
+// se resuelve el sistema 2×2 para (x, y) del espacio. y mayor = más lejos.
+function depthOf(s,t){var p=Math.max(0,Math.min(1,t.perspective/100)),u=15,
+  dX=u*(0.035+(0.8-0.035)*p)*t.direction,dY=u*(0.015+(0.36-0.015)*p),tl=t.tilt||0,
+  det=u*dY+dX*u*tl;return (u*(-s.rawY-s.z*u)+u*tl*s.rawX)/det}
+var q=new URLSearchParams(location.search),hash=q.get("hash")||"1",aire=+(q.get("aire")||0);
+var NS="http://www.w3.org/2000/svg",piece=ARQ_MOTOR.build({seed:hash}),F={x:38,y:38,w:924,h:924};
+var S=piece.surface.filter(function(s){return s.glyph});
+// Mismo reencuadre que verse.js → fitSquare.
+var xs=S.map(function(s){return s.rawX+s.perturbX}),ys=S.map(function(s){return s.rawY+s.perturbY});
+var x0=Math.min.apply(0,xs),x1=Math.max.apply(0,xs),y0=Math.min.apply(0,ys),y1=Math.max.apply(0,ys);
+var sc=Math.min(F.w/Math.max(1,x1-x0),F.h/Math.max(1,y1-y0),3.75),fs=Math.max(9,Math.min(34,13*sc));
+var ox=F.x+(F.w-(x1-x0)*sc)/2,oy=F.y+(F.h-(y1-y0)*sc)/2;
+S.forEach(function(s){s.sx=ox+(s.rawX+s.perturbX-x0)*sc;s.sy=oy+(s.rawY+s.perturbY-y0)*sc});
+var FONT={egipcio:"fx-egipcio",anatolio:"fx-anatolio",linealb:"fx-linealb",electronica:"fx-electronica"};
+// Mismo color por cara que verse.js → faceColor.
+function color(s){var c=piece.colors;if(s.anomaly)return c.anomalia;var f=s.face,r=piece.traits.alphabetRelation;
+  if(s.body==="derecha"&&r==="CARAS INVERTIDAS")f=f==="frente"?"lateral":f==="lateral"?"frente":"techo";
+  else if(s.body==="derecha"&&r==="TRADUCCIÓN MATERIAL")f=f==="frente"?"techo":f==="techo"?"frente":"lateral";
+  return c[f]||c.frente}
+S.forEach(function(s){s.depth=depthOf(s,piece.traits)});
+var dmin=Infinity,dmax=-Infinity;S.forEach(function(s){var d=s.depth;if(d<dmin)dmin=d;if(d>dmax)dmax=d});
+function far(s){return (s.depth-dmin)/Math.max(1e-9,dmax-dmin)} // 0 cerca · 1 lejos
+function draw(svg,list,useAire){
+  var r=document.createElementNS(NS,"rect");r.setAttribute("width",1000);r.setAttribute("height",1000);
+  r.setAttribute("fill",piece.colors.papel);svg.appendChild(r);
+  function t(s,carbon){var n=document.createElementNS(NS,"text"),k=carbon?s.baseFontKind:s.fontKind;
+    n.setAttribute("x",s.sx+(carbon?piece.traits.direction*3.2:0));n.setAttribute("y",s.sy+(carbon?2.4:0));
+    n.setAttribute("font-size",fs);n.setAttribute("text-anchor","middle");n.setAttribute("dominant-baseline","central");
+    if(k&&FONT[k])n.setAttribute("class",FONT[k]);
+    var o=carbon?0.16:s.opacity;if(useAire&&!carbon)o*=1-aire*far(s);
+    n.setAttribute("fill",carbon?piece.colors.carbon:(s.forcedColor||color(s)));n.setAttribute("opacity",o);
+    n.textContent=carbon?s.baseGlyph:s.glyph;svg.appendChild(n)}
+  if(piece.traits.carbon)list.forEach(function(s){t(s,true)});
+  list.forEach(function(s){t(s,false)});
+}
+draw(document.getElementById("a"),S,false);                       // hoy: orden de pantalla
+var B=S.slice().sort(function(a,b){return b.depth-a.depth});    // atrás → adelante
+draw(document.getElementById("b"),B,aire>0);
+document.title=S.length+" signos · "+piece.meta.speciesKey;
+</script></body></html>

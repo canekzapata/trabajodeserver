@@ -88,3 +88,12 @@ intacto.
 no un defecto: es lo que da la perspectiva y el 3D. La rejilla con ocultamiento
 queda **descartada** (quitaba ambos). En su lugar se propone L2: ordenar el
 dibujo por profundidad sin ocultar ningún signo.
+
+### Experimento L2 · orden de profundidad (6 oct 2026)
+
+`experimentos/profundidad.html`: mismos signos, pintados de atrás hacia
+adelante. La profundidad 3D se recupera invirtiendo `project()` (fitToPage
+pisa `item.y`). Hoy 39–54 % de los encimados visibles quedan al revés. Con el
+orden, los cruces de toros y lazos se leen arriba/abajo sin perder la
+transparencia. Variante `?aire=` (opacidad por profundidad). Pendiente: decisión
+de Canek; motor intacto.

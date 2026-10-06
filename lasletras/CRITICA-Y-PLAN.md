@@ -186,13 +186,29 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
   como base, y los exóticos como rareza.
 - Puntaje de rareza = suma de −log₂ de la frecuencia de cada rasgo, en `features`.
 
-**L2 — Orden de profundidad, sin ocultar nada**
-- Pintar los signos de atrás hacia adelante (por profundidad 3D, no por `rawY` de pantalla).
-  No se quita ningún signo: la transparencia y el encimado quedan iguales, sólo cambia quién
-  queda encima. La cara cercana manda en el color y el volumen se refuerza. Hay que verificar
-  en cada especie qué coordenada es la profundidad real antes de integrarlo.
-- Variante para probar: una caída de opacidad muy leve con la profundidad (perspectiva
-  aérea), sólo si no apaga el lado de atrás.
+**L2 — Orden de profundidad, sin ocultar nada** *(experimento hecho)*
+- `experimentos/profundidad.html?hash=N`: los mismos signos, ninguno se quita, pintados de
+  atrás hacia adelante según su profundidad 3D. La transparencia y el encimado quedan
+  iguales; sólo cambia quién queda encima.
+- **Hallazgo técnico:** `fitToPage()` sobrescribe `item.x` / `item.y` con coordenadas de
+  página, así que la profundidad 3D se pierde después de proyectar. El experimento la
+  recupera invirtiendo `project()` con `rawX`, `rawY` y `z` (error de reproyección ~1e−14).
+  Para integrarlo, el motor debería guardar `item.depth` antes de `fitToPage`.
+- **Medido** (`experimentos/profundidad.js`, 400 semillas): de los pares encimados que se
+  distinguen (distinto color o glifo), hoy **entre 39 % y 54 % quedan al revés**, con el de
+  atrás pintado encima. Es decir, el orden actual es casi azar respecto a la profundidad.
+- **Lo que se ve** (`profundidad-antes-despues.png`, `profundidad-detalle.png`): de lejos
+  la lámina es la misma. De cerca, **los cruces se leen como arriba / abajo**: en el toro
+  (semilla 3) el anillo rosa pasa por delante en el cruce inferior, y en el lazo (semilla 10)
+  la banda cian cruza por encima de la rosa. El nudo deja de ser ambiguo sin perder la
+  transparencia.
+- **Variante con aire** (`?aire=0.35`, `profundidad-aire.png`): la opacidad cae con la
+  profundidad hasta 0.65 en lo más lejano. El lado de atrás sigue presente, pero se
+  aleja; la perspectiva gana mucho en toros y genealogías. Ojo: en papel claro, el aire
+  aclara la tinta, así que hay que revisar el contraste del fondo de la pieza.
+- Decisión de Canek: (a) sólo el orden, (b) orden + aire, (c) aire como rasgo (algunas
+  láminas con atmósfera, otras planas). Ninguna opción cambia la geometría ni el horario de
+  escritura; el orden del DOM sí cambia, así que el test dorado de L0 tiene que ir antes.
 - *Descartado:* la rejilla con ocultamiento por celda (`experimentos/rejilla.html`). La letra
   se leía, pero **quitaba la perspectiva y el 3D**, que son el destino de la pieza. Queda en
   `experimentos/` como registro del intento (`rejilla-antes-despues.png`).
@@ -413,7 +429,7 @@ repeticiones por título en la edición.
 
 ## 7. Lo que decide Canek
 
-1. ¿Probamos el orden de profundidad sin ocultar (L2)? La rejilla queda descartada.
+1. Orden de profundidad (L2): ¿sólo orden, orden + aire, o aire como rasgo? La rejilla queda descartada.
 2. ¿La frase manda (A) o se mide (B)? (recomiendo B, más honesta y más barata)
 3. ¿Se renombran los lenguajes (§6.6)?
 4. Tamaño de la edición (1 000), número de láminas del álbum (48) y título.
@@ -425,8 +441,12 @@ repeticiones por título en la edición.
 - `CRITICA-Y-PLAN.md`: este documento.
 - `experimentos/medir.js`: tabla de la serie (`node lasletras/experimentos/medir.js 1500`).
 - `experimentos/empaste.js`: encimado por especie.
+- `experimentos/profundidad.html` y `profundidad.js`: orden de profundidad sin ocultar, y su medición (`?aire=` para la variante).
+- `experimentos/profundidad-antes-despues.png` (semillas 3, 6, 11, 15, 10, 12), `profundidad-detalle.png` (acercamientos de 3, 10, 6) y `profundidad-aire.png` (3 y 11 con aire 0.35).
 - `experimentos/rejilla.html`: ocultamiento por celda (**descartado**: quitaba la perspectiva y el 3D).
 - `experimentos/rejilla-antes-despues.png`: el intento, semillas 3, 6, 11 y 15.
 - `experimentos/muestra-1-16.png`: estado final de las semillas 1–16 (`?still=1`).
 
 El motor no se tocó. Ninguna semilla cambió.
+
+*Nota:* la rejilla descartada tomaba `item.y` como profundidad, pero después de `fitToPage` eso es la altura en la página. Era más cruda todavía de lo que parecía.
