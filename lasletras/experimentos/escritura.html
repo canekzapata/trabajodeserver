@@ -40,7 +40,7 @@ window.listoMotor=Promise.resolve();
 if(modo==="cierre"){
   etiquetas=["HOY","CERRADO"];listaA=VA.D;
   window.listoMotor=fetch("../js/architecture.js").then(function(r){return r.text()}).then(function(src){
-    var raiz={ARQ_AZAR:window.ARQ_AZAR,ARQ_CORPUS:window.ARQ_CORPUS,__CIERRE:{sinCortes:true,densidad:true}};
+    var raiz={ARQ_AZAR:window.ARQ_AZAR,ARQ_CORPUS:window.ARQ_CORPUS,__CIERRE:{sinCortes:true,densidad:true,conservar:["larger-room-"]}};
     new Function("window",CIERRE_PARCHE.parchar(src))(raiz);VB=prepara(raiz.ARQ_MOTOR)});
 }
 var FONT={egipcio:'"Jeroglífico Egipcio","Unicode Backup",monospace',anatolio:'"Jeroglífico Anatolio","Unicode Backup",monospace',

@@ -6,7 +6,7 @@ const M=require(tmp);fs.unlinkSync(tmp);
 const N=+process.argv[2]||1000,porEspecie={};let tocadas=0,max=0,maxSeed=0;const crece=[];
 for(let i=1;i<=N;i++){
   globalThis.__CIERRE={};const a=M.build({seed:String(i)});
-  globalThis.__CIERRE={sinCortes:true,densidad:true};const b=M.build({seed:String(i)});
+  globalThis.__CIERRE={sinCortes:true,densidad:true,conservar:['larger-room-']};const b=M.build({seed:String(i)});
   const na=a.surface.length,nb=b.surface.length,k=a.meta.speciesKey;
   porEspecie[k]=porEspecie[k]||{n:0,t:0};porEspecie[k].n++;
   if(nb!==na){tocadas++;porEspecie[k].t++;const r=nb/na-1;crece.push(r);if(r>max){max=r;maxSeed=i}}

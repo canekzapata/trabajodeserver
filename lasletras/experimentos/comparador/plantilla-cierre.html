@@ -104,6 +104,7 @@ input[type=range]{accent-color:var(--accent);width:160px}
       <div class="opc">
         <label><input type="checkbox" id="sinCortes" checked> Sin cortes falsos</label>
         <label><input type="checkbox" id="densidad" checked> Muestreo por longitud</label>
+        <label><input type="checkbox" id="pasillo" checked> El interior mayor conserva su pasillo</label>
         <label><input type="checkbox" id="sinAusencias"> Sin el error «ausencia»</label>
       </div>
     </div>
@@ -119,7 +120,7 @@ input[type=range]{accent-color:var(--accent);width:160px}
   </div>
 
   <div class="ficha" id="ficha"></div>
-  <p class="nota">Sin cortes falsos: la cinta ya no salta los tramos que el motor marcaba con <code>skip</code>; el cruce lo resuelve el orden de profundidad. Muestreo por longitud: entre muestra y muestra a lo largo de la cinta hay a lo más 0.62 unidades (un signo mide unas 0.87), así que una espiral larga ya no queda punteada; donde ya había muestras de sobra no se agrega nada. El error «ausencia» es uno de los tropiezos de la máquina (borra el signo); se deja encendido por defecto porque es parte de la pieza.</p>
+  <p class="nota">Sin cortes falsos: la cinta ya no salta los tramos que el motor marcaba con <code>skip</code>; el cruce lo resuelve el orden de profundidad. Muestreo por longitud: entre muestra y muestra a lo largo de la cinta hay a lo más 0.62 unidades (un signo mide unas 0.87), así que una espiral larga ya no queda punteada; donde ya había muestras de sobra no se agrega nada. El interior mayor que el exterior conserva el pasillo que sus anillos dejan abierto abajo, alineado con la puerta del centro: es un camino, no un hueco. El error «ausencia» es uno de los tropiezos de la máquina (borra el signo); se deja encendido por defecto porque es parte de la pieza.</p>
 </div>
 
 <script>/*@@MOTOR@@*/</script>
@@ -133,7 +134,7 @@ var FONT_FILES=[["Architecture Mono","fonts/Ac437_ApricotPortable.ttf"],["Unicod
   ["Electrónica","fonts/ELECTRONICS.TTF"],["Jeroglífico Egipcio","fonts/NOTOSANSEGYPTIANHIEROGLYPHS-REGULAR.TTF"],
   ["Jeroglífico Anatolio","fonts/NOTOSANSANATOLIANHIEROGLYPHS-REGULAR.TTF"],["Lineal B","fonts/NOTOSANSLINEARB-REGULAR.TTF"]];
 var FONT={egipcio:"fx-egipcio",anatolio:"fx-anatolio",linealb:"fx-linealb",electronica:"fx-electronica"};
-var PRESETS=[[3,"nudo"],[10,"cápsulas"],[65,"lazo"],[152,"doble hélice"],[60,"espiral atravesada"],[15,"pasillo"],[66,"interior mayor"],[43,"hélice en edificio"],[96,"nudo en edificio"]];
+var PRESETS=[[3,"nudo"],[10,"cápsulas"],[65,"lazo"],[152,"doble hélice"],[60,"espiral atravesada"],[15,"pasillo"],[457,"interior mayor"],[66,"interior mayor 2"],[43,"hélice en edificio"],[96,"nudo en edificio"]];
 var state={seed:3,modo:"lado",zoom:1,cx:500,cy:500,cortina:50};
 try{var saved=JSON.parse(localStorage.getItem("cierre")||"null");if(saved&&saved.modo)state.modo=saved.modo}catch(e){}
 var $=function(id){return document.getElementById(id)};
@@ -231,7 +232,8 @@ function ficha(){
   .forEach(function(kv){var d=document.createElement("div"),l=document.createElement("span"),b=document.createElement("b");
     l.className="label";l.textContent=kv[0];b.textContent=kv[1];d.appendChild(l);d.appendChild(b);f.appendChild(d)});
 }
-function opciones(){return{sinCortes:$("sinCortes").checked,densidad:$("densidad").checked,sinAusencias:$("sinAusencias").checked}}
+function opciones(){return{sinCortes:$("sinCortes").checked,densidad:$("densidad").checked,sinAusencias:$("sinAusencias").checked,
+  conservar:$("pasillo").checked?["larger-room-"]:[]}}
 function go(seed){seed=Math.max(1,Math.round(+seed||1));state.seed=seed;$("seed").value=seed;
   A=prepara(ARQ_MOTOR,seed);
   // El registro se toma con el motor parchado pero sin cambios, para medir la cinta de hoy.
@@ -245,7 +247,7 @@ $("prev").addEventListener("click",function(){go(state.seed-1)});
 $("next").addEventListener("click",function(){go(state.seed+1)});
 $("seed").addEventListener("change",function(){go(this.value)});
 $("escribir").addEventListener("click",function(){write()});
-["sinCortes","densidad","sinAusencias"].forEach(function(id){$(id).addEventListener("change",function(){go(state.seed)})});
+["sinCortes","densidad","pasillo","sinAusencias"].forEach(function(id){$(id).addEventListener("change",function(){go(state.seed)})});
 $("modos").addEventListener("click",function(e){var m=e.target.dataset&&e.target.dataset.modo;if(!m)return;state.modo=m;press("modos","modo",m);
   try{localStorage.setItem("cierre",JSON.stringify({modo:m}))}catch(err){}render()});
 $("zooms").addEventListener("click",function(e){var z=e.target.dataset&&e.target.dataset.z;if(!z)return;state.zoom=+z;press("zooms","z",z);applyViewBox()});

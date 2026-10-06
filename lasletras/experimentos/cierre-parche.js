@@ -3,6 +3,9 @@
 // globalThis.__CIERRE:
 //   sinCortes    las cintas ya no se cortan con `skip` (los falsos «pasa por
 //                debajo» de nudos, lazos, cápsulas, espirales y hélices);
+//   conservar    prefijos de cinta que sí guardan sus cortes aunque sinCortes
+//                esté prendido: ["larger-room-"] deja el pasillo del interior
+//                mayor que el exterior (decisión de Canek);
 //   densidad     las cintas se muestrean por longitud de arco: a lo más `paso`
 //                unidades (0.62 ≈ 0.7 de un signo; un signo mide ~0.87 u) entre
 //                muestras; hoy el número es fijo, sea corta o larga la cinta.
@@ -20,7 +23,7 @@
      "    if (__C.densidad) samples = Math.max(samples, Math.ceil(__len / (__C.paso || 0.62)));\n" +
      "    if (__C.registro) __C.registro.push({ key: spec.key, len: __len, samples: samples, paso: __len / samples, cortes: !!spec.skip, ancho: spec.width, across: spec.across || 6 });"],
     ["if (spec.skip && spec.skip(t, sample, p)) continue;",
-     "if (!__C.sinCortes && spec.skip && spec.skip(t, sample, p)) continue;"],
+     "if ((!__C.sinCortes || (__C.conservar || []).some(function (k) { return String(spec.key).indexOf(k) === 0; })) && spec.skip && spec.skip(t, sample, p)) continue;"],
     ['if (kind === "ausencia") item.glyph = "";',
      'if (kind === "ausencia" && !(root.__CIERRE || {}).sinAusencias) item.glyph = "";']
   ];

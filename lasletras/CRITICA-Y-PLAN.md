@@ -234,9 +234,11 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
 - **Probado y corregido:** amarrar el paso al ancho de la cinta empastaba las genealogías
   (semilla 651 pasaba de 5 067 a 23 541 signos y se volvía mancha). Con el paso fijo queda
   en 5 538 y la letra se lee.
-- **Decisión de Canek:** en el *interior mayor que el exterior* (457) los cortes son
-  puertas y se leen como laberinto. ¿Se cierran también, o esa especie conserva sus
-  puertas? Lo mismo para la "puerta" del lazo habitable.
+- **Decidido (Canek):** el *interior mayor que el exterior* (457) **conserva su pasillo**:
+  los cortes de sus anillos están alineados abajo y forman un camino hacia la puerta del
+  centro. Es arquitectura, no hueco. El parche lo respeta con `conservar: ["larger-room-"]`;
+  sus anillos sí se densifican y dejan de verse como cuentas sueltas
+  (`cierre-escritura-457.gif`). La "puerta" del lazo habitable queda cerrada por ahora.
 - Integrarlo cambia las semillas que tienen cintas (31 %): la forma es la misma, pero al
   haber más signos se mueven los errores, la anomalía y el horario de escritura. Va
   después del test dorado de L0 y como parte de una versión nueva, no como arreglo
@@ -459,7 +461,7 @@ repeticiones por título en la edición.
 ## 7. Lo que decide Canek
 
 1. Orden de profundidad (L2): ¿sólo orden, orden + aire, o aire como rasgo? La rejilla queda descartada.
-1. Cierre de curvas (L2b): ¿el interior mayor y el lazo habitable conservan sus puertas?
+1. Cierre de curvas (L2b): el interior mayor conserva su pasillo (decidido). ¿El lazo habitable también guarda su puerta?
 2. ¿La frase manda (A) o se mide (B)? (recomiendo B, más honesta y más barata)
 3. ¿Se renombran los lenguajes (§6.6)?
 4. Tamaño de la edición (1 000), número de láminas del álbum (48) y título.
@@ -477,7 +479,7 @@ repeticiones por título en la edición.
 - `experimentos/escritura.html` y `escritura-3.gif`, `escritura-10.gif`, `escritura-11.gif`: la escritura completa lado a lado (hoy / profundidad) con el horario real del typewriter; `window.frameAt(ms)` pinta cada cuadro. El comparador web también escribe las dos al mismo tiempo («Escribir de nuevo»).
 - `experimentos/profundidad-parpadeo.gif`: hoy ↔ profundidad, semillas 3, 10 y 6, con detalle (9.6 s).
 - `experimentos/cierre-parche.js`, `cierre-medir.js` (paso por cinta), `cierre-serie.js` (cuántas semillas cambian) y `comparador/plantilla-cierre.html` (`python3 construir.py DESTINO/index.html cierre`). Publicado: https://claude.ai/artifact/EMouXW63VFo8dgABEiuRqN
-- `experimentos/cierre-escritura-3.gif`, `-60.gif`, `-10.gif`: escritura hoy / cerrado (`escritura.html?modo=cierre`).
+- `experimentos/cierre-escritura-3.gif`, `-60.gif`, `-10.gif`, `-457.gif`: escritura hoy / cerrado (`escritura.html?modo=cierre`).
 - `experimentos/rejilla.html`: ocultamiento por celda (**descartado**: quitaba la perspectiva y el 3D).
 - `experimentos/rejilla-antes-despues.png`: el intento, semillas 3, 6, 11 y 15.
 - `experimentos/muestra-1-16.png`: estado final de las semillas 1–16 (`?still=1`).

@@ -106,3 +106,7 @@ muestreo fijo por cinta (paso de hasta 2.8 u en cintas largas). Parche sobre una
 copia del motor: sin cortes + paso ≤ 0.62 u. Cambia 31 % de las semillas, +6 %
 de signos (mediana). Comparador publicado y GIF de escritura. Pendiente:
 decidir si el interior mayor y el lazo habitable conservan sus puertas.
+
+**Decisión de Canek (L2b):** el interior mayor que el exterior conserva su
+pasillo (los cortes alineados abajo son un camino hacia la puerta). El parche
+lo exceptúa con `conservar: ["larger-room-"]` y sólo densifica sus anillos.
