@@ -97,3 +97,12 @@ pisa `item.y`). Hoy 39–54 % de los encimados visibles quedan al revés. Con el
 orden, los cruces de toros y lazos se leen arriba/abajo sin perder la
 transparencia. Variante `?aire=` (opacidad por profundidad). Pendiente: decisión
 de Canek; motor intacto.
+
+### Experimento L2b · que las curvas cierren (6 oct 2026)
+
+Canek aprueba el orden de profundidad ("sí mejora") y pide que círculos y
+espirales cierren. Causas: 26 cortes `skip` que fingían cruces o puertas, y
+muestreo fijo por cinta (paso de hasta 2.8 u en cintas largas). Parche sobre una
+copia del motor: sin cortes + paso ≤ 0.62 u. Cambia 31 % de las semillas, +6 %
+de signos (mediana). Comparador publicado y GIF de escritura. Pendiente:
+decidir si el interior mayor y el lazo habitable conservan sus puertas.

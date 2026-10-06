@@ -1,9 +1,15 @@
-# Arma el comparador publicable: la plantilla con el motor (rng + corpus + architecture + typewriter)
-# en línea. Uso: python3 construir.py DESTINO/index.html  (las fuentes se publican
-# aparte desde lasletras/fonts/ con la ruta fonts/…).
-import pathlib, sys
+# Arma las páginas publicables de los experimentos con el motor en línea.
+# Uso: python3 construir.py DESTINO/index.html [profundidad|cierre]
+# Las fuentes se publican aparte desde lasletras/fonts/ con la ruta fonts/….
+import json, pathlib, sys
 aqui=pathlib.Path(__file__).parent; js=aqui.parent.parent/'js'
+modo=sys.argv[2] if len(sys.argv)>2 else 'profundidad'
+esc=lambda t:t.replace('</script','<\\/script')
 motor='\n'.join((js/f).read_text(encoding='utf-8') for f in ['rng.js','corpus.js','architecture.js','typewriter.js'])
-motor=motor.replace('</script','<\\/script')
+plantilla=(aqui/('plantilla.html' if modo=='profundidad' else 'plantilla-cierre.html')).read_text(encoding='utf-8')
+html=plantilla.replace('/*@@MOTOR@@*/',esc(motor))
+if modo=='cierre':
+    html=html.replace('/*@@FUENTE@@*/null',esc(json.dumps((js/'architecture.js').read_text(encoding='utf-8'))))
+    html=html.replace('/*@@PARCHE@@*/',esc((aqui.parent/'cierre-parche.js').read_text(encoding='utf-8')))
 out=pathlib.Path(sys.argv[1]); out.parent.mkdir(parents=True,exist_ok=True)
-out.write_text((aqui/'plantilla.html').read_text(encoding='utf-8').replace('/*@@MOTOR@@*/',motor),encoding='utf-8')
+out.write_text(html,encoding='utf-8')

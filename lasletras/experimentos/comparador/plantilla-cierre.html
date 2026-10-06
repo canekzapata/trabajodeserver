@@ -1,0 +1,260 @@
+<meta charset="utf-8">
+<title>Cierre de curvas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mesa de comparación: barra de controles arriba, lámina cuadrada al centro, ficha medida abajo. */
+:root{
+  --bg:#e9e8e2; --panel:#f6f5f0; --fg:#1b1d1b; --muted:#5d625d; --line:#c9c8bf; --accent:#16707a;
+  --f-display:"Architecture Mono","IBM Plex Mono",ui-monospace,monospace;
+  --f-body:"Archivo",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141615; --panel:#1c1f1e; --fg:#e7e7e1; --muted:#9aa09a; --line:#353a38; --accent:#5cc6cf; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141615; --panel:#1c1f1e; --fg:#e7e7e1; --muted:#9aa09a; --line:#353a38; --accent:#5cc6cf; color-scheme:dark}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:grid;gap:16px}
+header{display:grid;gap:6px}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(22px,3.2vw,32px);letter-spacing:.04em;margin:0;text-wrap:balance}
+.lede{margin:0;max-width:68ch;color:var(--muted)}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:end;background:var(--panel);border:1px solid var(--line);padding:12px 14px}
+.field{display:grid;gap:4px}
+.label{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+button,input[type=number]{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);padding:5px 10px;min-height:32px}
+input[type=number]{width:7.5em;font-family:var(--f-mono)}
+button{cursor:pointer}
+button:hover{border-color:var(--accent)}
+button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chip{font-family:var(--f-mono);font-size:13px;padding:4px 9px;min-height:28px}
+input[type=range]{accent-color:var(--accent);width:160px}
+.val{font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums;min-width:3.2em;display:inline-block}
+.stage-wrap{display:grid;gap:8px}
+.stage{display:grid;gap:12px;grid-template-columns:1fr}
+.stage.lado{grid-template-columns:1fr 1fr}
+@media (max-width:640px){.stage.lado{grid-template-columns:1fr}}
+.box{position:relative;aspect-ratio:1;max-width:100%;width:100%;margin:0 auto;border:1px solid var(--line);overflow:hidden;cursor:crosshair}
+.stage:not(.lado) .box{max-width:min(100%,760px)}
+.box svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.tag{position:absolute;top:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--panel);color:var(--fg);border:1px solid var(--line);padding:2px 7px;pointer-events:none}
+.tag.l{left:8px}.tag.r{right:8px}
+.seam{position:absolute;top:0;bottom:0;width:2px;background:var(--accent);pointer-events:none;transform:translateX(-1px)}
+.cortina-row{display:flex;gap:10px;align-items:center;max-width:760px;width:100%;margin:0 auto}
+.cortina-row input{flex:1;width:auto}
+.ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.ficha div{background:var(--panel);padding:10px 12px;display:grid;gap:2px;min-width:0}
+.ficha b{font-family:var(--f-mono);font-weight:500;font-size:17px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.nota{color:var(--muted);font-size:13px;max-width:80ch;margin:0}
+.glyph{font-family:"Architecture Mono","Unicode Backup",monospace;white-space:pre}
+.fx-electronica{font-family:"Electrónica","Architecture Mono",monospace}
+.fx-egipcio{font-family:"Jeroglífico Egipcio","Unicode Backup",monospace}
+.fx-anatolio{font-family:"Jeroglífico Anatolio","Unicode Backup",monospace}
+.fx-linealb{font-family:"Lineal B","Unicode Backup",monospace}
+.cargando{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;color:var(--muted);background:var(--panel)}
+.opc{display:flex;gap:6px 14px;flex-wrap:wrap}
+.opc label{display:flex;gap:6px;align-items:center;font-size:14px;cursor:pointer}
+.opc input{accent-color:var(--accent);width:16px;height:16px}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>CIERRE DE CURVAS</h1>
+    <p class="lede">Espacio escultórico, experimento L2b. Las dos láminas ya se pintan por orden de profundidad. A la izquierda, el motor de hoy: nudos, lazos, cápsulas y hélices se cortan a propósito para fingir que un tramo pasa por debajo de otro, y las cintas largas tienen el mismo número de muestras que las cortas. A la derecha, la misma semilla con las curvas cerradas. Las dos se escriben al mismo tiempo.</p>
+  </header>
+
+  <div class="controls" role="group" aria-label="Controles">
+    <div class="field">
+      <span class="label">Semilla</span>
+      <div class="row">
+        <button id="prev" aria-label="Semilla anterior">‹</button>
+        <input id="seed" type="number" min="1" step="1" value="3" aria-label="Número de semilla">
+        <button id="next" aria-label="Semilla siguiente">›</button>
+      </div>
+    </div>
+    <div class="field">
+      <span class="label">Curvas para probar</span>
+      <div class="row" id="presets"></div>
+    </div>
+    <div class="field">
+      <span class="label">Escritura</span>
+      <div class="row"><button id="escribir">Escribir de nuevo</button><span class="val" id="reloj">—</span></div>
+    </div>
+    <div class="field">
+      <span class="label">Comparar</span>
+      <div class="row" id="modos">
+        <button data-modo="lado" aria-pressed="true">Lado a lado</button>
+        <button data-modo="cortina" aria-pressed="false">Cortina</button>
+        <button data-modo="parpadeo" aria-pressed="false">Parpadeo</button>
+      </div>
+    </div>
+    <div class="field">
+      <span class="label">Acercar (clic en la lámina centra)</span>
+      <div class="row" id="zooms">
+        <button data-z="1" aria-pressed="true">1×</button>
+        <button data-z="2" aria-pressed="false">2×</button>
+        <button data-z="3.5" aria-pressed="false">3.5×</button>
+      </div>
+    </div>
+    <div class="field">
+      <span class="label">Qué se cierra (derecha)</span>
+      <div class="opc">
+        <label><input type="checkbox" id="sinCortes" checked> Sin cortes falsos</label>
+        <label><input type="checkbox" id="densidad" checked> Muestreo por longitud</label>
+        <label><input type="checkbox" id="sinAusencias"> Sin el error «ausencia»</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="stage-wrap">
+    <div class="stage" id="stage"></div>
+    <div class="cortina-row" id="cortinaRow">
+      <span class="label">Hoy</span>
+      <input id="cortina" type="range" min="0" max="100" step="0.5" value="50" aria-label="Posición de la cortina">
+      <span class="label">Cerrado</span>
+    </div>
+  </div>
+
+  <div class="ficha" id="ficha"></div>
+  <p class="nota">Sin cortes falsos: la cinta ya no salta los tramos que el motor marcaba con <code>skip</code>; el cruce lo resuelve el orden de profundidad. Muestreo por longitud: entre muestra y muestra a lo largo de la cinta hay a lo más 0.62 unidades (un signo mide unas 0.87), así que una espiral larga ya no queda punteada; donde ya había muestras de sobra no se agrega nada. El error «ausencia» es uno de los tropiezos de la máquina (borra el signo); se deja encendido por defecto porque es parte de la pieza.</p>
+</div>
+
+<script>/*@@MOTOR@@*/</script>
+<script>var ARQ_FUENTE = /*@@FUENTE@@*/null;</script>
+<script>/*@@PARCHE@@*/</script>
+<script>
+(function(){
+"use strict";
+var NS="http://www.w3.org/2000/svg";
+var FONT_FILES=[["Architecture Mono","fonts/Ac437_ApricotPortable.ttf"],["Unicode Backup","fonts/Symbola.otf"],
+  ["Electrónica","fonts/ELECTRONICS.TTF"],["Jeroglífico Egipcio","fonts/NOTOSANSEGYPTIANHIEROGLYPHS-REGULAR.TTF"],
+  ["Jeroglífico Anatolio","fonts/NOTOSANSANATOLIANHIEROGLYPHS-REGULAR.TTF"],["Lineal B","fonts/NOTOSANSLINEARB-REGULAR.TTF"]];
+var FONT={egipcio:"fx-egipcio",anatolio:"fx-anatolio",linealb:"fx-linealb",electronica:"fx-electronica"};
+var PRESETS=[[3,"nudo"],[10,"cápsulas"],[65,"lazo"],[152,"doble hélice"],[60,"espiral atravesada"],[15,"pasillo"],[66,"interior mayor"],[43,"hélice en edificio"],[96,"nudo en edificio"]];
+var state={seed:3,modo:"lado",zoom:1,cx:500,cy:500,cortina:50};
+try{var saved=JSON.parse(localStorage.getItem("cierre")||"null");if(saved&&saved.modo)state.modo=saved.modo}catch(e){}
+var $=function(id){return document.getElementById(id)};
+
+// Segunda instancia del motor, parchada, con su propia raíz.
+var raizB={ARQ_AZAR:window.ARQ_AZAR,ARQ_CORPUS:window.ARQ_CORPUS,__CIERRE:{}};
+new Function("window",CIERRE_PARCHE.parchar(ARQ_FUENTE))(raizB);
+var MOTOR_B=raizB.ARQ_MOTOR;
+
+var A,B,timer=null,stopWriting=null,nodes,svgA,svgB,boxB;
+
+function depthOf(s,t){var p=Math.max(0,Math.min(1,t.perspective/100)),u=15,
+  dX=u*(0.035+0.765*p)*t.direction,dY=u*(0.015+0.345*p),tl=t.tilt||0,det=u*dY+dX*u*tl;
+  return (u*(-s.rawY-s.z*u)+u*tl*s.rawX)/det}
+function prepara(motor,seed){
+  var piece=motor.build({seed:String(seed)});
+  piece.surface.forEach(function(s,i){s._i=i});
+  var S=piece.surface.filter(function(s){return s.glyph});
+  var x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+  S.forEach(function(s){var x=s.rawX+s.perturbX,y=s.rawY+s.perturbY;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y});
+  var sc=Math.min(924/Math.max(1,x1-x0),924/Math.max(1,y1-y0),3.75),fs=Math.max(9,Math.min(34,13*sc));
+  var ox=38+(924-(x1-x0)*sc)/2,oy=38+(924-(y1-y0)*sc)/2;
+  S.forEach(function(s){s.sx=ox+(s.rawX+s.perturbX-x0)*sc;s.sy=oy+(s.rawY+s.perturbY-y0)*sc;s.depth=depthOf(s,piece.traits)});
+  var sorted=S.slice().sort(function(a,b){return b.depth-a.depth});
+  return{piece:piece,S:S,sorted:sorted,fs:fs,schedule:ARQ_TYPEWRITER.createSchedule(piece,String(seed))};
+}
+function color(piece,s){var c=piece.colors;if(s.anomaly)return c.anomalia;var f=s.face,r=piece.traits.alphabetRelation;
+  if(s.body==="derecha"&&r==="CARAS INVERTIDAS")f=f==="frente"?"lateral":f==="lateral"?"frente":"techo";
+  else if(s.body==="derecha"&&r==="TRADUCCIÓN MATERIAL")f=f==="frente"?"techo":f==="techo"?"frente":"lateral";
+  return c[f]||c.frente}
+function viewBox(){var w=1000/state.zoom,x=Math.max(0,Math.min(1000-w,state.cx-w/2)),y=Math.max(0,Math.min(1000-w,state.cy-w/2));
+  return x.toFixed(1)+" "+y.toFixed(1)+" "+w.toFixed(1)+" "+w.toFixed(1)}
+function svgFor(V,map){
+  var piece=V.piece,svg=document.createElementNS(NS,"svg");svg.setAttribute("viewBox",viewBox());svg.setAttribute("role","img");
+  var r=document.createElementNS(NS,"rect");r.setAttribute("x",-2000);r.setAttribute("y",-2000);r.setAttribute("width",5000);r.setAttribute("height",5000);
+  r.setAttribute("fill",piece.colors.papel);svg.appendChild(r);var frag=document.createDocumentFragment();
+  function t(s,carbon){var n=document.createElementNS(NS,"text"),k=carbon?s.baseFontKind:s.fontKind;
+    n.setAttribute("x",(s.sx+(carbon?piece.traits.direction*3.2:0)).toFixed(2));n.setAttribute("y",(s.sy+(carbon?2.4:0)).toFixed(2));
+    n.setAttribute("font-size",V.fs.toFixed(2));n.setAttribute("text-anchor","middle");n.setAttribute("dominant-baseline","central");
+    n.setAttribute("class","glyph"+(k&&FONT[k]?" "+FONT[k]:""));
+    n.setAttribute("fill",carbon?piece.colors.carbon:(s.forcedColor||color(piece,s)));n.setAttribute("opacity",(carbon?0.16:s.opacity).toFixed(3));
+    n.textContent=carbon?s.baseGlyph:s.glyph;(carbon?map.carbon:map.main)[s._i]=n;frag.appendChild(n)}
+  if(piece.traits.carbon)V.sorted.forEach(function(s){t(s,true)});
+  V.sorted.forEach(function(s){t(s,false)});
+  svg.appendChild(frag);return svg;
+}
+function tag(text,side){var d=document.createElement("span");d.className="tag "+side;d.textContent=text;return d}
+function box(){var b=document.createElement("div");b.className="box";
+  b.addEventListener("click",function(e){if(state.zoom===1)return;var r=b.getBoundingClientRect(),vb=viewBox().split(" ").map(Number);
+    state.cx=vb[0]+(e.clientX-r.left)/r.width*vb[2];state.cy=vb[1]+(e.clientY-r.top)/r.height*vb[3];applyViewBox()});
+  return b}
+function render(){
+  if(timer){clearInterval(timer);timer=null}
+  if(stopWriting){stopWriting();stopWriting=null}
+  var st=$("stage");st.innerHTML="";st.className="stage"+(state.modo==="lado"?" lado":"");
+  nodes={a:{main:{},carbon:{}},b:{main:{},carbon:{}}};
+  svgA=svgFor(A,nodes.a);svgB=svgFor(B,nodes.b);
+  $("cortinaRow").hidden=state.modo!=="cortina";
+  if(state.modo==="lado"){
+    var a=box();a.appendChild(svgA);a.appendChild(tag("Hoy","l"));
+    boxB=box();boxB.appendChild(svgB);boxB.appendChild(tag("Cerrado","l"));st.appendChild(a);st.appendChild(boxB);
+  }else{
+    var b=box();b.appendChild(svgA);b.appendChild(svgB);st.appendChild(b);
+    if(state.modo==="cortina"){var seam=document.createElement("div");seam.className="seam";b.appendChild(seam);
+      b.appendChild(tag("Hoy","l"));b.appendChild(tag("Cerrado","r"));boxB=b;applyCortina();
+    }else{var lab=tag("Hoy","l");b.appendChild(lab);var on=false;svgB.style.visibility="hidden";
+      var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+      timer=setInterval(function(){on=!on;svgB.style.visibility=on?"visible":"hidden";lab.textContent=on?"Cerrado":"Hoy"},reduce?1600:750)}
+  }
+  ficha();
+}
+function applyCortina(){if(state.modo!=="cortina"||!svgB)return;svgB.style.clipPath="inset(0 0 0 "+state.cortina+"%)";
+  var seam=boxB.querySelector(".seam");if(seam)seam.style.left=state.cortina+"%"}
+function applyViewBox(){[svgA,svgB].forEach(function(s){if(s)s.setAttribute("viewBox",viewBox())})}
+function write(){
+  if(stopWriting){stopWriting();stopWriting=null}
+  [["a",A],["b",B]].forEach(function(p){var m=nodes[p[0]];Object.keys(m.main).forEach(function(i){m.main[i].textContent=""});
+    Object.keys(m.carbon).forEach(function(i){m.carbon[i].textContent=""})});
+  var finish=function(k,V){V.S.forEach(function(s){var n=nodes[k].main[s._i];if(n)n.textContent=s.glyph;var c=nodes[k].carbon[s._i];if(c)c.textContent=s.baseGlyph})};
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(reduce){finish("a",A);finish("b",B);return}
+  var pend=2,t0=performance.now(),tick=setInterval(function(){$("reloj").textContent=((performance.now()-t0)/1000).toFixed(1)+" s"},100);
+  var stops=[["a",A],["b",B]].map(function(p){var k=p[0],V=p[1];
+    return ARQ_TYPEWRITER.play(V.schedule,function(ev){var n=nodes[k].main[ev.index];if(n)n.textContent=ev.value;
+      if(ev.kind==="correct"){var c=nodes[k].carbon[ev.index];if(c)c.textContent=V.piece.surface[ev.index].baseGlyph}},
+      function(){finish(k,V);if(--pend===0){clearInterval(tick);stopWriting=null}})});
+  stopWriting=function(){stops.forEach(function(s){s()});clearInterval(tick);finish("a",A);finish("b",B)};
+}
+function ficha(){
+  var f=$("ficha");f.innerHTML="";var reg=raizB.__CIERRE.registro||[],cortadas=reg.filter(function(r){return r.cortes}).length;
+  var g=A.piece.geometry,forma=g.genealogy?g.genealogy.structure+" / "+g.genealogy.crown:(g.assembly||g.kind||A.piece.meta.species);
+  var pasos=reg.map(function(r){return r.paso}),pmax=pasos.length?Math.max.apply(0,pasos):0;
+  [["Forma",forma],["Signos hoy",A.S.length.toLocaleString("es-MX")],["Signos cerrado",B.S.length.toLocaleString("es-MX")],
+   ["Cintas con cortes",reg.length?cortadas+" de "+reg.length:"ninguna cinta"],["Paso más largo (hoy)",pmax?pmax.toFixed(2)+" u":"—"]]
+  .forEach(function(kv){var d=document.createElement("div"),l=document.createElement("span"),b=document.createElement("b");
+    l.className="label";l.textContent=kv[0];b.textContent=kv[1];d.appendChild(l);d.appendChild(b);f.appendChild(d)});
+}
+function opciones(){return{sinCortes:$("sinCortes").checked,densidad:$("densidad").checked,sinAusencias:$("sinAusencias").checked}}
+function go(seed){seed=Math.max(1,Math.round(+seed||1));state.seed=seed;$("seed").value=seed;
+  A=prepara(ARQ_MOTOR,seed);
+  // El registro se toma con el motor parchado pero sin cambios, para medir la cinta de hoy.
+  raizB.__CIERRE={registro:[]};prepara(MOTOR_B,seed);var reg=raizB.__CIERRE.registro;
+  raizB.__CIERRE=opciones();B=prepara(MOTOR_B,seed);raizB.__CIERRE.registro=reg;
+  render();write()}
+function press(group,attr,val){Array.prototype.forEach.call($(group).querySelectorAll("button"),function(b){b.setAttribute("aria-pressed",String(b.dataset[attr]===String(val)))})}
+PRESETS.forEach(function(p){var b=document.createElement("button");b.className="chip";b.textContent=p[0]+" · "+p[1];
+  b.addEventListener("click",function(){go(p[0])});$("presets").appendChild(b)});
+$("prev").addEventListener("click",function(){go(state.seed-1)});
+$("next").addEventListener("click",function(){go(state.seed+1)});
+$("seed").addEventListener("change",function(){go(this.value)});
+$("escribir").addEventListener("click",function(){write()});
+["sinCortes","densidad","sinAusencias"].forEach(function(id){$(id).addEventListener("change",function(){go(state.seed)})});
+$("modos").addEventListener("click",function(e){var m=e.target.dataset&&e.target.dataset.modo;if(!m)return;state.modo=m;press("modos","modo",m);
+  try{localStorage.setItem("cierre",JSON.stringify({modo:m}))}catch(err){}render()});
+$("zooms").addEventListener("click",function(e){var z=e.target.dataset&&e.target.dataset.z;if(!z)return;state.zoom=+z;press("zooms","z",z);applyViewBox()});
+$("cortina").addEventListener("input",function(){state.cortina=+this.value;applyCortina()});
+press("modos","modo",state.modo);
+var st=$("stage"),c=document.createElement("div");c.className="box";var l=document.createElement("div");l.className="cargando";
+l.textContent="cargando fuentes de la pieza…";c.appendChild(l);st.appendChild(c);
+Promise.all(FONT_FILES.map(function(f){return fetch(f[1]).then(function(r){if(!r.ok)throw new Error(f[1]);return r.arrayBuffer()})
+  .then(function(buf){var face=new FontFace(f[0],buf);document.fonts.add(face);return face.load()}).catch(function(){return null})}))
+  .then(function(){go(state.seed)});
+})();
+</script>

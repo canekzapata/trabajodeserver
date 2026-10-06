@@ -213,6 +213,35 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
   se leía, pero **quitaba la perspectiva y el 3D**, que son el destino de la pieza. Queda en
   `experimentos/` como registro del intento (`rejilla-antes-despues.png`).
 
+**L2b — Que las curvas cierren** *(experimento hecho)*
+- **Causa 1, cortes falsos.** 26 cintas del motor (nudos, lazos, cápsulas, espirales,
+  hélices, pasillos, el interior mayor) se cortan a propósito con una función `skip` para
+  fingir que un tramo pasa por debajo de otro, o para abrir una "puerta". En el nudo de la
+  semilla 3 los cortes están en posiciones fijas (`t = 0.17, 0.49, 0.82`) que ni siquiera
+  coinciden con los cruces reales. Con el orden de profundidad (L2), el cruce ya se
+  resuelve solo y el corte sobra.
+- **Causa 2, muestreo fijo.** Cada cinta lleva un número fijo de muestras, sea corta o
+  larga. En las largas el paso crece hasta 1–2.8 unidades (un signo mide ~0.87), y la
+  espiral sale punteada en rayos (semilla 60) o los anillos en cuentas (457).
+- **Causa 3, el error «ausencia».** Uno de los tropiezos de la máquina borra el signo. Se
+  deja: es parte de la pieza (se puede apagar en la página para comparar).
+- **El parche** (`experimentos/cierre-parche.js`, sobre una copia del motor): las cintas no
+  se cortan, y se muestrean con a lo más 0.62 unidades entre muestras (sólo agrega donde
+  faltan). Medido en 1 000 semillas (`cierre-serie.js`): cambian **31 %** (todas las
+  entrelazadas, 22 de 37 no euclidianas, 218 de 578 genealogías, 15 de 183 ensamblajes;
+  ningún arco ni espera). Los signos crecen 6 % la mediana y 30 % el p90 en las que
+  cambian.
+- **Probado y corregido:** amarrar el paso al ancho de la cinta empastaba las genealogías
+  (semilla 651 pasaba de 5 067 a 23 541 signos y se volvía mancha). Con el paso fijo queda
+  en 5 538 y la letra se lee.
+- **Decisión de Canek:** en el *interior mayor que el exterior* (457) los cortes son
+  puertas y se leen como laberinto. ¿Se cierran también, o esa especie conserva sus
+  puertas? Lo mismo para la "puerta" del lazo habitable.
+- Integrarlo cambia las semillas que tienen cintas (31 %): la forma es la misma, pero al
+  haber más signos se mueven los errores, la anomalía y el horario de escritura. Va
+  después del test dorado de L0 y como parte de una versión nueva, no como arreglo
+  silencioso.
+
 **L3 — Vistas: planta, alzado, axonométrica**
 - Del mismo `surface` 3D salen planta y alzado, **también transparentes**, sólo como
   hojas acompañantes del álbum. La lámina sigue siendo la axonométrica; si una vista plana
@@ -430,6 +459,7 @@ repeticiones por título en la edición.
 ## 7. Lo que decide Canek
 
 1. Orden de profundidad (L2): ¿sólo orden, orden + aire, o aire como rasgo? La rejilla queda descartada.
+1. Cierre de curvas (L2b): ¿el interior mayor y el lazo habitable conservan sus puertas?
 2. ¿La frase manda (A) o se mide (B)? (recomiendo B, más honesta y más barata)
 3. ¿Se renombran los lenguajes (§6.6)?
 4. Tamaño de la edición (1 000), número de láminas del álbum (48) y título.
@@ -446,6 +476,8 @@ repeticiones por título en la edición.
 - `experimentos/comparador/`: página para verlo en vivo (cortina, lado a lado, parpadeo, acercamiento, aire). `python3 construir.py DESTINO/index.html` la arma con el motor en línea; las fuentes van en `fonts/`. Publicada como artefacto privado: https://claude.ai/artifact/CEwb4PdGvnhZLeJamEv5HB
 - `experimentos/escritura.html` y `escritura-3.gif`, `escritura-10.gif`, `escritura-11.gif`: la escritura completa lado a lado (hoy / profundidad) con el horario real del typewriter; `window.frameAt(ms)` pinta cada cuadro. El comparador web también escribe las dos al mismo tiempo («Escribir de nuevo»).
 - `experimentos/profundidad-parpadeo.gif`: hoy ↔ profundidad, semillas 3, 10 y 6, con detalle (9.6 s).
+- `experimentos/cierre-parche.js`, `cierre-medir.js` (paso por cinta), `cierre-serie.js` (cuántas semillas cambian) y `comparador/plantilla-cierre.html` (`python3 construir.py DESTINO/index.html cierre`). Publicado: https://claude.ai/artifact/EMouXW63VFo8dgABEiuRqN
+- `experimentos/cierre-escritura-3.gif`, `-60.gif`, `-10.gif`: escritura hoy / cerrado (`escritura.html?modo=cierre`).
 - `experimentos/rejilla.html`: ocultamiento por celda (**descartado**: quitaba la perspectiva y el 3D).
 - `experimentos/rejilla-antes-despues.png`: el intento, semillas 3, 6, 11 y 15.
 - `experimentos/muestra-1-16.png`: estado final de las semillas 1–16 (`?still=1`).
