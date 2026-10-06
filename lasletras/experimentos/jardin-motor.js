@@ -93,12 +93,15 @@ function makeGarden(traits, interpretation, rng, variant) {
   // Escultura del vocabulario, asentada en el suelo y con su planta ocupada.
   function sculpture(kind, x, y, scale) {
     var start = builder.points.length, r = rng.fork("escultura-" + kind + "-" + x.toFixed(0));
-    if (kind === "ESFERA") addSphere(builder, Object.assign(spec("esfera", x, y, 7 * scale, 7 * scale, 3.5 * scale), { solid: true }), r);
+    if (kind === "ARCO") addArchedMass(builder, spec("arco", x, y, 11 * scale, 13 * scale, 3.5 * scale), r);
+    else if (kind === "ESFERA") addSphere(builder, Object.assign(spec("esfera", x, y, 7 * scale, 7 * scale, 3.5 * scale), { solid: true }), r);
     else if (kind === "CASCARÓN") addHipar(builder, Object.assign(spec("cascarón", x, y, 15 * scale, 8 * scale, 4 * scale), { noBase: true }), r);
     else if (kind === "SERPIENTE") addFoldedSerpent(builder, spec("serpiente", x, y, 18 * scale, 7 * scale, 3 * scale), r);
     else if (kind === "LAZO") addSculpturalLoop(builder, spec("lazo", x, y, 12 * scale, 11 * scale, 3 * scale), r);
     else if (kind === "PIRÁMIDE") addPyramid(builder, Object.assign(spec("pirámide", x, y, 9 * scale, 9 * scale, 4 * scale), { noBase: true }), r);
-    else if (kind === "TORRES") {
+    else if (kind === "ESTELA") {
+      block("estela", x - 1.2 * scale, y, 2.4 * scale, 1.2 * scale, r.float(7, 12) * scale, 0.85);
+    } else if (kind === "TORRES") {
       // Grupo de prismas altos de alturas distintas, para verse de paso.
       var n = r.int(3, 5);
       for (var i = 0; i < n; i += 1) {
@@ -106,93 +109,141 @@ function makeGarden(traits, interpretation, rng, variant) {
           2.2 * scale, 1.7 * scale, r.float(12, 24) * scale, 0.85);
       }
     }
+    // addSculpturalLoop ignora baseY (vive en y = 0): se lleva a su lugar.
+    if (kind === "LAZO") for (var li = start; li < builder.points.length; li += 1) builder.points[li].y += y;
     settle(start);
-    var w = (kind === "SERPIENTE" ? 18 : kind === "CASCARÓN" ? 15 : kind === "TORRES" ? 16 : 10) * scale;
+    var w = (kind === "SERPIENTE" ? 18 : kind === "CASCARÓN" ? 15 : kind === "TORRES" ? 16 : kind === "ESTELA" ? 4 : 10) * scale;
     occupy(x - w / 2, x + w / 2, y - 4 * scale, y + 4 * scale);
     pieces.push(kind + (scale > 1.4 ? " MONUMENTAL" : ""));
+  }
+
+  // --- en pantalla: casi nada encima de otra cosa -----------------------------
+  // Canek: "hay que tener mucho cuidado de que casi nada se sobreescriba atrás,
+  // porque se vuelve confuso". Cada pieza se prueba en pantalla antes de
+  // quedarse: si su silueta toca la de otra pieza, se quita y se busca otro
+  // lugar. Y el suelo (lava, losas, agua) se borra donde quedaría bajo una pieza.
+  var cam = traits.camera || { up: 0.5, shear: 0.2 };
+  var GROUND = { lava: 1, losa: 1, agua: 1 };
+  var placed = [];               // siluetas en pantalla de las piezas que se quedaron
+  function screenBox(start, end) {
+    var b = { x0: Infinity, x1: -Infinity, y0: Infinity, y1: -Infinity };
+    for (var i = start; i < end; i += 1) {
+      var pt = builder.points[i], sx = pt.x + pt.y * cam.shear, sy = -pt.z - pt.y * cam.up;
+      if (sx < b.x0) b.x0 = sx; if (sx > b.x1) b.x1 = sx; if (sy < b.y0) b.y0 = sy; if (sy > b.y1) b.y1 = sy;
+    }
+    return b;
+  }
+  function boxesTouch(a, b, m) { return a.x0 - m < b.x1 && b.x0 - m < a.x1 && a.y0 - m < b.y1 && b.y0 - m < a.y1; }
+  // Construye una pieza con `make`; si en pantalla toca a otra, la deshace.
+  function tryPiece(make, label, margin) {
+    var start = builder.points.length, foot = footprints.length, made = pieces.length;
+    make();
+    var box = screenBox(start, builder.points.length);
+    var clash = placed.some(function (other) { return boxesTouch(box, other, margin === undefined ? 1.2 : margin); });
+    if (clash || !isFinite(box.x0)) {
+      builder.points.length = start; footprints.length = foot; pieces.length = made;
+      return false;
+    }
+    placed.push(box);
+    return true;
+  }
+  // Borra el suelo que cae dentro de la silueta de cualquier pieza.
+  function clearGroundUnderPieces() {
+    var cell = 0.9, covered = {};
+    builder.points.forEach(function (pt) {
+      if (GROUND[pt.body]) return;
+      var cx = Math.floor((pt.x + pt.y * cam.shear) / cell), cy = Math.floor((-pt.z - pt.y * cam.up) / cell);
+      for (var dx = -1; dx <= 1; dx += 1) for (var dy = -1; dy <= 1; dy += 1) covered[(cx + dx) + "," + (cy + dy)] = 1;
+    });
+    builder.points = builder.points.filter(function (pt) {
+      if (!GROUND[pt.body]) return true;
+      return !covered[Math.floor((pt.x + pt.y * cam.shear) / cell) + "," + Math.floor((-pt.z - pt.y * cam.up) / cell)];
+    });
   }
 
   // --- composición ------------------------------------------------------------
   var relation;
   if (variant === "ESPACIO ESCULTÓRICO") {
-    var R = rng.float(16, 21), cx = 0, cy = R + 8;
-    // El anillo: prismas idénticos con aire entre ellos. Cierra completo.
-    var count = rng.int(40, 60);
+    // Sin anillo trazado: el círculo lo forman las piezas mismas, alrededor de
+    // un vacío de lava intacta. Las del fondo son altas y grandes; las del
+    // frente, bajas, para no tapar el vacío ni a las de atrás.
+    var R = rng.float(15, 20), cx = 0, cy = R + 4;
+    var vocab = ["ARCO", "ESFERA", "CASCARÓN", "SERPIENTE", "LAZO", "PIRÁMIDE", "TORRES", "ESTELA"];
+    var count = rng.int(6, 9), phase0 = rng.float(0, TAU), placedCount = 0, usedKinds = {};
     for (var k = 0; k < count; k += 1) {
-      var a = k / count * TAU;
-      block("anillo-" + k, cx + Math.cos(a) * R - 0.9, cy + Math.sin(a) * R - 0.7, 1.8, 1.4, rng.float(2.6, 3.4), 0.8);
+      var ok = false;
+      for (var attempt = 0; attempt < 7 && !ok; attempt += 1) {
+        var ang = phase0 + (k + rng.float(-0.22, 0.22)) / count * TAU;
+        var back = (Math.sin(ang) + 1) / 2;                 // 0 frente · 1 fondo
+        var kind = rng.pick(vocab.filter(function (q) { return (usedKinds[q] || 0) < 2; }));
+        if (back < 0.3) kind = rng.pick(["PIRÁMIDE", "ESTELA", "ESFERA", "SERPIENTE"]);
+        var scale = (0.55 + back * 1.15) * rng.float(0.85, 1.1) * Math.pow(0.85, attempt);
+        var px = cx + Math.cos(ang) * R * rng.float(0.95, 1.08), py = cy + Math.sin(ang) * R * rng.float(0.95, 1.08);
+        ok = tryPiece(function () { sculpture(kind, px, py, scale); }, kind, 0.9);
+        if (ok) { usedKinds[kind] = (usedKinds[kind] || 0) + 1; placedCount += 1; }
+      }
     }
-    occupy(cx - R - 2, cx + R + 2, cy - R - 2, cy + R + 2);
-    footprints.pop();   // el anillo no tapa la lava de adentro: se marca prisma por prisma
-    for (var k2 = 0; k2 < count; k2 += 1) {
-      var a2 = k2 / count * TAU;
-      occupy(cx + Math.cos(a2) * R - 1.3, cx + Math.cos(a2) * R + 1.3, cy + Math.sin(a2) * R - 1.2, cy + Math.sin(a2) * R + 1.2);
-    }
-    pieces.push("ANILLO DE " + count + " PRISMAS");
-    // Afuera: uno monumental y uno o dos chicos, a distintas distancias.
-    var kinds = ["SERPIENTE", "ESFERA", "CASCARÓN", "TORRES", "PIRÁMIDE", "LAZO"];
-    var outside = rng.int(1, 3), used = [];
-    for (var o = 0; o < outside; o += 1) {
-      var kind = rng.pick(kinds.filter(function (q) { return used.indexOf(q) < 0; }));
-      used.push(kind);
-      var ang = (o === 0 ? rng.pick([0.15, 0.85]) : rng.float(0.05, 0.95)) * Math.PI + Math.PI; // atrás del anillo, o a los lados
-      if (o > 0 && rng.chance(0.5)) ang = rng.pick([rng.float(-0.35, 0.15), rng.float(0.85, 1.35)]) * Math.PI;
-      var dist = R + rng.float(7, 11) + (o === 0 ? 4 : 0);
-      sculpture(kind, cx + Math.cos(ang) * dist, cy + Math.sin(ang) * dist, o === 0 ? rng.float(1.4, 1.9) : rng.float(0.8, 1.1));
-    }
-    // La lava: intacta y densa adentro, rala afuera.
-    lava(cx, cy, R - 1.6, R - 1.6, 0.8);
-    lava(cx, cy, R + 18, R + 14, 0.14, function (x, y) { return Math.hypot(x - cx, y - cy) < R + 2; });
-    relation = "VACÍO CENTRAL";
-    // Recorrido: se rodea el anillo por fuera empezando por el frente; la lava
-    // de adentro, la que no se pisa, se escribe al final.
+    // El vacío: lava densa e intacta adentro, y apenas un borde afuera.
+    lava(cx, cy, R * 0.82, R * 0.82, 0.8);
+    lava(cx, cy, R * 1.25, R * 1.25, 0.22, function (x, y) { return Math.hypot(x - cx, y - cy) < R * 0.86; });
+    relation = "VACÍO CENTRAL · " + placedCount + " PIEZAS EN CÍRCULO";
+    clearGroundUnderPieces();
     builder.points.forEach(function (pt) {
       var d = Math.hypot(pt.x - cx, pt.y - cy);
       var turn = (Math.atan2(pt.y - cy, pt.x - cx) + Math.PI / 2 + TAU * 2) % TAU / TAU;
-      pt.walk = d < R - 1 ? 0.82 + 0.18 * (1 - d / R) : turn * 0.8;
+      pt.walk = d < R * 0.84 ? 0.82 + 0.18 * (1 - d / R) : turn * 0.8;
     });
   } else {
     variant = "PEDREGAL";
-    var depthMax = rng.float(54, 66), xp = rng.float(-3, 3), half = rng.float(1.9, 2.6);
-    var archY = rng.float(18, 28), archW = rng.float(11, 14);
-    // Umbral: el arco a horcajadas del sendero.
-    arch(xp, archY, archW, rng.float(12, 16), rng.float(3, 4.5));
-    // Muros: uno largo de un lado, al fondo; a veces otro corto del otro lado.
-    var wallSide = rng.chance(0.5) ? 1 : -1, wallY = rng.float(archY + 10, depthMax - 6);
-    wall(xp + wallSide * (half + 2), xp + wallSide * rng.float(14, 21), wallY, rng.float(7, 12), 1.2);
-    if (rng.chance(0.55)) {
-      var wy2 = rng.float(4, archY - 4);
-      wall(xp - wallSide * (half + 3), xp - wallSide * rng.float(10, 16), wy2, rng.float(4, 7), 1);
+    var depthMax = rng.float(50, 62), xp = rng.float(-3, 3), half = rng.float(1.9, 2.6);
+    var archY = rng.float(16, 26), archW = rng.float(11, 14);
+    // Umbral: el arco a horcajadas del sendero. Es la primera pieza: manda.
+    tryPiece(function () { arch(xp, archY, archW, rng.float(12, 16), rng.float(3, 4.5)); }, "ARCO");
+    // Muros: más bajos y delgados que antes, y sólo si no tapan nada.
+    var wallSide = rng.chance(0.5) ? 1 : -1;
+    for (var wtry = 0; wtry < 5; wtry += 1) {
+      var wallY = rng.float(archY + 10, depthMax - 4), wl = rng.float(10, 17), wh = rng.float(4.5, 8);
+      if (tryPiece(function () { wall(xp + wallSide * (half + 2), xp + wallSide * (half + 2 + wl), wallY, wh, 0.9); }, "MURO")) break;
     }
-    // Espejo de agua al pie del muro largo.
-    if (rng.chance(0.55)) {
-      var wx0 = xp + wallSide * (half + 3), wx1 = xp + wallSide * rng.float(12, 20);
-      water(Math.min(wx0, wx1), Math.max(wx0, wx1), wallY - rng.float(7, 9), wallY - 1.5);
-    }
-    // Esculturas fuera del eje, entre la lava.
-    var choices = ["ESFERA", "SERPIENTE", "CASCARÓN", "LAZO", "PIRÁMIDE"];
-    var n = rng.int(1, 2), taken = [];
-    for (var s = 0; s < n; s += 1) {
-      var kd = rng.pick(choices.filter(function (q) { return taken.indexOf(q) < 0; }));
-      taken.push(kd);
-      var sx = xp + (s === 0 ? -wallSide : rng.pick([-1, 1])) * rng.float(10, 15);
-      var sy = s === 0 ? rng.float(archY + 8, depthMax - 6) : rng.float(4, archY - 4);
-      sculpture(kd, sx, sy, s === 0 ? rng.float(1.1, 1.6) : rng.float(0.7, 1));
-    }
-    // El sendero: losas de piedra a pasos, de la entrada al fondo; bajo el arco
-    // también (el umbral se cruza caminando).
-    for (var ly = 1; ly < depthMax; ly += rng.float(2.4, 3.1)) {
-      var lw = half * rng.float(1.2, 1.6), lx = xp + rng.float(-0.35, 0.35);
-      for (var px = -lw / 2; px <= lw / 2; px += 0.8) {
-        for (var py = 0; py <= 1.2; py += 0.8) builder.add("losa", "techo", lx + px, ly + py, 0.15, "losa:" + ly.toFixed(1) + ":" + px.toFixed(1) + ":" + py);
+    if (rng.chance(0.5)) {
+      for (var w2 = 0; w2 < 4; w2 += 1) {
+        var wy2 = rng.float(3, archY - 3);
+        if (tryPiece(function () { wall(xp - wallSide * (half + 3), xp - wallSide * rng.float(9, 14), wy2, rng.float(3, 5), 0.8); }, "MURO")) break;
       }
     }
-    // La lava cubre todo menos el sendero.
-    lava(xp, depthMax / 2, 25, depthMax / 2 + 2, 0.6, function (x) { return Math.abs(x - xp) < half; });
+    // Esculturas fuera del eje, sin tocar a nadie en pantalla.
+    var choices = ["ESFERA", "SERPIENTE", "CASCARÓN", "LAZO", "PIRÁMIDE", "ESTELA"];
+    var n = rng.int(2, 3), taken = [];
+    for (var s = 0; s < n; s += 1) {
+      var kd = rng.pick(choices.filter(function (q) { return taken.indexOf(q) < 0; }));
+      for (var st = 0; st < 7; st += 1) {
+        var sx = xp + rng.pick([-1, 1]) * rng.float(8, 17);
+        var sy = rng.float(3, depthMax - 3);
+        var sc = (s === 0 ? rng.float(1, 1.4) : rng.float(0.65, 0.95)) * Math.pow(0.88, st);
+        if (tryPiece(function () { sculpture(kd, sx, sy, sc); }, kd)) { taken.push(kd); break; }
+      }
+    }
+    // Espejo de agua: suelo; se queda donde nadie lo tape.
+    if (rng.chance(0.5)) {
+      var wx0 = xp + wallSide * (half + 2.5), wx1 = xp + wallSide * rng.float(10, 16), wyy = rng.float(4, depthMax - 10);
+      water(Math.min(wx0, wx1), Math.max(wx0, wx1), wyy, wyy + rng.float(4, 7));
+    }
+    // El sendero: losas a pasos, de la entrada al fondo (se cruza el umbral).
+    for (var ly = 1; ly < depthMax; ly += rng.float(2.4, 3.1)) {
+      var lw = half * rng.float(1.2, 1.6), lx = xp + rng.float(-0.35, 0.35);
+      for (var px2 = -lw / 2; px2 <= lw / 2; px2 += 0.8) {
+        for (var py2 = 0; py2 <= 1.2; py2 += 0.8) builder.add("losa", "techo", lx + px2, ly + py2, 0.15, "losa:" + ly.toFixed(1) + ":" + px2.toFixed(1) + ":" + py2);
+      }
+    }
+    // Lava: agrupada en manchones, no esparcida; nunca sobre el sendero.
+    var patches = rng.int(4, 7);
+    for (var pt0 = 0; pt0 < patches; pt0 += 1) {
+      var pcx = xp + rng.pick([-1, 1]) * rng.float(half + 4, 20), pcy = rng.float(2, depthMax - 2);
+      lava(pcx, pcy, rng.float(4, 9), rng.float(4, 8), 0.7, function (x) { return Math.abs(x - xp) < half + 0.6; });
+    }
     pieces.unshift("SENDERO");
     relation = "SENDERO Y UMBRAL";
-    // Recorrido: se camina de la entrada al fondo; lo que está lejos del
-    // sendero se descubre un poco después.
+    clearGroundUnderPieces();
     builder.points.forEach(function (pt) { pt.walk = pt.y / depthMax + 0.18 * Math.min(1, Math.abs(pt.x - xp) / 25); });
   }
 
@@ -234,8 +285,9 @@ function buildGarden(options) {
   // a nivel. La cámara de la pieza mira casi de frente: con ella el jardín
   // era una franja delgada a media lámina.
   var vista = rng.fork("vista");
-  var camera = { up: vista.float(0.42, 0.62), shear: vista.float(0.12, 0.3) * traits.direction };
+  var camera = { up: vista.float(0.46, 0.66), shear: vista.float(0.1, 0.24) * traits.direction };
   traits.perspective = 60;
+  traits.camera = camera;
   traits.tilt = 0;
   traits.species = "jardin";
   var variant = options.variant || (rng.fork("variante").chance(0.5) ? "PEDREGAL" : "ESPACIO ESCULTÓRICO");

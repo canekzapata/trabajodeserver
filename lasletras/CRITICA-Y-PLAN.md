@@ -253,8 +253,8 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
   - **PEDREGAL**: lava con huecos y rocas, un sendero de losas que cruza un arco-umbral,
     un muro largo al fondo (a veces otro corto), a veces un espejo de agua, y una o dos
     esculturas fuera del eje.
-  - **ESPACIO ESCULTÓRICO**: un anillo cerrado de 40–60 prismas alrededor de lava densa
-    e intacta, lava rala afuera, y uno a tres cuerpos afuera, el primero monumental.
+  - **ESPACIO ESCULTÓRICO**: (primera versión) un anillo de prismas alrededor de lava
+    intacta con cuerpos afuera; (ahora) las piezas mismas forman el círculo.
 - **Cámara propia:** con la cámara de la pieza el jardín era una franja delgada a media
   lámina. El jardín mira más desde arriba (sube 0.42–0.62 por unidad de profundidad, con
   poco corrimiento lateral) para que se lea la planta.
@@ -262,11 +262,24 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
   para escribir en el orden en que se camina. En el Pedregal, de la entrada al fondo por
   el sendero; en el Espacio escultórico, rodeando el anillo desde el frente, y la lava de
   adentro al final. Cada signo conserva su tropiezo.
-- **Visto:** el Espacio escultórico ya se lee claro (anillo en planta y cuerpo
-  monumental). El Pedregal funciona, pero está más cargado: los muros pesan mucho y la
-  lava se ve como confeti. Es lo siguiente por afinar, con los ojos de Canek.
-- Página: https://claude.ai/artifact/FEgAGR6SNSHPpeQk4hL3SX · GIF: `jardin-espacio-2.gif`,
-  `jardin-espacio-8.gif`, `jardin-pedregal-7.gif`, `jardin-pedregal-3.gif`.
+- **Correcciones de Canek, ya aplicadas:**
+  - *Espacio escultórico sin anillo trazado.* El círculo de prismas se volvía el centro
+    y no tenía chiste. Ahora **seis a nueve piezas forman el círculo** alrededor de la
+    lava: las del fondo altas y grandes, las del frente bajas (pirámide, estela, esfera,
+    serpiente).
+  - *Casi nada encimado.* Cada pieza se prueba en pantalla antes de quedarse
+    (`tryPiece`): si su silueta toca la de otra, se deshace y se busca otro lugar, hasta
+    7 intentos y cada vez un poco más chica. El suelo (lava, losas, agua) se borra donde
+    quedaría bajo una pieza (`clearGroundUnderPieces`). Así ya no hay muro ni sendero
+    detrás del arco.
+  - *Usar más la pantalla.* El suelo se limita a la composición: la lava rala que se
+    extendía lejos era lo que encogía todo. En el Pedregal la lava va en manchones, los
+    muros son más bajos y delgados, y entra la estela.
+- **Error encontrado:** el lazo del motor (`addSculpturalLoop`) ignora `baseY` y siempre
+  cae en y = 0, al frente. En el jardín se lleva a su lugar después de construirlo; si el
+  jardín entra a la serie, conviene corregirlo en el motor.
+- Página: https://claude.ai/artifact/FEgAGR6SNSHPpeQk4hL3SX · GIF: `jardin-espacio-3.gif`,
+  `jardin-espacio-7.gif`, `jardin-pedregal-11.gif`, `jardin-pedregal-10.gif`.
 
 **L3 — Vistas: planta, alzado, axonométrica**
 - Del mismo `surface` 3D salen planta y alzado, **también transparentes**, sólo como

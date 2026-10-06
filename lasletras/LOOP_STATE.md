@@ -137,3 +137,10 @@ del eje) y ESPACIO ESCULTÓRICO (anillo de prismas, lava intacta adentro, cuerpo
 afuera, uno monumental). Cámara propia más alta. Escritura por recorrido
 (walkSchedule). El EE se lee claro; el Pedregal está más cargado (muros
 pesados, lava como confeti): afinar con Canek. Página publicada y 4 GIF.
+
+**Jardín, ronda 2 (Canek):** EE sin anillo trazado, el círculo lo forman 6–9
+piezas (fondo altas, frente bajas); regla de casi nada encimado (tryPiece por
+silueta en pantalla + suelo borrado bajo las piezas); suelo limitado a la
+composición para usar la pantalla; Pedregal con lava en manchones, muros más
+bajos, sin muro ni sendero detrás del arco. Corregido en el jardín: el lazo del
+motor ignora baseY.
