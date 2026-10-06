@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>preview v0.13</title>
+<style>
+  @font-face { font-family:"Architecture Mono"; src:url("../fonts/Ac437_ApricotPortable.ttf") format("truetype"); font-display:block; }
+  @font-face { font-family:"Unicode Backup"; src:url("../fonts/Symbola.otf") format("opentype"); font-display:block; }
+  @font-face { font-family:"Electrónica"; src:url("../fonts/ELECTRONICS.TTF") format("truetype"); font-display:block; }
+  @font-face { font-family:"Jeroglífico Egipcio"; src:url("../fonts/NOTOSANSEGYPTIANHIEROGLYPHS-REGULAR.TTF") format("truetype"); font-display:block; }
+  @font-face { font-family:"Jeroglífico Anatolio"; src:url("../fonts/NOTOSANSANATOLIANHIEROGLYPHS-REGULAR.TTF") format("truetype"); font-display:block; }
+  @font-face { font-family:"Lineal B"; src:url("../fonts/NOTOSANSLINEARB-REGULAR.TTF") format("truetype"); font-display:block; }
+  body{margin:0;background:#222;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:6px;}
+  figure{margin:0;position:relative;}
+  figcaption{position:absolute;left:6px;top:6px;color:#fff;font:11px monospace;background:#0008;padding:2px 5px;}
+  .glyph,.carbon-glyph{font-family:"Architecture Mono","Unicode Backup",monospace;white-space:pre;}
+  .fx-electronica{font-family:"Electrónica","Architecture Mono",monospace;}
+  .fx-egipcio{font-family:"Jeroglífico Egipcio","Unicode Backup",monospace;}
+  .fx-anatolio{font-family:"Jeroglífico Anatolio","Unicode Backup",monospace;}
+  .fx-linealb{font-family:"Lineal B","Unicode Backup",monospace;}
+  svg{width:100%;height:auto;display:block;}
+</style>
+</head>
+<body>
+<script src="../js/rng.js"></script>
+<script src="../js/corpus.js"></script>
+<script src="../js/architecture.js"></script>
+<script>
+var NS="http://www.w3.org/2000/svg";
+var FRAME={x:38,y:38,width:924,height:924};
+var FONT_CLASS={egipcio:"fx-egipcio",anatolio:"fx-anatolio",linealb:"fx-linealb",electronica:"fx-electronica"};
+function fitSquare(surface){
+  var minX=Infinity,maxX=-Infinity,minY=Infinity,maxY=-Infinity;
+  surface.forEach(function(it){var x=it.rawX+it.perturbX,y=it.rawY+it.perturbY;if(x<minX)minX=x;if(x>maxX)maxX=x;if(y<minY)minY=y;if(y>maxY)maxY=y;});
+  var rw=Math.max(1,maxX-minX),rh=Math.max(1,maxY-minY);
+  var scale=Math.min(FRAME.width/rw,FRAME.height/rh,3.75);
+  var uw=rw*scale,uh=rh*scale,ox=FRAME.x+(FRAME.width-uw)/2,oy=FRAME.y+(FRAME.height-uh)/2;
+  var fs=Math.max(9,Math.min(34,13*scale));
+  surface.forEach(function(it){it.sx=ox+(it.rawX+it.perturbX-minX)*scale;it.sy=oy+(it.rawY+it.perturbY-minY)*scale;it.sfont=fs;});
+}
+function faceColor(p,it){if(it.anomaly)return p.colors.anomalia;var f=it.face;var r=p.traits.alphabetRelation;
+  if(it.body==="derecha"&&r==="CARAS INVERTIDAS")f=f==="frente"?"lateral":f==="lateral"?"frente":"techo";
+  else if(it.body==="derecha"&&r==="TRADUCCIÓN MATERIAL")f=f==="frente"?"techo":f==="techo"?"frente":"lateral";
+  return p.colors[f]||p.colors.frente;}
+function render(seed,label){
+  var p=ARQ_MOTOR.build({seed:seed});
+  fitSquare(p.surface);
+  var svg=document.createElementNS(NS,"svg");svg.setAttribute("viewBox","0 0 1000 1000");
+  var bg=document.createElementNS(NS,"rect");bg.setAttribute("width",1000);bg.setAttribute("height",1000);bg.setAttribute("fill",p.colors.papel);svg.appendChild(bg);
+  p.surface.forEach(function(it){if(!it.glyph)return;
+    var t=document.createElementNS(NS,"text");
+    t.setAttribute("x",it.sx);t.setAttribute("y",it.sy);t.setAttribute("font-size",it.sfont);
+    t.setAttribute("text-anchor","middle");t.setAttribute("dominant-baseline","central");
+    t.setAttribute("class","glyph"+(it.fontKind&&FONT_CLASS[it.fontKind]?" "+FONT_CLASS[it.fontKind]:""));
+    t.setAttribute("fill",it.forcedColor||faceColor(p,it));t.setAttribute("opacity",it.opacity);
+    t.textContent=it.glyph;svg.appendChild(t);});
+  var fig=document.createElement("figure");
+  var cap=document.createElement("figcaption");
+  cap.textContent=label+" · "+seed+(p.meta.exoticFont?" · exo:"+p.meta.exoticFont:"")+(p.traits.intrusion?" · intr":"");
+  fig.appendChild(svg);fig.appendChild(cap);document.body.appendChild(fig);
+}
+var seeds=[["n12","ONDA girada/grande"],["c21","PARABÓLICA MONUMENTAL"],["d19","MEDIA LUNA anexo"]];
+document.fonts.ready.then(function(){seeds.forEach(function(s){render(s[0],s[1]);});document.body.setAttribute("data-ready","1");});
+</script>
+</body>
+</html>

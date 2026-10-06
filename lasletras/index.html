@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Espacio escultórico — arquitecturas y ensamblajes de signos deterministas. Token generativo para Verse.">
+  <title>ESPACIO ESCULTÓRICO</title>
+  <style>
+    @font-face {
+      font-family: "Architecture Mono";
+      src: url("fonts/Ac437_ApricotPortable.ttf") format("truetype");
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Unicode Backup";
+      src: url("fonts/Symbola.otf") format("opentype");
+      font-display: block;
+    }
+    /* Paisaje: caracteres extra que llegan como intrusión o grafía exótica. */
+    @font-face {
+      font-family: "Electrónica";
+      src: url("fonts/ELECTRONICS.TTF") format("truetype");
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Jeroglífico Egipcio";
+      src: url("fonts/NOTOSANSEGYPTIANHIEROGLYPHS-REGULAR.TTF") format("truetype");
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Jeroglífico Anatolio";
+      src: url("fonts/NOTOSANSANATOLIANHIEROGLYPHS-REGULAR.TTF") format("truetype");
+      font-display: block;
+    }
+    @font-face {
+      font-family: "Lineal B";
+      src: url("fonts/NOTOSANSLINEARB-REGULAR.TTF") format("truetype");
+      font-display: block;
+    }
+    html, body {
+      margin: 0;
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      background: #10100f;
+    }
+    body {
+      --paper: #10100f;
+      --ink: #f2f2e8;
+    }
+    #lamina {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      shape-rendering: geometricPrecision;
+      text-rendering: geometricPrecision;
+    }
+    #lamina text {
+      -webkit-user-select: none;
+      user-select: none;
+    }
+    .glyph, .carbon-glyph {
+      font-family: "Architecture Mono", "Unicode Backup", "Courier New", monospace;
+      white-space: pre;
+    }
+    /* La semilla puede pedir estas familias para un signo suelto (intrusión)
+       o para toda una cara de la pieza (grafía exótica, muy poco frecuente). */
+    .glyph.fx-electronica, .carbon-glyph.fx-electronica {
+      font-family: "Electrónica", "Architecture Mono", monospace;
+    }
+    .glyph.fx-egipcio, .carbon-glyph.fx-egipcio {
+      font-family: "Jeroglífico Egipcio", "Unicode Backup", monospace;
+    }
+    .glyph.fx-anatolio, .carbon-glyph.fx-anatolio {
+      font-family: "Jeroglífico Anatolio", "Unicode Backup", monospace;
+    }
+    .glyph.fx-linealb, .carbon-glyph.fx-linealb {
+      font-family: "Lineal B", "Unicode Backup", monospace;
+    }
+    .art-controls, .info-panel {
+      font-family: "Architecture Mono", "Courier New", monospace;
+      letter-spacing: .06em;
+    }
+    .art-controls {
+      position: fixed;
+      z-index: 4;
+      right: max(14px, env(safe-area-inset-right));
+      bottom: max(12px, env(safe-area-inset-bottom));
+      display: flex;
+      gap: 11px;
+      opacity: 0;
+      transition: opacity 140ms linear;
+    }
+    .art-controls:hover, .art-controls:focus-within, body.info-open .art-controls {
+      opacity: .72;
+    }
+    body.is-writing .art-controls {
+      opacity: 0;
+      pointer-events: none;
+    }
+    .art-control {
+      appearance: none;
+      border: 0;
+      padding: 3px;
+      background: transparent;
+      color: var(--ink);
+      font: 9px/1 "Architecture Mono", "Courier New", monospace;
+      letter-spacing: .08em;
+      cursor: pointer;
+      outline: none;
+    }
+    .art-control:focus-visible {
+      outline: 1px dotted currentColor;
+      outline-offset: 3px;
+    }
+    .info-panel {
+      position: fixed;
+      z-index: 3;
+      right: max(14px, env(safe-area-inset-right));
+      bottom: max(44px, calc(env(safe-area-inset-bottom) + 32px));
+      width: min(390px, calc(100vw - 28px));
+      max-height: min(560px, calc(100vh - 76px));
+      box-sizing: border-box;
+      overflow: auto;
+      padding: 22px 24px 20px;
+      border: 1px solid color-mix(in srgb, var(--ink) 28%, transparent);
+      background: color-mix(in srgb, var(--paper) 94%, transparent);
+      color: var(--ink);
+      box-shadow: 0 13px 44px color-mix(in srgb, #000 24%, transparent);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(7px);
+      transition: opacity 150ms linear, transform 150ms ease-out;
+    }
+    .info-panel.is-open {
+      opacity: .96;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .info-panel h1 {
+      margin: 0 24px 18px 0;
+      font: 13px/1.25 "Architecture Mono", "Courier New", monospace;
+      letter-spacing: .11em;
+    }
+    .info-panel dl {
+      display: grid;
+      grid-template-columns: minmax(82px, .75fr) minmax(0, 1.55fr);
+      gap: 7px 14px;
+      margin: 0;
+      font-size: 10px;
+      line-height: 1.35;
+    }
+    .info-panel dt {
+      opacity: .52;
+    }
+    .info-panel dd {
+      margin: 0;
+      overflow-wrap: anywhere;
+    }
+    .info-panel .info-phrase {
+      grid-column: 1 / -1;
+      margin: 7px 0 8px;
+      font-size: 13px;
+      line-height: 1.38;
+    }
+    .info-close {
+      position: absolute;
+      top: 16px;
+      right: 18px;
+      opacity: .55;
+    }
+  </style>
+</head>
+<body class="is-writing">
+  <svg id="lamina" viewBox="0 0 1000 1000" preserveAspectRatio="xMidYMid meet"
+       role="img" aria-labelledby="tituloSvg descripcionSvg">
+    <title id="tituloSvg">Espacio escultórico generado por la semilla</title>
+    <desc id="descripcionSvg">La computadora ensambla arquitectura, volumen, vacío, perspectiva, error y color.</desc>
+  </svg>
+
+  <aside id="info-panel" class="info-panel" aria-hidden="true" aria-label="Información de esta semilla">
+    <button id="info-close" class="art-control info-close" type="button" aria-label="Cerrar información">×</button>
+    <h1>ESPACIO ESCULTÓRICO</h1>
+    <dl id="info-content"></dl>
+  </aside>
+  <nav class="art-controls" aria-label="Acciones de la obra">
+    <button id="info-toggle" class="art-control" type="button" aria-expanded="false" aria-controls="info-panel">i</button>
+    <button id="gif-export" class="art-control" type="button" aria-label="Descargar esta escritura como GIF">GIF</button>
+  </nav>
+
+  <script src="js/rng.js"></script>
+  <script src="js/corpus.js"></script>
+  <script src="js/architecture.js"></script>
+  <script src="js/typewriter.js"></script>
+  <script src="vendor/gifenc.min.js"></script>
+  <script src="js/gif-export.js"></script>
+  <script src="js/verse.js"></script>
+</body>
+</html>
