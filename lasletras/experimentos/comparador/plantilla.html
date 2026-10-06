@@ -60,7 +60,7 @@ input[type=range]{accent-color:var(--accent);width:160px}
 <div class="wrap">
   <header>
     <h1>ORDEN DE PROFUNDIDAD</h1>
-    <p class="lede">Espacio escultórico, experimento L2. Las dos láminas tienen exactamente los mismos signos: ninguno se quita y la transparencia queda igual. A la izquierda, el orden de hoy (de arriba hacia abajo en pantalla). A la derecha, de atrás hacia adelante según la profundidad 3D. Mira los cruces.</p>
+    <p class="lede">Espacio escultórico, experimento L2. Las dos láminas tienen exactamente los mismos signos: ninguno se quita y la transparencia queda igual. A la izquierda, el orden de hoy (de arriba hacia abajo en pantalla). A la derecha, de atrás hacia adelante según la profundidad 3D. La escritura usa el horario real de la semilla: las dos se escriben al mismo tiempo, signo por signo. Mira los cruces.</p>
   </header>
 
   <div class="controls" role="group" aria-label="Controles">
@@ -75,6 +75,10 @@ input[type=range]{accent-color:var(--accent);width:160px}
     <div class="field">
       <span class="label">Para empezar</span>
       <div class="row" id="presets"></div>
+    </div>
+    <div class="field">
+      <span class="label">Escritura</span>
+      <div class="row"><button id="escribir">Escribir de nuevo</button><span class="val" id="reloj">—</span></div>
     </div>
     <div class="field">
       <span class="label">Comparar</span>
@@ -124,7 +128,7 @@ var PRESETS=[[3,"toro"],[10,"lazo"],[15,"nudo"],[11,"genealogía"],[6,"cúpula"]
 var state={seed:3,modo:"cortina",zoom:1,cx:500,cy:500,aire:0,cortina:50};
 try{var saved=JSON.parse(localStorage.getItem("orden-prof")||"null");if(saved){state.modo=saved.modo||state.modo;state.aire=+saved.aire||0}}catch(e){}
 var $=function(id){return document.getElementById(id)};
-var piece,S,B,fs,timer=null;
+var piece,S,B,fs,timer=null,schedule=null,stopWriting=null,nodes={a:{},b:{}};
 
 function depthOf(s,t){var p=Math.max(0,Math.min(1,t.perspective/100)),u=15,
   dX=u*(0.035+0.765*p)*t.direction,dY=u*(0.015+0.345*p),tl=t.tilt||0,det=u*dY+dX*u*tl;
@@ -136,6 +140,7 @@ function color(s){var c=piece.colors;if(s.anomaly)return c.anomalia;var f=s.face
 
 function build(seed){
   piece=ARQ_MOTOR.build({seed:String(seed)});
+  piece.surface.forEach(function(s,i){s._i=i});
   S=piece.surface.filter(function(s){return s.glyph});
   var x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
   S.forEach(function(s){var x=s.rawX+s.perturbX,y=s.rawY+s.perturbY;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y});
@@ -145,9 +150,10 @@ function build(seed){
     if(s.depth<dmin)dmin=s.depth;if(s.depth>dmax)dmax=s.depth});
   S.forEach(function(s){s.far=(s.depth-dmin)/Math.max(1e-9,dmax-dmin)});
   B=S.slice().sort(function(a,b){return b.depth-a.depth});
+  schedule=ARQ_TYPEWRITER.createSchedule(piece,String(state.seed));
 }
 
-function svgFor(list,useAire){
+function svgFor(list,useAire,map){
   var svg=document.createElementNS(NS,"svg");svg.setAttribute("viewBox",viewBox());
   svg.setAttribute("preserveAspectRatio","xMidYMid meet");svg.setAttribute("role","img");
   var r=document.createElementNS(NS,"rect");r.setAttribute("x",-2000);r.setAttribute("y",-2000);
@@ -159,7 +165,7 @@ function svgFor(list,useAire){
     n.setAttribute("class","glyph"+(k&&FONT[k]?" "+FONT[k]:""));
     var o=carbon?0.16:s.opacity;if(useAire&&!carbon)o*=1-state.aire*s.far;
     n.setAttribute("fill",carbon?piece.colors.carbon:(s.forcedColor||color(s)));n.setAttribute("opacity",o.toFixed(3));
-    n.textContent=carbon?s.baseGlyph:s.glyph;frag.appendChild(n)}
+    n.textContent=carbon?s.baseGlyph:s.glyph;(carbon?map.carbon:map.main)[s._i]=n;frag.appendChild(n)}
   if(piece.traits.carbon)list.forEach(function(s){t(s,true)});
   list.forEach(function(s){t(s,false)});
   svg.appendChild(frag);return svg;
@@ -175,8 +181,10 @@ function box(){var b=document.createElement("div");b.className="box";
 var svgA,svgB,boxB;
 function render(){
   if(timer){clearInterval(timer);timer=null}
+  if(stopWriting){stopWriting();stopWriting=null;$("reloj").textContent=(schedule.durationMs/1000).toFixed(1)+" s"}
   var st=$("stage");st.innerHTML="";st.className="stage"+(state.modo==="lado"?" lado":"");
-  svgA=svgFor(S,false);svgB=svgFor(B,state.aire>0);
+  nodes={a:{main:{},carbon:{}},b:{main:{},carbon:{}}};
+  svgA=svgFor(S,false,nodes.a);svgB=svgFor(B,state.aire>0,nodes.b);
   $("cortinaRow").hidden=state.modo!=="cortina";
   if(state.modo==="lado"){
     var a=box();a.appendChild(svgA);a.appendChild(tag("Hoy","l"));
@@ -218,9 +226,24 @@ function ficha(){
     var b=document.createElement("b");b.textContent=kv[1];d.appendChild(l);d.appendChild(b);f.appendChild(d)});
 }
 
+function write(){
+  if(stopWriting){stopWriting();stopWriting=null}
+  ["a","b"].forEach(function(k){Object.keys(nodes[k].main).forEach(function(i){nodes[k].main[i].textContent=""});
+    Object.keys(nodes[k].carbon).forEach(function(i){nodes[k].carbon[i].textContent=""})});
+  var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var finish=function(){["a","b"].forEach(function(k){S.forEach(function(s){var n=nodes[k].main[s._i];if(n)n.textContent=s.glyph;
+      var c=nodes[k].carbon[s._i];if(c)c.textContent=s.baseGlyph})});$("reloj").textContent=(schedule.durationMs/1000).toFixed(1)+" s";stopWriting=null};
+  if(reduce){finish();return}
+  var t0=performance.now(),tick=setInterval(function(){$("reloj").textContent=((performance.now()-t0)/1000).toFixed(1)+" s"},100);
+  var stop=ARQ_TYPEWRITER.play(schedule,function(ev){["a","b"].forEach(function(k){var n=nodes[k].main[ev.index];if(n)n.textContent=ev.value;
+      if(ev.kind==="correct"){var c=nodes[k].carbon[ev.index];if(c)c.textContent=piece.surface[ev.index].baseGlyph}})},
+    function(){clearInterval(tick);finish()});
+  stopWriting=function(){stop();clearInterval(tick)};
+}
 function save(){try{localStorage.setItem("orden-prof",JSON.stringify({modo:state.modo,aire:state.aire}))}catch(e){}}
 function press(group,attr,val){Array.prototype.forEach.call($(group).querySelectorAll("button"),function(b){b.setAttribute("aria-pressed",String(b.dataset[attr]===String(val)))})}
-function go(seed){seed=Math.max(1,Math.round(+seed||1));state.seed=seed;$("seed").value=seed;build(seed);render()}
+function go(seed){seed=Math.max(1,Math.round(+seed||1));state.seed=seed;$("seed").value=seed;if(stopWriting){stopWriting();stopWriting=null}build(seed);render();write()}
+$("escribir").addEventListener("click",function(){write()});
 
 PRESETS.forEach(function(p){var b=document.createElement("button");b.className="chip";b.textContent=p[0]+" · "+p[1];
   b.addEventListener("click",function(){go(p[0])});$("presets").appendChild(b)});

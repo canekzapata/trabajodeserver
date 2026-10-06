@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Experimento · escritura por orden de profundidad</title>
+<!-- Dibuja la escritura de una semilla en un instante t, lado a lado:
+     izquierda orden de hoy (pantalla), derecha orden de profundidad 3D.
+     Mismo horario del typewriter para las dos. window.frameAt(ms) pinta el
+     cuadro y devuelve un PNG (dataURL); lo usa el armado del GIF.
+     ?hash=…  ?lado=600 -->
+<style>
+@font-face{font-family:"Architecture Mono";src:url("../fonts/Ac437_ApricotPortable.ttf")}
+@font-face{font-family:"Unicode Backup";src:url("../fonts/Symbola.otf")}
+@font-face{font-family:"Electrónica";src:url("../fonts/ELECTRONICS.TTF")}
+@font-face{font-family:"Jeroglífico Egipcio";src:url("../fonts/NOTOSANSEGYPTIANHIEROGLYPHS-REGULAR.TTF")}
+@font-face{font-family:"Jeroglífico Anatolio";src:url("../fonts/NOTOSANSANATOLIANHIEROGLYPHS-REGULAR.TTF")}
+@font-face{font-family:"Lineal B";src:url("../fonts/NOTOSANSLINEARB-REGULAR.TTF")}
+html,body{margin:0;background:#111}
+</style></head><body>
+<canvas id="c"></canvas>
+<script src="../js/rng.js"></script><script src="../js/corpus.js"></script>
+<script src="../js/architecture.js"></script><script src="../js/typewriter.js"></script>
+<script>
+var q=new URLSearchParams(location.search),hash=q.get("hash")||"3",L=+(q.get("lado")||600),BAR=34;
+var piece=ARQ_MOTOR.build({seed:hash});
+piece.surface.forEach(function(s,i){s._i=i});
+var S=piece.surface.filter(function(s){return s.glyph});
+var x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+S.forEach(function(s){var x=s.rawX+s.perturbX,y=s.rawY+s.perturbY;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y});
+var sc=Math.min(924/Math.max(1,x1-x0),924/Math.max(1,y1-y0),3.75),fs=Math.max(9,Math.min(34,13*sc));
+var ox=38+(924-(x1-x0)*sc)/2,oy=38+(924-(y1-y0)*sc)/2;
+function depthOf(s,t){var p=Math.max(0,Math.min(1,t.perspective/100)),u=15,
+  dX=u*(0.035+0.765*p)*t.direction,dY=u*(0.015+0.345*p),tl=t.tilt||0,det=u*dY+dX*u*tl;
+  return (u*(-s.rawY-s.z*u)+u*tl*s.rawX)/det}
+S.forEach(function(s){s.sx=ox+(s.rawX+s.perturbX-x0)*sc;s.sy=oy+(s.rawY+s.perturbY-y0)*sc;s.sfont=fs;s.depth=depthOf(s,piece.traits)});
+var B=S.slice().sort(function(a,b){return b.depth-a.depth});
+var schedule=ARQ_TYPEWRITER.createSchedule(piece,hash);
+var FONT={egipcio:'"Jeroglífico Egipcio","Unicode Backup",monospace',anatolio:'"Jeroglífico Anatolio","Unicode Backup",monospace',
+  linealb:'"Lineal B","Unicode Backup",monospace',electronica:'"Electrónica","Architecture Mono",monospace'};
+var BASE='"Architecture Mono","Unicode Backup",monospace';
+function color(s){var c=piece.colors;if(s.anomaly)return c.anomalia;var f=s.face,r=piece.traits.alphabetRelation;
+  if(s.body==="derecha"&&r==="CARAS INVERTIDAS")f=f==="frente"?"lateral":f==="lateral"?"frente":"techo";
+  else if(s.body==="derecha"&&r==="TRADUCCIÓN MATERIAL")f=f==="frente"?"techo":f==="techo"?"frente":"lateral";
+  return c[f]||c.frente}
+var cv=document.getElementById("c");cv.width=2*L+6;cv.height=L+BAR;var ctx=cv.getContext("2d");
+function panel(list,state,offX){
+  var k=L/1000;ctx.save();ctx.translate(offX,BAR);ctx.beginPath();ctx.rect(0,0,L,L);ctx.clip();
+  ctx.fillStyle=piece.colors.papel;ctx.fillRect(0,0,L,L);ctx.textAlign="center";ctx.textBaseline="middle";
+  if(piece.traits.carbon)list.forEach(function(s){if(state[s._i]!==s.glyph)return;ctx.globalAlpha=0.16;ctx.fillStyle=piece.colors.carbon;
+    ctx.font=(fs*k)+"px "+(s.baseFontKind&&FONT[s.baseFontKind]||BASE);ctx.fillText(s.baseGlyph,(s.sx+piece.traits.direction*3.2)*k,(s.sy+2.4)*k)});
+  list.forEach(function(s){var g=state[s._i];if(!g)return;ctx.globalAlpha=s.opacity;ctx.fillStyle=s.forcedColor||color(s);
+    ctx.font=(fs*k)+"px "+(s.fontKind&&FONT[s.fontKind]||BASE);ctx.fillText(g,s.sx*k,s.sy*k)});
+  ctx.restore();
+}
+window.duration=schedule.durationMs;
+window.frameAt=function(t){
+  var state={};schedule.events.forEach(function(e){if(e.at<=t)state[e.index]=e.value});
+  if(t>=schedule.durationMs)S.forEach(function(s){state[s._i]=s.glyph});
+  ctx.globalAlpha=1;ctx.fillStyle="#141615";ctx.fillRect(0,0,cv.width,cv.height);
+  panel(S,state,0);panel(B,state,L+6);
+  ctx.globalAlpha=1;ctx.font="15px "+BASE;ctx.textBaseline="middle";ctx.textAlign="left";
+  ctx.fillStyle="#e7e7e1";ctx.fillText("HOY",10,BAR/2);
+  ctx.fillStyle="#5cc6cf";ctx.fillText("PROFUNDIDAD",L+16,BAR/2);
+  ctx.fillStyle="#9aa09a";var info="semilla "+hash+"  "+(Math.min(t,schedule.durationMs)/1000).toFixed(1)+" s";
+  ctx.textAlign="right";ctx.fillText(info,L-10,BAR/2);ctx.fillText(info,2*L+6-10,BAR/2);
+  return cv.toDataURL("image/png");
+};
+window.listo=document.fonts.ready.then(function(){return Promise.all(["Architecture Mono","Unicode Backup"].map(function(f){return document.fonts.load("20px \""+f+"\"","NCO│╱○")}))});
+</script></body></html>
