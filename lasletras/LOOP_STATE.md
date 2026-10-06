@@ -74,3 +74,12 @@ un fallo que no termina de corregirse.
 ## HISTORIAL DE LOOPS
 
 _(anexar aquí cada mutación ejecutada, con evidencia, sin borrar las anteriores)_
+
+### Loop C1 · crítica medida y plan (6 oct 2026)
+
+`CRITICA-Y-PLAN.md`: crítica con la vara de *Traspuesta* y plan en cuatro partes
+(mejoras L0–L10, álbum de 48 láminas en 8 salas, nombres y cédula). Hallazgos
+medidos: la frase no mueve la geometría en 78 % de la serie; 34 estructuras
+planas (máx 4.3 %); empaste 82–89 % en la genealogía contra 19 % en el arco.
+Experimento aparte `experimentos/rejilla.html` (ocultamiento por celda). Motor
+intacto.

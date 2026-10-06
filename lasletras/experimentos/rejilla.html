@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Experimento · rejilla con ocultamiento</title>
+<!-- Experimento aparte (no toca el motor). Izquierda: la pieza como hoy, todos
+     los signos encimados. Derecha: cada celda de la máquina de escribir guarda
+     sólo el signo más cercano al ojo —lo de atrás queda oculto, como el
+     horizonte flotante de Traspuesta—. ?hash=…  ?celda=0.62 (ancho/cuerpo) -->
+<style>
+@font-face{font-family:"Architecture Mono";src:url("../fonts/Ac437_ApricotPortable.ttf")}
+@font-face{font-family:"Unicode Backup";src:url("../fonts/Symbola.otf")}
+html,body{margin:0;background:#111}
+.par{display:flex;gap:0}
+svg{width:50vw;height:50vw;display:block}
+text{font-family:"Architecture Mono","Unicode Backup",monospace}
+</style></head><body>
+<div class="par"><svg id="a" viewBox="0 0 1000 1000"></svg><svg id="b" viewBox="0 0 1000 1000"></svg></div>
+<script src="../js/rng.js"></script><script src="../js/corpus.js"></script><script src="../js/architecture.js"></script>
+<script>
+var q=new URLSearchParams(location.search),hash=q.get("hash")||"1",celda=+(q.get("celda")||0.62);
+var piece=ARQ_MOTOR.build({seed:hash}),F={x:38,y:38,w:924,h:924};
+var S=piece.surface.filter(function(s){return s.glyph});
+var xs=S.map(function(s){return s.rawX+s.perturbX}),ys=S.map(function(s){return s.rawY+s.perturbY});
+var x0=Math.min.apply(0,xs),x1=Math.max.apply(0,xs),y0=Math.min.apply(0,ys),y1=Math.max.apply(0,ys);
+var sc=Math.min(F.w/(x1-x0),F.h/(y1-y0),3.75),fs=Math.max(9,Math.min(34,13*sc));
+var ox=F.x+(F.w-(x1-x0)*sc)/2,oy=F.y+(F.h-(y1-y0)*sc)/2;
+S.forEach(function(s){s.sx=ox+(s.rawX+s.perturbX-x0)*sc;s.sy=oy+(s.rawY+s.perturbY-y0)*sc});
+function color(s){var c=piece.colors;return s.anomaly?c.anomalia:(s.forcedColor||c[s.face]||c.frente)}
+function draw(svg,list,size){
+  var NS="http://www.w3.org/2000/svg",r=document.createElementNS(NS,"rect");
+  r.setAttribute("width",1000);r.setAttribute("height",1000);r.setAttribute("fill",piece.colors.papel);svg.appendChild(r);
+  list.forEach(function(s){var t=document.createElementNS(NS,"text");
+    t.setAttribute("x",s.gx||s.sx);t.setAttribute("y",s.gy||s.sy);t.setAttribute("font-size",size);
+    t.setAttribute("text-anchor","middle");t.setAttribute("dominant-baseline","central");
+    t.setAttribute("fill",color(s));t.textContent=s.glyph;svg.appendChild(t)});
+}
+draw(document.getElementById("a"),S,fs);
+// Rejilla: celda monoespaciada; gana el signo de menor profundidad (y del motor).
+var cw=fs*celda,ch=fs,best={};
+S.forEach(function(s){var k=Math.round(s.sx/cw)+","+Math.round(s.sy/ch);
+  var d=(s.y||0);if(!best[k]||d<best[k].d)best[k]={d:d,s:s,i:Math.round(s.sx/cw),j:Math.round(s.sy/ch)}});
+var grid=Object.keys(best).map(function(k){var b=best[k];return Object.assign({},b.s,{gx:b.i*cw,gy:b.j*ch})});
+draw(document.getElementById("b"),grid,fs);
+document.title=S.length+" → "+grid.length+" signos";
+</script></body></html>
