@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8">
+<title>Experimento · jardín</title>
+<!-- Jardines del compositor experimental (jardin-motor.js sobre una copia del
+     motor). ?semillas=1,2,3  ?variante=PEDREGAL|ESPACIO%20ESCULT%C3%93RICO
+     ?lado=400. Pinta por orden de profundidad, como v0.22.
+     ?gif=SEMILLA → un solo lienzo; window.frameAt(ms) pinta la escritura por
+     recorrido en el instante ms y devuelve un PNG (para armar el GIF). -->
+<style>
+@font-face{font-family:"Architecture Mono";src:url("../fonts/Ac437_ApricotPortable.ttf")}
+@font-face{font-family:"Unicode Backup";src:url("../fonts/Symbola.otf")}
+html,body{margin:0;background:#111}
+#grid{display:flex;flex-wrap:wrap}
+svg{display:block}
+text{font-family:"Architecture Mono","Unicode Backup",monospace}
+</style></head><body><div id="grid"></div>
+<script src="../js/rng.js"></script><script src="../js/corpus.js"></script>
+<script src="../js/typewriter.js"></script><script src="jardin-parche.js"></script>
+<script>
+var q=new URLSearchParams(location.search),L=+(q.get("lado")||400),variante=q.get("variante")||null;
+var semillas=(q.get("semillas")||"1,2,3,4,5,6,7,8").split(",");
+window.listo=Promise.all([fetch("../js/architecture.js").then(function(r){return r.text()}),fetch("jardin-motor.js").then(function(r){return r.text()})])
+.then(function(t){var raiz={ARQ_AZAR:window.ARQ_AZAR,ARQ_CORPUS:window.ARQ_CORPUS};new Function("window",JARDIN_PARCHE.parchar(t[0],t[1]))(raiz);return raiz.ARQ_MOTOR})
+.then(function(M){return document.fonts.ready.then(function(){return document.fonts.load('20px "Architecture Mono"',"NCO")}).then(function(){
+  var NS="http://www.w3.org/2000/svg";
+  if(q.get("gif")){
+    var seed=q.get("gif"),piece=M.buildGarden({seed:seed,variant:variante||undefined});piece.surface.forEach(function(s,i){s._i=i});
+    var S=piece.surface.filter(function(s){return s.glyph});
+    var x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+    S.forEach(function(s){var x=s.rawX+s.perturbX,y=s.rawY+s.perturbY;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y});
+    var sc=Math.min(924/Math.max(1,x1-x0),924/Math.max(1,y1-y0),3.75),fs=Math.max(9,Math.min(34,13*sc));
+    var ox=38+(924-(x1-x0)*sc)/2,oy=38+(924-(y1-y0)*sc)/2;
+    S.forEach(function(s){s.sx=ox+(s.rawX+s.perturbX-x0)*sc;s.sy=oy+(s.rawY+s.perturbY-y0)*sc});
+    var D=S.slice().sort(function(a,b){return b.depth-a.depth});
+    var sched=M.walkSchedule(piece,ARQ_TYPEWRITER.createSchedule(piece,seed));
+    var cv=document.createElement("canvas");cv.width=L;cv.height=L+30;document.getElementById("grid").appendChild(cv);var ctx=cv.getContext("2d");
+    window.duration=sched.durationMs;
+    window.frameAt=function(t){var st={};sched.events.forEach(function(e){if(e.at<=t)st[e.index]=e.value});
+      if(t>=sched.durationMs)S.forEach(function(s){st[s._i]=s.glyph});
+      var k=L/1000;ctx.globalAlpha=1;ctx.fillStyle="#141615";ctx.fillRect(0,0,cv.width,cv.height);
+      ctx.fillStyle=piece.colors.papel;ctx.fillRect(0,30,L,L);ctx.textAlign="center";ctx.textBaseline="middle";
+      D.forEach(function(s){var g=st[s._i];if(!g)return;ctx.globalAlpha=s.opacity;ctx.fillStyle=s.anomaly?piece.colors.anomalia:(s.forcedColor||piece.colors[s.face]||piece.colors.frente);
+        ctx.font=(fs*k)+'px "Architecture Mono","Unicode Backup",monospace';ctx.fillText(g,s.sx*k,30+s.sy*k)});
+      ctx.globalAlpha=1;ctx.font='14px "Architecture Mono",monospace';ctx.textAlign="left";ctx.fillStyle="#e7e7e1";
+      ctx.fillText(piece.geometry.variant+" · recorrido",10,15);ctx.textAlign="right";ctx.fillStyle="#9aa09a";
+      ctx.fillText("semilla "+seed+"  "+(Math.min(t,sched.durationMs)/1000).toFixed(1)+" s",L-10,15);return cv.toDataURL("image/png")};
+    return;
+  }
+  semillas.forEach(function(seed){
+    var piece=M.buildGarden({seed:seed,variant:variante||undefined});
+    var S=piece.surface.filter(function(s){return s.glyph});
+    var x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+    S.forEach(function(s){var x=s.rawX+s.perturbX,y=s.rawY+s.perturbY;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y});
+    var sc=Math.min(924/Math.max(1,x1-x0),924/Math.max(1,y1-y0),3.75),fs=Math.max(9,Math.min(34,13*sc));
+    var ox=38+(924-(x1-x0)*sc)/2,oy=38+(924-(y1-y0)*sc)/2;
+    var svg=document.createElementNS(NS,"svg");svg.setAttribute("viewBox","0 0 1000 1000");svg.setAttribute("width",L);svg.setAttribute("height",L);
+    var r=document.createElementNS(NS,"rect");r.setAttribute("width",1000);r.setAttribute("height",1000);r.setAttribute("fill",piece.colors.papel);svg.appendChild(r);
+    S.slice().sort(function(a,b){return b.depth-a.depth}).forEach(function(s){var t=document.createElementNS(NS,"text");
+      t.setAttribute("x",ox+(s.rawX+s.perturbX-x0)*sc);t.setAttribute("y",oy+(s.rawY+s.perturbY-y0)*sc);t.setAttribute("font-size",fs);
+      t.setAttribute("text-anchor","middle");t.setAttribute("dominant-baseline","central");
+      t.setAttribute("fill",s.anomaly?piece.colors.anomalia:(s.forcedColor||piece.colors[s.face]||piece.colors.frente));t.setAttribute("opacity",s.opacity);
+      t.textContent=s.glyph;svg.appendChild(t)});
+    var lab=document.createElementNS(NS,"text");lab.setAttribute("x",16);lab.setAttribute("y",30);lab.setAttribute("font-size",22);
+    lab.setAttribute("fill",piece.colors.frente);lab.textContent=seed+" · "+piece.geometry.variant+" · "+piece.geometry.pieces.join(" + ");svg.appendChild(lab);
+    document.getElementById("grid").appendChild(svg);
+  });
+})});
+</script></body></html>

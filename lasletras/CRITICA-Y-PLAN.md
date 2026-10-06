@@ -244,6 +244,30 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
   después del test dorado de L0 y como parte de una versión nueva, no como arreglo
   silencioso.
 
+**L-jardín — Componer jardines, no agregar figuras** *(experimento hecho)*
+- Decisión con Canek: dejar de llenar huecos con figuras y especializar la serie en
+  **jardín · arco · cuerpo solo monumental**; la genealogía de muchas partes baja.
+- `experimentos/jardin-motor.js` (sobre una copia del motor, `jardin-parche.js`): un
+  compositor que usa sólo cuerpos que ya existen (arco, esfera, hipar, serpiente, lazo,
+  pirámide, prismas, muro) y los pone en un **sitio** con relaciones. Dos variantes:
+  - **PEDREGAL**: lava con huecos y rocas, un sendero de losas que cruza un arco-umbral,
+    un muro largo al fondo (a veces otro corto), a veces un espejo de agua, y una o dos
+    esculturas fuera del eje.
+  - **ESPACIO ESCULTÓRICO**: un anillo cerrado de 40–60 prismas alrededor de lava densa
+    e intacta, lava rala afuera, y uno a tres cuerpos afuera, el primero monumental.
+- **Cámara propia:** con la cámara de la pieza el jardín era una franja delgada a media
+  lámina. El jardín mira más desde arriba (sube 0.42–0.62 por unidad de profundidad, con
+  poco corrimiento lateral) para que se lea la planta.
+- **Escritura por recorrido** (`walkSchedule`): el horario del typewriter se reacomoda
+  para escribir en el orden en que se camina. En el Pedregal, de la entrada al fondo por
+  el sendero; en el Espacio escultórico, rodeando el anillo desde el frente, y la lava de
+  adentro al final. Cada signo conserva su tropiezo.
+- **Visto:** el Espacio escultórico ya se lee claro (anillo en planta y cuerpo
+  monumental). El Pedregal funciona, pero está más cargado: los muros pesan mucho y la
+  lava se ve como confeti. Es lo siguiente por afinar, con los ojos de Canek.
+- Página: https://claude.ai/artifact/FEgAGR6SNSHPpeQk4hL3SX · GIF: `jardin-espacio-2.gif`,
+  `jardin-espacio-8.gif`, `jardin-pedregal-7.gif`, `jardin-pedregal-3.gif`.
+
 **L3 — Vistas: planta, alzado, axonométrica**
 - Del mismo `surface` 3D salen planta y alzado, **también transparentes**, sólo como
   hojas acompañantes del álbum. La lámina sigue siendo la axonométrica; si una vista plana

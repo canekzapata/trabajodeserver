@@ -128,3 +128,12 @@ figuras y especializar: jardín · arco · cuerpo solo monumental; la genealogí
 muchas partes baja. Primer paso: experimento aparte de un compositor de jardines,
 en dos variantes (Pedregal de Barragán y Goeritz; Espacio Escultórico con vacío
 central).
+
+### Experimento L-jardín (6 oct 2026)
+
+Compositor de jardines sobre copia del motor, sin figuras nuevas: PEDREGAL
+(lava, sendero de losas, arco-umbral, muros, espejo de agua, esculturas fuera
+del eje) y ESPACIO ESCULTÓRICO (anillo de prismas, lava intacta adentro, cuerpos
+afuera, uno monumental). Cámara propia más alta. Escritura por recorrido
+(walkSchedule). El EE se lee claro; el Pedregal está más cargado (muros
+pesados, lava como confeti): afinar con Canek. Página publicada y 4 GIF.

@@ -1,0 +1,208 @@
+<meta charset="utf-8">
+<title>Jardines escultóricos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mesa de comparación: barra de controles arriba, lámina cuadrada al centro, ficha medida abajo. */
+:root{
+  --bg:#e9e8e2; --panel:#f6f5f0; --fg:#1b1d1b; --muted:#5d625d; --line:#c9c8bf; --accent:#16707a;
+  --f-display:"Architecture Mono","IBM Plex Mono",ui-monospace,monospace;
+  --f-body:"Archivo",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141615; --panel:#1c1f1e; --fg:#e7e7e1; --muted:#9aa09a; --line:#353a38; --accent:#5cc6cf; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141615; --panel:#1c1f1e; --fg:#e7e7e1; --muted:#9aa09a; --line:#353a38; --accent:#5cc6cf; color-scheme:dark}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:grid;gap:16px}
+header{display:grid;gap:6px}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(22px,3.2vw,32px);letter-spacing:.04em;margin:0;text-wrap:balance}
+.lede{margin:0;max-width:68ch;color:var(--muted)}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:end;background:var(--panel);border:1px solid var(--line);padding:12px 14px}
+.field{display:grid;gap:4px}
+.label{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+button,input[type=number]{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);padding:5px 10px;min-height:32px}
+input[type=number]{width:7.5em;font-family:var(--f-mono)}
+button{cursor:pointer}
+button:hover{border-color:var(--accent)}
+button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chip{font-family:var(--f-mono);font-size:13px;padding:4px 9px;min-height:28px}
+input[type=range]{accent-color:var(--accent);width:160px}
+.val{font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums;min-width:3.2em;display:inline-block}
+.stage-wrap{display:grid;gap:8px}
+.stage{display:grid;gap:12px;grid-template-columns:1fr}
+.stage.lado{grid-template-columns:1fr 1fr}
+@media (max-width:640px){.stage.lado{grid-template-columns:1fr}}
+.box{position:relative;aspect-ratio:1;max-width:100%;width:100%;margin:0 auto;border:1px solid var(--line);overflow:hidden;cursor:crosshair}
+.stage:not(.lado) .box{max-width:min(100%,760px)}
+.box svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.tag{position:absolute;top:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--panel);color:var(--fg);border:1px solid var(--line);padding:2px 7px;pointer-events:none}
+.tag.l{left:8px}.tag.r{right:8px}
+.seam{position:absolute;top:0;bottom:0;width:2px;background:var(--accent);pointer-events:none;transform:translateX(-1px)}
+.cortina-row{display:flex;gap:10px;align-items:center;max-width:760px;width:100%;margin:0 auto}
+.cortina-row input{flex:1;width:auto}
+.ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.ficha div{background:var(--panel);padding:10px 12px;display:grid;gap:2px;min-width:0}
+.ficha b{font-family:var(--f-mono);font-weight:500;font-size:17px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.nota{color:var(--muted);font-size:13px;max-width:80ch;margin:0}
+.glyph{font-family:"Architecture Mono","Unicode Backup",monospace;white-space:pre}
+.fx-electronica{font-family:"Electrónica","Architecture Mono",monospace}
+.fx-egipcio{font-family:"Jeroglífico Egipcio","Unicode Backup",monospace}
+.fx-anatolio{font-family:"Jeroglífico Anatolio","Unicode Backup",monospace}
+.fx-linealb{font-family:"Lineal B","Unicode Backup",monospace}
+.cargando{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;color:var(--muted);background:var(--panel)}
+.main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;align-items:start}
+@media (max-width:860px){.main{grid-template-columns:1fr}}
+.side{display:grid;gap:12px;min-width:0}
+.side .ficha{grid-template-columns:1fr}
+.galeria{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:8px}
+.galeria button{padding:0;border:1px solid var(--line);background:none;aspect-ratio:1;position:relative;overflow:hidden}
+.galeria button[aria-pressed="true"]{outline:2px solid var(--accent);outline-offset:1px}
+.galeria svg{width:100%;height:100%;display:block}
+.galeria span{position:absolute;left:4px;bottom:4px;font-family:var(--f-mono);font-size:10px;background:var(--panel);color:var(--fg);padding:1px 4px}
+.box{cursor:default}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>JARDINES ESCULTÓRICOS</h1>
+    <p class="lede">Espacio escultórico, experimento del jardín. No hay figuras nuevas: son los cuerpos de la serie (arco, esfera, cascarón, serpiente, lazo, pirámide, prismas) puestos en un sitio con relaciones. <b>Pedregal</b>: lava, un sendero de losas que cruza un arco, muros y a veces un espejo de agua, con esculturas fuera del eje. <b>Espacio escultórico</b>: un anillo de prismas alrededor de lava intacta, con cuerpos afuera a distintas escalas. La máquina escribe el jardín en el orden en que se camina.</p>
+  </header>
+
+  <div class="controls" role="group" aria-label="Controles">
+    <div class="field">
+      <span class="label">Semilla</span>
+      <div class="row">
+        <button id="prev" aria-label="Semilla anterior">‹</button>
+        <input id="seed" type="number" min="1" step="1" value="5" aria-label="Número de semilla">
+        <button id="next" aria-label="Semilla siguiente">›</button>
+      </div>
+    </div>
+    <div class="field">
+      <span class="label">Variante</span>
+      <div class="row" id="variantes">
+        <button data-v="PEDREGAL" aria-pressed="true">Pedregal</button>
+        <button data-v="ESPACIO ESCULTÓRICO" aria-pressed="false">Espacio escultórico</button>
+        <button data-v="" aria-pressed="false">La que diga la semilla</button>
+      </div>
+    </div>
+    <div class="field">
+      <span class="label">Escritura</span>
+      <div class="row" id="escrituras">
+        <button data-e="recorrido" aria-pressed="true">Por recorrido</button>
+        <button data-e="hoy" aria-pressed="false">Como hoy</button>
+        <button id="escribir">Escribir de nuevo</button><span class="val" id="reloj">—</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="main">
+    <div class="box" id="stage"></div>
+    <div class="side">
+      <div class="ficha" id="ficha"></div>
+      <span class="label">Otras semillas de esta variante</span>
+      <div class="galeria" id="galeria"></div>
+    </div>
+  </div>
+  <p class="nota">«Por recorrido»: en el Pedregal se escribe de la entrada al fondo siguiendo el sendero; en el Espacio escultórico se rodea el anillo por fuera empezando por el frente, y la lava de adentro, la que no se pisa, llega al final. Cada signo conserva su tropiezo (error, borrado, corrección). «Como hoy» usa el horario normal de la pieza. Los signos se pintan de atrás hacia adelante, como en v0.22.</p>
+</div>
+
+<script>/*@@MOTOR@@*/</script>
+<script>var ARQ_FUENTE = /*@@FUENTE@@*/null; var JARDIN_FUENTE = /*@@JARDIN@@*/null;</script>
+<script>/*@@PARCHE@@*/</script>
+<script>
+(function(){
+"use strict";
+var NS="http://www.w3.org/2000/svg";
+var FONT_FILES=[["Architecture Mono","fonts/Ac437_ApricotPortable.ttf"],["Unicode Backup","fonts/Symbola.otf"],
+  ["Electrónica","fonts/ELECTRONICS.TTF"],["Jeroglífico Egipcio","fonts/NOTOSANSEGYPTIANHIEROGLYPHS-REGULAR.TTF"],
+  ["Jeroglífico Anatolio","fonts/NOTOSANSANATOLIANHIEROGLYPHS-REGULAR.TTF"],["Lineal B","fonts/NOTOSANSLINEARB-REGULAR.TTF"]];
+var FONT={egipcio:"fx-egipcio",anatolio:"fx-anatolio",linealb:"fx-linealb",electronica:"fx-electronica"};
+var state={seed:5,variante:"PEDREGAL",escritura:"recorrido"};
+try{var saved=JSON.parse(localStorage.getItem("jardines")||"null");if(saved){if(saved.variante!==undefined)state.variante=saved.variante;if(saved.escritura)state.escritura=saved.escritura}}catch(e){}
+var $=function(id){return document.getElementById(id)};
+var raiz={ARQ_AZAR:window.ARQ_AZAR,ARQ_CORPUS:window.ARQ_CORPUS};
+new Function("window",JARDIN_PARCHE.parchar(ARQ_FUENTE,JARDIN_FUENTE))(raiz);
+var M=raiz.ARQ_MOTOR;
+var V,nodes,stopWriting=null;
+
+function prepara(seed){
+  var piece=M.buildGarden({seed:String(seed),variant:state.variante||undefined});
+  piece.surface.forEach(function(s,i){s._i=i});
+  var S=piece.surface.filter(function(s){return s.glyph});
+  var x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+  S.forEach(function(s){var x=s.rawX+s.perturbX,y=s.rawY+s.perturbY;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y});
+  var sc=Math.min(924/Math.max(1,x1-x0),924/Math.max(1,y1-y0),3.75),fs=Math.max(9,Math.min(34,13*sc));
+  var ox=38+(924-(x1-x0)*sc)/2,oy=38+(924-(y1-y0)*sc)/2;
+  S.forEach(function(s){s.sx=ox+(s.rawX+s.perturbX-x0)*sc;s.sy=oy+(s.rawY+s.perturbY-y0)*sc});
+  var base=ARQ_TYPEWRITER.createSchedule(piece,String(seed));
+  return{piece:piece,S:S,sorted:S.slice().sort(function(a,b){return b.depth-a.depth}),fs:fs,base:base,walk:M.walkSchedule(piece,base)};
+}
+function color(piece,s){var c=piece.colors;if(s.anomaly)return c.anomalia;return c[s.face]||c.frente}
+function svgFor(V,map,small){
+  var piece=V.piece,svg=document.createElementNS(NS,"svg");svg.setAttribute("viewBox","0 0 1000 1000");svg.setAttribute("role","img");
+  svg.setAttribute("aria-label","Jardín "+piece.geometry.variant.toLowerCase()+", semilla "+piece.meta.seed);
+  var r=document.createElementNS(NS,"rect");r.setAttribute("width",1000);r.setAttribute("height",1000);r.setAttribute("fill",piece.colors.papel);svg.appendChild(r);
+  var frag=document.createDocumentFragment();
+  function t(s,carbon){var n=document.createElementNS(NS,"text"),k=carbon?s.baseFontKind:s.fontKind;
+    n.setAttribute("x",(s.sx+(carbon?piece.traits.direction*3.2:0)).toFixed(1));n.setAttribute("y",(s.sy+(carbon?2.4:0)).toFixed(1));
+    n.setAttribute("font-size",V.fs.toFixed(1));n.setAttribute("text-anchor","middle");n.setAttribute("dominant-baseline","central");
+    n.setAttribute("class","glyph"+(k&&FONT[k]?" "+FONT[k]:""));
+    n.setAttribute("fill",carbon?piece.colors.carbon:(s.forcedColor||color(piece,s)));n.setAttribute("opacity",(carbon?0.16:s.opacity).toFixed(2));
+    n.textContent=carbon?s.baseGlyph:s.glyph;if(map)(carbon?map.carbon:map.main)[s._i]=n;frag.appendChild(n)}
+  if(piece.traits.carbon&&!small)V.sorted.forEach(function(s){t(s,true)});
+  V.sorted.forEach(function(s){t(s,false)});
+  svg.appendChild(frag);return svg;
+}
+function render(){
+  if(stopWriting){stopWriting();stopWriting=null}
+  var st=$("stage");st.innerHTML="";nodes={main:{},carbon:{}};st.appendChild(svgFor(V,nodes));
+  var tg=document.createElement("span");tg.className="tag l";tg.textContent=V.piece.geometry.variant;st.appendChild(tg);
+  ficha();
+}
+function write(){
+  if(stopWriting){stopWriting();stopWriting=null}
+  Object.keys(nodes.main).forEach(function(i){nodes.main[i].textContent=""});Object.keys(nodes.carbon).forEach(function(i){nodes.carbon[i].textContent=""});
+  var finish=function(){V.S.forEach(function(s){var n=nodes.main[s._i];if(n)n.textContent=s.glyph;var c=nodes.carbon[s._i];if(c)c.textContent=s.baseGlyph})};
+  if(window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches){finish();return}
+  var sched=state.escritura==="recorrido"?V.walk:V.base,t0=performance.now();
+  var tick=setInterval(function(){$("reloj").textContent=((performance.now()-t0)/1000).toFixed(1)+" s"},100);
+  var stop=ARQ_TYPEWRITER.play(sched,function(ev){var n=nodes.main[ev.index];if(n)n.textContent=ev.value;
+    if(ev.kind==="correct"){var c=nodes.carbon[ev.index];if(c)c.textContent=V.piece.surface[ev.index].baseGlyph}},
+    function(){clearInterval(tick);finish();stopWriting=null});
+  stopWriting=function(){stop();clearInterval(tick);finish()};
+}
+function ficha(){
+  var f=$("ficha");f.innerHTML="";var g=V.piece.geometry;
+  [["Variante",g.variant],["Relación",g.relation],["Piezas",g.pieces.join(" · ")],["Signos",V.S.length.toLocaleString("es-MX")],
+   ["Alfabeto",V.piece.meta.palette+" · "+V.piece.meta.alphabet.slice(0,4).join(" ")],["Escritura",(V.walk.durationMs/1000).toFixed(1)+" s"]]
+  .forEach(function(kv){var d=document.createElement("div"),l=document.createElement("span"),b=document.createElement("b");
+    l.className="label";l.textContent=kv[0];b.textContent=kv[1];d.appendChild(l);d.appendChild(b);f.appendChild(d)});
+}
+function galeria(){
+  var g=$("galeria");g.innerHTML="";var base=Math.floor((state.seed-1)/8)*8+1;
+  for(var i=0;i<8;i++){(function(seed){var b=document.createElement("button");b.setAttribute("aria-pressed",String(seed===state.seed));
+    b.setAttribute("aria-label","Abrir semilla "+seed);var W=prepara(seed);b.appendChild(svgFor(W,null,true));
+    var sp=document.createElement("span");sp.textContent=seed;b.appendChild(sp);b.addEventListener("click",function(){go(seed)});g.appendChild(b)})(base+i)}
+}
+function save(){try{localStorage.setItem("jardines",JSON.stringify({variante:state.variante,escritura:state.escritura}))}catch(e){}}
+function press(group,attr,val){Array.prototype.forEach.call($(group).querySelectorAll("button[data-"+attr+"]"),function(b){b.setAttribute("aria-pressed",String(b.dataset[attr]===String(val)))})}
+function go(seed){seed=Math.max(1,Math.round(+seed||1));state.seed=seed;$("seed").value=seed;V=prepara(seed);render();write();
+  setTimeout(galeria,30)}
+$("prev").addEventListener("click",function(){go(state.seed-1)});
+$("next").addEventListener("click",function(){go(state.seed+1)});
+$("seed").addEventListener("change",function(){go(this.value)});
+$("escribir").addEventListener("click",function(){write()});
+$("variantes").addEventListener("click",function(e){var v=e.target.dataset&&e.target.dataset.v;if(v===undefined)return;state.variante=v;press("variantes","v",v);save();go(state.seed)});
+$("escrituras").addEventListener("click",function(e){var v=e.target.dataset&&e.target.dataset.e;if(!v)return;state.escritura=v;press("escrituras","e",v);save();write()});
+press("variantes","v",state.variante);press("escrituras","e",state.escritura);
+var st=$("stage"),l=document.createElement("div");l.className="cargando";l.textContent="cargando fuentes de la pieza…";st.appendChild(l);
+Promise.all(FONT_FILES.map(function(f){return fetch(f[1]).then(function(r){if(!r.ok)throw new Error(f[1]);return r.arrayBuffer()})
+  .then(function(buf){var face=new FontFace(f[0],buf);document.fonts.add(face);return face.load()}).catch(function(){return null})}))
+  .then(function(){go(state.seed)});
+})();
+</script>
