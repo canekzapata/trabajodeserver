@@ -4,7 +4,7 @@
 
 El plan tiene cuatro partes: **crítica → mejoras → álbum → nombres para llamar a las
 esculturas**. Todo lo que se afirma aquí se midió sobre la serie real (semillas `1…1500`
-con `experimentos/medir.js`; empaste en 600 semillas con `experimentos/empaste.js`) o se
+con `experimentos/medir.js`; encimado en 600 semillas con `experimentos/empaste.js`) o se
 vio en la muestra `experimentos/muestra-1-16.png`. Lo que no se midió, se marca.
 
 ---
@@ -12,8 +12,10 @@ vio en la muestra `experimentos/muestra-1-16.png`. Lo que no se midió, se marca
 ## 0. En una línea
 
 *Las letras* tiene **un motor de formas riquísimo y un gesto temporal fuerte (la escritura)**,
-pero hoy **la letra no se lee, la frase no causa nada en 4 de cada 5 piezas, nada es común y
-nada es raro, y las esculturas no tienen nombre**. *Traspuesta* cerró porque cada rótulo salía
+y un modo de dibujar que es suyo: **signos encimados que construyen perspectiva y volumen
+por transparencia**. Lo que falla es otra cosa: **la frase no causa nada en 4 de cada 5
+piezas, nada es común y nada es raro, las genealogías de muchas partes se vuelven montón, y
+las esculturas no tienen nombre**. *Traspuesta* cerró porque cada rótulo salía
 del dato, la rareza se medía y cada lámina tenía nombre. Eso es lo que le falta a esta.
 
 ---
@@ -31,7 +33,7 @@ del dato, la rareza se medía y cada lámina tenía nombre. Eso es lo que le fal
 | Signos por pieza | p10 845 · mediana 1 597 · p90 3 867 · máx **13 355** |
 | Cuerpo de letra | p10 21 px · mediana 26 · p90 33 (de 9 a 34 según el encuadre) |
 | Ocupación del eje corto | mediana 0.83, p10 0.58 (el loop v0.20 funcionó) |
-| **Empaste** (signos con un vecino a menos de 0.45 cuerpos) | arco **19 %** · espera 63 % · ensamblajes 71 % · genealogía **82–89 %** · entrelazada 89 % |
+| **Encimado** (signos con un vecino a menos de 0.45 cuerpos) | arco **19 %** · espera 63 % · ensamblajes 71 % · genealogía **82–89 %** · entrelazada 89 %. *No es un defecto: es el medio del volumen. Se mide para vigilar dónde deja de leerse como volumen.* |
 | Construcción | 5 ms la mediana, 80 ms el peor caso: hay margen de sobra para medir |
 
 ---
@@ -72,10 +74,14 @@ del dato, la rareza se medía y cada lámina tenía nombre. Eso es lo que le fal
 4. **Monolito de 4 021 líneas.** La auditoría tiene razón, pero ojo con el orden: partirlo es
    caro y arriesga el determinismo. Primero van el test dorado (§4, L0) y las favoritas; se
    parte cuando una mutación de la gramática lo pida, no antes.
-5. **No hay ocultamiento.** `surface.sort` ordena por `rawY` en pantalla, no por profundidad,
-   y nada esconde lo de atrás. Todas las superficies son transparentes. De ahí sale el
-   empaste del §2.2. *Traspuesta* nació de lo contrario: el **horizonte flotante**, cada
-   perfil esconde al de atrás, y de ahí salió hasta el título.
+5. **La transparencia es el destino, pero el orden de dibujo es de pantalla.** Nada esconde lo
+   de atrás, y eso está bien: el encimado es lo que da la perspectiva y el 3D. Aquí la
+   lección de *Traspuesta* (el horizonte flotante, lo de adelante esconde lo de atrás) **se
+   invierte a propósito**: en *las letras* todo se atraviesa. Lo que sí se puede afinar es
+   que `surface.sort` ordena por `rawY` en pantalla y no por profundidad, así que a veces un
+   signo de atrás queda pintado encima de uno de adelante. Ordenar de atrás hacia adelante,
+   sin ocultar nada, haría que la cara cercana mande en el color y reforzaría el volumen
+   (§4, L2).
 6. **Hay una sola vista.** Es una proyección oblicua con `unit = 15`. Con el dato 3D ya
    hecho (cada signo tiene `x, y, z`, cara y cuerpo), la pieza podría dibujar planta, alzado
    y corte, que son las hojas que dibuja un arquitecto. *Traspuesta*: **la montaña no es la
@@ -85,19 +91,18 @@ del dato, la rareza se medía y cada lámina tenía nombre. Eso es lo que le fal
 
 ### 2.2 La forma de verse
 
-1. **La letra no se lee.** Es el problema central de una pieza que se llama *las letras*. En
-   la genealogía, del 82 % al 89 % de los signos tienen otro encima a menos de medio cuerpo.
-   La letra se vuelve mancha, trama o grisado, como el arte ASCII de sombreado, y su
-   identidad se pierde (`N`, `C`, `O`, `)`). La única especie donde la letra se lee es **el
-   arco voxelar (19 %)**, y las láminas más fuertes de la muestra son justo las que dejan
-   ver la letra (`H K 0`, `N C O`). El empaste también hace que las caras se confundan: el
-   reparto frente / lateral / cubierta, que es la idea más fina del motor, se ahoga.
-2. **El volumen se lee por acumulación, no por oclusión.** Las formas de una sola línea
-   (lazo, nudo, serpiente, hipar) se ven espléndidas porque su curva sobrevive a la
-   transparencia. Las genealogías de muchas partes (muestra: 2, 7, 8, 16) se vuelven un
-   montón: suman piezas, pero no hacen escultura.
+1. **El encimado es el medio, y funciona.** En la genealogía, del 82 % al 89 % de los signos
+   tienen otro a menos de medio cuerpo. Ahí la letra deja de ser unidad y se vuelve trazo
+   de una superficie: **la letra se hace espacio**, que es la poética de la pieza. Por eso
+   las formas de una sola línea (lazo, nudo, toro, serpiente, hipar) se ven espléndidas: la
+   transparencia deja ver el tubo, el cruce y el lado de atrás a la vez.
+2. **Donde falla es en el montón.** Las genealogías de muchas partes (muestra: 2, 7, 8, 16)
+   suman cuerpos encimados que no comparten volumen. Ahí la transparencia ya no da 3D, sólo
+   acumula: suman piezas, pero no hacen escultura. Es un problema de composición (cuántos
+   cuerpos, cuánto se separan, cuánto se deforman), no del encimado.
 3. **El cuerpo de la letra cambia con el encuadre** (de 9 a 34 px). Una pieza chica recibe
-   letras gordas y se empasta más. En *Traspuesta* la tinta tenía un peso de plotter fijo. Aquí
+   letras gordas y su trama se cierra; una grande, letras finas y una trama abierta. La
+   densidad del encimado cambia por accidente del encuadre, no por la forma. En *Traspuesta* la tinta tenía un peso de plotter fijo. Aquí
    no existe un "cuerpo de la serie".
 4. **La letra nunca gira.** El signo es siempre vertical, aunque la superficie sea una
    reglada que pide seguir sus generatrices. *Traspuesta* hizo exactamente eso con el río
@@ -127,14 +132,13 @@ del dato, la rareza se medía y cada lámina tenía nombre. Eso es lo que le fal
 - **No hay edición ni congelamiento.** Verse acuña hashes al azar, y para un álbum o una
   exposición hace falta una edición de semillas fijas y una v1.0 intocable.
 - `CRITICA.md` (la anterior) propone sitio, erosión e intruso traductor. Las tres siguen
-  siendo buenas, pero ninguna toca el problema de que la letra no se lee ni el de la frase
-  coartada. Este documento las reordena.
+  siendo buenas, pero ninguna toca el montón de la genealogía ni la frase coartada. Este documento las reordena.
 
 ### 2.4 Limitaciones de fondo (hay que decidirlas, no son bugs)
 
 - **SVG `<text>` con miles de nodos.** Con 13 355 signos y copia carbón son ~27 000 nodos. Va
-  bien en navegador, pero el GIF y una eventual impresión grande lo van a sentir. Una vista
-  en rejilla (§4, L2) reduce los signos de 3 a 5 veces (medido: 3 441 → 1 141, 3 420 → 651).
+  bien en navegador, pero el GIF y una eventual impresión grande lo van a sentir. (La
+  rejilla de §4 los bajaba de 3 a 5 veces, pero quitaba el 3D: descartada.)
 - **Depende de las fuentes.** Apricot y Symbola deciden cómo se ve todo. Un glifo que cae
   a la fuente de reserva cambia la pieza. Ya se verifica a mano, falta un test.
 - **El formato token premia la pasividad.** No hay gesto del visitante, y está bien. Pero el
@@ -147,12 +151,12 @@ del dato, la rareza se medía y cada lámina tenía nombre. Eso es lo que le fal
 
 | Lección de `APRENDIDO.md` | En *las letras* hoy | Qué haría |
 |---|---|---|
-| La forma es un dato; cada vista lo traduce | una sola vista | planta · alzado · axonométrica · rejilla desde el mismo `surface` |
+| La forma es un dato; cada vista lo traduce | una sola vista | la axonométrica es la lámina; planta y alzado sólo como hojas del álbum, también transparentes |
 | Todo rótulo se lee del dato | la frase no causa nada en 78 %; título = nombre de especie | nombres y cédula medidos (§6); frase medida (§4, L7) |
 | Una tirada por rasgo; semillas protegidas | sorteo secuencial + forks parchados; sin favoritas | `FAVORITAS` + test dorado antes de tocar nada |
 | La rareza se mide, no se diseña (`RAREZA.md`, `FRANJAS`) | 34 estructuras planas | tabla de rareza y franjas: clásicos ~50 %, raros 0.2–3 % |
 | Si no se ve, no pasó | genes que no se ven (vacío, anexo, lenguaje) siguen rotulados | medir visibilidad de cada gen; si no se ve, no se rotula |
-| Horizonte flotante: lo de adelante esconde lo de atrás | todo transparente, 80 %+ empaste | ocultamiento por celda (experimento ya hecho, §4, L2) |
+| Horizonte flotante: lo de adelante esconde lo de atrás | todo transparente: **aquí la lección se invierte**, el encimado es el 3D | dibujar de atrás hacia adelante sin ocultar nada (§4, L2) |
 | La letra se dobla con el río | la letra no gira | girar el signo con la generatriz en cuerpos reglados |
 | Medir la ocupación | hecho en v0.20 ✔ | mantener como prueba |
 | Pasar toda mejora global por los casos de frontera | — | correr cada cambio sobre las favoritas y sobre las 6 especies |
@@ -182,21 +186,22 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
   como base, y los exóticos como rareza.
 - Puntaje de rareza = suma de −log₂ de la frecuencia de cada rasgo, en `features`.
 
-**L2 — La letra se lee: ocultamiento por celda** *(experimento hecho)*
-- `experimentos/rejilla.html?hash=N`: cada celda monoespaciada guarda sólo el signo más
-  cercano al ojo, como una máquina de escribir de verdad. El resultado está en
-  `experimentos/rejilla-antes-despues.png`: la letra se lee (`CNCNO…`), las caras se
-  separan, y salen de 3 a 5 veces menos signos. **Lo que se pierde:** en el toro y el nudo
-  se va la lectura del tubo que daba la transparencia, y la profundidad usa `item.y` de manera
-  cruda (en algunas especies el signo no es consistente: falta medirlo).
-- Decisión de Canek: (a) reemplazar, (b) volverlo **vista** (segunda hoja), (c) volverlo
-  **rasgo raro**, "escrita a máquina", en ~15 % de la serie. Mi recomendación es **(b) + (c)**:
-  la transparencia es identidad de la serie y la rejilla es su mejor contrapunto.
+**L2 — Orden de profundidad, sin ocultar nada**
+- Pintar los signos de atrás hacia adelante (por profundidad 3D, no por `rawY` de pantalla).
+  No se quita ningún signo: la transparencia y el encimado quedan iguales, sólo cambia quién
+  queda encima. La cara cercana manda en el color y el volumen se refuerza. Hay que verificar
+  en cada especie qué coordenada es la profundidad real antes de integrarlo.
+- Variante para probar: una caída de opacidad muy leve con la profundidad (perspectiva
+  aérea), sólo si no apaga el lado de atrás.
+- *Descartado:* la rejilla con ocultamiento por celda (`experimentos/rejilla.html`). La letra
+  se leía, pero **quitaba la perspectiva y el 3D**, que son el destino de la pieza. Queda en
+  `experimentos/` como registro del intento (`rejilla-antes-despues.png`).
 
 **L3 — Vistas: planta, alzado, axonométrica**
-- Del mismo `surface` 3D salen tres proyecciones. Planta (z arriba) y alzado (sin
-  profundidad) con ocultamiento. Para el álbum, una lámina = axonométrica + una vista
-  técnica enfrente, como en *Traspuesta*. Se puede usar la **proyección exacta**: la planta
+- Del mismo `surface` 3D salen planta y alzado, **también transparentes**, sólo como
+  hojas acompañantes del álbum. La lámina sigue siendo la axonométrica; si una vista plana
+  le quita fuerza, no entra. Como en *Traspuesta*, una lámina = axonométrica + una vista
+  técnica enfrente. Se puede usar la **proyección exacta**: la planta
   girada para que las líneas de unión coincidan.
 
 **L4 — La letra se dobla**
@@ -206,8 +211,9 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
 
 **L5 — Un cuerpo de letra para la serie**
 - Fijar un rango estrecho (por ejemplo 18–24 px) y que el encuadre ajuste la separación
-  y no el tamaño. Medir el empaste antes y después; meta: mediana de la genealogía
-  debajo de 50 %.
+  y no el tamaño, para que la densidad del encimado dependa de la forma y no del encuadre.
+  La meta **no es bajar el encimado**, es que no varíe por accidente: medir su dispersión
+  entre piezas parecidas antes y después.
 
 **L6 — El sitio, situado** (la mutación 1 de `CRITICA.md`, ahora con lugar)
 - El suelo deja de ser una fila de signos y pasa a ser una condición. Los sitios vienen de
@@ -233,9 +239,10 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
   por uno que tenga sitio (§6).
 
 **L8 — Erosión / el error que sigue** (lo que pide `LOOP_STATE`)
-- Con el ocultamiento (L2), la erosión se vuelve legible: al borrar un signo de adelante
-  aparece el de atrás. **La ruina descubre el interior.** Eso le da a la desescritura un
-  sentido estructural, no de fundido.
+- Con la transparencia, la erosión tiene un sentido propio: al borrar los signos más
+  expuestos, la trama se abre y el interior y el lado de atrás se leen cada vez más claros.
+  **La ruina descubre el interior.** Eso le da a la desescritura un sentido estructural, no
+  de fundido.
 
 **L9 — Partir el motor**, cuando L6 o L8 lo pidan, y con el test dorado de L0 vigilando.
 
@@ -260,7 +267,7 @@ deja, Canek escoge seis.
 
 | Sala | Momento | Qué láminas entran (filtro) |
 |---|---|---|
-| **I. IDEOGRAMA** | Tablada, *Li-Po y otros poemas* (1920): el poema que se dibuja | piezas donde **la letra se lee**: arco voxelar, vista rejilla, alfabetos de letra (CNO, MECÁNICA, PARÉNTESIS, PÓRTICO) |
+| **I. IDEOGRAMA** | Tablada, *Li-Po y otros poemas* (1920): el poema que se dibuja | piezas donde la letra todavía es letra: arco voxelar (encimado 19 %) y alfabetos de letra (CNO, MECÁNICA, PARÉNTESIS, PÓRTICO) |
 | **II. ESTRIDENTÓPOLIS** | estridentismo (*Actual No. 1*, 1921), la ciudad radiofónica, Germán Cueto | antenas parabólicas, torres, piezas fragmentadas (hoy DECONSTRUCTIVISMO), copia carbón |
 | **III. ARQUITECTURA EMOCIONAL** | Goeritz, El Eco y su manifiesto (1953) | serpiente, muros y pantallas, torres altas, temperatura FEBRIL, hoy EXPRESIONISMO |
 | **IV. CASCARONES** | Candela: Rayos Cósmicos (1951), Los Manantiales (1958) | hipar, onda, onda estacionaria, paraboloide, cúpula inversa |
@@ -275,7 +282,7 @@ regla que con las lenguas de* Traspuesta*: nada entra sin registro.)*
 ### 5.3 Cada página
 
 - A la izquierda, la lámina axonométrica (estado final de la escritura).
-- A la derecha, su **vista técnica** (planta o rejilla, L2/L3) y la **cédula** (§6.5).
+- A la derecha, su **vista técnica** (planta o alzado transparentes, L3) y la **cédula** (§6.5).
 - Por sala: **un GIF de la escritura** de ≤ 10 s y ≤ 5 MB (regla de *Traspuesta*) y un texto
   de sala corto que diga qué une a esas láminas, medido, sin explicar la obra.
 
@@ -284,8 +291,8 @@ regla que con las lenguas de* Traspuesta*: nada entra sin registro.)*
 1. **Visor web** del álbum, con portada, salas y ficha tocable, igual que el atlas de
    *Traspuesta*. El nomenclátor de §6 vive ahí.
 2. **PDF para imprimir**, 48 láminas + cédulas.
-3. Más adelante, la **prueba en plotter o máquina de escribir** de la vista rejilla. Si la
-   rejilla es monoespaciada, una lámina se puede escribir en una máquina de escribir real.
+3. Más adelante, la **prueba en plotter**: tinta sobre tinta es la transparencia natural
+   del plotter, así que el encimado debería sobrevivir al papel.
 
 ### 5.5 Título del álbum (lo decide Canek)
 
@@ -315,7 +322,7 @@ cuarta parte de las piezas que de verdad lo son.
   (ESTRUCTURA 7, VARIANTE 12). Sale sólo cuando la pieza es pariente cercana de otras de la
   edición (misma estructura y cubierta). El número cuenta a sus hermanas.
 - **Mensaje**, en la estela de los *Mensajes* de Goeritz: para las piezas cuya letra se lee
-  (rejilla, arco), MENSAJE + complemento.
+  (arco, alfabetos de letra), MENSAJE + complemento.
 - **Calificativo pegado**: TORRE ESBELTA, CASCARÓN VOLADO.
 - **Lugar**, sólo con el sitio de L6: DEL PEDREGAL, DEL LAGO, DEL PERIFÉRICO.
 
@@ -406,7 +413,7 @@ repeticiones por título en la edición.
 
 ## 7. Lo que decide Canek
 
-1. ¿La rejilla reemplaza, es vista, es rasgo raro o las dos últimas? (recomiendo vista + rasgo raro)
+1. ¿Probamos el orden de profundidad sin ocultar (L2)? La rejilla queda descartada.
 2. ¿La frase manda (A) o se mide (B)? (recomiendo B, más honesta y más barata)
 3. ¿Se renombran los lenguajes (§6.6)?
 4. Tamaño de la edición (1 000), número de láminas del álbum (48) y título.
@@ -417,9 +424,9 @@ repeticiones por título en la edición.
 
 - `CRITICA-Y-PLAN.md`: este documento.
 - `experimentos/medir.js`: tabla de la serie (`node lasletras/experimentos/medir.js 1500`).
-- `experimentos/empaste.js`: empaste por especie.
-- `experimentos/rejilla.html`: ocultamiento por celda, antes/después (`?hash=N`).
-- `experimentos/rejilla-antes-despues.png`: semillas 3, 6, 11 y 15.
+- `experimentos/empaste.js`: encimado por especie.
+- `experimentos/rejilla.html`: ocultamiento por celda (**descartado**: quitaba la perspectiva y el 3D).
+- `experimentos/rejilla-antes-despues.png`: el intento, semillas 3, 6, 11 y 15.
 - `experimentos/muestra-1-16.png`: estado final de las semillas 1–16 (`?still=1`).
 
 El motor no se tocó. Ninguna semilla cambió.

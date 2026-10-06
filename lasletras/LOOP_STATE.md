@@ -83,3 +83,8 @@ medidos: la frase no mueve la geometría en 78 % de la serie; 34 estructuras
 planas (máx 4.3 %); empaste 82–89 % en la genealogía contra 19 % en el arco.
 Experimento aparte `experimentos/rejilla.html` (ocultamiento por celda). Motor
 intacto.
+
+**Corrección de Canek (C1):** el encimado transparente es el destino de la pieza,
+no un defecto: es lo que da la perspectiva y el 3D. La rejilla con ocultamiento
+queda **descartada** (quitaba ambos). En su lugar se propone L2: ordenar el
+dibujo por profundidad sin ocultar ningún signo.
