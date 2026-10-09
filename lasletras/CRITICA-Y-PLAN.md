@@ -298,7 +298,7 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
   pieza), el recorrido del jardín con cámara, o sólo el álbum y la sala, sin tocar el
   token.
 - Página: https://claude.ai/artifact/RfRWfVQveP2wLFwEvKPbr3 · GIF: `giro-nudo-3.gif`,
-  `giro-espacio-7.gif`.
+  `giro-espacio-7.gif`, y el hipar monumental: `giro-hipar-1.gif`, `-39`, `-47`, `-58`.
 
 **L3 — Vistas: planta, alzado, axonométrica**
 - Del mismo `surface` 3D salen planta y alzado, **también transparentes**, sólo como
