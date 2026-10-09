@@ -281,6 +281,25 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
 - Página: https://claude.ai/artifact/FEgAGR6SNSHPpeQk4hL3SX · GIF: `jardin-espacio-3.gif`,
   `jardin-espacio-7.gif`, `jardin-pedregal-11.gif`, `jardin-pedregal-10.gif`.
 
+**L-giro — Girar el espacio** *(prueba hecha)*
+- Cada signo ya tiene su lugar 3D (`item.depth` desde v0.22, `z`, y la x se recupera de
+  `rawX`). Girar es rotar esos puntos antes de proyectar y reordenar de atrás hacia
+  adelante en cada cuadro. Los signos no giran: siguen de pie.
+- Va fluido: 60 cuadros en ~1 s con 3 400 signos, en canvas (el SVG no aguantaría).
+- **Límite:** los cuerpos de vóxel (arco, masa arqueada, cubos, zigurat) sólo emiten tres
+  caras, las de la cámara fija. `girar-parche.js` agrega la de atrás y el otro costado
+  ("caras completas"); cambia el número de signos y con él los errores de la semilla.
+  Las superficies paramétricas ya eran completas.
+- **Pendiente de pensar:** las caras (frente / lateral / cubierta) se asignan para la
+  cámara fija; al girar, el "frente" de un cuerpo puede quedar de espaldas con su mismo
+  signo. Recalcular la cara con la normal en cada cuadro haría que el alfabeto también
+  gire con la luz.
+- Usos posibles: un giro lento después de la escritura (el tiempo que le faltaba a la
+  pieza), el recorrido del jardín con cámara, o sólo el álbum y la sala, sin tocar el
+  token.
+- Página: https://claude.ai/artifact/RfRWfVQveP2wLFwEvKPbr3 · GIF: `giro-nudo-3.gif`,
+  `giro-espacio-7.gif`.
+
 **L3 — Vistas: planta, alzado, axonométrica**
 - Del mismo `surface` 3D salen planta y alzado, **también transparentes**, sólo como
   hojas acompañantes del álbum. La lámina sigue siendo la axonométrica; si una vista plana

@@ -144,3 +144,10 @@ silueta en pantalla + suelo borrado bajo las piezas); suelo limitado a la
 composición para usar la pantalla; Pedregal con lava en manchones, muros más
 bajos, sin muro ni sendero detrás del arco. Corregido en el jardín: el lazo del
 motor ignora baseY.
+
+### Prueba L-giro (9 oct 2026)
+
+Canek pregunta si se puede girar como 3D. Sí: prototipo en canvas que rota los
+puntos 3D y reordena por profundidad en cada cuadro (60 cps con 3.4k signos).
+Los vóxel sólo tenían 3 caras: girar-parche.js agrega atrás y el otro costado.
+Página publicada y dos GIF de una vuelta completa.

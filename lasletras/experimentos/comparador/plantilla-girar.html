@@ -1,0 +1,208 @@
+<meta charset="utf-8">
+<title>Girar el espacio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Mesa de comparación: barra de controles arriba, lámina cuadrada al centro, ficha medida abajo. */
+:root{
+  --bg:#e9e8e2; --panel:#f6f5f0; --fg:#1b1d1b; --muted:#5d625d; --line:#c9c8bf; --accent:#16707a;
+  --f-display:"Architecture Mono","IBM Plex Mono",ui-monospace,monospace;
+  --f-body:"Archivo",system-ui,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141615; --panel:#1c1f1e; --fg:#e7e7e1; --muted:#9aa09a; --line:#353a38; --accent:#5cc6cf; color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#141615; --panel:#1c1f1e; --fg:#e7e7e1; --muted:#9aa09a; --line:#353a38; --accent:#5cc6cf; color-scheme:dark}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1180px;margin:0 auto;padding-inline:16px;padding-block:20px 40px;display:grid;gap:16px}
+header{display:grid;gap:6px}
+h1{font-family:var(--f-display);font-weight:400;font-size:clamp(22px,3.2vw,32px);letter-spacing:.04em;margin:0;text-wrap:balance}
+.lede{margin:0;max-width:68ch;color:var(--muted)}
+.controls{display:flex;flex-wrap:wrap;gap:12px 20px;align-items:end;background:var(--panel);border:1px solid var(--line);padding:12px 14px}
+.field{display:grid;gap:4px}
+.label{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+button,input[type=number]{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);padding:5px 10px;min-height:32px}
+input[type=number]{width:7.5em;font-family:var(--f-mono)}
+button{cursor:pointer}
+button:hover{border-color:var(--accent)}
+button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.chip{font-family:var(--f-mono);font-size:13px;padding:4px 9px;min-height:28px}
+input[type=range]{accent-color:var(--accent);width:160px}
+.val{font-family:var(--f-mono);font-size:13px;font-variant-numeric:tabular-nums;min-width:3.2em;display:inline-block}
+.stage-wrap{display:grid;gap:8px}
+.stage{display:grid;gap:12px;grid-template-columns:1fr}
+.stage.lado{grid-template-columns:1fr 1fr}
+@media (max-width:640px){.stage.lado{grid-template-columns:1fr}}
+.box{position:relative;aspect-ratio:1;max-width:100%;width:100%;margin:0 auto;border:1px solid var(--line);overflow:hidden;cursor:crosshair}
+.stage:not(.lado) .box{max-width:min(100%,760px)}
+.box svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.tag{position:absolute;top:8px;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--panel);color:var(--fg);border:1px solid var(--line);padding:2px 7px;pointer-events:none}
+.tag.l{left:8px}.tag.r{right:8px}
+.seam{position:absolute;top:0;bottom:0;width:2px;background:var(--accent);pointer-events:none;transform:translateX(-1px)}
+.cortina-row{display:flex;gap:10px;align-items:center;max-width:760px;width:100%;margin:0 auto}
+.cortina-row input{flex:1;width:auto}
+.ficha{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.ficha div{background:var(--panel);padding:10px 12px;display:grid;gap:2px;min-width:0}
+.ficha b{font-family:var(--f-mono);font-weight:500;font-size:17px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.nota{color:var(--muted);font-size:13px;max-width:80ch;margin:0}
+.glyph{font-family:"Architecture Mono","Unicode Backup",monospace;white-space:pre}
+.fx-electronica{font-family:"Electrónica","Architecture Mono",monospace}
+.fx-egipcio{font-family:"Jeroglífico Egipcio","Unicode Backup",monospace}
+.fx-anatolio{font-family:"Jeroglífico Anatolio","Unicode Backup",monospace}
+.fx-linealb{font-family:"Lineal B","Unicode Backup",monospace}
+.cargando{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--f-mono);font-size:12px;color:var(--muted);background:var(--panel)}
+.giro{position:relative;aspect-ratio:1;width:100%;max-width:820px;margin:0 auto;border:1px solid var(--line);touch-action:none;cursor:grab;overflow:hidden}
+.giro.drag{cursor:grabbing}
+.giro canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.opc{display:flex;gap:6px 14px;flex-wrap:wrap}
+.opc label{display:flex;gap:6px;align-items:center;font-size:14px;cursor:pointer}
+.opc input{accent-color:var(--accent);width:16px;height:16px}
+.pista{position:absolute;bottom:8px;left:8px;font-family:var(--f-mono);font-size:11px;background:var(--panel);color:var(--muted);border:1px solid var(--line);padding:2px 7px;pointer-events:none}
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>GIRAR EL ESPACIO</h1>
+    <p class="lede">Espacio escultórico, prueba de giro. Cada signo ya tiene su lugar en 3D; aquí se rota antes de dibujarlo y se reordena de atrás hacia adelante en cada cuadro. Arrastra la lámina para girarla. Los signos no giran: siguen siendo letras de pie, como en la máquina de escribir.</p>
+  </header>
+
+  <div class="controls" role="group" aria-label="Controles">
+    <div class="field">
+      <span class="label">Semilla</span>
+      <div class="row">
+        <button id="prev" aria-label="Semilla anterior">‹</button>
+        <input id="seed" type="number" min="1" step="1" value="3" aria-label="Número de semilla">
+        <button id="next" aria-label="Semilla siguiente">›</button>
+      </div>
+    </div>
+    <div class="field">
+      <span class="label">Qué girar</span>
+      <div class="row" id="tipos">
+        <button data-t="pieza" aria-pressed="true">La pieza (v0.22)</button>
+        <button data-t="ESPACIO ESCULTÓRICO" aria-pressed="false">Jardín · espacio escultórico</button>
+        <button data-t="PEDREGAL" aria-pressed="false">Jardín · pedregal</button>
+      </div>
+    </div>
+    <div class="field">
+      <span class="label">Para empezar</span>
+      <div class="row" id="presets"></div>
+    </div>
+    <div class="field">
+      <span class="label">Giro</span>
+      <div class="row">
+        <button id="solo" aria-pressed="true">Girar solo</button>
+        <button id="frente">Volver al frente</button>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label" for="elev">Altura de la mirada</label>
+      <div class="row"><input id="elev" type="range" min="0" max="80" step="1" value="22"><span class="val" id="elevVal">22°</span></div>
+    </div>
+    <div class="field">
+      <span class="label">Cuerpos de vóxel</span>
+      <div class="opc"><label><input type="checkbox" id="completas" checked> Caras completas</label></div>
+    </div>
+  </div>
+
+  <div class="giro" id="giro"><canvas id="lienzo"></canvas><span class="pista" id="pista">arrastra para girar</span></div>
+  <div class="ficha" id="ficha"></div>
+  <p class="nota">Los cuerpos de vóxel (arcos, masa arqueada, cubos, zigurats) sólo tenían tres caras, las que se ven desde la cámara fija: frente, un costado y techo. Con «caras completas» se les agregan la de atrás y el otro costado, para que al girarlos no se vean huecos. Las superficies paramétricas (esferas, cintas, nudos, hipar) ya eran completas. Cambiar esta casilla mueve los errores y la anomalía de la semilla, porque cambia el número de signos.</p>
+</div>
+
+<script>/*@@MOTOR@@*/</script>
+<script>var ARQ_FUENTE = /*@@FUENTE@@*/null; var JARDIN_FUENTE = /*@@JARDIN@@*/null;</script>
+<script>/*@@PARCHE@@*/</script>
+<script>
+(function(){
+"use strict";
+var FONT_FILES=[["Architecture Mono","fonts/Ac437_ApricotPortable.ttf"],["Unicode Backup","fonts/Symbola.otf"],
+  ["Electrónica","fonts/ELECTRONICS.TTF"],["Jeroglífico Egipcio","fonts/NOTOSANSEGYPTIANHIEROGLYPHS-REGULAR.TTF"],
+  ["Jeroglífico Anatolio","fonts/NOTOSANSANATOLIANHIEROGLYPHS-REGULAR.TTF"],["Lineal B","fonts/NOTOSANSLINEARB-REGULAR.TTF"]];
+var CF={egipcio:'"Jeroglífico Egipcio","Unicode Backup",monospace',anatolio:'"Jeroglífico Anatolio","Unicode Backup",monospace',
+  linealb:'"Lineal B","Unicode Backup",monospace',electronica:'"Electrónica","Architecture Mono",monospace'};
+var BASE='"Architecture Mono","Unicode Backup",monospace';
+var PRESETS={pieza:[[3,"nudo"],[60,"espiral"],[11,"genealogía"],[457,"interior mayor"],[2,"arco"],[1,"ensamblaje"]],
+  "ESPACIO ESCULTÓRICO":[[3,""],[7,""],[8,""],[5,""]],PEDREGAL:[[11,""],[10,""],[6,""],[14,""]]};
+var $=function(id){return document.getElementById(id)};
+function motor(completas){var src=ARQ_FUENTE;if(completas)src=GIRAR_PARCHE.parchar(src);
+  var raiz={ARQ_AZAR:window.ARQ_AZAR,ARQ_CORPUS:window.ARQ_CORPUS};new Function("window",JARDIN_PARCHE.parchar(src,JARDIN_FUENTE))(raiz);return raiz.ARQ_MOTOR}
+var MOTORES={0:motor(false),1:motor(true)};
+var state={seed:3,tipo:"pieza",yaw:0,elev:22,solo:true,completas:true};
+try{var sv=JSON.parse(localStorage.getItem("girar")||"null");if(sv){if(sv.tipo)state.tipo=sv.tipo;if(sv.elev!==undefined)state.elev=sv.elev}}catch(e){}
+var P=null,cv=$("lienzo"),ctx=cv.getContext("2d"),yaw0=0;
+
+function prepara(){
+  var M=MOTORES[state.completas?1:0],piece,pts;
+  if(state.tipo==="pieza"){
+    piece=M.build({seed:String(state.seed)});var t=piece.traits,p=Math.max(0,Math.min(1,t.perspective/100)),u=15,dX=u*(0.035+0.765*p)*t.direction;
+    pts=piece.surface.filter(function(s){return s.glyph}).map(function(s){return{x:(s.rawX-s.depth*dX)/u+s.perturbX/u,y:s.depth,z:s.z-s.perturbY/u,s:s}});
+    yaw0=-t.direction*Math.atan2(0.035+0.765*p,1)*0.9;
+  }else{
+    piece=M.buildGarden({seed:String(state.seed),variant:state.tipo});var cam=piece.traits.camera;
+    pts=piece.surface.filter(function(s){return s.glyph}).map(function(s){return{x:s.rawX/15-s.depth*cam.shear,y:s.depth,z:s.z,s:s}});
+    yaw0=-Math.atan(cam.shear);
+  }
+  var b={x0:Infinity,x1:-Infinity,y0:Infinity,y1:-Infinity,z0:Infinity,z1:-Infinity};
+  pts.forEach(function(q){b.x0=Math.min(b.x0,q.x);b.x1=Math.max(b.x1,q.x);b.y0=Math.min(b.y0,q.y);b.y1=Math.max(b.y1,q.y);b.z0=Math.min(b.z0,q.z);b.z1=Math.max(b.z1,q.z)});
+  var c={x:(b.x0+b.x1)/2,y:(b.y0+b.y1)/2,z:(b.z0+b.z1)/2},R=0;
+  pts.forEach(function(q){q.dx=q.x-c.x;q.dy=q.y-c.y;q.dz=q.z-c.z;R=Math.max(R,Math.hypot(q.dx,q.dy,q.dz))});
+  P={piece:piece,pts:pts,R:R};state.yaw=yaw0;ficha();
+}
+function color(piece,s){var c=piece.colors;if(s.anomaly)return c.anomalia;if(s.forcedColor)return s.forcedColor;
+  var f=s.face,r=piece.traits.alphabetRelation;
+  if(s.body==="derecha"&&r==="CARAS INVERTIDAS")f=f==="frente"?"lateral":f==="lateral"?"frente":"techo";
+  else if(s.body==="derecha"&&r==="TRADUCCIÓN MATERIAL")f=f==="frente"?"techo":f==="techo"?"frente":"lateral";
+  return c[f]||c.frente}
+function dibuja(){
+  if(!P)return;var dpr=window.devicePixelRatio||1,W=cv.clientWidth,H=cv.clientHeight;
+  if(cv.width!==Math.round(W*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr)}
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.fillStyle=P.piece.colors.papel;ctx.fillRect(0,0,W,H);
+  var cy=Math.cos(state.yaw),sy=Math.sin(state.yaw),e=state.elev*Math.PI/180,ce=Math.cos(e),se=Math.sin(e);
+  var px=0.47*W/Math.max(1,P.R),fs=Math.max(5,Math.min(34,0.87*px));
+  P.pts.forEach(function(q){var xr=q.dx*cy-q.dy*sy,yr=q.dx*sy+q.dy*cy;q.X=W/2+xr*px;q.Y=H/2+(-q.dz*ce-yr*se)*px;q.D=yr*ce-q.dz*se});
+  P.pts.sort(function(a,b){return b.D-a.D});
+  ctx.textAlign="center";ctx.textBaseline="middle";var last="";
+  P.pts.forEach(function(q){var s=q.s,f=fs+"px "+(s.fontKind&&CF[s.fontKind]||BASE);if(f!==last){ctx.font=f;last=f}
+    ctx.globalAlpha=s.opacity;ctx.fillStyle=color(P.piece,s);ctx.fillText(s.glyph,q.X,q.Y)});
+  ctx.globalAlpha=1;
+}
+function ficha(){
+  var f=$("ficha");f.innerHTML="";var g=P.piece.geometry,forma=g.pieces?g.pieces.join(" · "):g.genealogy?g.genealogy.structure+" / "+g.genealogy.crown:(g.assembly||g.kind||"");
+  [["Especie",P.piece.meta.species],["Forma",forma],["Signos",P.pts.length.toLocaleString("es-MX")]].forEach(function(kv){
+    var d=document.createElement("div"),l=document.createElement("span"),b=document.createElement("b");l.className="label";l.textContent=kv[0];b.textContent=kv[1];
+    d.appendChild(l);d.appendChild(b);f.appendChild(d)});
+}
+var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches,lastT=null,drag=null;
+if(reduce){state.solo=false}
+function loop(t){if(lastT!==null&&state.solo&&!drag)state.yaw+=(t-lastT)*0.00035;lastT=t;dibuja();requestAnimationFrame(loop)}
+var giro=$("giro");
+giro.addEventListener("pointerdown",function(e){drag={x:e.clientX,y:e.clientY,yaw:state.yaw,elev:state.elev};giro.classList.add("drag");giro.setPointerCapture(e.pointerId);$("pista").hidden=true});
+giro.addEventListener("pointermove",function(e){if(!drag)return;state.yaw=drag.yaw+(e.clientX-drag.x)*0.01;
+  state.elev=Math.max(0,Math.min(80,drag.elev+(e.clientY-drag.y)*0.3));$("elev").value=Math.round(state.elev);$("elevVal").textContent=Math.round(state.elev)+"°"});
+function soltar(){if(!drag)return;drag=null;giro.classList.remove("drag");save()}
+giro.addEventListener("pointerup",soltar);giro.addEventListener("pointercancel",soltar);
+function save(){try{localStorage.setItem("girar",JSON.stringify({tipo:state.tipo,elev:state.elev}))}catch(e){}}
+function press(group,attr,val){Array.prototype.forEach.call($(group).querySelectorAll("button[data-"+attr+"]"),function(b){b.setAttribute("aria-pressed",String(b.dataset[attr]===String(val)))})}
+function presets(){var r=$("presets");r.innerHTML="";(PRESETS[state.tipo]||[]).forEach(function(p){var b=document.createElement("button");b.className="chip";
+  b.textContent=p[0]+(p[1]?" · "+p[1]:"");b.addEventListener("click",function(){go(p[0])});r.appendChild(b)})}
+function go(seed){state.seed=Math.max(1,Math.round(+seed||1));$("seed").value=state.seed;prepara()}
+$("prev").addEventListener("click",function(){go(state.seed-1)});$("next").addEventListener("click",function(){go(state.seed+1)});
+$("seed").addEventListener("change",function(){go(this.value)});
+$("tipos").addEventListener("click",function(e){var t=e.target.dataset&&e.target.dataset.t;if(!t)return;state.tipo=t;press("tipos","t",t);presets();save();go(state.seed)});
+$("solo").addEventListener("click",function(){state.solo=!state.solo;this.setAttribute("aria-pressed",String(state.solo))});
+$("frente").addEventListener("click",function(){state.yaw=yaw0;state.solo=false;$("solo").setAttribute("aria-pressed","false")});
+$("elev").addEventListener("input",function(){state.elev=+this.value;$("elevVal").textContent=this.value+"°";save()});
+$("completas").addEventListener("change",function(){state.completas=this.checked;var y=state.yaw;prepara();state.yaw=y});
+$("elev").value=state.elev;$("elevVal").textContent=state.elev+"°";$("solo").setAttribute("aria-pressed",String(state.solo));press("tipos","t",state.tipo);presets();
+Promise.all(FONT_FILES.map(function(f){return fetch(f[1]).then(function(r){if(!r.ok)throw new Error(f[1]);return r.arrayBuffer()})
+  .then(function(buf){var face=new FontFace(f[0],buf);document.fonts.add(face);return face.load()}).catch(function(){return null})}))
+  .then(function(){go(state.seed);requestAnimationFrame(loop)});
+// Para armar GIF fuera de la página: fija el giro, dibuja y devuelve el cuadro.
+window.__girar={ir:function(seed,tipo){state.tipo=tipo;press("tipos","t",tipo);go(seed);state.solo=false},
+  cuadro:function(frac){state.yaw=yaw0+frac*Math.PI*2;dibuja();return cv.toDataURL("image/png")}};
+})();
+</script>
