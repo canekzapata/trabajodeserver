@@ -1,7 +1,7 @@
-// Mide las cintas del motor: paso entre muestras y cortes. node lasletras/experimentos/cierre-medir.js [N]
+// (contra el motor v0.21: el de hoy ya trae el cierre) Mide las cintas del motor: paso entre muestras y cortes. node lasletras/experimentos/cierre-medir.js [N]
 const fs=require('fs'),path=require('path'),os=require('os');
 const js=path.join(__dirname,'..','js');
-const src=require('./cierre-parche.js').parchar(fs.readFileSync(path.join(js,'architecture.js'),'utf8'));
+const src=require('./cierre-parche.js').parchar(fs.readFileSync(path.join(__dirname,'motor-v021','architecture.js'),'utf8'));
 const tmp=path.join(js,'.architecture-cierre.tmp.js');fs.writeFileSync(tmp,src);
 const M=require(tmp);fs.unlinkSync(tmp);
 const N=+process.argv[2]||600,porClave={};

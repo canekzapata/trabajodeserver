@@ -297,6 +297,12 @@ Cada loop lleva su número, se mide antes y después, y Canek lo decide viendo l
 - Usos posibles: un giro lento después de la escritura (el tiempo que le faltaba a la
   pieza), el recorrido del jardín con cámara, o sólo el álbum y la sala, sin tocar el
   token.
+- **Escribir y girar** (`comparador/plantilla-escribir-girar.html`, a pantalla completa
+  como la pieza): se escribe con el horario real en la vista fija (v0.22); al terminar,
+  cada signo viaja 1.8 s de su lugar en la lámina a su lugar en la vista giratoria
+  ("tomando volumen"), las caras de atrás de los vóxel aparecen durante el viaje, y la
+  pieza gira sola. Arrastrar toma el control. Sirve también para los jardines (escritos
+  por recorrido). Publicada: https://claude.ai/artifact/37nEtWJSNGX2eruTEMk3Ca
 - Página: https://claude.ai/artifact/RfRWfVQveP2wLFwEvKPbr3 · GIF: `giro-nudo-3.gif`,
   `giro-espacio-7.gif`, y el hipar monumental: `giro-hipar-1.gif`, `-39`, `-47`, `-58`.
 
@@ -525,6 +531,8 @@ repeticiones por título en la edición.
 6. ¿Se mantienen las frases en inglés?
 
 ## 8. Archivos de este loop
+
+- `LOCAL.md` y `experimentos/index.html`: cómo abrir todo en local y la portada del taller; `experimentos/paginas/`: las cinco páginas autónomas armadas para local.
 
 - `CRITICA-Y-PLAN.md`: este documento.
 - `experimentos/medir.js`: tabla de la serie (`node lasletras/experimentos/medir.js 1500`).

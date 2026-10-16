@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Espacio escultórico · taller</title>
+<style>
+@font-face{font-family:"Architecture Mono";src:url("../fonts/Ac437_ApricotPortable.ttf")}
+:root{--bg:#e9e8e2;--panel:#f6f5f0;--fg:#1b1d1b;--muted:#5d625d;--line:#c9c8bf;--accent:#16707a}
+@media (prefers-color-scheme: dark){:root{--bg:#141615;--panel:#1c1f1e;--fg:#e7e7e1;--muted:#9aa09a;--line:#353a38;--accent:#5cc6cf;color-scheme:dark}}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.5 system-ui,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:28px 16px 48px}
+h1{font-family:"Architecture Mono",monospace;font-weight:400;letter-spacing:.05em;font-size:28px;margin:0 0 6px}
+h2{font-family:"Architecture Mono",monospace;font-weight:400;font-size:15px;letter-spacing:.08em;color:var(--muted);margin:28px 0 8px}
+p{max-width:68ch;color:var(--muted);margin:0 0 8px}
+ul{list-style:none;padding:0;margin:0;display:grid;gap:1px;background:var(--line);border:1px solid var(--line)}
+li{background:var(--panel);padding:10px 14px}
+a{color:var(--accent);font-family:"Architecture Mono",monospace;text-decoration:none}
+a:hover,a:focus-visible{text-decoration:underline}
+li span{display:block;color:var(--muted);font-size:13.5px}
+code{font-size:13px}
+</style></head><body><div class="wrap">
+<h1>ESPACIO ESCULTÓRICO · TALLER</h1>
+<p>Todo lo que hicimos, para abrir en local. La pieza es la v0.22. Los experimentos usan copias parchadas del motor y no lo modifican.</p>
+
+<h2>LA PIEZA</h2>
+<ul>
+<li><a href="../index.html">La pieza (v0.22)</a><span>Como en Verse: se escribe y queda. <code>?hash=3</code> fija la semilla; <code>i</code> abre la ficha.</span></li>
+<li><a href="paginas/escribir-girar.html">Escribir y girar</a><span>Se escribe con su horario real y, al terminar, toma volumen y gira sola. Arrastra para girarla. <code>?hash=58</code> · <code>?tipo=pieza|espacio|pedregal</code> · <code>?giro=manual</code></span></li>
+</ul>
+
+<h2>EXPERIMENTOS CON PÁGINA</h2>
+<ul>
+<li><a href="paginas/girar.html">Girar el espacio</a><span>La pieza y los jardines en 3D, con «caras completas» para los vóxel.</span></li>
+<li><a href="paginas/jardin.html">Jardines escultóricos</a><span>Pedregal y Espacio escultórico, escritos por recorrido.</span></li>
+<li><a href="paginas/cierre.html">Cierre de curvas</a><span>El motor v0.21 contra las curvas cerradas (ya integrado en v0.22).</span></li>
+<li><a href="paginas/profundidad.html">Orden de profundidad</a><span>Orden de pantalla contra orden 3D (ya integrado en v0.22).</span></li>
+</ul>
+
+<h2>HERRAMIENTAS (PARA ARMAR GIF Y MIRAR SEMILLAS)</h2>
+<ul>
+<li><a href="jardin.html?variante=ESPACIO%20ESCULT%C3%93RICO&semillas=1,2,3,4,5,6,7,8">Galería de jardines</a><span><code>?variante=PEDREGAL</code> · <code>?semillas=1,2,3</code> · <code>?gif=7</code> para un lienzo de GIF.</span></li>
+<li><a href="escritura.html?hash=3">Escritura lado a lado</a><span>Hoy contra profundidad; <code>?modo=cierre</code> para v0.21 contra cerrado.</span></li>
+<li><a href="profundidad.html?hash=3">Profundidad, lámina fija</a><span><code>?aire=0.35</code> para la perspectiva aérea.</span></li>
+<li><a href="rejilla.html?hash=3">Rejilla (descartado)</a><span>Quitaba la perspectiva y el 3D; queda como registro.</span></li>
+</ul>
+
+<h2>DOCUMENTOS</h2>
+<p><code>CRITICA-Y-PLAN.md</code>, <code>LOOP_STATE.md</code>, <code>README.md</code> y <code>LOCAL.md</code> están en la carpeta <code>lasletras/</code>.</p>
+</div></body></html>

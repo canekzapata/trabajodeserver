@@ -151,3 +151,11 @@ Canek pregunta si se puede girar como 3D. Sí: prototipo en canvas que rota los
 puntos 3D y reordena por profundidad en cada cuadro (60 cps con 3.4k signos).
 Los vóxel sólo tenían 3 caras: girar-parche.js agrega atrás y el otro costado.
 Página publicada y dos GIF de una vuelta completa.
+
+### Escribir y girar + paquete local (16 oct 2026)
+
+Canek pide juntar escritura y giro, y un zip para su local. Página a pantalla
+completa: escribe (vista fija v0.22), viaja a 3D en 1.8 s y gira sola; arrastre
+manual. LOCAL.md + experimentos/index.html (taller) + experimentos/paginas/
+(5 páginas autónomas). Corrección: las comparaciones del cierre usan la copia
+experimentos/motor-v021/ porque el motor actual ya trae el cierre.

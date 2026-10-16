@@ -1,0 +1,183 @@
+<meta charset="utf-8">
+<title>Escribir y girar</title>
+<style>
+/* La lámina ocupa toda la pantalla, como la pieza; una barra mínima abajo aparece al mover el puntero. */
+:root{
+  --bar:#141615; --bar-fg:#e7e7e1; --bar-muted:#9aa09a; --bar-line:#353a38; --accent:#5cc6cf;
+  --f-ui:"Architecture Mono","IBM Plex Mono",ui-monospace,monospace;
+  color-scheme:dark;
+}
+html,body{height:100%}
+body{margin:0;background:#10100f;overflow:hidden;font-family:var(--f-ui)}
+#lamina{position:fixed;inset:0;display:grid;place-items:center;touch-action:none;cursor:grab}
+#lamina.drag{cursor:grabbing}
+canvas{display:block;width:min(100vw,100vh);height:min(100vw,100vh)}
+.barra{position:fixed;left:50%;bottom:calc(10px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);
+  display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;max-width:calc(100vw - 32px);
+  background:var(--bar);color:var(--bar-fg);border:1px solid var(--bar-line);padding:6px 8px;font-size:12px;
+  transition:opacity .4s;opacity:1}
+.barra.quieta{opacity:0;pointer-events:none}
+.barra button,.barra input{font:inherit;color:var(--bar-fg);background:transparent;border:1px solid var(--bar-line);padding:4px 8px;min-height:28px;cursor:pointer}
+.barra input{width:6em;cursor:text}
+.barra button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--bar)}
+.barra button:hover{border-color:var(--accent)}
+.barra .sep{width:1px;align-self:stretch;background:var(--bar-line)}
+.barra .estado{color:var(--bar-muted);min-width:9em;text-align:center}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion: reduce){.barra{transition:none}}
+</style>
+
+<div id="lamina" aria-label="Espacio escultórico: la pieza se escribe y después gira"><canvas id="lienzo"></canvas></div>
+<div class="barra" id="barra" role="group" aria-label="Controles">
+  <button id="prev" aria-label="Semilla anterior">‹</button>
+  <input id="seed" type="number" min="1" step="1" value="3" aria-label="Semilla">
+  <button id="next" aria-label="Semilla siguiente">›</button>
+  <span class="sep"></span>
+  <button data-t="pieza" aria-pressed="true">pieza</button>
+  <button data-t="ESPACIO ESCULTÓRICO" aria-pressed="false">espacio</button>
+  <button data-t="PEDREGAL" aria-pressed="false">pedregal</button>
+  <span class="sep"></span>
+  <button id="escribir">escribir de nuevo</button>
+  <button id="solo" aria-pressed="true">girar solo</button>
+  <span class="estado" id="estado">—</span>
+</div>
+
+<script>/*@@MOTOR@@*/</script>
+<script>var ARQ_FUENTE = /*@@FUENTE@@*/null; var JARDIN_FUENTE = /*@@JARDIN@@*/null;</script>
+<script>/*@@PARCHE@@*/</script>
+<script>
+(function(){
+"use strict";
+// Escribir y girar: la lámina se escribe con el horario real de la semilla, en
+// la vista fija de la pieza (orden de profundidad, v0.22). Cuando termina, cada
+// signo viaja de su lugar en la lámina a su lugar en la vista giratoria, y la
+// pieza empieza a girar sola. Arrastrar toma el control.
+// ?hash=N  ?tipo=pieza|espacio|pedregal  ?giro=auto|manual
+var FONT_FILES=[["Architecture Mono","fonts/Ac437_ApricotPortable.ttf"],["Unicode Backup","fonts/Symbola.otf"],
+  ["Electrónica","fonts/ELECTRONICS.TTF"],["Jeroglífico Egipcio","fonts/NOTOSANSEGYPTIANHIEROGLYPHS-REGULAR.TTF"],
+  ["Jeroglífico Anatolio","fonts/NOTOSANSANATOLIANHIEROGLYPHS-REGULAR.TTF"],["Lineal B","fonts/NOTOSANSLINEARB-REGULAR.TTF"]];
+var CF={egipcio:'"Jeroglífico Egipcio","Unicode Backup",monospace',anatolio:'"Jeroglífico Anatolio","Unicode Backup",monospace',
+  linealb:'"Lineal B","Unicode Backup",monospace',electronica:'"Electrónica","Architecture Mono",monospace'};
+var BASE='"Architecture Mono","Unicode Backup",monospace';
+var TIPOS={pieza:"pieza",espacio:"ESPACIO ESCULTÓRICO",pedregal:"PEDREGAL"};
+var $=function(id){return document.getElementById(id)};
+var q=new URLSearchParams(location.search);
+var raiz={ARQ_AZAR:window.ARQ_AZAR,ARQ_CORPUS:window.ARQ_CORPUS};
+// Motor con caras completas (para que al girar los vóxel no tengan huecos) y jardín.
+new Function("window",JARDIN_PARCHE.parchar(GIRAR_PARCHE.parchar(ARQ_FUENTE),JARDIN_FUENTE))(raiz);
+var M=raiz.ARQ_MOTOR;
+var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+var state={seed:+(q.get("hash")||q.get("seed")||3)||3,tipo:TIPOS[q.get("tipo")]||"pieza",solo:q.get("giro")!=="manual"&&!reduce};
+var P=null,cv=$("lienzo"),ctx=cv.getContext("2d");
+var fase="escribiendo",t0=0,cursor=0,valor={},yaw=0,elev=0,trans=0,drag=null,lastT=null;
+var TRANS_MS=1800, ATRAS=/:(atras|otro)(:|$)/;
+
+function prepara(){
+  var piece,camShear=null,t,p,u=15,dX=0,dY=0;
+  if(state.tipo==="pieza"){
+    piece=M.build({seed:String(state.seed)});t=piece.traits;p=Math.max(0,Math.min(1,t.perspective/100));
+    dX=u*(0.035+0.765*p)*t.direction;dY=u*(0.015+0.345*p);
+  }else{
+    piece=M.buildGarden({seed:String(state.seed),variant:state.tipo});camShear=piece.traits.camera;
+  }
+  piece.surface.forEach(function(s,i){s._i=i});
+  var S=piece.surface.filter(function(s){return s.glyph});
+  // Vista fija: el mismo reencuadre que la pieza.
+  var x0=Infinity,x1=-Infinity,y0=Infinity,y1=-Infinity;
+  S.forEach(function(s){var x=s.rawX+s.perturbX,y=s.rawY+s.perturbY;if(x<x0)x0=x;if(x>x1)x1=x;if(y<y0)y0=y;if(y>y1)y1=y});
+  var sc=Math.min(924/Math.max(1,x1-x0),924/Math.max(1,y1-y0),3.75),fsFijo=Math.max(9,Math.min(34,13*sc));
+  var ox=38+(924-(x1-x0)*sc)/2,oy=38+(924-(y1-y0)*sc)/2;
+  // Lugar 3D de cada signo (la x se recupera de rawX; y es la profundidad; z se conserva).
+  var pts=S.map(function(s){
+    var x3=camShear?s.rawX/15-s.depth*camShear.shear:(s.rawX-s.depth*dX)/u;
+    return{s:s,fx:(ox+(s.rawX+s.perturbX-x0)*sc)/1000,fy:(oy+(s.rawY+s.perturbY-y0)*sc)/1000,
+      x:x3+s.perturbX/u,y:s.depth,z:s.z-s.perturbY/u,atras:ATRAS.test(s.voxel||"")};
+  });
+  var b={x0:Infinity,x1:-Infinity,y0:Infinity,y1:-Infinity,z0:Infinity,z1:-Infinity};
+  pts.forEach(function(k){b.x0=Math.min(b.x0,k.x);b.x1=Math.max(b.x1,k.x);b.y0=Math.min(b.y0,k.y);b.y1=Math.max(b.y1,k.y);b.z0=Math.min(b.z0,k.z);b.z1=Math.max(b.z1,k.z)});
+  var c={x:(b.x0+b.x1)/2,y:(b.y0+b.y1)/2,z:(b.z0+b.z1)/2},R=0;
+  pts.forEach(function(k){k.dx=k.x-c.x;k.dy=k.y-c.y;k.dz=k.z-c.z;R=Math.max(R,Math.hypot(k.dx,k.dy,k.dz))});
+  var sched=ARQ_TYPEWRITER.createSchedule(piece,String(state.seed));
+  if(state.tipo!=="pieza")sched=M.walkSchedule(piece,sched);
+  // Cámara giratoria inicial, parecida a la vista fija: se gira hacia el lado de la luz y se mira un poco desde arriba.
+  var yaw0=camShear?-Math.atan(camShear.shear):-(t.direction)*Math.atan2(0.035+0.765*p,1)*0.9;
+  var elev0=camShear?Math.atan(camShear.up)*0.9:Math.atan2(dY,u)*1.6+0.12;
+  P={piece:piece,pts:pts,R:R,fsFijo:fsFijo,sched:sched,yaw0:yaw0,elev0:Math.min(1.1,elev0)};
+  document.title="UA · "+state.seed+" — escribir y girar";
+}
+function color(s){var c=P.piece.colors;if(s.anomaly)return c.anomalia;if(s.forcedColor)return s.forcedColor;
+  var f=s.face,r=P.piece.traits.alphabetRelation;
+  if(s.body==="derecha"&&r==="CARAS INVERTIDAS")f=f==="frente"?"lateral":f==="lateral"?"frente":"techo";
+  else if(s.body==="derecha"&&r==="TRADUCCIÓN MATERIAL")f=f==="frente"?"techo":f==="techo"?"frente":"lateral";
+  return c[f]||c.frente}
+function empezar(){
+  prepara();valor={};cursor=0;trans=0;t0=performance.now();yaw=P.yaw0;elev=P.elev0;
+  fase=reduce?"girando":"escribiendo";
+  if(reduce){P.pts.forEach(function(k){valor[k.s._i]=k.s.glyph});trans=1}
+}
+var ease=function(x){return x<0.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2};
+function cuadro(now){
+  var dt=lastT===null?0:now-lastT;lastT=now;
+  if(P){
+    var el=now-t0;
+    if(fase==="escribiendo"){
+      var ev=P.sched.events;while(cursor<ev.length&&ev[cursor].at<=el){valor[ev[cursor].index]=ev[cursor].value;cursor+=1}
+      $("estado").textContent="escribiendo "+(el/1000).toFixed(1)+" s";
+      if(el>=P.sched.durationMs){P.pts.forEach(function(k){valor[k.s._i]=k.s.glyph});fase="viaje";t0=now}
+    }else if(fase==="viaje"){
+      trans=Math.min(1,el/TRANS_MS);$("estado").textContent="tomando volumen";
+      if(trans>=1)fase="girando";
+    }else{
+      if(state.solo&&!drag)yaw+=dt*0.00032;
+      $("estado").textContent=drag?"girando a mano":state.solo?"girando":"quieta";
+    }
+    dibuja();
+  }
+  requestAnimationFrame(cuadro);
+}
+function dibuja(){
+  var dpr=window.devicePixelRatio||1,W=cv.clientWidth,H=cv.clientHeight;
+  if(cv.width!==Math.round(W*dpr)||cv.height!==Math.round(H*dpr)){cv.width=Math.round(W*dpr);cv.height=Math.round(H*dpr)}
+  ctx.setTransform(dpr,0,0,dpr,0,0);ctx.fillStyle=P.piece.colors.papel;ctx.fillRect(0,0,W,H);
+  var k=ease(trans),cy=Math.cos(yaw),sy=Math.sin(yaw),ce=Math.cos(elev),se=Math.sin(elev);
+  var px=0.47*W/Math.max(1,P.R),fsG=Math.max(5,Math.min(34*W/1000,0.87*px)),fsF=P.fsFijo*W/1000,fs=fsF+(fsG-fsF)*k;
+  P.pts.forEach(function(p){
+    var xr=p.dx*cy-p.dy*sy,yr=p.dx*sy+p.dy*cy;
+    var gx=W/2+xr*px,gy=H/2+(-p.dz*ce-yr*se)*px,gd=yr*ce-p.dz*se;
+    p.X=p.fx*W+(gx-p.fx*W)*k;p.Y=p.fy*H+(gy-p.fy*H)*k;
+    p.D=k<1?p.y*(1-k)+gd*k:gd;               // durante el viaje, el orden pasa de la profundidad fija a la girada
+  });
+  P.pts.sort(function(a,b){return b.D-a.D});
+  ctx.textAlign="center";ctx.textBaseline="middle";var last="",font;
+  for(var i=0;i<P.pts.length;i+=1){
+    var p=P.pts[i],s=p.s,g=valor[s._i];if(!g)continue;
+    var a=s.opacity*(p.atras?k:1);if(a<=0.01)continue;   // las caras de atrás aparecen al girar
+    font=fs.toFixed(2)+"px "+(s.fontKind&&CF[s.fontKind]||BASE);if(font!==last){ctx.font=font;last=font}
+    ctx.globalAlpha=a;ctx.fillStyle=color(s);ctx.fillText(g,p.X,p.Y);
+  }
+  ctx.globalAlpha=1;
+}
+// Arrastrar gira (y salta al giro si todavía se escribía).
+var lam=$("lamina");
+lam.addEventListener("pointerdown",function(e){if(fase!=="girando")return;drag={x:e.clientX,y:e.clientY,yaw:yaw,elev:elev};lam.classList.add("drag");lam.setPointerCapture(e.pointerId)});
+lam.addEventListener("pointermove",function(e){mostrarBarra();if(!drag)return;yaw=drag.yaw+(e.clientX-drag.x)*0.01;elev=Math.max(-0.2,Math.min(1.35,drag.elev+(e.clientY-drag.y)*0.006))});
+function soltar(){drag=null;lam.classList.remove("drag")}
+lam.addEventListener("pointerup",soltar);lam.addEventListener("pointercancel",soltar);
+// Barra: aparece al mover el puntero, se esconde sola.
+var barraT=null;function mostrarBarra(){$("barra").classList.remove("quieta");clearTimeout(barraT);barraT=setTimeout(function(){if(!$("barra").matches(":hover,:focus-within"))$("barra").classList.add("quieta")},2600)}
+document.addEventListener("keydown",mostrarBarra);
+function press(){Array.prototype.forEach.call(document.querySelectorAll("button[data-t]"),function(b){b.setAttribute("aria-pressed",String(b.dataset.t===state.tipo))});
+  $("solo").setAttribute("aria-pressed",String(state.solo))}
+function go(seed){state.seed=Math.max(1,Math.round(+seed||1));$("seed").value=state.seed;empezar()}
+$("prev").addEventListener("click",function(){go(state.seed-1)});$("next").addEventListener("click",function(){go(state.seed+1)});
+$("seed").addEventListener("change",function(){go(this.value)});
+Array.prototype.forEach.call(document.querySelectorAll("button[data-t]"),function(b){b.addEventListener("click",function(){state.tipo=b.dataset.t;press();go(state.seed)})});
+$("escribir").addEventListener("click",function(){empezar()});
+$("solo").addEventListener("click",function(){state.solo=!state.solo;press()});
+press();$("seed").value=state.seed;mostrarBarra();
+Promise.all(FONT_FILES.map(function(f){return fetch(f[1]).then(function(r){if(!r.ok)throw new Error(f[1]);return r.arrayBuffer()})
+  .then(function(buf){var face=new FontFace(f[0],buf);document.fonts.add(face);return face.load()}).catch(function(){return null})}))
+  .then(function(){empezar();requestAnimationFrame(cuadro)});
+window.__escribirGirar={estado:function(){return fase},ir:function(seed,tipo){if(tipo)state.tipo=tipo;press();go(seed)}};
+})();
+</script>

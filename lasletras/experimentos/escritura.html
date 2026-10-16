@@ -39,7 +39,10 @@ var VA=prepara(ARQ_MOTOR),VB=VA,etiquetas=["HOY","PROFUNDIDAD"],listaA=VA.S;
 window.listoMotor=Promise.resolve();
 if(modo==="cierre"){
   etiquetas=["HOY","CERRADO"];listaA=VA.D;
-  window.listoMotor=fetch("../js/architecture.js").then(function(r){return r.text()}).then(function(src){
+  // Desde v0.22 el motor ya trae el cierre: la comparación es contra la copia v0.21.
+  window.listoMotor=fetch("motor-v021/architecture.js").then(function(r){return r.text()}).then(function(src){
+    var antes={ARQ_AZAR:window.ARQ_AZAR,ARQ_CORPUS:window.ARQ_CORPUS};new Function("window",src)(antes);
+    VA=prepara(antes.ARQ_MOTOR);listaA=VA.D;
     var raiz={ARQ_AZAR:window.ARQ_AZAR,ARQ_CORPUS:window.ARQ_CORPUS,__CIERRE:{sinCortes:true,densidad:true,conservar:["larger-room-"]}};
     new Function("window",CIERRE_PARCHE.parchar(src))(raiz);VB=prepara(raiz.ARQ_MOTOR)});
 }

@@ -1,7 +1,7 @@
 // Cuántas semillas cambian con el cierre y cuánto crecen. node lasletras/experimentos/cierre-serie.js [N]
 const fs=require('fs'),path=require('path');
 const js=path.join(__dirname,'..','js'),tmp=path.join(js,'.architecture-cierre.tmp.js');
-fs.writeFileSync(tmp,require('./cierre-parche.js').parchar(fs.readFileSync(path.join(js,'architecture.js'),'utf8')));
+fs.writeFileSync(tmp,require('./cierre-parche.js').parchar(fs.readFileSync(path.join(__dirname,'motor-v021','architecture.js'),'utf8')));
 const M=require(tmp);fs.unlinkSync(tmp);
 const N=+process.argv[2]||1000,porEspecie={};let tocadas=0,max=0,maxSeed=0;const crece=[];
 for(let i=1;i<=N;i++){
