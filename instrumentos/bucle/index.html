@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bucle</title>
+<meta name="description" content="Una frase que debe negociar las condiciones de su propio regreso. Canek Zapata, 2026.">
+<style>
+  :root {
+    --fondo: #0e1116; --tinta: #e6e1d6; --tenue: #7d8590; --rejilla: #1f252e; --rejilla2: #2b323c;
+    --madera: #e0a458; --vidrio: #8fd3ff; --antes: #c46a6a;
+    --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--fondo); color: var(--tinta); }
+  body { font: 14px/1.45 var(--serif); min-height: 100vh; }
+  main { display: grid; grid-template-columns: minmax(0, 1fr) 20.5rem; min-height: 100vh; }
+  #lienzo { width: 100%; height: 100vh; display: block; cursor: crosshair; }
+  #lienzo:focus-visible { outline: 1px dashed var(--vidrio); outline-offset: -8px; }
+  aside { padding: 1.6rem 16px 1.2rem 0; font-size: 13px; overflow-y: auto; max-height: 100vh; }
+  h1 { font-weight: normal; font-size: 1.1rem; margin: 0 0 .15rem; letter-spacing: .03em; }
+  .lema { font-style: italic; color: var(--tenue); margin: 0 0 1.1rem; }
+  fieldset { border: 0; border-top: 1px solid var(--rejilla2); margin: 0; padding: .65rem 0 .8rem; }
+  legend { font: 11px var(--mono); color: var(--tenue); padding-right: .4rem; }
+  label { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin: .25rem 0; }
+  select, button, input[type=number] { font: 12px var(--mono); background: transparent; color: var(--tinta); border: 1px solid var(--rejilla2); padding: .25rem .45rem; border-radius: 0; }
+  input[type=number] { width: 4.2rem; }
+  select { max-width: 11rem; }
+  label > span { flex: 1; }
+  button { cursor: pointer; }
+  button:hover { border-color: var(--tinta); }
+  button[aria-pressed=true] { border-color: var(--vidrio); color: var(--vidrio); }
+  button.principal { border-color: var(--madera); color: var(--madera); width: 100%; padding: .45rem; margin-top: .3rem; }
+  :focus-visible { outline: 1px solid var(--vidrio); outline-offset: 2px; }
+  .botones { display: grid; grid-template-columns: 1fr 1fr; gap: .35rem; }
+  #resultado { font: 12px/1.55 var(--mono); white-space: pre-wrap; margin: .3rem 0 0; min-height: 4.5em; }
+  #resultado .vieja { color: var(--tenue); }
+  .nota { color: var(--tenue); font-size: 12px; margin: .35rem 0 0; }
+  .ley { font: 11px/1.5 var(--mono); color: var(--tenue); margin: .2rem 0 0; }
+  .muestra { display: inline-block; width: .7em; height: .7em; margin-right: .3em; vertical-align: baseline; }
+  @media (max-width: 800px) {
+    main { display: block; }
+    #lienzo { height: 62vh; }
+    aside { padding: 1rem 16px 2rem; max-height: none; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <canvas id="lienzo" tabindex="0" aria-label="Rejilla del bucle: tiempo en horizontal, altura en vertical. Clic o Enter pone o quita una nota de la frase. Flechas mueven el cursor."></canvas>
+  <aside>
+    <h1>Bucle</h1>
+    <p class="lema">Sólo suena lo que puede sostener su propio regreso.</p>
+    <p class="nota">Escribe una frase en la rejilla. El regreso manda cada nota <span id="ley-d">4</span> pasos al pasado y la transpone <span id="ley-n">4</span> semitonos. Una historia es consistente si cada nota es el regreso de otra.</p>
+    <fieldset>
+      <legend>el regreso</legend>
+      <label>pasos del ciclo <input id="L" type="number" min="4" max="32" value="16"></label>
+      <label>adelanto (pasos) <input id="d" type="number" min="1" max="31" value="4"></label>
+      <label>transposición (st) <input id="n" type="number" min="0" max="11" value="4"></label>
+      <p class="ley" id="orbita"></p>
+    </fieldset>
+    <fieldset>
+      <legend>lo que la historia no admite</legend>
+      <label>voces por paso <input id="voces" type="number" min="1" max="12" value="4"></label>
+      <label>choques en un paso <select id="choques"><option value="1">sin semitonos</option><option value="">todo permitido</option><option value="1,2">sin semitonos ni tonos</option></select></label>
+    </fieldset>
+    <fieldset>
+      <legend>qué cede la frase</legend>
+      <label>prioridad <select id="prioridad">
+        <option value="ataques">ataques (ceden alturas)</option>
+        <option value="alturas">alturas (ceden ataques)</option>
+        <option value="mixto">mixto</option>
+      </select></label>
+      <label>callar una nota <select id="callar"><option value="8">cuesta 8</option><option value="3">cuesta 3</option><option value="">prohibido</option></select></label>
+      <button class="principal" id="negociar">imponer el regreso</button>
+      <div id="resultado" role="status" aria-live="polite"></div>
+    </fieldset>
+    <fieldset>
+      <legend>escuchar</legend>
+      <div class="botones">
+        <button data-que="frase">la frase como la escribiste</button>
+        <button data-que="historia">la historia</button>
+        <button data-que="tocada">tus notas</button>
+        <button data-que="regresos">sólo lo que volvió</button>
+      </div>
+      <button class="principal" data-que="reescritura">la reescritura completa</button>
+      <p class="nota"><span class="muestra" style="background:var(--madera)"></span>tus notas, que también son regresos ·
+        <span class="muestra" style="background:var(--vidrio)"></span>notas que sólo volvieron ·
+        <span class="muestra" style="border:1px solid var(--antes)"></span>dónde estaba una nota antes de ceder</p>
+      <p class="nota">Teclado: flechas, Enter (nota), N (negociar), espacio (escuchar la historia / parar).</p>
+    </fieldset>
+  </aside>
+</main>
+<script type="module" src="interfaz.mjs"></script>
+</body>
+</html>
