@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trompo</title>
+<meta name="description" content="Un disco que se acelera hasta no distinguir sus partes y se frena con la mano para volver a leerlas. Canek Zapata, 2026.">
+<style>
+  :root {
+    --papel: #f4f2ec; --tinta: #1d1b18; --tenue: #8a857b; --linea: #d9d4c8;
+    --acento: #3a6ea5; --freno: #1d1b18;
+    --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--papel); color: var(--tinta); }
+  body { font: 15px/1.45 var(--serif); overflow: hidden; }
+  main { position: fixed; inset: 0; display: grid; grid-template-columns: minmax(0, 1fr) 17rem; grid-template-rows: minmax(0, 1fr) 88px; }
+  #disco { grid-column: 1; grid-row: 1; width: 100%; height: 100%; touch-action: none; cursor: grab; display: block; }
+  #disco:active { cursor: grabbing; }
+  #disco:focus-visible { outline: 2px dashed var(--acento); outline-offset: -6px; }
+  #traza { grid-column: 1 / 3; grid-row: 2; width: 100%; height: 100%; display: block; border-top: 1px solid var(--linea); }
+  aside { grid-column: 2; grid-row: 1; padding: 1.4rem 1.2rem 1rem 0; overflow-y: auto; font-size: 13px; }
+  h1 { font-weight: normal; font-size: 1.05rem; letter-spacing: .02em; margin: 0 0 .2rem; }
+  .frase { font-style: italic; margin: 0 0 1.2rem; color: var(--tenue); }
+  .tasas { font: 12px/1.6 var(--mono); margin: 0 0 1.2rem; display: grid; grid-template-columns: auto 1fr; column-gap: .8rem; }
+  .tasas dt { color: var(--tenue); } .tasas dd { margin: 0; text-align: right; font-variant-numeric: tabular-nums; }
+  fieldset { border: 0; border-top: 1px solid var(--linea); margin: 0; padding: .7rem 0 .8rem; }
+  legend { font: 11px var(--mono); color: var(--tenue); padding: 0 .4rem 0 0; text-transform: lowercase; }
+  label { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin: .25rem 0; }
+  input[type=range] { width: 8.5rem; accent-color: var(--tinta); }
+  select, button { font: 12px var(--mono); background: transparent; color: var(--tinta); border: 1px solid var(--tinta); padding: .25rem .5rem; border-radius: 0; }
+  button[aria-pressed=true] { background: var(--tinta); color: var(--papel); }
+  button:focus-visible, select:focus-visible, input:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+  .botones { display: flex; flex-wrap: wrap; gap: .4rem; }
+  .nota { font-size: 12px; color: var(--tenue); margin: .4rem 0 0; }
+  #aviso { position: fixed; left: 1.2rem; bottom: 100px; font: 12px var(--mono); color: var(--tenue); pointer-events: none; transition: opacity .6s; opacity: 0; max-width: 60vw; }
+  #inicio { position: fixed; inset: 0; background: color-mix(in srgb, var(--papel) 94%, transparent); display: grid; place-items: center; z-index: 5; }
+  #inicio div { max-width: 30rem; padding: 1.5rem; }
+  #inicio p { margin: 0 0 .9rem; }
+  #inicio button { font-size: 13px; padding: .5rem .9rem; }
+  @media (max-width: 760px) {
+    body { overflow: auto; }
+    main { position: static; display: block; }
+    #disco { height: min(100vw, 70vh); }
+    #traza { height: 80px; }
+    aside { padding: 1rem 16px 2rem; }
+    input[type=range] { width: 50%; }
+    #aviso { bottom: auto; top: 1rem; max-width: 90vw; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <canvas id="disco" tabindex="0" aria-label="Disco. Arrastra para girarlo; mantén apretado para frenar. Flechas: empujar. Espacio: frenar; con mayúsculas, rozar."></canvas>
+  <aside>
+    <h1>Trompo</h1>
+    <p class="frase">Todos los colores están, en efecto, aquí.</p>
+    <dl class="tasas" aria-live="off">
+      <dt>vueltas/s</dt><dd id="t-vueltas">0.00</dd>
+      <dt>eventos/s</dt><dd id="t-eventos">0.0</dd>
+      <dt>motivo/s</dt><dd id="t-motivo">0.00</dd>
+      <dt>pista Hz</dt><dd id="t-pista">—</dd>
+    </dl>
+    <fieldset>
+      <legend>escuchar</legend>
+      <div class="botones">
+        <button id="sonido" aria-pressed="true">sonido</button>
+        <button id="grabar" aria-pressed="false">grabar toma</button>
+      </div>
+      <label>lectura <select id="modo">
+        <option value="impulsos">impulsos</option>
+        <option value="ausente">fundamental ausente</option>
+      </select></label>
+      <label>patrón <select id="patron">
+        <option value="ocho-colores">ocho colores</option>
+        <option value="ocho-iguales">ocho iguales</option>
+        <option value="ritmo">ritmo</option>
+        <option value="un-golpe">un golpe</option>
+      </select></label>
+    </fieldset>
+    <fieldset>
+      <legend>cuerpo</legend>
+      <label>peso <input id="peso" type="range" min="0.25" max="4" step="0.01" value="1"></label>
+      <label>eje viscoso <input id="viscoso" type="range" min="0" max="0.6" step="0.005" value="0.08"></label>
+      <label>eje seco <input id="seco" type="range" min="0" max="1.5" step="0.01" value="0.05"></label>
+    </fieldset>
+    <fieldset>
+      <legend>pruebas</legend>
+      <label>imagen <select id="imagen">
+        <option value="exposicion">exposición por cuadro</option>
+        <option value="instante">instante (sin integrar)</option>
+      </select></label>
+      <label>barajar voces <button id="barajar" aria-pressed="false">no</button></label>
+      <p class="nota">Barajar es una condición de control: conserva la densidad y rompe el periodo del motivo.</p>
+    </fieldset>
+    <fieldset>
+      <legend>tocar</legend>
+      <p class="nota">Arrastra el disco para impulsarlo. Suelta y sigue girando. Mantén apretado para frenar; con mayúsculas sólo lo rozas. Detenido, doble clic en el borde añade o quita una marca: sólo se reescribe lo que se alcanza a distinguir.</p>
+    </fieldset>
+  </aside>
+  <canvas id="traza" aria-label="Recorrido: velocidad del disco en el tiempo"></canvas>
+</main>
+<div id="aviso" role="status"></div>
+<div id="inicio">
+  <div>
+    <p><em>Trompo.</em> Un disco con ocho sectores, cada uno con su sonido. Al girar rápido dejan de distinguirse; frenar con la mano devuelve la diferencia que el giro impedía distinguir.</p>
+    <p class="nota">Los sectores tienen luminancias parecidas para reducir el parpadeo, pero el disco produce cambios de color a varias vueltas por segundo. Si eres sensible a destellos, usa la imagen «exposición» y gira despacio.</p>
+    <button id="empezar">empezar con sonido</button>
+  </div>
+</div>
+<script type="module" src="interfaz.mjs"></script>
+</body>
+</html>
