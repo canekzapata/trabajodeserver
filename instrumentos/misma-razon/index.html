@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La misma razón</title>
+<meta name="description" content="Cada voz pulsa tantas veces por segundo como su frecuencia entre K. Cambiar una altura cambia cuándo podrá encontrarse con las demás. Canek Zapata, 2026.">
+<style>
+  :root {
+    --papel: #f3efe6; --tinta: #23201b; --tenue: #857d70; --linea: #d8d0c0;
+    --enc: #c8473b; --enc2: #e3b8b0;
+    --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--papel); color: var(--tinta); }
+  body { font: 15px/1.5 var(--serif); }
+  .pagina { max-width: 74rem; margin: 0 auto; padding: 2rem 16px 3rem; }
+  h1 { font-weight: normal; font-size: 1.5rem; margin: 0; }
+  .ley { font: 13px var(--mono); color: var(--tenue); margin: .3rem 0 1.4rem; }
+  .pregunta { font-style: italic; max-width: 38rem; margin: 0 0 1.6rem; }
+  canvas { width: 100%; height: 260px; display: block; background: #fbf9f4; border-top: 1px solid var(--linea); border-bottom: 1px solid var(--linea); }
+  .controles { display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: 1.4rem; margin-top: 1.2rem; font-size: 13px; }
+  fieldset { border: 0; border-top: 1px solid var(--linea); margin: 0; padding: .6rem 0; }
+  legend { font: 11px var(--mono); color: var(--tenue); padding-right: .4rem; }
+  label { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin: .3rem 0; }
+  select, button { font: 12px var(--mono); background: transparent; color: var(--tinta); border: 1px solid var(--tinta); padding: .3rem .55rem; border-radius: 0; }
+  button[aria-pressed=true] { background: var(--tinta); color: var(--papel); }
+  :focus-visible { outline: 2px solid #3a6ea5; outline-offset: 2px; }
+  .voces { display: flex; gap: .7rem; flex-wrap: wrap; }
+  .voces label { margin: 0; gap: .3rem; }
+  #informe { font: 12px/1.6 var(--mono); white-space: pre-wrap; min-height: 6em; }
+  .nota { color: var(--tenue); font-size: 12.5px; }
+</style>
+</head>
+<body>
+<div class="pagina">
+  <h1>La misma razón</h1>
+  <p class="ley">pulsos por segundo = f / K &nbsp;·&nbsp; K = 130,8 Hz: do3 pulsa una vez por segundo</p>
+  <p class="pregunta">¿Qué debe cambiar una voz para volver a encontrarse con las otras, y qué pierde al hacerlo?</p>
+  <canvas id="linea" aria-label="Línea de tiempo: ataques de cada voz y sus encuentros"></canvas>
+  <div class="controles">
+    <fieldset>
+      <legend>versión</legend>
+      <label>I–vi–IV–V–I <select id="version">
+        <option value="heredada">fases heredadas</option>
+        <option value="reiniciada">fases reiniciadas en cada acorde</option>
+        <option value="cerca">llegar: tres voces, desde IV</option>
+        <option value="lejos">llegar: cuatro voces, desde el principio</option>
+        <option value="propia">preparar una llegada propia</option>
+      </select></label>
+      <button id="escuchar" aria-pressed="false">escuchar</button>
+      <p class="nota">Las alturas cambian en cada acorde sin un ataque nuevo; cada pulso es una crecida de la voz. Interpretación declarada.</p>
+    </fieldset>
+    <fieldset id="propia">
+      <legend>preparar una llegada</legend>
+      <label>llegar al empezar <select id="destino"></select></label>
+      <label>cómo <select id="como"><option value="desafinar">desafinar</option><option value="esperar">esperar (alargar el acorde anterior)</option></select></label>
+      <label>prepararse desde <select id="desde"></select></label>
+      <div class="voces" id="quienes"></div>
+    </fieldset>
+    <fieldset>
+      <legend>lo que costó</legend>
+      <div id="informe" role="status" aria-live="polite"></div>
+    </fieldset>
+  </div>
+</div>
+<script type="module" src="interfaz.mjs"></script>
+</body>
+</html>
