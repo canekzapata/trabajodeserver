@@ -1,0 +1,212 @@
+{
+ "mezcla": {
+  "voz": [
+   0,
+   0.16
+  ],
+  "viola": [
+   -6,
+   0.3
+  ],
+  "contrabajo": [
+   -8,
+   0.2
+  ],
+  "resonancia": [
+   -6,
+   0.4
+  ],
+  "trombon": [
+   -3,
+   0.35
+  ],
+  "arco": [
+   -7,
+   0.25
+  ],
+  "coro": [
+   -5,
+   0.2
+  ],
+  "rios": [
+   -9,
+   0.35
+  ],
+  "lagos": [
+   -9,
+   0.4
+  ],
+  "garganta": [
+   -6,
+   0.3
+  ],
+  "viento": [
+   -12,
+   0.2
+  ]
+ },
+ "automatizacion": {
+  "coro": {
+   "coro final": 6,
+   "final": 16
+  },
+  "voz": {
+   "coro 1": 2,
+   "coro 2": 2,
+   "coro final": 2
+  },
+  "resonancia": {
+   "final": -4
+  }
+ },
+ "espacio": [
+  {
+   "epoca": "MESETA",
+   "hondura_km": 0,
+   "rt60": 0.6
+  },
+  {
+   "epoca": "ESTIRAMIENTO",
+   "hondura_km": 1.551,
+   "rt60": 2.15
+  },
+  {
+   "epoca": "HUNDIMIENTO",
+   "hondura_km": 1.102,
+   "rt60": 1.7
+  },
+  {
+   "epoca": "LAGOS Y VOLCANES",
+   "hondura_km": 1.1,
+   "rt60": 1.7
+  },
+  {
+   "epoca": "SUPERCALDERA",
+   "hondura_km": 1.09,
+   "rt60": 1.69
+  }
+ ],
+ "informe": [
+  {
+   "seccion": "intro",
+   "total_db": -18.8,
+   "voz_sobre_resto_db": null,
+   "hueco_max_s": 0,
+   "conduce": [
+    "coro -20.7",
+    "garganta -25.2",
+    "resonancia -28.7"
+   ]
+  },
+  {
+   "seccion": "verso 1",
+   "total_db": -18.5,
+   "voz_sobre_resto_db": 2.5,
+   "hueco_max_s": 0,
+   "conduce": [
+    "voz -19.9",
+    "viola -26.3",
+    "contrabajo -29.2"
+   ]
+  },
+  {
+   "seccion": "pre-coro 1",
+   "total_db": -18.3,
+   "voz_sobre_resto_db": 0.5,
+   "hueco_max_s": 0,
+   "conduce": [
+    "voz -21.2",
+    "viola -25.9",
+    "contrabajo -26.9"
+   ]
+  },
+  {
+   "seccion": "coro 1",
+   "total_db": -16.7,
+   "voz_sobre_resto_db": 0,
+   "hueco_max_s": 0,
+   "conduce": [
+    "voz -19.3",
+    "viola -23.5",
+    "resonancia -25.8"
+   ]
+  },
+  {
+   "seccion": "interludio",
+   "total_db": -19.3,
+   "voz_sobre_resto_db": null,
+   "hueco_max_s": 0,
+   "conduce": [
+    "resonancia -22.1",
+    "viola -23.3",
+    "contrabajo -29.3"
+   ]
+  },
+  {
+   "seccion": "verso 2",
+   "total_db": -18.1,
+   "voz_sobre_resto_db": 1.4,
+   "hueco_max_s": 0,
+   "conduce": [
+    "voz -20.4",
+    "resonancia -25.2",
+    "viola -27"
+   ]
+  },
+  {
+   "seccion": "pre-coro 2",
+   "total_db": -16.4,
+   "voz_sobre_resto_db": -0.8,
+   "hueco_max_s": 0,
+   "conduce": [
+    "voz -19.9",
+    "resonancia -23.1",
+    "viola -26.5"
+   ]
+  },
+  {
+   "seccion": "coro 2",
+   "total_db": -17.7,
+   "voz_sobre_resto_db": -0.2,
+   "hueco_max_s": 0,
+   "conduce": [
+    "voz -20.4",
+    "resonancia -25.2",
+    "viola -27"
+   ]
+  },
+  {
+   "seccion": "puente",
+   "total_db": -17.8,
+   "voz_sobre_resto_db": 1.7,
+   "hueco_max_s": 0,
+   "conduce": [
+    "voz -19.7",
+    "resonancia -25.4",
+    "garganta -26.9"
+   ]
+  },
+  {
+   "seccion": "coro final",
+   "total_db": -16.8,
+   "voz_sobre_resto_db": 0.4,
+   "hueco_max_s": 0,
+   "conduce": [
+    "voz -19.2",
+    "coro -23.8",
+    "resonancia -27"
+   ]
+  },
+  {
+   "seccion": "final",
+   "total_db": -22.8,
+   "voz_sobre_resto_db": null,
+   "hueco_max_s": 0,
+   "conduce": [
+    "garganta -26.7",
+    "resonancia -26.8",
+    "coro -29.2"
+   ]
+  }
+ ]
+}

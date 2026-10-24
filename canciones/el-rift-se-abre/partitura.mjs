@@ -42,7 +42,7 @@ export function nota(n) { const [, g, o] = n.match(/^([a-z]+)(\d)$/); return { n
 // cada línea: "sílaba/nota/tiempos"; "_/tiempos" es silencio. La letra viene del archivo de «La lista que no terminaba»
 // (poesiasexp): las frases en inglés se dejan antes de su traducción, como pide la bienvenida de 1995.
 const L = {
-  'verso 1': `_/1 the/sol3/.5 list/do4/.5 is/do4/.5 not/re4/.5 a/mi4/.5 room/mi4/1.5
+  'verso 1': `_/1 @the/sol3/.5 @list/do4/.5 @is/do4/.5 @not/re4/.5 @a/mi4/.5 @room/mi4/1.5
     la/mi4/.5 lis/mi4/.5 ta/fa4/1 noes/mi4/.5 u/re4/.5 na/do4/.5 sa/re4/1 la/do4/1.5 _/.5
     la/sol3/.5 sa/do4/.5 laes/do4/1 don/mi4/.5 de/re4/.5 se/do4/.5 leel/re4/.5 men/mi4/.5 sa/sol4/1 je/mi4/1.5 _/.5
     es/do4/.5 cri/re4/.5 be/mi4/.5 tu/mi4/.5 nom/sol4/1 bre/fa4/.5 tu/mi4/.5 ciu/re4/.5 dad/mi4/1.5
@@ -53,7 +53,7 @@ const L = {
     to/mi4/.5 da/fa4/.5 ví/si4/1.5 aes/la4/.5 ta/sol4/1 mos/mi4/.5 a/mi4/.5 quí/la4/2 _/1
     ${l3}
     to/mi4/.5 da/fa4/.5 ví/sol4/1 aes/la4/.5 ta/si4/.5 mos/do5/.5 a/re5/.5 quí/do5/2 _/2`,
-  'verso 2': `_/1 you/sol3/.5 call/do4/.5 it/do4/.5 o/re4/.5 pen/mi4/1
+  'verso 2': `_/1 @you/sol3/.5 @call/do4/.5 @it/do4/.5 @o/re4/.5 @pen/mi4/1
     lo/mi4/.5 lla/mi4/.5 mas/re4/.5 a/do4/.5 bier/re4/1 to/do4/.5 por/si3/.5
     que/do4/.5 cual/re4/.5 quie/mi4/.5 ra/fa4/.5 lee/mi4/.5 lain/re4/.5 vi/re4/.5 ta/do4/.5 ción/re4/2 _/2
     lo/mi4/.5 lla/mi4/.5 mas/re4/.5 li/sol4/1 bre/fa4/.5 por/mi4/.5 queel/re4/.5
@@ -88,8 +88,8 @@ function leer(txt, desdeCompas) {
   for (const tok of txt.trim().split(/\s+/)) {
     const partes = tok.split('/');
     if (partes[0] === '_') { beat += +partes[1]; continue; }
-    const [sil, n, d] = partes, x = nota(n);
-    out.push({ compas: desdeCompas + Math.floor(beat / 4), beat: +(beat % 4).toFixed(3), t: +tDe(desdeCompas, beat).toFixed(4), dur: +d, durS: +(d * BEAT).toFixed(4), silaba: sil, nota: n, hz: +x.hz.toFixed(3), midi: +midiHz(x.hz).toFixed(3), cents: +(100 * (midiHz(x.hz) - x.midiTemp)).toFixed(1) });
+    let [sil, n, d] = partes; const x = nota(n), idioma = sil.startsWith('@') ? 'en' : 'es'; sil = sil.replace('@', '');
+    out.push({ idioma, compas: desdeCompas + Math.floor(beat / 4), beat: +(beat % 4).toFixed(3), t: +tDe(desdeCompas, beat).toFixed(4), dur: +d, durS: +(d * BEAT).toFixed(4), silaba: sil, nota: n, hz: +x.hz.toFixed(3), midi: +midiHz(x.hz).toFixed(3), cents: +(100 * (midiHz(x.hz) - x.midiTemp)).toFixed(1) });
     beat += +d;
   }
   return { notas: out, beats: beat };
@@ -143,6 +143,9 @@ export const RIOS = [];
     const de = hombros[k % 2], a = lagosFondo[k % 3];
     RIOS.push({ t: +t.toFixed(3), clase: c + 1, de: +de.toFixed(3), a: +a.toFixed(3), hzDe: +hzP(de).toFixed(2), hzA: +hzP(a).toFixed(2), dur: +(0.7 + 0.6 * c).toFixed(2), v: +(0.25 + 0.15 * c).toFixed(2) });
   } });
+  // el interludio adelanta dos ríos (todavía en el estiramiento): el primer aviso del hundimiento
+  const it = SECCIONES.find((s) => s.nombre === 'interludio'), l1 = LINEAS[1];
+  [0.4, 1.3].forEach((f, k) => RIOS.push({ t: +(tDe(it.desde) + f * BAR).toFixed(3), clase: 1, de: +l1[idx(k ? 'hombro este' : 'hombro oeste')].toFixed(3), a: +l1[idx('lago 1')].toFixed(3), hzDe: +hzP(l1[idx(k ? 'hombro este' : 'hombro oeste')]).toFixed(2), hzA: +hzP(l1[idx('lago 1')]).toFixed(2), dur: 1.2, v: 0.25, interludio: true }));
   RIOS.sort((a, b) => a.t - b.t);
 }
 // los lagos (gong): se llenan en los pre-coros; el lago colgado (el canal paralelo) en el coro 2 y el coro final
@@ -155,11 +158,22 @@ for (const s of SECCIONES.filter((x) => x.nombre === 'coro 2' || x.nombre === 'c
 // la resonancia: Cuerda que recuerda en cada línea del espectro de la época (después de cada ataque del trombón)
 export const RESONANCIA = TROMBON.map((a, k) => ({ t: a.t, hasta: k + 1 < TROMBON.length ? TROMBON[k + 1].t : tDe(COMPASES + 1), epoca: a.epoca, lineas: LINEAS[a.epoca].map((p) => ({ p: +p.toFixed(3), hz: +hzP(p).toFixed(2) })) }));
 // la garganta canta con el corte del rift de su época; el viento sopla sobre el corte de la supercaldera en el puente
-export const GARGANTA = { largo: 2, aprende: 0.65, cortes: T.epocas.map((e) => e.corte) };
+export const GARGANTA = { largo: 2, aprende: 0.65, cortes: T.epocas.map((e) => e.corte),
+  // la intro: el tubo de la meseta (plano) canta su unísono, mi3; el final: el tubo de la supercaldera en el piso (do3)
+  eventos: [
+    { t: tDe(1, 1), dur: 3 * BAR, nota: midiHz(hzP(5)), fonemas: ['a'], v: 0.5, aprende: 0.2, ronco: 0.3, epoca: 0, seccion: 'intro' },
+    { t: tDe(67), dur: 4 * BAR - 1, nota: midiHz(hzP(LINEAS[4][0]) / 2), fonemas: ['u'], v: 0.45, aprende: 0.25, ronco: 0.35, epoca: 4, seccion: 'final' },
+    ...[0, 2, 4, 6].map((k) => ({ t: tDe(47 + k), dur: 2 * BAR - 0.2, nota: midiHz(hzP(LINEAS[4][0]) / 2), fonemas: [['a'], ['o'], ['a'], ['u']][k / 2], v: 0.5, aprende: 0.25, ronco: 0.4, epoca: k < 6 ? 3 : 4, seccion: 'puente' })),
+  ] };
+// la resonancia se vuelve a pulsar al empezar cada sección (con el espectro de su época), más suave que tras un ataque
+export const PULSOS = SECCIONES.map((s, k) => ({ t: tDe(s.desde), epoca: s.epoca, A: TROMBON.some((a) => Math.abs(a.t - tDe(s.desde)) < 1e-6) ? 3 : 1.8, seccion: s.nombre }));
+// el espacio: RT60 = 0,6 s + 1 s por cada km de hondura del rift (los hombros sobre el piso). Decisión de mezcla
+const hond = T.epocas.map((e) => ((e.m[1] + e.m[2]) / 2 - e.m[0]) / 1000);
+export const ESPACIO = T.epocas.map((e, k) => ({ epoca: e.epoca, hondura_km: +hond[k].toFixed(3), rt60: +(0.6 + Math.max(0, hond[k])).toFixed(2) }));
 export const VIENTO = { desde: tDe(47), hasta: tDe(55), corte: T.epocas[4].corte };
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const P = { titulo: 'El rift se abre', subtitulo: 'balada de K-pop por forma; Grisey y Murail por dentro', bpm: BPM, compas: '4/4', do1: DO1, unidad_m_por_parcial: UNIDAD, duracion: tDe(COMPASES + 1), lamina: T.lamina, historia: T.historia, secciones: SECCIONES, lineas: LINEAS.map((l) => l.map((p) => +p.toFixed(3))), rasgos: T.rasgos.map((r) => r.nombre), acordes: ACORDES, armonia: ARMONIA, melodia: MELODIA, letra_fuentes: LETRA_FUENTES, coro: CORO, trombon: TROMBON, arco: ARCO, rios: RIOS, lagos: LAGOS, resonancia: RESONANCIA, garganta: GARGANTA, viento: VIENTO };
+  const P = { titulo: 'El rift se abre', subtitulo: 'balada de K-pop por forma; Grisey y Murail por dentro', bpm: BPM, compas: '4/4', do1: DO1, unidad_m_por_parcial: UNIDAD, duracion: tDe(COMPASES + 1), lamina: T.lamina, historia: T.historia, secciones: SECCIONES, lineas: LINEAS.map((l) => l.map((p) => +p.toFixed(3))), rasgos: T.rasgos.map((r) => r.nombre), acordes: ACORDES, armonia: ARMONIA, melodia: MELODIA, letra_fuentes: LETRA_FUENTES, coro: CORO, trombon: TROMBON, arco: ARCO, rios: RIOS, lagos: LAGOS, resonancia: RESONANCIA, garganta: GARGANTA, viento: VIENTO, pulsos: PULSOS, espacio: ESPACIO };
   writeFileSync(new URL('./partitura.json', import.meta.url), JSON.stringify(P, null, 1) + '\n');
   console.log(`partitura.json · ${COMPASES} compases · ${(P.duracion / 60).toFixed(2)} min · ${MELODIA.length} sílabas · ${ARMONIA.length} acordes · ${RIOS.length} ríos · ${LAGOS.length} lagos`);
   console.log('épocas (parciales):'); LINEAS.forEach((l, k) => console.log(' ', T.historia[k].padEnd(17), l.map((p) => p.toFixed(2)).join(' ')));

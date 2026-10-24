@@ -1,7 +1,7 @@
 # El rift se abre
 
-Canek Zapata · 24 de octubre de 2026 · **partitura y tomas** (la canción completa espera la crítica) ·
-70 compases, 70 bpm, 4:00
+Canek Zapata · 24 de octubre de 2026 · 70 compases, 70 bpm, 4:02 ·
+[escuchar el master](muestras/el-rift-se-abre-f0a0a7fea55e.m4a)
 
 > Balada de K-pop por forma; Grisey y Murail por dentro. La lista de correo de
 > 1995–2001 sobre un rift que se abre: la plaza era un unísono, la progresión se
@@ -103,9 +103,67 @@ Ocho, como se acordó, con tres cambios que se explican abajo.
 **La comparación tiene una limitación:** el coro convencional usa la misma voz
 justa, no una voz temperada. Su diferencia es de −14 a +4 cents.
 
+## La mezcla y el master
+
+Canek eligió el coro espectral y la mezcla con las decisiones propuestas:
+
+- sin batería;
+- el inglés con el fonetizador inglés;
+- el fa que choca se queda;
+- −14 LUFS;
+- el espacio tomado del rift.
+
+**Lo que se completó en la partitura:**
+- **Intro:** la Garganta, con el tubo plano de la meseta, canta su unísono (mi3).
+- **Interludio:** dos ríos adelantados.
+- **Final:** la Garganta, con el tubo de la supercaldera, en el piso (do3). La
+  voz calla.
+
+**El inglés:**
+- El fonetizador inglés de Rejilla (`g2p-en`, por reglas) da ARPABET, y cada
+  fonema se reescribe con el más cercano que el banco español de Sabina tiene:
+  *the* → «da», *room* → «rum», *call* → «kal».
+- **Las reglas se equivocan en *open*:** sale «a-pen». Se deja: es una máquina
+  leyendo.
+
+**Los stems** (`mezcla.mjs`):
+- Son 11 instrumentos más el espacio, completos.
+- **Cada stem se lleva a un mismo nivel cuando suena** y después recibe los dB
+  de la tabla `MEZCLA`. Sin eso, el contrabajo sacaba 21 dB más que la viola
+  por su modelo.
+- **El paneo sale del corte del rift:** el hombro oeste a la izquierda, el este
+  a la derecha, y cada lago y cada río en su lugar.
+- **La automatización** sube el Coro al abrirse las puertas (+6 y +16 dB) y la
+  voz 2 dB en los coros.
+- **El espacio** es una red de retardos de 8 líneas. Su RT60 sale de la hondura
+  del rift en cada época (0,6 s + 1 s por km): meseta 0,6 s, estiramiento
+  2,15 s, después 1,7 s. Es decisión de mezcla.
+- **Los stems de `stems-mezcla/`** son los que suenan en la mezcla. Su suma es
+  `mezcla.wav`, con un error máximo de 1,5·10⁻⁵.
+
+**El master** (`master.sh`):
+- Ganancia lineal y un limitador suave, sin compresión ni control automático de
+  ganancia.
+- **Resultado: −14,0 LUFS, −1,1 dBTP, LRA 6,8 LU** (la mezcla tenía 7,0).
+- Un primer intento con `loudnorm` cayó en modo dinámico y se descartó.
+
+**Niveles por sección** (`muestras/mezcla.json`):
+- La voz queda entre −0,8 y +2,5 dB sobre el resto mientras canta: conduce sin
+  tapar, que es la lección de Luciérnagas.
+- Ningún tramo baja de −60 dB.
+
+**Lo que se ve al abrir las puertas** (compás 65, `muestras/master.png`):
+- **mi4 y sol4 salen de golpe:** −27 y −49 dB contra vecinos por debajo de
+  −70.
+- **Se vacían en unos 4 s.**
+- **do4 se queda y sostiene el final**, entre −33 y −41 dB.
+- La canción termina en la fundamental de la tónica que nunca había sonado. Es
+  la misma física de *Los testigos*: la puerta del cantor 1 suelta primero la
+  nota del medio y la aguda.
+
 ## Qué se comprobó
 
-`node pruebas.mjs <carpeta-con-voz.f32>`: 6 pruebas, todas pasan.
+`node pruebas.mjs <carpeta-con-voz.f32>`: 7 pruebas, todas pasan.
 
 1. `terreno-40.json` es lo que da hoy el motor.
 2. **La voz de máquina:** 267 sílabas, una nota por sílaba. La más larga dura 2
@@ -117,11 +175,14 @@ justa, no una voz temperada. Su diferencia es de −14 a +4 cents.
 5. **El arco:** el coro 1 se sostiene en 1 deslizamiento por periodo; el coro 2
    empieza periódico y termina aperiódico; el coro final se queda en 2.
 6. **Sabina afina las 12 notas más largas** con un error de +0 a +3 cents.
+7. **El master** está a −14 LUFS y −1 dBTP sin perder rango; la voz no pasa
+   de +3 dB sobre el resto, y no hay huecos.
 
 ## Qué no se comprobó y qué falta
 
 - **Escucha:** el agente no escuchó las tomas.
-- **La mezcla de la canción** no existe todavía: es la parada acordada.
+- **La mezcla se juzgó por mediciones,** no por oído. El balance fino (sobre
+  todo la resonancia y los ríos) es lo primero que hay que escuchar.
 - **La pregunta 5 sigue abierta:** si el coro espectral cambia lo que el coro
   *significa* o solo lo desafina. Es lo primero que hay que oír, junto al
   convencional.
@@ -141,6 +202,10 @@ node datos.mjs                 # el terreno (necesita Rejilla: REJILLA=/ruta)
 node partitura.mjs             # partitura.json
 node voz.cjs <carpeta>/voz.f32 # Sabina en Chromium sin pantalla
 node tomas.mjs <carpeta>       # las 10 tomas (WAV) y tomas.json
+node mezcla.mjs <carpeta> stems   # los 11 stems completos (unos 3 min)
+node mezcla.mjs <carpeta> mezcla  # mezcla.wav, stems-mezcla/ y mezcla.json
+sh master.sh <carpeta>            # master.wav y master.json
+python3 figura_master.py <carpeta>/master.wav partitura.json muestras/master.png
 node pruebas.mjs <carpeta>
 python3 figura.py partitura.json muestras/partitura.png
 ```

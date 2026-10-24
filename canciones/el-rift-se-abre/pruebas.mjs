@@ -76,5 +76,13 @@ const cents = (a, b) => 1200 * Math.log2(a / b), SR = 48000;
     prueba('Sabina afina las 12 notas más largas a menos de 20 cents', err.every((e) => Math.abs(e) < 20), err.map((e) => `${e >= 0 ? '+' : ''}${e.toFixed(0)}`).join(' ') + ' cents');
   } else console.log('salta  (sin voz.f32: node voz.cjs <carpeta>/voz.f32; node pruebas.mjs <carpeta>)');
 }
+// 7. la mezcla y el master (de muestras/mezcla.json y muestras/master.json)
+{
+  const mz = JSON.parse(readFileSync(new URL('./muestras/mezcla.json', import.meta.url), 'utf8')), ms = JSON.parse(readFileSync(new URL('./muestras/master.json', import.meta.url), 'utf8'));
+  const vs = mz.informe.filter((x) => x.voz_sobre_resto_db !== null).map((x) => x.voz_sobre_resto_db), huecos = Math.max(...mz.informe.map((x) => x.hueco_max_s));
+  const okM = Math.abs(ms.master.I_LUFS + 14) <= 0.2 && ms.master.pico_verdadero_dBTP <= -1.0 && ms.master.LRA_LU >= ms.mezcla.LRA_LU - 0.5;
+  prueba('master a −14 LUFS y −1 dBTP sin perder rango; la voz no tapa (≤ +3 dB sobre el resto); sin huecos de silencio', okM && Math.max(...vs) <= 3 && huecos < 1,
+    `master ${ms.master.I_LUFS} LUFS, ${ms.master.pico_verdadero_dBTP} dBTP, LRA ${ms.master.LRA_LU} LU (mezcla ${ms.mezcla.LRA_LU}); voz sobre el resto ${Math.min(...vs)} a ${Math.max(...vs)} dB; hueco más largo ${huecos} s`);
+}
 console.log(fallos ? `\n${fallos} fallan` : '\ntodas pasan');
 process.exit(fallos ? 1 : 0);

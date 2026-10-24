@@ -7,7 +7,18 @@ const P = JSON.parse(fs.readFileSync(path.join(__dirname, 'partitura.json'), 'ut
 const salida = process.argv[2] || path.join(__dirname, 'voz.f32');
 const banco = path.join(D, 'bancos', fs.readdirSync(path.join(D, 'bancos')).find((d) => d.startsWith('sabina')));
 // cada sílaba suena el 90 % de su duración: la voz respira entre sílabas, como una máquina que articula
-const eventos = P.melodia.map((n) => ({ t: n.t, dur: +(n.durS * 0.9).toFixed(4), texto: n.silaba, nota: n.midi }));
+// el inglés: el fonetizador inglés de Rejilla (g2p-en, por reglas) da ARPABET; cada fonema se reescribe con el
+// español más cercano que el banco de Sabina tiene. Una máquina que lee inglés con boca española (declarado).
+const EN = require(path.join(D, 'runtime', 'g2p-en.js'));
+const A2ES = { AA: 'a', AE: 'a', AH: 'a', AO: 'o', AW: 'au', AY: 'ai', EH: 'e', ER: 'er', EY: 'ei', IH: 'i', IY: 'i', OW: 'ou', OY: 'oi', UH: 'u', UW: 'u',
+  B: 'b', CH: 'ch', D: 'd', DH: 'd', F: 'f', G: 'g', HH: 'j', JH: 'y', K: 'k', L: 'l', M: 'm', N: 'n', NG: 'n', P: 'p', R: 'r', S: 's', SH: 'ch', T: 't', TH: 't', V: 'b', W: 'u', Y: 'i', Z: 's', ZH: 'y' };
+const aEspanol = (sil) => EN.word(sil).phones.map((f) => A2ES[f] || '').join('').replace(/(.)\1+/g, '$1');
+const LECTURAS = {};
+const eventos = P.melodia.map((n) => {
+  const texto = n.idioma === 'en' ? (LECTURAS[n.silaba] = aEspanol(n.silaba)) : n.silaba;
+  return { t: n.t, dur: +(n.durS * 0.9).toFixed(4), texto, nota: n.midi };
+});
+console.log('inglés leído:', LECTURAS);
 (async () => {
   const b = await chromium.launch(); const page = await b.newPage();
   await page.setContent('<title>voz</title>');

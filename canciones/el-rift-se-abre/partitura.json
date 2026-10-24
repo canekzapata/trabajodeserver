@@ -1808,6 +1808,7 @@
  ],
  "melodia": [
   {
+   "idioma": "en",
    "compas": 5,
    "beat": 1,
    "t": 14.5714,
@@ -1821,6 +1822,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "en",
    "compas": 5,
    "beat": 1.5,
    "t": 15,
@@ -1834,6 +1836,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "en",
    "compas": 5,
    "beat": 2,
    "t": 15.4286,
@@ -1847,6 +1850,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "en",
    "compas": 5,
    "beat": 2.5,
    "t": 15.8571,
@@ -1860,6 +1864,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "en",
    "compas": 5,
    "beat": 3,
    "t": 16.2857,
@@ -1873,6 +1878,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "en",
    "compas": 5,
    "beat": 3.5,
    "t": 16.7143,
@@ -1886,6 +1892,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 6,
    "beat": 1,
    "t": 18,
@@ -1899,6 +1906,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 6,
    "beat": 1.5,
    "t": 18.4286,
@@ -1912,6 +1920,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 6,
    "beat": 2,
    "t": 18.8571,
@@ -1925,6 +1934,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 6,
    "beat": 3,
    "t": 19.7143,
@@ -1938,6 +1948,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 6,
    "beat": 3.5,
    "t": 20.1429,
@@ -1951,6 +1962,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 7,
    "beat": 0,
    "t": 20.5714,
@@ -1964,6 +1976,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 7,
    "beat": 0.5,
    "t": 21,
@@ -1977,6 +1990,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 7,
    "beat": 1.5,
    "t": 21.8571,
@@ -1990,6 +2004,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 7,
    "beat": 3.5,
    "t": 23.5714,
@@ -2003,6 +2018,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 8,
    "beat": 0,
    "t": 24,
@@ -2016,6 +2032,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 8,
    "beat": 0.5,
    "t": 24.4286,
@@ -2029,6 +2046,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 8,
    "beat": 1.5,
    "t": 25.2857,
@@ -2042,6 +2060,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 8,
    "beat": 2,
    "t": 25.7143,
@@ -2055,6 +2074,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 8,
    "beat": 2.5,
    "t": 26.1429,
@@ -2068,6 +2088,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 8,
    "beat": 3,
    "t": 26.5714,
@@ -2081,6 +2102,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 8,
    "beat": 3.5,
    "t": 27,
@@ -2094,6 +2116,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 9,
    "beat": 0,
    "t": 27.4286,
@@ -2107,6 +2130,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 9,
    "beat": 1,
    "t": 28.2857,
@@ -2120,6 +2144,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 9,
    "beat": 3,
    "t": 30,
@@ -2133,6 +2158,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 9,
    "beat": 3.5,
    "t": 30.4286,
@@ -2146,6 +2172,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 10,
    "beat": 0,
    "t": 30.8571,
@@ -2159,6 +2186,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 10,
    "beat": 0.5,
    "t": 31.2857,
@@ -2172,6 +2200,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 10,
    "beat": 1,
    "t": 31.7143,
@@ -2185,6 +2214,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 10,
    "beat": 2,
    "t": 32.5714,
@@ -2198,6 +2228,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 10,
    "beat": 2.5,
    "t": 33,
@@ -2211,6 +2242,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 10,
    "beat": 3,
    "t": 33.4286,
@@ -2224,6 +2256,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 10,
    "beat": 3.5,
    "t": 33.8571,
@@ -2237,6 +2270,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 11,
    "beat": 1,
    "t": 35.1429,
@@ -2250,6 +2284,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 11,
    "beat": 1.5,
    "t": 35.5714,
@@ -2263,6 +2298,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 11,
    "beat": 2,
    "t": 36,
@@ -2276,6 +2312,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 11,
    "beat": 3,
    "t": 36.8571,
@@ -2289,6 +2326,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 11,
    "beat": 3.5,
    "t": 37.2857,
@@ -2302,6 +2340,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 12,
    "beat": 0,
    "t": 37.7143,
@@ -2315,6 +2354,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 12,
    "beat": 0.5,
    "t": 38.1429,
@@ -2328,6 +2368,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 12,
    "beat": 1,
    "t": 38.5714,
@@ -2341,6 +2382,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 12,
    "beat": 1.5,
    "t": 39,
@@ -2354,6 +2396,7 @@
    "seccion": "verso 1"
   },
   {
+   "idioma": "es",
    "compas": 13,
    "beat": 0.5,
    "t": 41.5714,
@@ -2367,6 +2410,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 13,
    "beat": 1,
    "t": 42,
@@ -2380,6 +2424,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 13,
    "beat": 1.5,
    "t": 42.4286,
@@ -2393,6 +2438,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 13,
    "beat": 2.5,
    "t": 43.2857,
@@ -2406,6 +2452,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 13,
    "beat": 3,
    "t": 43.7143,
@@ -2419,6 +2466,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 13,
    "beat": 3.5,
    "t": 44.1429,
@@ -2432,6 +2480,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 14,
    "beat": 0,
    "t": 44.5714,
@@ -2445,6 +2494,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 14,
    "beat": 0.5,
    "t": 45,
@@ -2458,6 +2508,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 14,
    "beat": 2,
    "t": 46.2857,
@@ -2471,6 +2522,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 15,
    "beat": 0,
    "t": 48,
@@ -2484,6 +2536,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 15,
    "beat": 0.5,
    "t": 48.4286,
@@ -2497,6 +2550,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 15,
    "beat": 1,
    "t": 48.8571,
@@ -2510,6 +2564,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 15,
    "beat": 1.5,
    "t": 49.2857,
@@ -2523,6 +2578,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 15,
    "beat": 2,
    "t": 49.7143,
@@ -2536,6 +2592,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 15,
    "beat": 3,
    "t": 50.5714,
@@ -2549,6 +2606,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 15,
    "beat": 3.5,
    "t": 51,
@@ -2562,6 +2620,7 @@
    "seccion": "pre-coro 1"
   },
   {
+   "idioma": "es",
    "compas": 17,
    "beat": 0,
    "t": 54.8571,
@@ -2575,6 +2634,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 17,
    "beat": 0.5,
    "t": 55.2857,
@@ -2588,6 +2648,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 17,
    "beat": 1,
    "t": 55.7143,
@@ -2601,6 +2662,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 17,
    "beat": 2.5,
    "t": 57,
@@ -2614,6 +2676,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 17,
    "beat": 3,
    "t": 57.4286,
@@ -2627,6 +2690,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 18,
    "beat": 0,
    "t": 58.2857,
@@ -2640,6 +2704,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 18,
    "beat": 0.5,
    "t": 58.7143,
@@ -2653,6 +2718,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 18,
    "beat": 1,
    "t": 59.1429,
@@ -2666,6 +2732,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 19,
    "beat": 0,
    "t": 61.7143,
@@ -2679,6 +2746,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 19,
    "beat": 0.5,
    "t": 62.1429,
@@ -2692,6 +2760,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 19,
    "beat": 1,
    "t": 62.5714,
@@ -2705,6 +2774,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 19,
    "beat": 2.5,
    "t": 63.8571,
@@ -2718,6 +2788,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 19,
    "beat": 3,
    "t": 64.2857,
@@ -2731,6 +2802,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 20,
    "beat": 0,
    "t": 65.1429,
@@ -2744,6 +2816,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 20,
    "beat": 0.5,
    "t": 65.5714,
@@ -2757,6 +2830,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 20,
    "beat": 1,
    "t": 66,
@@ -2770,6 +2844,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 21,
    "beat": 0,
    "t": 68.5714,
@@ -2783,6 +2858,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 21,
    "beat": 0.5,
    "t": 69,
@@ -2796,6 +2872,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 21,
    "beat": 1,
    "t": 69.4286,
@@ -2809,6 +2886,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 21,
    "beat": 1.5,
    "t": 69.8571,
@@ -2822,6 +2900,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 21,
    "beat": 2,
    "t": 70.2857,
@@ -2835,6 +2914,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 21,
    "beat": 2.5,
    "t": 70.7143,
@@ -2848,6 +2928,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 21,
    "beat": 3,
    "t": 71.1429,
@@ -2861,6 +2942,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 22,
    "beat": 0,
    "t": 72,
@@ -2874,6 +2956,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 22,
    "beat": 0.5,
    "t": 72.4286,
@@ -2887,6 +2970,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 22,
    "beat": 1,
    "t": 72.8571,
@@ -2900,6 +2984,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 22,
    "beat": 3,
    "t": 74.5714,
@@ -2913,6 +2998,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 23,
    "beat": 0,
    "t": 75.4286,
@@ -2926,6 +3012,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 23,
    "beat": 0.5,
    "t": 75.8571,
@@ -2939,6 +3026,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 23,
    "beat": 1,
    "t": 76.2857,
@@ -2952,6 +3040,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 23,
    "beat": 2,
    "t": 77.1429,
@@ -2965,6 +3054,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 23,
    "beat": 2.5,
    "t": 77.5714,
@@ -2978,6 +3068,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 23,
    "beat": 3,
    "t": 78,
@@ -2991,6 +3082,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 23,
    "beat": 3.5,
    "t": 78.4286,
@@ -3004,6 +3096,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "es",
    "compas": 24,
    "beat": 0,
    "t": 78.8571,
@@ -3017,6 +3110,7 @@
    "seccion": "coro 1"
   },
   {
+   "idioma": "en",
    "compas": 27,
    "beat": 1,
    "t": 90,
@@ -3030,6 +3124,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "en",
    "compas": 27,
    "beat": 1.5,
    "t": 90.4286,
@@ -3043,6 +3138,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "en",
    "compas": 27,
    "beat": 2,
    "t": 90.8571,
@@ -3056,6 +3152,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "en",
    "compas": 27,
    "beat": 2.5,
    "t": 91.2857,
@@ -3069,6 +3166,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "en",
    "compas": 27,
    "beat": 3,
    "t": 91.7143,
@@ -3082,6 +3180,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 28,
    "beat": 0,
    "t": 92.5714,
@@ -3095,6 +3194,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 28,
    "beat": 0.5,
    "t": 93,
@@ -3108,6 +3208,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 28,
    "beat": 1,
    "t": 93.4286,
@@ -3121,6 +3222,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 28,
    "beat": 1.5,
    "t": 93.8571,
@@ -3134,6 +3236,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 28,
    "beat": 2,
    "t": 94.2857,
@@ -3147,6 +3250,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 28,
    "beat": 3,
    "t": 95.1429,
@@ -3160,6 +3264,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 28,
    "beat": 3.5,
    "t": 95.5714,
@@ -3173,6 +3278,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 29,
    "beat": 0,
    "t": 96,
@@ -3186,6 +3292,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 29,
    "beat": 0.5,
    "t": 96.4286,
@@ -3199,6 +3306,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 29,
    "beat": 1,
    "t": 96.8571,
@@ -3212,6 +3320,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 29,
    "beat": 1.5,
    "t": 97.2857,
@@ -3225,6 +3334,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 29,
    "beat": 2,
    "t": 97.7143,
@@ -3238,6 +3348,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 29,
    "beat": 2.5,
    "t": 98.1429,
@@ -3251,6 +3362,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 29,
    "beat": 3,
    "t": 98.5714,
@@ -3264,6 +3376,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 29,
    "beat": 3.5,
    "t": 99,
@@ -3277,6 +3390,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 30,
    "beat": 0,
    "t": 99.4286,
@@ -3290,6 +3404,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 31,
    "beat": 0,
    "t": 102.8571,
@@ -3303,6 +3418,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 31,
    "beat": 0.5,
    "t": 103.2857,
@@ -3316,6 +3432,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 31,
    "beat": 1,
    "t": 103.7143,
@@ -3329,6 +3446,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 31,
    "beat": 1.5,
    "t": 104.1429,
@@ -3342,6 +3460,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 31,
    "beat": 2.5,
    "t": 105,
@@ -3355,6 +3474,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 31,
    "beat": 3,
    "t": 105.4286,
@@ -3368,6 +3488,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 31,
    "beat": 3.5,
    "t": 105.8571,
@@ -3381,6 +3502,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 32,
    "beat": 0,
    "t": 106.2857,
@@ -3394,6 +3516,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 32,
    "beat": 1,
    "t": 107.1429,
@@ -3407,6 +3530,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 32,
    "beat": 1.5,
    "t": 107.5714,
@@ -3420,6 +3544,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 32,
    "beat": 2,
    "t": 108,
@@ -3433,6 +3558,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 32,
    "beat": 3,
    "t": 108.8571,
@@ -3446,6 +3572,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 32,
    "beat": 3.5,
    "t": 109.2857,
@@ -3459,6 +3586,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 33,
    "beat": 0,
    "t": 109.7143,
@@ -3472,6 +3600,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 33,
    "beat": 0.5,
    "t": 110.1429,
@@ -3485,6 +3614,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 33,
    "beat": 2,
    "t": 111.4286,
@@ -3498,6 +3628,7 @@
    "seccion": "verso 2"
   },
   {
+   "idioma": "es",
    "compas": 35,
    "beat": 0.5,
    "t": 117,
@@ -3511,6 +3642,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 35,
    "beat": 1,
    "t": 117.4286,
@@ -3524,6 +3656,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 35,
    "beat": 1.5,
    "t": 117.8571,
@@ -3537,6 +3670,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 35,
    "beat": 2,
    "t": 118.2857,
@@ -3550,6 +3684,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 35,
    "beat": 2.5,
    "t": 118.7143,
@@ -3563,6 +3698,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 35,
    "beat": 3.5,
    "t": 119.5714,
@@ -3576,6 +3712,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 36,
    "beat": 0,
    "t": 120,
@@ -3589,6 +3726,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 36,
    "beat": 0.5,
    "t": 120.4286,
@@ -3602,6 +3740,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 36,
    "beat": 2,
    "t": 121.7143,
@@ -3615,6 +3754,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 36,
    "beat": 2.5,
    "t": 122.1429,
@@ -3628,6 +3768,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 37,
    "beat": 0,
    "t": 123.4286,
@@ -3641,6 +3782,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 37,
    "beat": 0.5,
    "t": 123.8571,
@@ -3654,6 +3796,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 37,
    "beat": 1.5,
    "t": 124.7143,
@@ -3667,6 +3810,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 37,
    "beat": 2,
    "t": 125.1429,
@@ -3680,6 +3824,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 37,
    "beat": 2.5,
    "t": 125.5714,
@@ -3693,6 +3838,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 37,
    "beat": 3.5,
    "t": 126.4286,
@@ -3706,6 +3852,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 38,
    "beat": 0,
    "t": 126.8571,
@@ -3719,6 +3866,7 @@
    "seccion": "pre-coro 2"
   },
   {
+   "idioma": "es",
    "compas": 39,
    "beat": 0,
    "t": 130.2857,
@@ -3732,6 +3880,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 39,
    "beat": 0.5,
    "t": 130.7143,
@@ -3745,6 +3894,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 39,
    "beat": 1,
    "t": 131.1429,
@@ -3758,6 +3908,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 39,
    "beat": 2.5,
    "t": 132.4286,
@@ -3771,6 +3922,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 39,
    "beat": 3,
    "t": 132.8571,
@@ -3784,6 +3936,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 40,
    "beat": 0,
    "t": 133.7143,
@@ -3797,6 +3950,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 40,
    "beat": 0.5,
    "t": 134.1429,
@@ -3810,6 +3964,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 40,
    "beat": 1,
    "t": 134.5714,
@@ -3823,6 +3978,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 41,
    "beat": 0,
    "t": 137.1429,
@@ -3836,6 +3992,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 41,
    "beat": 0.5,
    "t": 137.5714,
@@ -3849,6 +4006,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 41,
    "beat": 1,
    "t": 138,
@@ -3862,6 +4020,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 41,
    "beat": 2.5,
    "t": 139.2857,
@@ -3875,6 +4034,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 41,
    "beat": 3,
    "t": 139.7143,
@@ -3888,6 +4048,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 42,
    "beat": 0,
    "t": 140.5714,
@@ -3901,6 +4062,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 42,
    "beat": 0.5,
    "t": 141,
@@ -3914,6 +4076,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 42,
    "beat": 1,
    "t": 141.4286,
@@ -3927,6 +4090,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 43,
    "beat": 0,
    "t": 144,
@@ -3940,6 +4104,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 43,
    "beat": 0.5,
    "t": 144.4286,
@@ -3953,6 +4118,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 43,
    "beat": 1.5,
    "t": 145.2857,
@@ -3966,6 +4132,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 43,
    "beat": 2,
    "t": 145.7143,
@@ -3979,6 +4146,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 43,
    "beat": 3,
    "t": 146.5714,
@@ -3992,6 +4160,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 44,
    "beat": 0,
    "t": 147.4286,
@@ -4005,6 +4174,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 44,
    "beat": 2,
    "t": 149.1429,
@@ -4018,6 +4188,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 45,
    "beat": 0,
    "t": 150.8571,
@@ -4031,6 +4202,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 45,
    "beat": 0.5,
    "t": 151.2857,
@@ -4044,6 +4216,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 45,
    "beat": 1,
    "t": 151.7143,
@@ -4057,6 +4230,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 45,
    "beat": 2,
    "t": 152.5714,
@@ -4070,6 +4244,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 45,
    "beat": 2.5,
    "t": 153,
@@ -4083,6 +4258,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 45,
    "beat": 3,
    "t": 153.4286,
@@ -4096,6 +4272,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 45,
    "beat": 3.5,
    "t": 153.8571,
@@ -4109,6 +4286,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 46,
    "beat": 0,
    "t": 154.2857,
@@ -4122,6 +4300,7 @@
    "seccion": "coro 2"
   },
   {
+   "idioma": "es",
    "compas": 47,
    "beat": 1,
    "t": 158.5714,
@@ -4135,6 +4314,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 47,
    "beat": 1.5,
    "t": 159,
@@ -4148,6 +4328,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 47,
    "beat": 2,
    "t": 159.4286,
@@ -4161,6 +4342,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 47,
    "beat": 3,
    "t": 160.2857,
@@ -4174,6 +4356,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 47,
    "beat": 3.5,
    "t": 160.7143,
@@ -4187,6 +4370,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 48,
    "beat": 0,
    "t": 161.1429,
@@ -4200,6 +4384,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 48,
    "beat": 0.5,
    "t": 161.5714,
@@ -4213,6 +4398,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 48,
    "beat": 1,
    "t": 162,
@@ -4226,6 +4412,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 48,
    "beat": 1.5,
    "t": 162.4286,
@@ -4239,6 +4426,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 49,
    "beat": 1,
    "t": 165.4286,
@@ -4252,6 +4440,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 49,
    "beat": 1.5,
    "t": 165.8571,
@@ -4265,6 +4454,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 49,
    "beat": 2,
    "t": 166.2857,
@@ -4278,6 +4468,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 49,
    "beat": 3,
    "t": 167.1429,
@@ -4291,6 +4482,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 49,
    "beat": 3.5,
    "t": 167.5714,
@@ -4304,6 +4496,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 50,
    "beat": 0,
    "t": 168,
@@ -4317,6 +4510,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 50,
    "beat": 0.5,
    "t": 168.4286,
@@ -4330,6 +4524,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 50,
    "beat": 1,
    "t": 168.8571,
@@ -4343,6 +4538,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 50,
    "beat": 2,
    "t": 169.7143,
@@ -4356,6 +4552,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 51,
    "beat": 1,
    "t": 172.2857,
@@ -4369,6 +4566,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 51,
    "beat": 1.5,
    "t": 172.7143,
@@ -4382,6 +4580,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 51,
    "beat": 2,
    "t": 173.1429,
@@ -4395,6 +4594,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 51,
    "beat": 2.5,
    "t": 173.5714,
@@ -4408,6 +4608,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 51,
    "beat": 3,
    "t": 174,
@@ -4421,6 +4622,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 51,
    "beat": 3.5,
    "t": 174.4286,
@@ -4434,6 +4636,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 52,
    "beat": 0,
    "t": 174.8571,
@@ -4447,6 +4650,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 52,
    "beat": 1.5,
    "t": 176.1429,
@@ -4460,6 +4664,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 52,
    "beat": 2,
    "t": 176.5714,
@@ -4473,6 +4678,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 52,
    "beat": 2.5,
    "t": 177,
@@ -4486,6 +4692,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 52,
    "beat": 3,
    "t": 177.4286,
@@ -4499,6 +4706,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 53,
    "beat": 0,
    "t": 178.2857,
@@ -4512,6 +4720,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 53,
    "beat": 1,
    "t": 179.1429,
@@ -4525,6 +4734,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 53,
    "beat": 2,
    "t": 180,
@@ -4538,6 +4748,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 53,
    "beat": 2.5,
    "t": 180.4286,
@@ -4551,6 +4762,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 53,
    "beat": 3,
    "t": 180.8571,
@@ -4564,6 +4776,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 54,
    "beat": 0,
    "t": 181.7143,
@@ -4577,6 +4790,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 54,
    "beat": 0.5,
    "t": 182.1429,
@@ -4590,6 +4804,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 54,
    "beat": 1,
    "t": 182.5714,
@@ -4603,6 +4818,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 54,
    "beat": 2,
    "t": 183.4286,
@@ -4616,6 +4832,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 54,
    "beat": 2.5,
    "t": 183.8571,
@@ -4629,6 +4846,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 54,
    "beat": 3,
    "t": 184.2857,
@@ -4642,6 +4860,7 @@
    "seccion": "puente"
   },
   {
+   "idioma": "es",
    "compas": 55,
    "beat": 0,
    "t": 185.1429,
@@ -4655,6 +4874,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 55,
    "beat": 0.5,
    "t": 185.5714,
@@ -4668,6 +4888,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 55,
    "beat": 1,
    "t": 186,
@@ -4681,6 +4902,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 55,
    "beat": 2.5,
    "t": 187.2857,
@@ -4694,6 +4916,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 55,
    "beat": 3,
    "t": 187.7143,
@@ -4707,6 +4930,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 56,
    "beat": 0,
    "t": 188.5714,
@@ -4720,6 +4944,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 56,
    "beat": 0.5,
    "t": 189,
@@ -4733,6 +4958,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 56,
    "beat": 1,
    "t": 189.4286,
@@ -4746,6 +4972,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 57,
    "beat": 0,
    "t": 192,
@@ -4759,6 +4986,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 57,
    "beat": 0.5,
    "t": 192.4286,
@@ -4772,6 +5000,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 57,
    "beat": 1,
    "t": 192.8571,
@@ -4785,6 +5014,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 57,
    "beat": 2.5,
    "t": 194.1429,
@@ -4798,6 +5028,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 57,
    "beat": 3,
    "t": 194.5714,
@@ -4811,6 +5042,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 58,
    "beat": 0,
    "t": 195.4286,
@@ -4824,6 +5056,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 58,
    "beat": 0.5,
    "t": 195.8571,
@@ -4837,6 +5070,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 58,
    "beat": 1,
    "t": 196.2857,
@@ -4850,6 +5084,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 59,
    "beat": 0,
    "t": 198.8571,
@@ -4863,6 +5098,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 59,
    "beat": 0.5,
    "t": 199.2857,
@@ -4876,6 +5112,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 59,
    "beat": 1,
    "t": 199.7143,
@@ -4889,6 +5126,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 59,
    "beat": 2,
    "t": 200.5714,
@@ -4902,6 +5140,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 59,
    "beat": 2.5,
    "t": 201,
@@ -4915,6 +5154,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 59,
    "beat": 3,
    "t": 201.4286,
@@ -4928,6 +5168,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 60,
    "beat": 0,
    "t": 202.2857,
@@ -4941,6 +5182,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 60,
    "beat": 2,
    "t": 204,
@@ -4954,6 +5196,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 61,
    "beat": 0,
    "t": 205.7143,
@@ -4967,6 +5210,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 61,
    "beat": 0.5,
    "t": 206.1429,
@@ -4980,6 +5224,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 61,
    "beat": 1,
    "t": 206.5714,
@@ -4993,6 +5238,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 61,
    "beat": 2,
    "t": 207.4286,
@@ -5006,6 +5252,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 61,
    "beat": 2.5,
    "t": 207.8571,
@@ -5019,6 +5266,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 61,
    "beat": 3,
    "t": 208.2857,
@@ -5032,6 +5280,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 61,
    "beat": 3.5,
    "t": 208.7143,
@@ -5045,6 +5294,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 62,
    "beat": 0,
    "t": 209.1429,
@@ -5058,6 +5308,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 63,
    "beat": 0,
    "t": 212.5714,
@@ -5071,6 +5322,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 63,
    "beat": 0.5,
    "t": 213,
@@ -5084,6 +5336,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 63,
    "beat": 1,
    "t": 213.4286,
@@ -5097,6 +5350,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 63,
    "beat": 2,
    "t": 214.2857,
@@ -5110,6 +5364,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 63,
    "beat": 2.5,
    "t": 214.7143,
@@ -5123,6 +5378,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 63,
    "beat": 3,
    "t": 215.1429,
@@ -5136,6 +5392,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 63,
    "beat": 3.5,
    "t": 215.5714,
@@ -5149,6 +5406,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 64,
    "beat": 0,
    "t": 216,
@@ -5162,6 +5420,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 64,
    "beat": 1,
    "t": 216.8571,
@@ -5175,6 +5434,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 65,
    "beat": 0,
    "t": 219.4286,
@@ -5188,6 +5448,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 65,
    "beat": 0.5,
    "t": 219.8571,
@@ -5201,6 +5462,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 65,
    "beat": 1,
    "t": 220.2857,
@@ -5214,6 +5476,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 65,
    "beat": 2.5,
    "t": 221.5714,
@@ -5227,6 +5490,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 65,
    "beat": 3,
    "t": 222,
@@ -5240,6 +5504,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 65,
    "beat": 3.5,
    "t": 222.4286,
@@ -5253,6 +5518,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 66,
    "beat": 0,
    "t": 222.8571,
@@ -5266,6 +5532,7 @@
    "seccion": "coro final"
   },
   {
+   "idioma": "es",
    "compas": 66,
    "beat": 0.5,
    "t": 223.2857,
@@ -5403,6 +5670,28 @@
   }
  ],
  "rios": [
+  {
+   "t": 83.657,
+   "clase": 1,
+   "de": 12.399,
+   "a": 5.299,
+   "hzDe": 405.48,
+   "hzA": 173.29,
+   "dur": 1.2,
+   "v": 0.25,
+   "interludio": true
+  },
+  {
+   "t": 86.743,
+   "clase": 1,
+   "de": 17.373,
+   "a": 5.299,
+   "hzDe": 568.14,
+   "hzA": 173.29,
+   "dur": 1.2,
+   "v": 0.25,
+   "interludio": true
+  },
   {
    "t": 89.722,
    "clase": 1,
@@ -6405,6 +6694,86 @@
     2685.9,
     2684
    ]
+  ],
+  "eventos": [
+   {
+    "t": 0.8571428571428571,
+    "dur": 10.285714285714285,
+    "nota": 51.86303355894669,
+    "fonemas": [
+     "a"
+    ],
+    "v": 0.5,
+    "aprende": 0.2,
+    "ronco": 0.3,
+    "epoca": 0,
+    "seccion": "intro"
+   },
+   {
+    "t": 226.28571428571428,
+    "dur": 12.714285714285714,
+    "nota": 47.99989642029834,
+    "fonemas": [
+     "u"
+    ],
+    "v": 0.45,
+    "aprende": 0.25,
+    "ronco": 0.35,
+    "epoca": 4,
+    "seccion": "final"
+   },
+   {
+    "t": 157.7142857142857,
+    "dur": 6.657142857142857,
+    "nota": 47.99989642029834,
+    "fonemas": [
+     "a"
+    ],
+    "v": 0.5,
+    "aprende": 0.25,
+    "ronco": 0.4,
+    "epoca": 3,
+    "seccion": "puente"
+   },
+   {
+    "t": 164.57142857142856,
+    "dur": 6.657142857142857,
+    "nota": 47.99989642029834,
+    "fonemas": [
+     "o"
+    ],
+    "v": 0.5,
+    "aprende": 0.25,
+    "ronco": 0.4,
+    "epoca": 3,
+    "seccion": "puente"
+   },
+   {
+    "t": 171.42857142857142,
+    "dur": 6.657142857142857,
+    "nota": 47.99989642029834,
+    "fonemas": [
+     "a"
+    ],
+    "v": 0.5,
+    "aprende": 0.25,
+    "ronco": 0.4,
+    "epoca": 3,
+    "seccion": "puente"
+   },
+   {
+    "t": 178.28571428571428,
+    "dur": 6.657142857142857,
+    "nota": 47.99989642029834,
+    "fonemas": [
+     "u"
+    ],
+    "v": 0.5,
+    "aprende": 0.25,
+    "ronco": 0.4,
+    "epoca": 4,
+    "seccion": "puente"
+   }
   ]
  },
  "viento": {
@@ -6472,5 +6841,100 @@
    2685.9,
    2684
   ]
- }
+ },
+ "pulsos": [
+  {
+   "t": 0,
+   "epoca": 0,
+   "A": 3,
+   "seccion": "intro"
+  },
+  {
+   "t": 13.714285714285714,
+   "epoca": 0,
+   "A": 1.8,
+   "seccion": "verso 1"
+  },
+  {
+   "t": 41.14285714285714,
+   "epoca": 0,
+   "A": 1.8,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "t": 54.857142857142854,
+   "epoca": 1,
+   "A": 1.8,
+   "seccion": "coro 1"
+  },
+  {
+   "t": 82.28571428571428,
+   "epoca": 1,
+   "A": 1.8,
+   "seccion": "interludio"
+  },
+  {
+   "t": 89.14285714285714,
+   "epoca": 2,
+   "A": 1.8,
+   "seccion": "verso 2"
+  },
+  {
+   "t": 116.57142857142857,
+   "epoca": 2,
+   "A": 1.8,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "t": 130.28571428571428,
+   "epoca": 3,
+   "A": 1.8,
+   "seccion": "coro 2"
+  },
+  {
+   "t": 157.7142857142857,
+   "epoca": 3,
+   "A": 1.8,
+   "seccion": "puente"
+  },
+  {
+   "t": 185.14285714285714,
+   "epoca": 4,
+   "A": 1.8,
+   "seccion": "coro final"
+  },
+  {
+   "t": 226.28571428571428,
+   "epoca": 4,
+   "A": 1.8,
+   "seccion": "final"
+  }
+ ],
+ "espacio": [
+  {
+   "epoca": "MESETA",
+   "hondura_km": 0,
+   "rt60": 0.6
+  },
+  {
+   "epoca": "ESTIRAMIENTO",
+   "hondura_km": 1.551,
+   "rt60": 2.15
+  },
+  {
+   "epoca": "HUNDIMIENTO",
+   "hondura_km": 1.102,
+   "rt60": 1.7
+  },
+  {
+   "epoca": "LAGOS Y VOLCANES",
+   "hondura_km": 1.1,
+   "rt60": 1.7
+  },
+  {
+   "epoca": "SUPERCALDERA",
+   "hondura_km": 1.09,
+   "rt60": 1.69
+  }
+ ]
 }
