@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coro inaudible</title>
+<meta name="description" content="Seis resonadores en un corredor. Cuando la distancia es exacta, tres notas quedan guardadas: se ven vibrar, la sala no las oye. Abrir a un cantor las deja salir. Canek Zapata, 2026.">
+<style>
+  :root {
+    --fondo: #0f1012; --tinta: #e6e1d8; --tenue: #878279; --linea: #2a2a2c;
+    --oro: #d9b25f; --voz: #9fc3e0; --boca: #c97a5a;
+    --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; background: var(--fondo); color: var(--tinta); }
+  body { font: 14px/1.5 var(--serif); }
+  .pagina { display: grid; grid-template-columns: minmax(0, 1fr) 19rem; gap: 0 1.4rem; max-width: 84rem; margin: 0 auto; padding: 1.4rem 16px 2rem; }
+  h1 { font-weight: normal; font-size: 1.35rem; margin: 0 0 .2rem; grid-column: 1 / -1; }
+  .lema { font-style: italic; color: var(--tenue); margin: 0 0 1rem; grid-column: 1 / -1; max-width: 52rem; }
+  canvas { display: block; width: 100%; background: #141517; border: 1px solid var(--linea); }
+  #corredor { height: 300px; touch-action: none; cursor: pointer; }
+  #modos { height: 190px; margin-top: .6rem; }
+  #tiempo { height: 120px; margin-top: .6rem; }
+  .lecturas { font: 12px/1.75 var(--mono); color: var(--tenue); margin-top: .6rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0 1rem; }
+  .lecturas b { color: var(--tinta); font-weight: normal; }
+  aside { font-size: 13px; }
+  fieldset { border: 0; border-top: 1px solid var(--linea); margin: 0; padding: .55rem 0 .7rem; }
+  legend { font: 11px var(--mono); color: var(--tenue); padding-right: .4rem; }
+  label { display: flex; align-items: center; justify-content: space-between; gap: .5rem; margin: .22rem 0; }
+  label output { font: 11px var(--mono); color: var(--tenue); min-width: 3.4rem; text-align: right; }
+  input[type=range] { width: 8.5rem; accent-color: var(--oro); }
+  input[type=number] { width: 3.6rem; font: 12px var(--mono); background: transparent; color: var(--tinta); border: 1px solid #45403a; padding: .2rem .3rem; }
+  select, button { font: 12px var(--mono); background: transparent; color: var(--tinta); border: 1px solid #45403a; padding: .28rem .5rem; border-radius: 0; cursor: pointer; }
+  button:hover { border-color: var(--tinta); }
+  button[aria-pressed=true] { background: var(--tinta); color: var(--fondo); }
+  :focus-visible { outline: 1px solid var(--oro); outline-offset: 2px; }
+  .botones { display: flex; flex-wrap: wrap; gap: .35rem; }
+  .nota { color: var(--tenue); font-size: 12px; margin: .4rem 0 0; }
+  .fila { display: flex; gap: .3rem; align-items: center; }
+  @media (max-width: 900px) { .pagina { grid-template-columns: 1fr; } #corredor { height: 240px; } }
+</style>
+</head>
+<body>
+<div class="pagina">
+  <h1>Coro inaudible</h1>
+  <p class="lema">Seis cantores en un corredor que da a la sala por sus dos bocas. Cuando la distancia entre ellos es exacta, tres notas quedan guardadas: se ven vibrar, la sala no las oye. Abrir a un cantor las deja salir.</p>
+  <main>
+    <canvas id="corredor" tabindex="0" aria-label="El corredor con seis cantores. Clic: golpear. Arrastrar de lado: abrir su puerta. El oro es lo guardado; el azul, lo que suena."></canvas>
+    <p class="nota">Clic en un cantor: golpearlo. Arrastrarlo de lado: abrir su puerta (los desplazamientos se dibujan muy aumentados: el corredor mide 94 m y una puerta, centímetros). Oro: lo que guarda cada cantor. Azul: lo que puede salir. Las bocas dan a la sala, izquierda y derecha.</p>
+    <canvas id="modos" aria-label="Las seis notas del coro: energía de cada modo y su vida prevista"></canvas>
+    <canvas id="tiempo" aria-label="Los últimos 20 segundos: energía guardada y nivel en la sala"></canvas>
+    <div class="lecturas">
+      <span>guardada <b id="l-guard">—</b></span>
+      <span>en la sala <b id="l-db">—</b></span>
+      <span>separación <b id="l-s">—</b></span>
+      <span>escucha <b id="l-esc">—</b></span>
+    </div>
+  </main>
+  <aside>
+    <fieldset>
+      <legend>tocar</legend>
+      <div class="botones">
+        <button id="sonido" aria-pressed="false">sonido</button>
+        <button id="cerrar">cerrar las puertas</button>
+        <button id="apagar">callar el coro</button>
+      </div>
+      <label>al tocar <select id="modo"><option value="golpe">golpear</option><option value="espejo">golpear en espejo</option></select></label>
+      <label>separación <input id="sep" type="range" min="-10" max="10" step="0.25" value="0"><output id="o-sep"></output></label>
+      <div class="botones"><button id="pulso">pulso desde la sala</button><button id="grabar" aria-pressed="false">grabar toma</button></div>
+      <p class="nota">Golpear en espejo toca al cantor y a su reflejo en contrafase: casi todo queda adentro. La separación mueve a todos: fuera de la distancia exacta, las guardadas salen cada una a su ritmo. Teclado (con el corredor enfocado): 1–6 golpean, ← → mueven al último, 0 cierra.</p>
+    </fieldset>
+    <fieldset>
+      <legend>escucha</legend>
+      <label>sala ↔ cerca <input id="mezcla" type="range" min="0" max="1" step="0.01" value="0"><output id="o-mezcla"></output></label>
+      <label>cerca de <select id="cantor"><option value="0">cantor 1</option><option value="1">cantor 2</option><option value="2" selected>cantor 3</option><option value="3">cantor 4</option><option value="4">cantor 5</option><option value="5">cantor 6</option></select></label>
+      <p class="nota">La sala oye las bocas. Cerca es el sonido dentro del cantor: ahí está lo guardado.</p>
+    </fieldset>
+    <fieldset>
+      <legend>el acorde guardado</legend>
+      <label>base (Hz) <input id="base" type="number" min="16" max="60" step="1" value="22"></label>
+      <div class="fila">armónicos <input id="n1" type="number" min="2" max="40" value="10"><input id="n2" type="number" min="2" max="40" value="12"><input id="n3" type="number" min="2" max="40" value="15"></div>
+      <label>eje del espejo <select id="eje"></select></label>
+      <div class="botones"><button id="afinar">afinar el coro</button></div>
+      <p class="nota" id="diseno"></p>
+    </fieldset>
+    <fieldset>
+      <legend>partituras de gestos</legend>
+      <div class="botones" id="partituras"></div>
+      <p class="nota" id="nota-partitura"></p>
+    </fieldset>
+  </aside>
+</div>
+<script type="module" src="interfaz.mjs"></script>
+</body>
+</html>
