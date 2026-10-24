@@ -1,0 +1,6476 @@
+{
+ "titulo": "El rift se abre",
+ "subtitulo": "balada de K-pop por forma; Grisey y Murail por dentro",
+ "bpm": 70,
+ "compas": "4/4",
+ "do1": 32.703,
+ "unidad_m_por_parcial": 193.9125,
+ "duracion": 240,
+ "lamina": {
+  "nombre": "EL ALCOR DEL PINAR",
+  "glosa": "low hill, of the pinewood",
+  "arquetipo": "RIFT"
+ },
+ "historia": [
+  "MESETA",
+  "ESTIRAMIENTO",
+  "HUNDIMIENTO",
+  "LAGOS Y VOLCANES",
+  "SUPERCALDERA"
+ ],
+ "secciones": [
+  {
+   "nombre": "intro",
+   "desde": 1,
+   "hasta": 5,
+   "epoca": 0
+  },
+  {
+   "nombre": "verso 1",
+   "desde": 5,
+   "hasta": 13,
+   "epoca": 0
+  },
+  {
+   "nombre": "pre-coro 1",
+   "desde": 13,
+   "hasta": 17,
+   "epoca": 0
+  },
+  {
+   "nombre": "coro 1",
+   "desde": 17,
+   "hasta": 25,
+   "epoca": 1
+  },
+  {
+   "nombre": "interludio",
+   "desde": 25,
+   "hasta": 27,
+   "epoca": 1
+  },
+  {
+   "nombre": "verso 2",
+   "desde": 27,
+   "hasta": 35,
+   "epoca": 2
+  },
+  {
+   "nombre": "pre-coro 2",
+   "desde": 35,
+   "hasta": 39,
+   "epoca": 2
+  },
+  {
+   "nombre": "coro 2",
+   "desde": 39,
+   "hasta": 47,
+   "epoca": 3
+  },
+  {
+   "nombre": "puente",
+   "desde": 47,
+   "hasta": 55,
+   "epoca": 3
+  },
+  {
+   "nombre": "coro final",
+   "desde": 55,
+   "hasta": 67,
+   "epoca": 4
+  },
+  {
+   "nombre": "final",
+   "desde": 67,
+   "hasta": 71,
+   "epoca": 4
+  }
+ ],
+ "lineas": [
+  [
+   5.002,
+   5.002,
+   5.002,
+   5.002,
+   5.002,
+   5.002,
+   5.002,
+   5.002,
+   5.002,
+   5.002
+  ],
+  [
+   6.889,
+   12.399,
+   17.373,
+   18.467,
+   19.162,
+   16.125,
+   5.299,
+   15.664,
+   5.843,
+   5.789
+  ],
+  [
+   7.976,
+   12.417,
+   14.9,
+   19.494,
+   15.703,
+   17.44,
+   5.989,
+   13.226,
+   6.061,
+   9.964
+  ],
+  [
+   7.971,
+   12.397,
+   14.893,
+   19.494,
+   15.703,
+   17.439,
+   5.981,
+   13.216,
+   6.058,
+   9.959
+  ],
+  [
+   8,
+   12.36,
+   14.88,
+   19.493,
+   15.703,
+   17.438,
+   6.316,
+   13.318,
+   6.188,
+   10.089
+  ]
+ ],
+ "rasgos": [
+  "piso",
+  "hombro oeste",
+  "hombro este",
+  "cumbre 1",
+  "cumbre 2",
+  "cumbre 3",
+  "lago 1",
+  "lago 2",
+  "lago 3",
+  "lago 4"
+ ],
+ "acordes": {
+  "ii": [
+   18,
+   21,
+   27
+  ],
+  "iii": [
+   20,
+   24,
+   30
+  ],
+  "IV": [
+   21,
+   27,
+   32
+  ],
+  "V": [
+   24,
+   30,
+   36
+  ],
+  "vi": [
+   27,
+   32,
+   40
+  ],
+  "I": [
+   16,
+   20,
+   24
+  ]
+ },
+ "armonia": [
+  {
+   "compas": 5,
+   "t": 13.7143,
+   "grado": "vi",
+   "seccion": "verso 1",
+   "epoca": 0,
+   "tonos": [
+    {
+     "parcial": 27,
+     "p": 27,
+     "hz": 882.981,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 32,
+     "p": 32,
+     "hz": 1046.496,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 40,
+     "p": 40,
+     "hz": 1308.12,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 110.373
+  },
+  {
+   "compas": 6,
+   "t": 17.1429,
+   "grado": "IV",
+   "seccion": "verso 1",
+   "epoca": 0,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21,
+     "hz": 686.763,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 27,
+     "p": 27,
+     "hz": 882.981,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 32,
+     "p": 32,
+     "hz": 1046.496,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 7,
+   "t": 20.5714,
+   "grado": "V",
+   "seccion": "verso 1",
+   "epoca": 0,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 24,
+     "hz": 784.872,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 30,
+     "p": 30,
+     "hz": 981.09,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 36,
+     "p": 36,
+     "hz": 1177.308,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 8,
+   "t": 24,
+   "grado": "iii",
+   "seccion": "verso 1",
+   "epoca": 0,
+   "tonos": [
+    {
+     "parcial": 20,
+     "p": 20,
+     "hz": 654.06,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 24,
+     "p": 24,
+     "hz": 784.872,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 30,
+     "p": 30,
+     "hz": 981.09,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 81.758
+  },
+  {
+   "compas": 9,
+   "t": 27.4286,
+   "grado": "vi",
+   "seccion": "verso 1",
+   "epoca": 0,
+   "tonos": [
+    {
+     "parcial": 27,
+     "p": 27,
+     "hz": 882.981,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 32,
+     "p": 32,
+     "hz": 1046.496,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 40,
+     "p": 40,
+     "hz": 1308.12,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 110.373
+  },
+  {
+   "compas": 10,
+   "t": 30.8571,
+   "grado": "IV",
+   "seccion": "verso 1",
+   "epoca": 0,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21,
+     "hz": 686.763,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 27,
+     "p": 27,
+     "hz": 882.981,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 32,
+     "p": 32,
+     "hz": 1046.496,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 11,
+   "t": 34.2857,
+   "grado": "V",
+   "seccion": "verso 1",
+   "epoca": 0,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 24,
+     "hz": 784.872,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 30,
+     "p": 30,
+     "hz": 981.09,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 36,
+     "p": 36,
+     "hz": 1177.308,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 12,
+   "t": 37.7143,
+   "grado": "V",
+   "seccion": "verso 1",
+   "epoca": 0,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 24,
+     "hz": 784.872,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 30,
+     "p": 30,
+     "hz": 981.09,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 36,
+     "p": 36,
+     "hz": 1177.308,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 13,
+   "t": 41.1429,
+   "grado": "ii",
+   "seccion": "pre-coro 1",
+   "epoca": 0,
+   "tonos": [
+    {
+     "parcial": 18,
+     "p": 18,
+     "hz": 588.654,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 21,
+     "p": 21,
+     "hz": 686.763,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 27,
+     "p": 27,
+     "hz": 882.981,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 73.582
+  },
+  {
+   "compas": 14,
+   "t": 44.5714,
+   "grado": "iii",
+   "seccion": "pre-coro 1",
+   "epoca": 0,
+   "tonos": [
+    {
+     "parcial": 20,
+     "p": 20,
+     "hz": 654.06,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 24,
+     "p": 24,
+     "hz": 784.872,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 30,
+     "p": 30,
+     "hz": 981.09,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 81.758
+  },
+  {
+   "compas": 15,
+   "t": 48,
+   "grado": "IV",
+   "seccion": "pre-coro 1",
+   "epoca": 0,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21,
+     "hz": 686.763,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 27,
+     "p": 27,
+     "hz": 882.981,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 32,
+     "p": 32,
+     "hz": 1046.496,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 16,
+   "t": 51.4286,
+   "grado": "V",
+   "seccion": "pre-coro 1",
+   "epoca": 0,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 24,
+     "hz": 784.872,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 30,
+     "p": 30,
+     "hz": 981.09,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 36,
+     "p": 36,
+     "hz": 1177.308,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 17,
+   "t": 54.8571,
+   "grado": "IV",
+   "seccion": "coro 1",
+   "epoca": 1,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21.1951,
+     "hz": 693.144,
+     "desvio": 16,
+     "linea": 5.299
+    },
+    {
+     "parcial": 27,
+     "p": 27.5547,
+     "hz": 901.121,
+     "desvio": 35.2,
+     "linea": 6.889
+    },
+    {
+     "parcial": 32,
+     "p": 32.2506,
+     "hz": 1054.692,
+     "desvio": 13.5,
+     "linea": 16.125
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 18,
+   "t": 58.2857,
+   "grado": "V",
+   "seccion": "coro 1",
+   "epoca": 1,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 23.3714,
+     "hz": 764.314,
+     "desvio": -46,
+     "linea": 5.843
+    },
+    {
+     "parcial": 30,
+     "p": 30,
+     "hz": 981.09,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 36,
+     "p": 36.9342,
+     "hz": 1207.859,
+     "desvio": 44.4,
+     "linea": 18.467
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 19,
+   "t": 61.7143,
+   "grado": "iii",
+   "seccion": "coro 1",
+   "epoca": 1,
+   "tonos": [
+    {
+     "parcial": 20,
+     "p": 20,
+     "hz": 654.06,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 24,
+     "p": 23.3714,
+     "hz": 764.314,
+     "desvio": -46,
+     "linea": 5.843
+    },
+    {
+     "parcial": 30,
+     "p": 30,
+     "hz": 981.09,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 81.758
+  },
+  {
+   "compas": 20,
+   "t": 65.1429,
+   "grado": "vi",
+   "seccion": "coro 1",
+   "epoca": 1,
+   "tonos": [
+    {
+     "parcial": 27,
+     "p": 27.5547,
+     "hz": 901.121,
+     "desvio": 35.2,
+     "linea": 6.889
+    },
+    {
+     "parcial": 32,
+     "p": 32.2506,
+     "hz": 1054.692,
+     "desvio": 13.5,
+     "linea": 16.125
+    },
+    {
+     "parcial": 40,
+     "p": 40,
+     "hz": 1308.12,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 110.373
+  },
+  {
+   "compas": 21,
+   "t": 68.5714,
+   "grado": "IV",
+   "seccion": "coro 1",
+   "epoca": 1,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21.1951,
+     "hz": 693.144,
+     "desvio": 16,
+     "linea": 5.299
+    },
+    {
+     "parcial": 27,
+     "p": 27.5547,
+     "hz": 901.121,
+     "desvio": 35.2,
+     "linea": 6.889
+    },
+    {
+     "parcial": 32,
+     "p": 32.2506,
+     "hz": 1054.692,
+     "desvio": 13.5,
+     "linea": 16.125
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 22,
+   "t": 72,
+   "grado": "V",
+   "seccion": "coro 1",
+   "epoca": 1,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 23.3714,
+     "hz": 764.314,
+     "desvio": -46,
+     "linea": 5.843
+    },
+    {
+     "parcial": 30,
+     "p": 30,
+     "hz": 981.09,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 36,
+     "p": 36.9342,
+     "hz": 1207.859,
+     "desvio": 44.4,
+     "linea": 18.467
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 23,
+   "t": 75.4286,
+   "grado": "iii",
+   "seccion": "coro 1",
+   "epoca": 1,
+   "tonos": [
+    {
+     "parcial": 20,
+     "p": 20,
+     "hz": 654.06,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 24,
+     "p": 23.3714,
+     "hz": 764.314,
+     "desvio": -46,
+     "linea": 5.843
+    },
+    {
+     "parcial": 30,
+     "p": 30,
+     "hz": 981.09,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 81.758
+  },
+  {
+   "compas": 24,
+   "t": 78.8571,
+   "grado": "vi",
+   "seccion": "coro 1",
+   "epoca": 1,
+   "tonos": [
+    {
+     "parcial": 27,
+     "p": 27.5547,
+     "hz": 901.121,
+     "desvio": 35.2,
+     "linea": 6.889
+    },
+    {
+     "parcial": 32,
+     "p": 32.2506,
+     "hz": 1054.692,
+     "desvio": 13.5,
+     "linea": 16.125
+    },
+    {
+     "parcial": 40,
+     "p": 40,
+     "hz": 1308.12,
+     "desvio": 0,
+     "linea": null
+    }
+   ],
+   "bajo": 110.373
+  },
+  {
+   "compas": 25,
+   "t": 82.2857,
+   "grado": "IV",
+   "seccion": "interludio",
+   "epoca": 1,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21.1951,
+     "hz": 693.144,
+     "desvio": 16,
+     "linea": 5.299
+    },
+    {
+     "parcial": 27,
+     "p": 27.5547,
+     "hz": 901.121,
+     "desvio": 35.2,
+     "linea": 6.889
+    },
+    {
+     "parcial": 32,
+     "p": 32.2506,
+     "hz": 1054.692,
+     "desvio": 13.5,
+     "linea": 16.125
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 26,
+   "t": 85.7143,
+   "grado": "V",
+   "seccion": "interludio",
+   "epoca": 1,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 23.3714,
+     "hz": 764.314,
+     "desvio": -46,
+     "linea": 5.843
+    },
+    {
+     "parcial": 30,
+     "p": 30,
+     "hz": 981.09,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 36,
+     "p": 36.9342,
+     "hz": 1207.859,
+     "desvio": 44.4,
+     "linea": 18.467
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 27,
+   "t": 89.1429,
+   "grado": "vi",
+   "seccion": "verso 2",
+   "epoca": 2,
+   "tonos": [
+    {
+     "parcial": 27,
+     "p": 26.4511,
+     "hz": 865.031,
+     "desvio": -35.6,
+     "linea": 13.226
+    },
+    {
+     "parcial": 32,
+     "p": 31.903,
+     "hz": 1043.325,
+     "desvio": -5.3,
+     "linea": 7.976
+    },
+    {
+     "parcial": 40,
+     "p": 39.8572,
+     "hz": 1303.448,
+     "desvio": -6.2,
+     "linea": 9.964
+    }
+   ],
+   "bajo": 110.373
+  },
+  {
+   "compas": 28,
+   "t": 92.5714,
+   "grado": "IV",
+   "seccion": "verso 2",
+   "epoca": 2,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21,
+     "hz": 686.763,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 27,
+     "p": 26.4511,
+     "hz": 865.031,
+     "desvio": -35.6,
+     "linea": 13.226
+    },
+    {
+     "parcial": 32,
+     "p": 31.903,
+     "hz": 1043.325,
+     "desvio": -5.3,
+     "linea": 7.976
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 29,
+   "t": 96,
+   "grado": "V",
+   "seccion": "verso 2",
+   "epoca": 2,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 23.9572,
+     "hz": 783.472,
+     "desvio": -3.1,
+     "linea": 5.989
+    },
+    {
+     "parcial": 30,
+     "p": 29.8,
+     "hz": 974.551,
+     "desvio": -11.6,
+     "linea": 14.9
+    },
+    {
+     "parcial": 36,
+     "p": 34.8796,
+     "hz": 1140.669,
+     "desvio": -54.7,
+     "linea": 17.44
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 30,
+   "t": 99.4286,
+   "grado": "iii",
+   "seccion": "verso 2",
+   "epoca": 2,
+   "tonos": [
+    {
+     "parcial": 20,
+     "p": 19.9286,
+     "hz": 651.724,
+     "desvio": -6.2,
+     "linea": 9.964
+    },
+    {
+     "parcial": 24,
+     "p": 23.9572,
+     "hz": 783.472,
+     "desvio": -3.1,
+     "linea": 5.989
+    },
+    {
+     "parcial": 30,
+     "p": 29.8,
+     "hz": 974.551,
+     "desvio": -11.6,
+     "linea": 14.9
+    }
+   ],
+   "bajo": 81.758
+  },
+  {
+   "compas": 31,
+   "t": 102.8571,
+   "grado": "vi",
+   "seccion": "verso 2",
+   "epoca": 2,
+   "tonos": [
+    {
+     "parcial": 27,
+     "p": 26.4511,
+     "hz": 865.031,
+     "desvio": -35.6,
+     "linea": 13.226
+    },
+    {
+     "parcial": 32,
+     "p": 31.903,
+     "hz": 1043.325,
+     "desvio": -5.3,
+     "linea": 7.976
+    },
+    {
+     "parcial": 40,
+     "p": 39.8572,
+     "hz": 1303.448,
+     "desvio": -6.2,
+     "linea": 9.964
+    }
+   ],
+   "bajo": 110.373
+  },
+  {
+   "compas": 32,
+   "t": 106.2857,
+   "grado": "IV",
+   "seccion": "verso 2",
+   "epoca": 2,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21,
+     "hz": 686.763,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 27,
+     "p": 26.4511,
+     "hz": 865.031,
+     "desvio": -35.6,
+     "linea": 13.226
+    },
+    {
+     "parcial": 32,
+     "p": 31.903,
+     "hz": 1043.325,
+     "desvio": -5.3,
+     "linea": 7.976
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 33,
+   "t": 109.7143,
+   "grado": "V",
+   "seccion": "verso 2",
+   "epoca": 2,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 23.9572,
+     "hz": 783.472,
+     "desvio": -3.1,
+     "linea": 5.989
+    },
+    {
+     "parcial": 30,
+     "p": 29.8,
+     "hz": 974.551,
+     "desvio": -11.6,
+     "linea": 14.9
+    },
+    {
+     "parcial": 36,
+     "p": 34.8796,
+     "hz": 1140.669,
+     "desvio": -54.7,
+     "linea": 17.44
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 34,
+   "t": 113.1429,
+   "grado": "V",
+   "seccion": "verso 2",
+   "epoca": 2,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 23.9572,
+     "hz": 783.472,
+     "desvio": -3.1,
+     "linea": 5.989
+    },
+    {
+     "parcial": 30,
+     "p": 29.8,
+     "hz": 974.551,
+     "desvio": -11.6,
+     "linea": 14.9
+    },
+    {
+     "parcial": 36,
+     "p": 34.8796,
+     "hz": 1140.669,
+     "desvio": -54.7,
+     "linea": 17.44
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 35,
+   "t": 116.5714,
+   "grado": "ii",
+   "seccion": "pre-coro 2",
+   "epoca": 2,
+   "tonos": [
+    {
+     "parcial": 18,
+     "p": 17.4398,
+     "hz": 570.335,
+     "desvio": -54.7,
+     "linea": 17.44
+    },
+    {
+     "parcial": 21,
+     "p": 21,
+     "hz": 686.763,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 27,
+     "p": 26.4511,
+     "hz": 865.031,
+     "desvio": -35.6,
+     "linea": 13.226
+    }
+   ],
+   "bajo": 73.582
+  },
+  {
+   "compas": 36,
+   "t": 120,
+   "grado": "iii",
+   "seccion": "pre-coro 2",
+   "epoca": 2,
+   "tonos": [
+    {
+     "parcial": 20,
+     "p": 19.9286,
+     "hz": 651.724,
+     "desvio": -6.2,
+     "linea": 9.964
+    },
+    {
+     "parcial": 24,
+     "p": 23.9572,
+     "hz": 783.472,
+     "desvio": -3.1,
+     "linea": 5.989
+    },
+    {
+     "parcial": 30,
+     "p": 29.8,
+     "hz": 974.551,
+     "desvio": -11.6,
+     "linea": 14.9
+    }
+   ],
+   "bajo": 81.758
+  },
+  {
+   "compas": 37,
+   "t": 123.4286,
+   "grado": "IV",
+   "seccion": "pre-coro 2",
+   "epoca": 2,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21,
+     "hz": 686.763,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 27,
+     "p": 26.4511,
+     "hz": 865.031,
+     "desvio": -35.6,
+     "linea": 13.226
+    },
+    {
+     "parcial": 32,
+     "p": 31.903,
+     "hz": 1043.325,
+     "desvio": -5.3,
+     "linea": 7.976
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 38,
+   "t": 126.8571,
+   "grado": "V",
+   "seccion": "pre-coro 2",
+   "epoca": 2,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 23.9572,
+     "hz": 783.472,
+     "desvio": -3.1,
+     "linea": 5.989
+    },
+    {
+     "parcial": 30,
+     "p": 29.8,
+     "hz": 974.551,
+     "desvio": -11.6,
+     "linea": 14.9
+    },
+    {
+     "parcial": 36,
+     "p": 34.8796,
+     "hz": 1140.669,
+     "desvio": -54.7,
+     "linea": 17.44
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 39,
+   "t": 130.2857,
+   "grado": "IV",
+   "seccion": "coro 2",
+   "epoca": 3,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21,
+     "hz": 686.763,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 27,
+     "p": 26.4315,
+     "hz": 864.39,
+     "desvio": -36.8,
+     "linea": 13.216
+    },
+    {
+     "parcial": 32,
+     "p": 31.8845,
+     "hz": 1042.718,
+     "desvio": -6.3,
+     "linea": 7.971
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 40,
+   "t": 133.7143,
+   "grado": "V",
+   "seccion": "coro 2",
+   "epoca": 3,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 23.9242,
+     "hz": 782.393,
+     "desvio": -5.5,
+     "linea": 5.981
+    },
+    {
+     "parcial": 30,
+     "p": 29.7866,
+     "hz": 974.112,
+     "desvio": -12.4,
+     "linea": 14.893
+    },
+    {
+     "parcial": 36,
+     "p": 34.8786,
+     "hz": 1140.635,
+     "desvio": -54.8,
+     "linea": 17.439
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 41,
+   "t": 137.1429,
+   "grado": "iii",
+   "seccion": "coro 2",
+   "epoca": 3,
+   "tonos": [
+    {
+     "parcial": 20,
+     "p": 19.9172,
+     "hz": 651.353,
+     "desvio": -7.2,
+     "linea": 9.959
+    },
+    {
+     "parcial": 24,
+     "p": 23.9242,
+     "hz": 782.393,
+     "desvio": -5.5,
+     "linea": 5.981
+    },
+    {
+     "parcial": 30,
+     "p": 29.7866,
+     "hz": 974.112,
+     "desvio": -12.4,
+     "linea": 14.893
+    }
+   ],
+   "bajo": 81.758
+  },
+  {
+   "compas": 42,
+   "t": 140.5714,
+   "grado": "vi",
+   "seccion": "coro 2",
+   "epoca": 3,
+   "tonos": [
+    {
+     "parcial": 27,
+     "p": 26.4315,
+     "hz": 864.39,
+     "desvio": -36.8,
+     "linea": 13.216
+    },
+    {
+     "parcial": 32,
+     "p": 31.8845,
+     "hz": 1042.718,
+     "desvio": -6.3,
+     "linea": 7.971
+    },
+    {
+     "parcial": 40,
+     "p": 39.8345,
+     "hz": 1302.706,
+     "desvio": -7.2,
+     "linea": 9.959
+    }
+   ],
+   "bajo": 110.373
+  },
+  {
+   "compas": 43,
+   "t": 144,
+   "grado": "IV",
+   "seccion": "coro 2",
+   "epoca": 3,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21,
+     "hz": 686.763,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 27,
+     "p": 26.4315,
+     "hz": 864.39,
+     "desvio": -36.8,
+     "linea": 13.216
+    },
+    {
+     "parcial": 32,
+     "p": 31.8845,
+     "hz": 1042.718,
+     "desvio": -6.3,
+     "linea": 7.971
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 44,
+   "t": 147.4286,
+   "grado": "V",
+   "seccion": "coro 2",
+   "epoca": 3,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 23.9242,
+     "hz": 782.393,
+     "desvio": -5.5,
+     "linea": 5.981
+    },
+    {
+     "parcial": 30,
+     "p": 29.7866,
+     "hz": 974.112,
+     "desvio": -12.4,
+     "linea": 14.893
+    },
+    {
+     "parcial": 36,
+     "p": 34.8786,
+     "hz": 1140.635,
+     "desvio": -54.8,
+     "linea": 17.439
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 45,
+   "t": 150.8571,
+   "grado": "iii",
+   "seccion": "coro 2",
+   "epoca": 3,
+   "tonos": [
+    {
+     "parcial": 20,
+     "p": 19.9172,
+     "hz": 651.353,
+     "desvio": -7.2,
+     "linea": 9.959
+    },
+    {
+     "parcial": 24,
+     "p": 23.9242,
+     "hz": 782.393,
+     "desvio": -5.5,
+     "linea": 5.981
+    },
+    {
+     "parcial": 30,
+     "p": 29.7866,
+     "hz": 974.112,
+     "desvio": -12.4,
+     "linea": 14.893
+    }
+   ],
+   "bajo": 81.758
+  },
+  {
+   "compas": 46,
+   "t": 154.2857,
+   "grado": "vi",
+   "seccion": "coro 2",
+   "epoca": 3,
+   "tonos": [
+    {
+     "parcial": 27,
+     "p": 26.4315,
+     "hz": 864.39,
+     "desvio": -36.8,
+     "linea": 13.216
+    },
+    {
+     "parcial": 32,
+     "p": 31.8845,
+     "hz": 1042.718,
+     "desvio": -6.3,
+     "linea": 7.971
+    },
+    {
+     "parcial": 40,
+     "p": 39.8345,
+     "hz": 1302.706,
+     "desvio": -7.2,
+     "linea": 9.959
+    }
+   ],
+   "bajo": 110.373
+  },
+  {
+   "compas": 55,
+   "t": 185.1429,
+   "grado": "IV",
+   "seccion": "coro final",
+   "epoca": 4,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21,
+     "hz": 686.763,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 27,
+     "p": 26.6368,
+     "hz": 871.102,
+     "desvio": -23.4,
+     "linea": 13.318
+    },
+    {
+     "parcial": 32,
+     "p": 32,
+     "hz": 1046.496,
+     "desvio": 0,
+     "linea": 8
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 56,
+   "t": 188.5714,
+   "grado": "V",
+   "seccion": "coro final",
+   "epoca": 4,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 24.7204,
+     "hz": 808.432,
+     "desvio": 51.2,
+     "linea": 12.36
+    },
+    {
+     "parcial": 30,
+     "p": 29.7608,
+     "hz": 973.269,
+     "desvio": -13.9,
+     "linea": 14.88
+    },
+    {
+     "parcial": 36,
+     "p": 34.8755,
+     "hz": 1140.534,
+     "desvio": -54.9,
+     "linea": 17.438
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 57,
+   "t": 192,
+   "grado": "iii",
+   "seccion": "coro final",
+   "epoca": 4,
+   "tonos": [
+    {
+     "parcial": 20,
+     "p": 20.1782,
+     "hz": 659.887,
+     "desvio": 15.4,
+     "linea": 10.089
+    },
+    {
+     "parcial": 24,
+     "p": 24.7204,
+     "hz": 808.432,
+     "desvio": 51.2,
+     "linea": 12.36
+    },
+    {
+     "parcial": 30,
+     "p": 29.7608,
+     "hz": 973.269,
+     "desvio": -13.9,
+     "linea": 14.88
+    }
+   ],
+   "bajo": 81.758
+  },
+  {
+   "compas": 58,
+   "t": 195.4286,
+   "grado": "vi",
+   "seccion": "coro final",
+   "epoca": 4,
+   "tonos": [
+    {
+     "parcial": 27,
+     "p": 26.6368,
+     "hz": 871.102,
+     "desvio": -23.4,
+     "linea": 13.318
+    },
+    {
+     "parcial": 32,
+     "p": 32,
+     "hz": 1046.496,
+     "desvio": 0,
+     "linea": 8
+    },
+    {
+     "parcial": 40,
+     "p": 40.3563,
+     "hz": 1319.774,
+     "desvio": 15.4,
+     "linea": 10.089
+    }
+   ],
+   "bajo": 110.373
+  },
+  {
+   "compas": 59,
+   "t": 198.8571,
+   "grado": "IV",
+   "seccion": "coro final",
+   "epoca": 4,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21,
+     "hz": 686.763,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 27,
+     "p": 26.6368,
+     "hz": 871.102,
+     "desvio": -23.4,
+     "linea": 13.318
+    },
+    {
+     "parcial": 32,
+     "p": 32,
+     "hz": 1046.496,
+     "desvio": 0,
+     "linea": 8
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 60,
+   "t": 202.2857,
+   "grado": "V",
+   "seccion": "coro final",
+   "epoca": 4,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 24.7204,
+     "hz": 808.432,
+     "desvio": 51.2,
+     "linea": 12.36
+    },
+    {
+     "parcial": 30,
+     "p": 29.7608,
+     "hz": 973.269,
+     "desvio": -13.9,
+     "linea": 14.88
+    },
+    {
+     "parcial": 36,
+     "p": 34.8755,
+     "hz": 1140.534,
+     "desvio": -54.9,
+     "linea": 17.438
+    }
+   ],
+   "bajo": 98.109
+  },
+  {
+   "compas": 61,
+   "t": 205.7143,
+   "grado": "iii",
+   "seccion": "coro final",
+   "epoca": 4,
+   "tonos": [
+    {
+     "parcial": 20,
+     "p": 20.1782,
+     "hz": 659.887,
+     "desvio": 15.4,
+     "linea": 10.089
+    },
+    {
+     "parcial": 24,
+     "p": 24.7204,
+     "hz": 808.432,
+     "desvio": 51.2,
+     "linea": 12.36
+    },
+    {
+     "parcial": 30,
+     "p": 29.7608,
+     "hz": 973.269,
+     "desvio": -13.9,
+     "linea": 14.88
+    }
+   ],
+   "bajo": 81.758
+  },
+  {
+   "compas": 62,
+   "t": 209.1429,
+   "grado": "vi",
+   "seccion": "coro final",
+   "epoca": 4,
+   "tonos": [
+    {
+     "parcial": 27,
+     "p": 26.6368,
+     "hz": 871.102,
+     "desvio": -23.4,
+     "linea": 13.318
+    },
+    {
+     "parcial": 32,
+     "p": 32,
+     "hz": 1046.496,
+     "desvio": 0,
+     "linea": 8
+    },
+    {
+     "parcial": 40,
+     "p": 40.3563,
+     "hz": 1319.774,
+     "desvio": 15.4,
+     "linea": 10.089
+    }
+   ],
+   "bajo": 110.373
+  },
+  {
+   "compas": 63,
+   "t": 212.5714,
+   "grado": "IV",
+   "seccion": "coro final",
+   "epoca": 4,
+   "tonos": [
+    {
+     "parcial": 21,
+     "p": 21,
+     "hz": 686.763,
+     "desvio": 0,
+     "linea": null
+    },
+    {
+     "parcial": 27,
+     "p": 26.6368,
+     "hz": 871.102,
+     "desvio": -23.4,
+     "linea": 13.318
+    },
+    {
+     "parcial": 32,
+     "p": 32,
+     "hz": 1046.496,
+     "desvio": 0,
+     "linea": 8
+    }
+   ],
+   "bajo": 85.845
+  },
+  {
+   "compas": 64,
+   "t": 216,
+   "grado": "V",
+   "seccion": "coro final",
+   "epoca": 4,
+   "tonos": [
+    {
+     "parcial": 24,
+     "p": 24.7204,
+     "hz": 808.432,
+     "desvio": 51.2,
+     "linea": 12.36
+    },
+    {
+     "parcial": 30,
+     "p": 29.7608,
+     "hz": 973.269,
+     "desvio": -13.9,
+     "linea": 14.88
+    },
+    {
+     "parcial": 36,
+     "p": 34.8755,
+     "hz": 1140.534,
+     "desvio": -54.9,
+     "linea": 17.438
+    }
+   ],
+   "bajo": 98.109
+  }
+ ],
+ "melodia": [
+  {
+   "compas": 5,
+   "beat": 1,
+   "t": 14.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "the",
+   "nota": "sol3",
+   "hz": 196.218,
+   "midi": 55.019,
+   "cents": 1.9,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 5,
+   "beat": 1.5,
+   "t": 15,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "list",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 5,
+   "beat": 2,
+   "t": 15.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "is",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 5,
+   "beat": 2.5,
+   "t": 15.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "not",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 5,
+   "beat": 3,
+   "t": 16.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "a",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 5,
+   "beat": 3.5,
+   "t": 16.7143,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "room",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 6,
+   "beat": 1,
+   "t": 18,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "la",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 6,
+   "beat": 1.5,
+   "t": 18.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "lis",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 6,
+   "beat": 2,
+   "t": 18.8571,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ta",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 6,
+   "beat": 3,
+   "t": 19.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "noes",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 6,
+   "beat": 3.5,
+   "t": 20.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "u",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 7,
+   "beat": 0,
+   "t": 20.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "na",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 7,
+   "beat": 0.5,
+   "t": 21,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "sa",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 7,
+   "beat": 1.5,
+   "t": 21.8571,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "la",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 7,
+   "beat": 3.5,
+   "t": 23.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "la",
+   "nota": "sol3",
+   "hz": 196.218,
+   "midi": 55.019,
+   "cents": 1.9,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 8,
+   "beat": 0,
+   "t": 24,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "sa",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 8,
+   "beat": 0.5,
+   "t": 24.4286,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "laes",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 8,
+   "beat": 1.5,
+   "t": 25.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "don",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 8,
+   "beat": 2,
+   "t": 25.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "de",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 8,
+   "beat": 2.5,
+   "t": 26.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "se",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 8,
+   "beat": 3,
+   "t": 26.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "leel",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 8,
+   "beat": 3.5,
+   "t": 27,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "men",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 9,
+   "beat": 0,
+   "t": 27.4286,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "sa",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 9,
+   "beat": 1,
+   "t": 28.2857,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "je",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 9,
+   "beat": 3,
+   "t": 30,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "es",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 9,
+   "beat": 3.5,
+   "t": 30.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "cri",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 10,
+   "beat": 0,
+   "t": 30.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "be",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 10,
+   "beat": 0.5,
+   "t": 31.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "tu",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 10,
+   "beat": 1,
+   "t": 31.7143,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "nom",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 10,
+   "beat": 2,
+   "t": 32.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "bre",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 10,
+   "beat": 2.5,
+   "t": 33,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "tu",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 10,
+   "beat": 3,
+   "t": 33.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ciu",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 10,
+   "beat": 3.5,
+   "t": 33.8571,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "dad",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 11,
+   "beat": 1,
+   "t": 35.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "y",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 11,
+   "beat": 1.5,
+   "t": 35.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "la",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 11,
+   "beat": 2,
+   "t": 36,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ho",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 11,
+   "beat": 3,
+   "t": 36.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ra",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 11,
+   "beat": 3.5,
+   "t": 37.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "de",
+   "nota": "si3",
+   "hz": 245.273,
+   "midi": 58.883,
+   "cents": -11.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 12,
+   "beat": 0,
+   "t": 37.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "tu",
+   "nota": "la3",
+   "hz": 218.02,
+   "midi": 56.843,
+   "cents": -15.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 12,
+   "beat": 0.5,
+   "t": 38.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "co",
+   "nota": "si3",
+   "hz": 245.273,
+   "midi": 58.883,
+   "cents": -11.7,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 12,
+   "beat": 1,
+   "t": 38.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ne",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 12,
+   "beat": 1.5,
+   "t": 39,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "xión",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 1"
+  },
+  {
+   "compas": 13,
+   "beat": 0.5,
+   "t": 41.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "si",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 13,
+   "beat": 1,
+   "t": 42,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "tra",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 13,
+   "beat": 1.5,
+   "t": 42.4286,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "du",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 13,
+   "beat": 2.5,
+   "t": 43.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ces",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 13,
+   "beat": 3,
+   "t": 43.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "de",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 13,
+   "beat": 3.5,
+   "t": 44.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ja",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 14,
+   "beat": 0,
+   "t": 44.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "la",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 14,
+   "beat": 0.5,
+   "t": 45,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "fra",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 14,
+   "beat": 2,
+   "t": 46.2857,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "se",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 15,
+   "beat": 0,
+   "t": 48,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "an",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 15,
+   "beat": 0.5,
+   "t": 48.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "tes",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 15,
+   "beat": 1,
+   "t": 48.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "de",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 15,
+   "beat": 1.5,
+   "t": 49.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "la",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 15,
+   "beat": 2,
+   "t": 49.7143,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "tra",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 15,
+   "beat": 3,
+   "t": 50.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "duc",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 15,
+   "beat": 3.5,
+   "t": 51,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "ción",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "pre-coro 1"
+  },
+  {
+   "compas": 17,
+   "beat": 0,
+   "t": 54.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "to",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 17,
+   "beat": 0.5,
+   "t": 55.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "da",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 17,
+   "beat": 1,
+   "t": 55.7143,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "ví",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 17,
+   "beat": 2.5,
+   "t": 57,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "aes",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 17,
+   "beat": 3,
+   "t": 57.4286,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ta",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 18,
+   "beat": 0,
+   "t": 58.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "mos",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 18,
+   "beat": 0.5,
+   "t": 58.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "a",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 18,
+   "beat": 1,
+   "t": 59.1429,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "quí",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 19,
+   "beat": 0,
+   "t": 61.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "to",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 19,
+   "beat": 0.5,
+   "t": 62.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "da",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 19,
+   "beat": 1,
+   "t": 62.5714,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "ví",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 19,
+   "beat": 2.5,
+   "t": 63.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "aes",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 19,
+   "beat": 3,
+   "t": 64.2857,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ta",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 20,
+   "beat": 0,
+   "t": 65.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "mos",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 20,
+   "beat": 0.5,
+   "t": 65.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "a",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 20,
+   "beat": 1,
+   "t": 66,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "quí",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 21,
+   "beat": 0,
+   "t": 68.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "la",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 21,
+   "beat": 0.5,
+   "t": 69,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "sa",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 21,
+   "beat": 1,
+   "t": 69.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "laes",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 21,
+   "beat": 1.5,
+   "t": 69.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "don",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 21,
+   "beat": 2,
+   "t": 70.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "de",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 21,
+   "beat": 2.5,
+   "t": 70.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "se",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 21,
+   "beat": 3,
+   "t": 71.1429,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "lee",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 22,
+   "beat": 0,
+   "t": 72,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "el",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 22,
+   "beat": 0.5,
+   "t": 72.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "men",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 22,
+   "beat": 1,
+   "t": 72.8571,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "sa",
+   "nota": "mi5",
+   "hz": 654.06,
+   "midi": 75.863,
+   "cents": -13.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 22,
+   "beat": 3,
+   "t": 74.5714,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "je",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 23,
+   "beat": 0,
+   "t": 75.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "to",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 23,
+   "beat": 0.5,
+   "t": 75.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "da",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 23,
+   "beat": 1,
+   "t": 76.2857,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ví",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 23,
+   "beat": 2,
+   "t": 77.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "aes",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 23,
+   "beat": 2.5,
+   "t": 77.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ta",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 23,
+   "beat": 3,
+   "t": 78,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "mos",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 23,
+   "beat": 3.5,
+   "t": 78.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "a",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 24,
+   "beat": 0,
+   "t": 78.8571,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "quí",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro 1"
+  },
+  {
+   "compas": 27,
+   "beat": 1,
+   "t": 90,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "you",
+   "nota": "sol3",
+   "hz": 196.218,
+   "midi": 55.019,
+   "cents": 1.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 27,
+   "beat": 1.5,
+   "t": 90.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "call",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 27,
+   "beat": 2,
+   "t": 90.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "it",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 27,
+   "beat": 2.5,
+   "t": 91.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "o",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 27,
+   "beat": 3,
+   "t": 91.7143,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "pen",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 28,
+   "beat": 0,
+   "t": 92.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "lo",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 28,
+   "beat": 0.5,
+   "t": 93,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "lla",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 28,
+   "beat": 1,
+   "t": 93.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "mas",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 28,
+   "beat": 1.5,
+   "t": 93.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "a",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 28,
+   "beat": 2,
+   "t": 94.2857,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "bier",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 28,
+   "beat": 3,
+   "t": 95.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "to",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 28,
+   "beat": 3.5,
+   "t": 95.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "por",
+   "nota": "si3",
+   "hz": 245.273,
+   "midi": 58.883,
+   "cents": -11.7,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 29,
+   "beat": 0,
+   "t": 96,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "que",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 29,
+   "beat": 0.5,
+   "t": 96.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "cual",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 29,
+   "beat": 1,
+   "t": 96.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "quie",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 29,
+   "beat": 1.5,
+   "t": 97.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ra",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 29,
+   "beat": 2,
+   "t": 97.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "lee",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 29,
+   "beat": 2.5,
+   "t": 98.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "lain",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 29,
+   "beat": 3,
+   "t": 98.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "vi",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 29,
+   "beat": 3.5,
+   "t": 99,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ta",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 30,
+   "beat": 0,
+   "t": 99.4286,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "ción",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 31,
+   "beat": 0,
+   "t": 102.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "lo",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 31,
+   "beat": 0.5,
+   "t": 103.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "lla",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 31,
+   "beat": 1,
+   "t": 103.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "mas",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 31,
+   "beat": 1.5,
+   "t": 104.1429,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "li",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 31,
+   "beat": 2.5,
+   "t": 105,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "bre",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 31,
+   "beat": 3,
+   "t": 105.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "por",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 31,
+   "beat": 3.5,
+   "t": 105.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "queel",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 32,
+   "beat": 0,
+   "t": 106.2857,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "cos",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 32,
+   "beat": 1,
+   "t": 107.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "to",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 32,
+   "beat": 1.5,
+   "t": 107.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "se",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 32,
+   "beat": 2,
+   "t": 108,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "pa",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 32,
+   "beat": 3,
+   "t": 108.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "gaen",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 32,
+   "beat": 3.5,
+   "t": 109.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "o",
+   "nota": "si3",
+   "hz": 245.273,
+   "midi": 58.883,
+   "cents": -11.7,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 33,
+   "beat": 0,
+   "t": 109.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "tra",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 33,
+   "beat": 0.5,
+   "t": 110.1429,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "par",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 33,
+   "beat": 2,
+   "t": 111.4286,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "te",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "verso 2"
+  },
+  {
+   "compas": 35,
+   "beat": 0.5,
+   "t": 117,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "quién",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 35,
+   "beat": 1,
+   "t": 117.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "man",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 35,
+   "beat": 1.5,
+   "t": 117.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "tie",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 35,
+   "beat": 2,
+   "t": 118.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "nea",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 35,
+   "beat": 2.5,
+   "t": 118.7143,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "bier",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 35,
+   "beat": 3.5,
+   "t": 119.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ta",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 36,
+   "beat": 0,
+   "t": 120,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "la",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 36,
+   "beat": 0.5,
+   "t": 120.4286,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "lí",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 36,
+   "beat": 2,
+   "t": 121.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ne",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 36,
+   "beat": 2.5,
+   "t": 122.1429,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "a",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 37,
+   "beat": 0,
+   "t": 123.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "des",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 37,
+   "beat": 0.5,
+   "t": 123.8571,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "pués",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 37,
+   "beat": 1.5,
+   "t": 124.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "de",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 37,
+   "beat": 2,
+   "t": 125.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "me",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 37,
+   "beat": 2.5,
+   "t": 125.5714,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "dia",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 37,
+   "beat": 3.5,
+   "t": 126.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "no",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 38,
+   "beat": 0,
+   "t": 126.8571,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "che",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "pre-coro 2"
+  },
+  {
+   "compas": 39,
+   "beat": 0,
+   "t": 130.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "to",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 39,
+   "beat": 0.5,
+   "t": 130.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "da",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 39,
+   "beat": 1,
+   "t": 131.1429,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "ví",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 39,
+   "beat": 2.5,
+   "t": 132.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "aes",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 39,
+   "beat": 3,
+   "t": 132.8571,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ta",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 40,
+   "beat": 0,
+   "t": 133.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "mos",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 40,
+   "beat": 0.5,
+   "t": 134.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "a",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 40,
+   "beat": 1,
+   "t": 134.5714,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "quí",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 41,
+   "beat": 0,
+   "t": 137.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "to",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 41,
+   "beat": 0.5,
+   "t": 137.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "da",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 41,
+   "beat": 1,
+   "t": 138,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "ví",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 41,
+   "beat": 2.5,
+   "t": 139.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "aes",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 41,
+   "beat": 3,
+   "t": 139.7143,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ta",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 42,
+   "beat": 0,
+   "t": 140.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "mos",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 42,
+   "beat": 0.5,
+   "t": 141,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "a",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 42,
+   "beat": 1,
+   "t": 141.4286,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "quí",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 43,
+   "beat": 0,
+   "t": 144,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "tres",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 43,
+   "beat": 0.5,
+   "t": 144.4286,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "lí",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 43,
+   "beat": 1.5,
+   "t": 145.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "neas",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 43,
+   "beat": 2,
+   "t": 145.7143,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "fal",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 43,
+   "beat": 3,
+   "t": 146.5714,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "tan",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 44,
+   "beat": 0,
+   "t": 147.4286,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "fal",
+   "nota": "mi5",
+   "hz": 654.06,
+   "midi": 75.863,
+   "cents": -13.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 44,
+   "beat": 2,
+   "t": 149.1429,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "tan",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 45,
+   "beat": 0,
+   "t": 150.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "to",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 45,
+   "beat": 0.5,
+   "t": 151.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "da",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 45,
+   "beat": 1,
+   "t": 151.7143,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ví",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 45,
+   "beat": 2,
+   "t": 152.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "aes",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 45,
+   "beat": 2.5,
+   "t": 153,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ta",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 45,
+   "beat": 3,
+   "t": 153.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "mos",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 45,
+   "beat": 3.5,
+   "t": 153.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "a",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 46,
+   "beat": 0,
+   "t": 154.2857,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "quí",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro 2"
+  },
+  {
+   "compas": 47,
+   "beat": 1,
+   "t": 158.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "en",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 47,
+   "beat": 1.5,
+   "t": 159,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "con",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 47,
+   "beat": 2,
+   "t": 159.4286,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "tré",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 47,
+   "beat": 3,
+   "t": 160.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "la",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "puente"
+  },
+  {
+   "compas": 47,
+   "beat": 3.5,
+   "t": 160.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "pá",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 48,
+   "beat": 0,
+   "t": 161.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "gi",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 48,
+   "beat": 0.5,
+   "t": 161.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "nao",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "puente"
+  },
+  {
+   "compas": 48,
+   "beat": 1,
+   "t": 162,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "tra",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 48,
+   "beat": 1.5,
+   "t": 162.4286,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "vez",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 49,
+   "beat": 1,
+   "t": 165.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "noes",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 49,
+   "beat": 1.5,
+   "t": 165.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ta",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "puente"
+  },
+  {
+   "compas": 49,
+   "beat": 2,
+   "t": 166.2857,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ba",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 49,
+   "beat": 3,
+   "t": 167.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "don",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 49,
+   "beat": 3.5,
+   "t": 167.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "de",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 50,
+   "beat": 0,
+   "t": 168,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "la",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "puente"
+  },
+  {
+   "compas": 50,
+   "beat": 0.5,
+   "t": 168.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "de",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 50,
+   "beat": 1,
+   "t": 168.8571,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ja",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 50,
+   "beat": 2,
+   "t": 169.7143,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "mos",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "puente"
+  },
+  {
+   "compas": 51,
+   "beat": 1,
+   "t": 172.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "laim",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "puente"
+  },
+  {
+   "compas": 51,
+   "beat": 1.5,
+   "t": 172.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "pre",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 51,
+   "beat": 2,
+   "t": 173.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "so",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 51,
+   "beat": 2.5,
+   "t": 173.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ra",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "puente"
+  },
+  {
+   "compas": 51,
+   "beat": 3,
+   "t": 174,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "re",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 51,
+   "beat": 3.5,
+   "t": 174.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ci",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 52,
+   "beat": 0,
+   "t": 174.8571,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "bió",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 52,
+   "beat": 1.5,
+   "t": 176.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "la",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "puente"
+  },
+  {
+   "compas": 52,
+   "beat": 2,
+   "t": 176.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "pri",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 52,
+   "beat": 2.5,
+   "t": 177,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "me",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "puente"
+  },
+  {
+   "compas": 52,
+   "beat": 3,
+   "t": 177.4286,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ra",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 53,
+   "beat": 0,
+   "t": 178.2857,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "lí",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 53,
+   "beat": 1,
+   "t": 179.1429,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "nea",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 53,
+   "beat": 2,
+   "t": 180,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "tres",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 53,
+   "beat": 2.5,
+   "t": 180.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ve",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 53,
+   "beat": 3,
+   "t": 180.8571,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ces",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "puente"
+  },
+  {
+   "compas": 54,
+   "beat": 0,
+   "t": 181.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "tres",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 54,
+   "beat": 0.5,
+   "t": 182.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ve",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 54,
+   "beat": 1,
+   "t": 182.5714,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ces",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "puente"
+  },
+  {
+   "compas": 54,
+   "beat": 2,
+   "t": 183.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "tres",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "puente"
+  },
+  {
+   "compas": 54,
+   "beat": 2.5,
+   "t": 183.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ve",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "puente"
+  },
+  {
+   "compas": 54,
+   "beat": 3,
+   "t": 184.2857,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ces",
+   "nota": "do4",
+   "hz": 261.624,
+   "midi": 60,
+   "cents": 0,
+   "seccion": "puente"
+  },
+  {
+   "compas": 55,
+   "beat": 0,
+   "t": 185.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "to",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 55,
+   "beat": 0.5,
+   "t": 185.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "da",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 55,
+   "beat": 1,
+   "t": 186,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "ví",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 55,
+   "beat": 2.5,
+   "t": 187.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "aes",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 55,
+   "beat": 3,
+   "t": 187.7143,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ta",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 56,
+   "beat": 0,
+   "t": 188.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "mos",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 56,
+   "beat": 0.5,
+   "t": 189,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "a",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 56,
+   "beat": 1,
+   "t": 189.4286,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "quí",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 57,
+   "beat": 0,
+   "t": 192,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "to",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 57,
+   "beat": 0.5,
+   "t": 192.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "da",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 57,
+   "beat": 1,
+   "t": 192.8571,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "ví",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 57,
+   "beat": 2.5,
+   "t": 194.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "aes",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 57,
+   "beat": 3,
+   "t": 194.5714,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ta",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 58,
+   "beat": 0,
+   "t": 195.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "mos",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 58,
+   "beat": 0.5,
+   "t": 195.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "a",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 58,
+   "beat": 1,
+   "t": 196.2857,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "quí",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 59,
+   "beat": 0,
+   "t": 198.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "sies",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 59,
+   "beat": 0.5,
+   "t": 199.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "to",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 59,
+   "beat": 1,
+   "t": 199.7143,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "lle",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 59,
+   "beat": 2,
+   "t": 200.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ga",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 59,
+   "beat": 2.5,
+   "t": 201,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "no",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 59,
+   "beat": 3,
+   "t": 201.4286,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "con",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 60,
+   "beat": 0,
+   "t": 202.2857,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "tes",
+   "nota": "mi5",
+   "hz": 654.06,
+   "midi": 75.863,
+   "cents": -13.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 60,
+   "beat": 2,
+   "t": 204,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "tes",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 61,
+   "beat": 0,
+   "t": 205.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "to",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 61,
+   "beat": 0.5,
+   "t": 206.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "da",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 61,
+   "beat": 1,
+   "t": 206.5714,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "ví",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 61,
+   "beat": 2,
+   "t": 207.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "aes",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 61,
+   "beat": 2.5,
+   "t": 207.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ta",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 61,
+   "beat": 3,
+   "t": 208.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "mos",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 61,
+   "beat": 3.5,
+   "t": 208.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "a",
+   "nota": "re5",
+   "hz": 588.654,
+   "midi": 74.039,
+   "cents": 3.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 62,
+   "beat": 0,
+   "t": 209.1429,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "quí",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 63,
+   "beat": 0,
+   "t": 212.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "si",
+   "nota": "do5",
+   "hz": 523.248,
+   "midi": 72,
+   "cents": 0,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 63,
+   "beat": 0.5,
+   "t": 213,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "no",
+   "nota": "si4",
+   "hz": 490.545,
+   "midi": 70.883,
+   "cents": -11.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 63,
+   "beat": 1,
+   "t": 213.4286,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "lle",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 63,
+   "beat": 2,
+   "t": 214.2857,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ga",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 63,
+   "beat": 2.5,
+   "t": 214.7143,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "guar",
+   "nota": "la4",
+   "hz": 436.04,
+   "midi": 68.843,
+   "cents": -15.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 63,
+   "beat": 3,
+   "t": 215.1429,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "da",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 63,
+   "beat": 3.5,
+   "t": 215.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "la",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 64,
+   "beat": 0,
+   "t": 216,
+   "dur": 1,
+   "durS": 0.8571,
+   "silaba": "co",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 64,
+   "beat": 1,
+   "t": 216.8571,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "pia",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 65,
+   "beat": 0,
+   "t": 219.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "to",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 65,
+   "beat": 0.5,
+   "t": 219.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "da",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 65,
+   "beat": 1,
+   "t": 220.2857,
+   "dur": 1.5,
+   "durS": 1.2857,
+   "silaba": "ví",
+   "nota": "sol4",
+   "hz": 392.436,
+   "midi": 67.019,
+   "cents": 1.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 65,
+   "beat": 2.5,
+   "t": 221.5714,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "aes",
+   "nota": "fa4",
+   "hz": 348.832,
+   "midi": 64.98,
+   "cents": -2,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 65,
+   "beat": 3,
+   "t": 222,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "ta",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 65,
+   "beat": 3.5,
+   "t": 222.4286,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "mos",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 66,
+   "beat": 0,
+   "t": 222.8571,
+   "dur": 0.5,
+   "durS": 0.4286,
+   "silaba": "a",
+   "nota": "re4",
+   "hz": 294.327,
+   "midi": 62.039,
+   "cents": 3.9,
+   "seccion": "coro final"
+  },
+  {
+   "compas": 66,
+   "beat": 0.5,
+   "t": 223.2857,
+   "dur": 2,
+   "durS": 1.7143,
+   "silaba": "quí",
+   "nota": "mi4",
+   "hz": 327.03,
+   "midi": 63.863,
+   "cents": -13.7,
+   "seccion": "coro final"
+  }
+ ],
+ "letra_fuentes": {
+  "verso 1": "Bienvenida, 1995 (03_archivo/01_bienvenida_1995.md): «The list is not a room. The room is wherever the message is read.» / «Please write your name, city and connection time.» Traducción de la partitura.",
+  "pre-coro 1": "Bienvenida, 1995: «If you are translating, leave the sentence before the translation.»",
+  "coro": "«todavía estamos aquí»: la frase que cierra las tres piezas piloto del archivo.",
+  "verso 2": "El mensaje retenido, 1997 (02_conflicto_moderacion_1997.md): «You call it open because anyone can read the invitation. / You call it free because the cost is paid somewhere else.»",
+  "pre-coro 2": "El mensaje retenido, 1997: «I am asking who keeps the modem line open after midnight.»",
+  "coro 2": "La copia de 2001 del mensaje retenido: «[three lines missing]».",
+  "puente": "Mensaje sin asunto, 2001 (03_mensaje_sin_asunto_2001.md): «I found the page again. It was not where we left it. … The printer received the first line three times.»",
+  "coro final": "Mensaje sin asunto, 2001: «If this arrives, do not answer. If it does not arrive, keep the copy.»"
+ },
+ "coro": {
+  "armonicos": [
+   8,
+   10,
+   12
+  ],
+  "base": 32.703,
+  "golpe": 0.42857142857142855,
+  "puertas": 219.42857142857142,
+  "cm": 40,
+  "gammaInterna": 0.004166666666666667
+ },
+ "trombon": [
+  {
+   "t": 0,
+   "epoca": 0,
+   "nota": "do2",
+   "hz": 65.406,
+   "sordina": "abierta",
+   "v": 0.55
+  },
+  {
+   "t": 54.8571,
+   "epoca": 1,
+   "nota": "do2",
+   "hz": 65.406,
+   "sordina": "abierta",
+   "v": 0.55
+  },
+  {
+   "t": 89.1429,
+   "epoca": 2,
+   "nota": "do2",
+   "hz": 65.406,
+   "sordina": "abierta",
+   "v": 0.55
+  },
+  {
+   "t": 130.2857,
+   "epoca": 3,
+   "nota": "do2",
+   "hz": 65.406,
+   "sordina": "abierta",
+   "v": 0.55
+  },
+  {
+   "t": 185.1429,
+   "epoca": 4,
+   "nota": "do2",
+   "hz": 65.406,
+   "sordina": "plunger",
+   "v": 1
+  }
+ ],
+ "arco": [
+  {
+   "t": 72.8571,
+   "dur": 3.4286,
+   "hz": 163.515,
+   "voz": 654.06,
+   "seccion": "coro 1",
+   "modo": "isla",
+   "F": [
+    [
+     0,
+     0.8
+    ]
+   ],
+   "nota": "dentro de la isla de Helmholtz: la nota se sostiene"
+  },
+  {
+   "t": 147.4286,
+   "dur": 3.4286,
+   "hz": 163.515,
+   "voz": 654.06,
+   "seccion": "coro 2",
+   "modo": "rompe",
+   "F": [
+    [
+     0,
+     0.8
+    ],
+    [
+     1.008,
+     0.8
+    ],
+    [
+     3.227,
+     9
+    ]
+   ],
+   "nota": "la fuerza sale de la isla a mitad de la nota: se rompe"
+  },
+  {
+   "t": 202.2857,
+   "dur": 3.4286,
+   "hz": 163.515,
+   "voz": 654.06,
+   "seccion": "coro final",
+   "modo": "rampa",
+   "F": [
+    [
+     0,
+     0.15
+    ],
+    [
+     2.126,
+     1
+    ]
+   ],
+   "nota": "llega a F = 1 por rampa: varios deslizamientos, la nota bella no vuelve"
+  }
+ ],
+ "rios": [
+  {
+   "t": 89.722,
+   "clase": 1,
+   "de": 12.417,
+   "a": 5.989,
+   "hzDe": 406.09,
+   "hzA": 195.87,
+   "dur": 0.7,
+   "v": 0.25
+  },
+  {
+   "t": 91.805,
+   "clase": 1,
+   "de": 14.9,
+   "a": 6.061,
+   "hzDe": 487.28,
+   "hzA": 198.23,
+   "dur": 0.7,
+   "v": 0.25
+  },
+  {
+   "t": 93.887,
+   "clase": 1,
+   "de": 12.417,
+   "a": 9.964,
+   "hzDe": 406.09,
+   "hzA": 325.86,
+   "dur": 0.7,
+   "v": 0.25
+  },
+  {
+   "t": 95.969,
+   "clase": 1,
+   "de": 14.9,
+   "a": 5.989,
+   "hzDe": 487.28,
+   "hzA": 195.87,
+   "dur": 0.7,
+   "v": 0.25
+  },
+  {
+   "t": 98.051,
+   "clase": 1,
+   "de": 12.417,
+   "a": 6.061,
+   "hzDe": 406.09,
+   "hzA": 198.23,
+   "dur": 0.7,
+   "v": 0.25
+  },
+  {
+   "t": 100.134,
+   "clase": 1,
+   "de": 14.9,
+   "a": 9.964,
+   "hzDe": 487.28,
+   "hzA": 325.86,
+   "dur": 0.7,
+   "v": 0.25
+  },
+  {
+   "t": 102.216,
+   "clase": 1,
+   "de": 12.417,
+   "a": 5.989,
+   "hzDe": 406.09,
+   "hzA": 195.87,
+   "dur": 0.7,
+   "v": 0.25
+  },
+  {
+   "t": 103.498,
+   "clase": 1,
+   "de": 14.9,
+   "a": 6.061,
+   "hzDe": 487.28,
+   "hzA": 198.23,
+   "dur": 0.7,
+   "v": 0.25
+  },
+  {
+   "t": 105.581,
+   "clase": 1,
+   "de": 12.417,
+   "a": 9.964,
+   "hzDe": 406.09,
+   "hzA": 325.86,
+   "dur": 0.7,
+   "v": 0.25
+  },
+  {
+   "t": 107.663,
+   "clase": 1,
+   "de": 14.9,
+   "a": 5.989,
+   "hzDe": 487.28,
+   "hzA": 195.87,
+   "dur": 0.7,
+   "v": 0.25
+  },
+  {
+   "t": 109.745,
+   "clase": 1,
+   "de": 12.417,
+   "a": 6.061,
+   "hzDe": 406.09,
+   "hzA": 198.23,
+   "dur": 0.7,
+   "v": 0.25
+  },
+  {
+   "t": 111.827,
+   "clase": 2,
+   "de": 14.9,
+   "a": 9.964,
+   "hzDe": 487.28,
+   "hzA": 325.86,
+   "dur": 1.3,
+   "v": 0.4
+  },
+  {
+   "t": 113.91,
+   "clase": 2,
+   "de": 12.417,
+   "a": 5.989,
+   "hzDe": 406.09,
+   "hzA": 195.87,
+   "dur": 1.3,
+   "v": 0.4
+  },
+  {
+   "t": 115.192,
+   "clase": 2,
+   "de": 14.9,
+   "a": 6.061,
+   "hzDe": 487.28,
+   "hzA": 198.23,
+   "dur": 1.3,
+   "v": 0.4
+  },
+  {
+   "t": 117.274,
+   "clase": 2,
+   "de": 12.417,
+   "a": 9.964,
+   "hzDe": 406.09,
+   "hzA": 325.86,
+   "dur": 1.3,
+   "v": 0.4
+  },
+  {
+   "t": 119.356,
+   "clase": 2,
+   "de": 14.9,
+   "a": 5.989,
+   "hzDe": 487.28,
+   "hzA": 195.87,
+   "dur": 1.3,
+   "v": 0.4
+  },
+  {
+   "t": 121.439,
+   "clase": 2,
+   "de": 12.417,
+   "a": 6.061,
+   "hzDe": 406.09,
+   "hzA": 198.23,
+   "dur": 1.3,
+   "v": 0.4
+  },
+  {
+   "t": 123.521,
+   "clase": 2,
+   "de": 14.9,
+   "a": 9.964,
+   "hzDe": 487.28,
+   "hzA": 325.86,
+   "dur": 1.3,
+   "v": 0.4
+  },
+  {
+   "t": 125.603,
+   "clase": 2,
+   "de": 12.417,
+   "a": 5.989,
+   "hzDe": 406.09,
+   "hzA": 195.87,
+   "dur": 1.3,
+   "v": 0.4
+  },
+  {
+   "t": 127.685,
+   "clase": 3,
+   "de": 14.9,
+   "a": 6.061,
+   "hzDe": 487.28,
+   "hzA": 198.23,
+   "dur": 1.9,
+   "v": 0.55
+  },
+  {
+   "t": 128.968,
+   "clase": 3,
+   "de": 12.417,
+   "a": 9.964,
+   "hzDe": 406.09,
+   "hzA": 325.86,
+   "dur": 1.9,
+   "v": 0.55
+  }
+ ],
+ "lagos": [
+  {
+   "t": 41.143,
+   "tipo": "tamtam",
+   "hz": 173.29,
+   "v": 0.15,
+   "lago": "lago 1"
+  },
+  {
+   "t": 43.112,
+   "tipo": "tamtam",
+   "hz": 191.08,
+   "v": 0.17,
+   "lago": "lago 3"
+  },
+  {
+   "t": 44.342,
+   "tipo": "tamtam",
+   "hz": 189.32,
+   "v": 0.19,
+   "lago": "lago 4"
+  },
+  {
+   "t": 45.392,
+   "tipo": "tamtam",
+   "hz": 173.29,
+   "v": 0.22,
+   "lago": "lago 1"
+  },
+  {
+   "t": 46.34,
+   "tipo": "tamtam",
+   "hz": 191.08,
+   "v": 0.24,
+   "lago": "lago 3"
+  },
+  {
+   "t": 47.218,
+   "tipo": "tamtam",
+   "hz": 189.32,
+   "v": 0.26,
+   "lago": "lago 4"
+  },
+  {
+   "t": 48.045,
+   "tipo": "tamtam",
+   "hz": 173.29,
+   "v": 0.28,
+   "lago": "lago 1"
+  },
+  {
+   "t": 48.832,
+   "tipo": "tamtam",
+   "hz": 191.08,
+   "v": 0.3,
+   "lago": "lago 3"
+  },
+  {
+   "t": 49.585,
+   "tipo": "tamtam",
+   "hz": 189.32,
+   "v": 0.32,
+   "lago": "lago 4"
+  },
+  {
+   "t": 50.311,
+   "tipo": "tamtam",
+   "hz": 173.29,
+   "v": 0.35,
+   "lago": "lago 1"
+  },
+  {
+   "t": 51.012,
+   "tipo": "tamtam",
+   "hz": 191.08,
+   "v": 0.37,
+   "lago": "lago 3"
+  },
+  {
+   "t": 51.693,
+   "tipo": "tamtam",
+   "hz": 189.32,
+   "v": 0.39,
+   "lago": "lago 4"
+  },
+  {
+   "t": 52.356,
+   "tipo": "tamtam",
+   "hz": 173.29,
+   "v": 0.41,
+   "lago": "lago 1"
+  },
+  {
+   "t": 53.002,
+   "tipo": "tamtam",
+   "hz": 191.08,
+   "v": 0.43,
+   "lago": "lago 3"
+  },
+  {
+   "t": 53.633,
+   "tipo": "tamtam",
+   "hz": 189.32,
+   "v": 0.46,
+   "lago": "lago 4"
+  },
+  {
+   "t": 54.251,
+   "tipo": "tamtam",
+   "hz": 173.29,
+   "v": 0.48,
+   "lago": "lago 1"
+  },
+  {
+   "t": 116.571,
+   "tipo": "tamtam",
+   "hz": 195.87,
+   "v": 0.15,
+   "lago": "lago 1"
+  },
+  {
+   "t": 118.541,
+   "tipo": "tamtam",
+   "hz": 198.23,
+   "v": 0.17,
+   "lago": "lago 3"
+  },
+  {
+   "t": 119.77,
+   "tipo": "tamtam",
+   "hz": 325.86,
+   "v": 0.19,
+   "lago": "lago 4"
+  },
+  {
+   "t": 120.82,
+   "tipo": "tamtam",
+   "hz": 195.87,
+   "v": 0.22,
+   "lago": "lago 1"
+  },
+  {
+   "t": 121.768,
+   "tipo": "tamtam",
+   "hz": 198.23,
+   "v": 0.24,
+   "lago": "lago 3"
+  },
+  {
+   "t": 122.647,
+   "tipo": "tamtam",
+   "hz": 325.86,
+   "v": 0.26,
+   "lago": "lago 4"
+  },
+  {
+   "t": 123.474,
+   "tipo": "tamtam",
+   "hz": 195.87,
+   "v": 0.28,
+   "lago": "lago 1"
+  },
+  {
+   "t": 124.26,
+   "tipo": "tamtam",
+   "hz": 198.23,
+   "v": 0.3,
+   "lago": "lago 3"
+  },
+  {
+   "t": 125.014,
+   "tipo": "tamtam",
+   "hz": 325.86,
+   "v": 0.32,
+   "lago": "lago 4"
+  },
+  {
+   "t": 125.739,
+   "tipo": "tamtam",
+   "hz": 195.87,
+   "v": 0.35,
+   "lago": "lago 1"
+  },
+  {
+   "t": 126.441,
+   "tipo": "tamtam",
+   "hz": 198.23,
+   "v": 0.37,
+   "lago": "lago 3"
+  },
+  {
+   "t": 127.122,
+   "tipo": "tamtam",
+   "hz": 325.86,
+   "v": 0.39,
+   "lago": "lago 4"
+  },
+  {
+   "t": 127.784,
+   "tipo": "tamtam",
+   "hz": 195.87,
+   "v": 0.41,
+   "lago": "lago 1"
+  },
+  {
+   "t": 128.43,
+   "tipo": "tamtam",
+   "hz": 198.23,
+   "v": 0.43,
+   "lago": "lago 3"
+  },
+  {
+   "t": 129.062,
+   "tipo": "tamtam",
+   "hz": 325.86,
+   "v": 0.46,
+   "lago": "lago 4"
+  },
+  {
+   "t": 129.68,
+   "tipo": "tamtam",
+   "hz": 195.87,
+   "v": 0.48,
+   "lago": "lago 1"
+  },
+  {
+   "t": 137.143,
+   "tipo": "cruce",
+   "hz": 432.19,
+   "v": 0.5,
+   "lago": "lago 2 (colgado)"
+  },
+  {
+   "t": 192,
+   "tipo": "cruce",
+   "hz": 435.55,
+   "v": 0.5,
+   "lago": "lago 2 (colgado)"
+  }
+ ],
+ "resonancia": [
+  {
+   "t": 0,
+   "hasta": 54.8571,
+   "epoca": 0,
+   "lineas": [
+    {
+     "p": 5.002,
+     "hz": 163.59
+    },
+    {
+     "p": 5.002,
+     "hz": 163.59
+    },
+    {
+     "p": 5.002,
+     "hz": 163.59
+    },
+    {
+     "p": 5.002,
+     "hz": 163.59
+    },
+    {
+     "p": 5.002,
+     "hz": 163.59
+    },
+    {
+     "p": 5.002,
+     "hz": 163.59
+    },
+    {
+     "p": 5.002,
+     "hz": 163.59
+    },
+    {
+     "p": 5.002,
+     "hz": 163.59
+    },
+    {
+     "p": 5.002,
+     "hz": 163.59
+    },
+    {
+     "p": 5.002,
+     "hz": 163.59
+    }
+   ]
+  },
+  {
+   "t": 54.8571,
+   "hasta": 89.1429,
+   "epoca": 1,
+   "lineas": [
+    {
+     "p": 6.889,
+     "hz": 225.28
+    },
+    {
+     "p": 12.399,
+     "hz": 405.48
+    },
+    {
+     "p": 17.373,
+     "hz": 568.14
+    },
+    {
+     "p": 18.467,
+     "hz": 603.93
+    },
+    {
+     "p": 19.162,
+     "hz": 626.66
+    },
+    {
+     "p": 16.125,
+     "hz": 527.35
+    },
+    {
+     "p": 5.299,
+     "hz": 173.29
+    },
+    {
+     "p": 15.664,
+     "hz": 512.25
+    },
+    {
+     "p": 5.843,
+     "hz": 191.08
+    },
+    {
+     "p": 5.789,
+     "hz": 189.32
+    }
+   ]
+  },
+  {
+   "t": 89.1429,
+   "hasta": 130.2857,
+   "epoca": 2,
+   "lineas": [
+    {
+     "p": 7.976,
+     "hz": 260.83
+    },
+    {
+     "p": 12.417,
+     "hz": 406.09
+    },
+    {
+     "p": 14.9,
+     "hz": 487.28
+    },
+    {
+     "p": 19.494,
+     "hz": 637.52
+    },
+    {
+     "p": 15.703,
+     "hz": 513.55
+    },
+    {
+     "p": 17.44,
+     "hz": 570.33
+    },
+    {
+     "p": 5.989,
+     "hz": 195.87
+    },
+    {
+     "p": 13.226,
+     "hz": 432.52
+    },
+    {
+     "p": 6.061,
+     "hz": 198.23
+    },
+    {
+     "p": 9.964,
+     "hz": 325.86
+    }
+   ]
+  },
+  {
+   "t": 130.2857,
+   "hasta": 185.1429,
+   "epoca": 3,
+   "lineas": [
+    {
+     "p": 7.971,
+     "hz": 260.68
+    },
+    {
+     "p": 12.397,
+     "hz": 405.41
+    },
+    {
+     "p": 14.893,
+     "hz": 487.06
+    },
+    {
+     "p": 19.494,
+     "hz": 637.51
+    },
+    {
+     "p": 15.703,
+     "hz": 513.55
+    },
+    {
+     "p": 17.439,
+     "hz": 570.32
+    },
+    {
+     "p": 5.981,
+     "hz": 195.6
+    },
+    {
+     "p": 13.216,
+     "hz": 432.19
+    },
+    {
+     "p": 6.058,
+     "hz": 198.13
+    },
+    {
+     "p": 9.959,
+     "hz": 325.68
+    }
+   ]
+  },
+  {
+   "t": 185.1429,
+   "hasta": 240,
+   "epoca": 4,
+   "lineas": [
+    {
+     "p": 8,
+     "hz": 261.62
+    },
+    {
+     "p": 12.36,
+     "hz": 404.22
+    },
+    {
+     "p": 14.88,
+     "hz": 486.63
+    },
+    {
+     "p": 19.493,
+     "hz": 637.49
+    },
+    {
+     "p": 15.703,
+     "hz": 513.53
+    },
+    {
+     "p": 17.438,
+     "hz": 570.27
+    },
+    {
+     "p": 6.316,
+     "hz": 206.54
+    },
+    {
+     "p": 13.318,
+     "hz": 435.55
+    },
+    {
+     "p": 6.188,
+     "hz": 202.36
+    },
+    {
+     "p": 10.089,
+     "hz": 329.94
+    }
+   ]
+  }
+ ],
+ "garganta": {
+  "largo": 2,
+  "aprende": 0.65,
+  "cortes": [
+   [
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970,
+    970
+   ],
+   [
+    2404.3,
+    2338.6,
+    2251.6,
+    2158.2,
+    2068,
+    1981.1,
+    1893,
+    1812.8,
+    1737,
+    1656.2,
+    1561.8,
+    1474.2,
+    1402,
+    1372.8,
+    1349.8,
+    1343.9,
+    1415.1,
+    1495.6,
+    1573.3,
+    1652.8,
+    1747,
+    1825.8,
+    1900.8,
+    1988.7,
+    2074.9,
+    2148.7,
+    2207.8,
+    2265.4,
+    2334.5,
+    2413.9,
+    2485.3,
+    2558.3,
+    2657.4,
+    2747.4,
+    2822.2,
+    2895.9,
+    2986.8,
+    3069.3,
+    3135.6,
+    3222.7,
+    3340.1,
+    3368.7,
+    3361.1,
+    3343.8,
+    3320.3,
+    3293.8,
+    3268.7,
+    3248.4,
+    3232.4,
+    3217.7,
+    3203,
+    3187.2,
+    3172.1,
+    3160.5,
+    3152.5,
+    3146.4,
+    3140,
+    3132.5,
+    3126.1,
+    3122.5
+   ],
+   [
+    2407.9,
+    2352.9,
+    2282.7,
+    2208.3,
+    2136.6,
+    2067.7,
+    1998.1,
+    1934,
+    1873.3,
+    1808.9,
+    1734.5,
+    1665.1,
+    1607.2,
+    1580.8,
+    1559.6,
+    1551.1,
+    1598.4,
+    1652,
+    1703.3,
+    1755.7,
+    1818.3,
+    1869.4,
+    1917.4,
+    1975.1,
+    2032.5,
+    2081.1,
+    2118.9,
+    2156.3,
+    2201.7,
+    2254.4,
+    2300.9,
+    2348.2,
+    2414.1,
+    2473.6,
+    2522.3,
+    2570.7,
+    2631.1,
+    2685.8,
+    2729.4,
+    2788.5,
+    2870.6,
+    2888,
+    2878.9,
+    2862.8,
+    2842.5,
+    2820.6,
+    2800.3,
+    2783.9,
+    2770.3,
+    2758.2,
+    2746.4,
+    2734.2,
+    2722.5,
+    2713.2,
+    2706.6,
+    2702.1,
+    2697.4,
+    2692.1,
+    2687.7,
+    2685.6
+   ],
+   [
+    2403.9,
+    2351.6,
+    2281.5,
+    2207.2,
+    2135.5,
+    2066.6,
+    1997.1,
+    1933.1,
+    1872.4,
+    1808,
+    1733.5,
+    1664,
+    1606.4,
+    1580.1,
+    1558.7,
+    1550.1,
+    1597.5,
+    1651.2,
+    1702.3,
+    1754.9,
+    1817.4,
+    1868.5,
+    1916.4,
+    1974.2,
+    2031.3,
+    2079.7,
+    2117.1,
+    2154.7,
+    2200.3,
+    2253.1,
+    2299.7,
+    2347.1,
+    2413,
+    2472.3,
+    2521.1,
+    2569.5,
+    2629.7,
+    2684.5,
+    2728.1,
+    2787.1,
+    2869.3,
+    2886.7,
+    2877.6,
+    2861.5,
+    2841.1,
+    2819.2,
+    2799.2,
+    2782.6,
+    2769,
+    2757,
+    2745.4,
+    2733,
+    2721.6,
+    2712.4,
+    2706,
+    2701.5,
+    2696.8,
+    2691.5,
+    2687.1,
+    2685.1
+   ],
+   [
+    2396.8,
+    2349.2,
+    2279.2,
+    2204.9,
+    2133.2,
+    2064.7,
+    1997.4,
+    1932.8,
+    1870.9,
+    1806.2,
+    1732.1,
+    1664.6,
+    1610.1,
+    1585.5,
+    1564.5,
+    1555.2,
+    1602,
+    1655.6,
+    1705.9,
+    1757.9,
+    1821,
+    1872.1,
+    1918.7,
+    1976.3,
+    2032.5,
+    2080.4,
+    2115.5,
+    2151.9,
+    2197.7,
+    2250.7,
+    2297.3,
+    2345,
+    2411.1,
+    2469.9,
+    2518.9,
+    2567.1,
+    2627.1,
+    2681.9,
+    2725.6,
+    2784.2,
+    2866.7,
+    2884.1,
+    2875,
+    2859.3,
+    2839.4,
+    2818.5,
+    2800.5,
+    2784,
+    2768.7,
+    2756,
+    2744.1,
+    2731.6,
+    2720.7,
+    2711.2,
+    2704.7,
+    2700.5,
+    2695.6,
+    2690.4,
+    2685.9,
+    2684
+   ]
+  ]
+ },
+ "viento": {
+  "desde": 157.7142857142857,
+  "hasta": 185.14285714285714,
+  "corte": [
+   2396.8,
+   2349.2,
+   2279.2,
+   2204.9,
+   2133.2,
+   2064.7,
+   1997.4,
+   1932.8,
+   1870.9,
+   1806.2,
+   1732.1,
+   1664.6,
+   1610.1,
+   1585.5,
+   1564.5,
+   1555.2,
+   1602,
+   1655.6,
+   1705.9,
+   1757.9,
+   1821,
+   1872.1,
+   1918.7,
+   1976.3,
+   2032.5,
+   2080.4,
+   2115.5,
+   2151.9,
+   2197.7,
+   2250.7,
+   2297.3,
+   2345,
+   2411.1,
+   2469.9,
+   2518.9,
+   2567.1,
+   2627.1,
+   2681.9,
+   2725.6,
+   2784.2,
+   2866.7,
+   2884.1,
+   2875,
+   2859.3,
+   2839.4,
+   2818.5,
+   2800.5,
+   2784,
+   2768.7,
+   2756,
+   2744.1,
+   2731.6,
+   2720.7,
+   2711.2,
+   2704.7,
+   2700.5,
+   2695.6,
+   2690.4,
+   2685.9,
+   2684
+  ]
+ }
+}

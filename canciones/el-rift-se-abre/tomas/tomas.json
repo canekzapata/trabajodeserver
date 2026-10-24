@@ -1,0 +1,906 @@
+{
+ "voz-coro-1": {
+  "sha": "623ed53d98ed",
+  "segundos": 27.4,
+  "nota": "Sabina canta el coro 1: «todavía estamos aquí»; una nota por sílaba, frases cortas.",
+  "archivo": "tomas/voz-coro-1-623ed53d98ed.m4a",
+  "lufs": -14.9
+ },
+ "progresion-dos-epocas": {
+  "sha": "04b4ae81189c",
+  "segundos": 28.4,
+  "nota": "IV–V–iii–vi dos veces: en el estiramiento (coro 1) y en lagos y volcanes (coro 2). Los parciales caen en líneas distintas del terreno.",
+  "archivo": "tomas/progresion-dos-epocas-04b4ae81189c.m4a",
+  "lufs": -8.6
+ },
+ "ataques-y-resonancias": {
+  "sha": "e802c268d0e3",
+  "segundos": 26,
+  "nota": "Los cinco ataques del trombón (do2), uno por época, y la resonancia que sigue: Cuerda que recuerda en las líneas del espectro de esa época. La meseta es un unísono.",
+  "archivo": "tomas/ataques-y-resonancias-e802c268d0e3.m4a",
+  "lufs": -22.2
+ },
+ "arco-tres-notas-altas": {
+  "sha": "cd0de2ce9b3d",
+  "segundos": 14.2,
+  "nota": "Cuerpo de acción en mi3, dos octavas bajo la nota alta de cada coro (la altura de la meseta): dentro de la isla, sacado de la isla, y llegado por rampa.",
+  "medidas": [
+   {
+    "seccion": "coro 1",
+    "modo": "isla",
+    "regimen": [
+     {
+      "t": 0.1,
+      "F": 0.8,
+      "regimen": "aperiódico",
+      "desl": 2.36,
+      "hz": 163.3
+     },
+     {
+      "t": 0.2,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 40.8
+     },
+     {
+      "t": 0.3,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 40.8
+     },
+     {
+      "t": 0.4,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 40.8
+     },
+     {
+      "t": 0.5,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 0.6,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 163.4
+     },
+     {
+      "t": 0.7,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 0.8,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 0.9,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 163.4
+     },
+     {
+      "t": 1,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 1.1,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 1.2,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 163.4
+     },
+     {
+      "t": 1.3,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 1.4,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 1.5,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 163.4
+     },
+     {
+      "t": 1.6,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 1.7,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 1.8,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 163.4
+     },
+     {
+      "t": 1.9,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 2,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 2.1,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 163.4
+     },
+     {
+      "t": 2.2,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 2.3,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 2.4,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 163.4
+     },
+     {
+      "t": 2.5,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 2.6,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 2.7,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 163.4
+     },
+     {
+      "t": 2.8,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 2.9,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 3,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 163.4
+     },
+     {
+      "t": 3.1,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 3.2,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 3.3,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 163.4
+     },
+     {
+      "t": 3.4,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     }
+    ]
+   },
+   {
+    "seccion": "coro 2",
+    "modo": "rompe",
+    "regimen": [
+     {
+      "t": 0.1,
+      "F": 0.8,
+      "regimen": "aperiódico",
+      "desl": 2.36,
+      "hz": 163.3
+     },
+     {
+      "t": 0.2,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 40.8
+     },
+     {
+      "t": 0.3,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 40.8
+     },
+     {
+      "t": 0.4,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 40.8
+     },
+     {
+      "t": 0.5,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 0.6,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 163.4
+     },
+     {
+      "t": 0.7,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 0.8,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 0.9,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 163.4
+     },
+     {
+      "t": 1,
+      "F": 0.8,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 1.1,
+      "F": 1.14,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 163.4
+     },
+     {
+      "t": 1.2,
+      "F": 1.51,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 40.9
+     },
+     {
+      "t": 1.3,
+      "F": 1.88,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 54.5
+     },
+     {
+      "t": 1.4,
+      "F": 2.25,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 40.9
+     },
+     {
+      "t": 1.5,
+      "F": 2.62,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 40.9
+     },
+     {
+      "t": 1.6,
+      "F": 2.99,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 81.8
+     },
+     {
+      "t": 1.7,
+      "F": 3.36,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 81.8
+     },
+     {
+      "t": 1.8,
+      "F": 3.73,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 81.8
+     },
+     {
+      "t": 1.9,
+      "F": 4.1,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 81.8
+     },
+     {
+      "t": 2,
+      "F": 4.47,
+      "regimen": "periódico",
+      "desl": 1.03,
+      "hz": 54.5
+     },
+     {
+      "t": 2.1,
+      "F": 4.84,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 54.5
+     },
+     {
+      "t": 2.2,
+      "F": 5.2,
+      "regimen": "periódico",
+      "desl": 0.97,
+      "hz": 54.5
+     },
+     {
+      "t": 2.3,
+      "F": 5.57,
+      "regimen": "aperiódico",
+      "desl": 1.21,
+      "hz": 81.7
+     },
+     {
+      "t": 2.4,
+      "F": 5.94,
+      "regimen": "aperiódico",
+      "desl": 1.15,
+      "hz": 81.7
+     },
+     {
+      "t": 2.5,
+      "F": 6.31,
+      "regimen": "aperiódico",
+      "desl": 1.09,
+      "hz": 54.4
+     },
+     {
+      "t": 2.6,
+      "F": 6.68,
+      "regimen": "aperiódico",
+      "desl": 2.72,
+      "hz": 54.4
+     },
+     {
+      "t": 2.7,
+      "F": 7.05,
+      "regimen": "aperiódico",
+      "desl": 1.99,
+      "hz": 163.4
+     },
+     {
+      "t": 2.8,
+      "F": 7.42,
+      "regimen": "aperiódico",
+      "desl": 2.11,
+      "hz": 163.5
+     },
+     {
+      "t": 2.9,
+      "F": 7.79,
+      "regimen": "aperiódico",
+      "desl": 1.69,
+      "hz": 54.5
+     },
+     {
+      "t": 3,
+      "F": 8.16,
+      "regimen": "aperiódico",
+      "desl": 1.33,
+      "hz": 54.5
+     },
+     {
+      "t": 3.1,
+      "F": 8.53,
+      "regimen": "aperiódico",
+      "desl": 4.29,
+      "hz": 163.5
+     },
+     {
+      "t": 3.2,
+      "F": 8.9,
+      "regimen": "periódico",
+      "desl": 1.45,
+      "hz": 81.7
+     },
+     {
+      "t": 3.3,
+      "F": 9,
+      "regimen": "aperiódico",
+      "desl": 4.95,
+      "hz": 163.5
+     },
+     {
+      "t": 3.4,
+      "F": 9,
+      "regimen": "aperiódico",
+      "desl": 4.53,
+      "hz": 163.5
+     }
+    ]
+   },
+   {
+    "seccion": "coro final",
+    "modo": "rampa",
+    "regimen": [
+     {
+      "t": 0.1,
+      "F": 0.19,
+      "regimen": "periódico",
+      "desl": 1.09,
+      "hz": 163.3
+     },
+     {
+      "t": 0.2,
+      "F": 0.23,
+      "regimen": "periódico",
+      "desl": 1.93,
+      "hz": 81.7
+     },
+     {
+      "t": 0.3,
+      "F": 0.27,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 81.7
+     },
+     {
+      "t": 0.4,
+      "F": 0.31,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 81.7
+     },
+     {
+      "t": 0.5,
+      "F": 0.35,
+      "regimen": "periódico",
+      "desl": 1.93,
+      "hz": 81.7
+     },
+     {
+      "t": 0.6,
+      "F": 0.39,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 81.7
+     },
+     {
+      "t": 0.7,
+      "F": 0.43,
+      "regimen": "periódico",
+      "desl": 1.93,
+      "hz": 81.7
+     },
+     {
+      "t": 0.8,
+      "F": 0.47,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 81.7
+     },
+     {
+      "t": 0.9,
+      "F": 0.51,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 1,
+      "F": 0.55,
+      "regimen": "periódico",
+      "desl": 1.93,
+      "hz": 163.3
+     },
+     {
+      "t": 1.1,
+      "F": 0.59,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 1.2,
+      "F": 0.63,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 1.3,
+      "F": 0.67,
+      "regimen": "periódico",
+      "desl": 1.93,
+      "hz": 163.3
+     },
+     {
+      "t": 1.4,
+      "F": 0.71,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 1.5,
+      "F": 0.75,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 1.6,
+      "F": 0.79,
+      "regimen": "periódico",
+      "desl": 1.93,
+      "hz": 163.3
+     },
+     {
+      "t": 1.7,
+      "F": 0.83,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 1.8,
+      "F": 0.87,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 1.9,
+      "F": 0.91,
+      "regimen": "periódico",
+      "desl": 1.93,
+      "hz": 163.3
+     },
+     {
+      "t": 2,
+      "F": 0.95,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 2.1,
+      "F": 0.99,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 2.2,
+      "F": 1,
+      "regimen": "periódico",
+      "desl": 1.93,
+      "hz": 163.3
+     },
+     {
+      "t": 2.3,
+      "F": 1,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 2.4,
+      "F": 1,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 2.5,
+      "F": 1,
+      "regimen": "periódico",
+      "desl": 1.93,
+      "hz": 163.3
+     },
+     {
+      "t": 2.6,
+      "F": 1,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 2.7,
+      "F": 1,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 2.8,
+      "F": 1,
+      "regimen": "periódico",
+      "desl": 1.93,
+      "hz": 163.3
+     },
+     {
+      "t": 2.9,
+      "F": 1,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 3,
+      "F": 1,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 3.1,
+      "F": 1,
+      "regimen": "periódico",
+      "desl": 1.93,
+      "hz": 163.3
+     },
+     {
+      "t": 3.2,
+      "F": 1,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 3.3,
+      "F": 1,
+      "regimen": "periódico",
+      "desl": 1.99,
+      "hz": 163.3
+     },
+     {
+      "t": 3.4,
+      "F": 1,
+      "regimen": "periódico",
+      "desl": 1.93,
+      "hz": 163.3
+     }
+    ]
+   }
+  ],
+  "archivo": "tomas/arco-tres-notas-altas-cd0de2ce9b3d.m4a",
+  "lufs": -19.5
+ },
+ "coro-inaudible": {
+  "sha": "db68aaf9d1f7",
+  "segundos": 22.9,
+  "nota": "El golpe del compás 1 (la sala oye el espejo 9 : 11 : 13) y, 210 s después, las puertas del compás 65: sale el I guardado (do4 · mi4 · sol4).",
+  "medidas": {
+   "guardada": [
+    [
+     0,
+     0
+    ],
+    [
+     10,
+     0.3763
+    ],
+    [
+     20,
+     0.3618
+    ],
+    [
+     30,
+     0.3478
+    ],
+    [
+     40,
+     0.3344
+    ],
+    [
+     50,
+     0.3214
+    ],
+    [
+     60,
+     0.309
+    ],
+    [
+     70,
+     0.2971
+    ],
+    [
+     80,
+     0.2856
+    ],
+    [
+     90,
+     0.2746
+    ],
+    [
+     100,
+     0.264
+    ],
+    [
+     110,
+     0.2538
+    ],
+    [
+     120,
+     0.244
+    ],
+    [
+     130,
+     0.2346
+    ],
+    [
+     140,
+     0.2256
+    ],
+    [
+     150,
+     0.2169
+    ],
+    [
+     160,
+     0.2085
+    ],
+    [
+     170,
+     0.2005
+    ],
+    [
+     180,
+     0.1927
+    ],
+    [
+     190,
+     0.1853
+    ],
+    [
+     200,
+     0.1782
+    ],
+    [
+     210,
+     0.1713
+    ],
+    [
+     220,
+     0.0463
+    ],
+    [
+     230,
+     0.0009
+    ]
+   ]
+  },
+  "archivo": "tomas/coro-inaudible-db68aaf9d1f7.m4a",
+  "lufs": -19.2
+ },
+ "rios": {
+  "sha": "823203fc46ea",
+  "segundos": 22,
+  "nota": "Los primeros 10 ríos del verso 2: glisandos de trompeta con harmon de un hombro (12,4 o 14,9) a un lago del fondo (6,0 · 6,1 · 10,0 parciales).",
+  "archivo": "tomas/rios-823203fc46ea.m4a",
+  "lufs": -13.2
+ },
+ "lagos": {
+  "sha": "2ca5992ced75",
+  "segundos": 28,
+  "nota": "Pre-coro 2: los mensajes llegan a los lagos del fondo y el gong se llena (la bandeja de moderación). En el coro 2, el lago colgado (13,2 parciales): el gong de dos alturas que se cruzan.",
+  "archivo": "tomas/lagos-2ca5992ced75.m4a",
+  "lufs": -15.7
+ },
+ "puente": {
+  "sha": "8aeea489cb41",
+  "segundos": 27.4,
+  "nota": "El puente desnudo: la Garganta de montaña con el corte del rift (época IV → V) en el piso (do3), el Viento sobre la supercaldera y Sabina: «encontré la página otra vez… tres veces».",
+  "archivo": "tomas/puente-8aeea489cb41.m4a",
+  "lufs": -15.9
+ },
+ "coro-convencional": {
+  "sha": "9adfb64a7b50",
+  "segundos": 29.4,
+  "nota": "Coro 1 «convencional»: piano y cuerdas en temperamento igual, la progresión sin terreno. (La voz es la misma toma justa: su diferencia con el temperado es de −14 a +4 cents.)",
+  "archivo": "tomas/coro-convencional-9adfb64a7b50.m4a",
+  "lufs": -10.4
+ },
+ "coro-espectral": {
+  "sha": "57e2c4c0b033",
+  "segundos": 29.4,
+  "nota": "Coro 1 nuestro: la progresión caída en el estiramiento, la resonancia del espectro de la época y el arco en la nota alta (dentro de la isla).",
+  "archivo": "tomas/coro-espectral-57e2c4c0b033.m4a",
+  "lufs": -10.4
+ }
+}
