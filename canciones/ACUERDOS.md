@@ -17,3 +17,12 @@ Lo que se acordó y vale para todas las piezas de esta carpeta, salvo que Canek 
   completa (`COMPOSITOR.md`, pregunta 20).
 - **El método:** las preguntas de `COMPOSITOR.md` de Rejilla. Música académica cruzada con teoría pop; «complejidad
   ante todo»; dato, mapeo y metáfora separados.
+
+## Referencias de gusto
+
+Lo que Canek señaló al escuchar. Su juicio es evidencia de su escucha; no se extiende solo a otras piezas.
+
+- **Las vacas de Narayana** (24 de octubre de 2026): «es de las mejores canciones que hemos hecho». Lo que la
+  pieza hace distinto: la forma la genera el problema mismo (cada vaca es un instrumento que entra al nacer y hereda
+  el material de su madre); la concreción de Lachenmann crece con la manada; el tambor que habla contesta a la voz;
+  la recurrencia se canta a tres voces en los coros. Falta saber qué de todo esto fue lo que funcionó.
