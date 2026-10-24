@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coro inaudible 3D</title>
+<meta name="description" content="El coro inaudible en un corredor que se camina: seis columnas de luz guardan un acorde que la sala no oye. Acercarse a una es oír lo que guarda. Canek Zapata, 2026.">
+<style>
+  :root {
+    --fondo: #08090b; --tinta: #e6e1d8; --tenue: #8d887f; --linea: #2a2a2c; --oro: #d9b25f; --voz: #9fc3e0;
+    --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+    --serif: "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; background: var(--fondo); color: var(--tinta); overflow: hidden; }
+  body { font: 13px/1.45 var(--serif); }
+  canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: none; outline: none; }
+  .panel { position: fixed; top: 12px; left: 12px; max-width: 21rem; background: rgba(8,9,11,.78); border: 1px solid var(--linea); padding: .7rem .8rem; }
+  .panel h1 { font-weight: normal; font-size: 1.1rem; margin: 0 0 .25rem; padding-right: 1.8rem; }
+  .panel p { margin: .3rem 0; color: var(--tenue); font-size: 12px; }
+  .lect { position: fixed; top: 12px; right: 12px; font: 12px/1.7 var(--mono); color: var(--tenue); background: rgba(8,9,11,.78); border: 1px solid var(--linea); padding: .5rem .7rem; text-align: right; }
+  .lect b { color: var(--tinta); font-weight: normal; }
+  .abajo { position: fixed; left: 12px; right: 12px; bottom: 12px; display: flex; flex-wrap: wrap; gap: .35rem; align-items: center; }
+  button, select { font: 12px var(--mono); background: rgba(8,9,11,.8); color: var(--tinta); border: 1px solid #45403a; padding: .32rem .55rem; border-radius: 0; cursor: pointer; }
+  button:hover { border-color: var(--tinta); }
+  button[aria-pressed=true] { background: var(--tinta); color: var(--fondo); }
+  :focus-visible { outline: 1px solid var(--oro); outline-offset: 2px; }
+  a { color: var(--voz); }
+  #plegar { position: absolute; top: .5rem; right: .5rem; padding: 0 .4rem; }
+  .plegado p, .plegado .extra { display: none; }
+  #aviso { position: fixed; inset: 0; display: none; place-items: center; text-align: center; padding: 2rem; color: var(--tenue); }
+  @media (max-width: 600px) { .panel { max-width: calc(100% - 24px); } .lect { top: auto; bottom: 132px; } }
+</style>
+</head>
+<body>
+<canvas id="escena" tabindex="0" aria-label="El corredor del coro en 3D. Arrastrar en el vacío: mirar. Flechas o W A S D: caminar. Clic en una columna: golpearla. Arrastrar una columna de lado: abrir su puerta."></canvas>
+<div class="panel" id="panel">
+  <button id="plegar" aria-label="plegar el texto">–</button>
+  <h1>Coro inaudible</h1>
+  <p>Seis columnas de luz en un corredor de 94 m. Cuando la distancia entre ellas es exacta, tres notas quedan guardadas (el oro): se ven, la sala no las oye. Lo azul es lo que puede salir por las bocas.</p>
+  <p>Caminar: flechas o W A S D (mayúsculas: más rápido), o los botones. Mirar: arrastrar en el vacío. Clic en una columna: golpearla. Arrastrar una columna de lado: abrir su puerta (se dibuja cinco veces más grande).</p>
+  <p>La escucha sigue a tu cuerpo: desde la sala oyes las bocas; junto a una columna, lo que guarda.</p>
+  <p class="extra"><a href="index.html">la versión 2D</a> · <a href="README.md">cómo funciona</a></p>
+</div>
+<div class="lect" aria-live="polite">
+  guardada <b id="l-guard">—</b><br>
+  en la sala <b id="l-db">—</b><br>
+  escucha <b id="l-esc">—</b>
+</div>
+<div class="abajo">
+  <button id="sonido" aria-pressed="false">sonido</button>
+  <button id="adelante" aria-label="caminar hacia adelante">▲</button>
+  <button id="atras" aria-label="caminar hacia atrás">▼</button>
+  <button id="a-sala">a la sala</button>
+  <select id="ir" aria-label="ir junto a un cantor"><option value="">ir junto a…</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select>
+  <select id="modo" aria-label="al tocar"><option value="golpe">golpear</option><option value="espejo">golpear en espejo</option></select>
+  <button id="cerrar">cerrar las puertas</button>
+  <button id="apagar">callar</button>
+  <select id="partitura" aria-label="partitura de gestos"><option value="">partitura…</option></select>
+</div>
+<div id="aviso">Este navegador no ofrece WebGL. La <a href="index.html">versión 2D</a> toca el mismo coro.</div>
+<script type="module" src="escena3d.mjs"></script>
+</body>
+</html>

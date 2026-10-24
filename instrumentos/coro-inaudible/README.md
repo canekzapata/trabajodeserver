@@ -137,6 +137,37 @@ Las seis tomas son estéreo, con la misma ganancia y sin normalizar. La gráfica
 - **Teclado** (con el corredor enfocado): 1–6 golpean, ← → mueven al último, 0
   cierra.
 
+## La versión 3D
+
+`3d.html` + `escena3d.mjs`: el mismo `worklet.mjs`, en WebGL propio, sin
+bibliotecas.
+
+- **Seis columnas de luz** en un corredor de 94 m, con dos bocas que dan a la
+  sala.
+- **El oro de cada columna** es lo que guarda. Su **color** es la mezcla de las
+  notas guardadas, pesada por la energía de cada una en esa columna:
+  - ámbar profundo para la grave (220 Hz);
+  - oro para la de en medio (264 Hz);
+  - oro pálido para la aguda (330 Hz).
+
+  Abrir una puerta cambia el color de las columnas, porque cada puerta vacía
+  otras notas.
+- **Los anillos azules en el piso** son lo que puede salir, con el mismo
+  criterio de color en tres azules. La luz de las bocas sigue el nivel en la
+  sala.
+- **La escucha sigue al cuerpo.** Desde la sala se oyen las bocas. A menos de
+  ~4,5 m de una columna, la mezcla pasa a lo que guarda la más cercana.
+- **Tocar:** clic en una columna la golpea; arrastrarla de lado abre su
+  puerta. Los desplazamientos se dibujan cinco veces más grandes; el corredor,
+  en metros reales.
+- **Caminar:** flechas o W A S D (mayúsculas: más rápido), o los botones
+  ▲ ▼, «a la sala» e «ir junto a…». Para mirar, se arrastra en el vacío.
+
+En Chromium sin pantalla (SwiftShader) se probaron la 3D en 1300 y en 390 px:
+golpes, ir junto al cantor 2, abrir su puerta arrastrando y volver a la sala,
+sin errores en la consola. Se miraron las capturas. No se probó en un teléfono
+real ni con un lápiz.
+
 En Chromium sin pantalla (Playwright) se probaron el golpe, el arrastre de una
 puerta y la vista de 390 px, sin errores en la consola. Se miraron las
 capturas.
@@ -152,8 +183,6 @@ capturas.
     geometría.
 - **Los desplazamientos** cambian los retardos con suavizado de 40 ms. El
   Doppler que eso produce no se midió.
-- **La versión 3D** (figuras en el corredor y una cámara que camina de la sala
-  al coro) queda para después, sobre este mismo motor.
 - **Costo:** en Node corre unas cuatro veces más rápido que el tiempo real.
 - **Referencias de memoria:** Stockhausen, Dicke, Friedrich–Wintgen y el
   problema inverso de Jacobi (Hochstadt, Hald).
@@ -162,7 +191,7 @@ capturas.
 
 ```sh
 python3 -m http.server 8771 --directory instrumentos/coro-inaudible
-# http://127.0.0.1:8771/
+# http://127.0.0.1:8771/  (y /3d.html)
 node renderizar.mjs <guardar|puertas|arpegio|espejo|sala|cerca|toma.json> salida.wav
 node pruebas.mjs
 ```
@@ -175,6 +204,7 @@ node pruebas.mjs
 | `worklet.mjs` | El coro en el AudioWorklet: dos bocas, escucha de cerca, tomas |
 | `tomas.mjs` | Seis partituras de gestos y la mezcla de escucha |
 | `index.html`, `interfaz.mjs` | El corredor, las seis notas, el tiempo y el diseño del acorde |
+| `3d.html`, `escena3d.mjs` | El corredor caminable en WebGL; la escucha sigue a la cámara |
 | `renderizar.mjs` | Partitura o toma → WAV estéreo + JSON (energía de cada modo cada 50 ms) |
 | `pruebas.mjs` | Las 9 pruebas |
 | `muestras/` | M4A de las seis tomas y la gráfica `coro.png` |
