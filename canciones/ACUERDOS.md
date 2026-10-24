@@ -10,6 +10,9 @@ Lo que se acordó y vale para todas las piezas de esta carpeta, salvo que Canek 
   regla de alturas. Una doble idéntica o una armonía paralela no cuentan como voz.
 - **Para vestir la voz de máquina, mejor instrumentos que vocalizan:** Garganta de montaña, Voz de agua,
   Tambor que habla, Pájaro, trombón con plunger. Así el conjunto suena coherente con la voz.
+- **La ley de más de 30 instrumentos** (24 de octubre): toda composición nueva usa más de 30 instrumentos.
+  Cada uno con un papel: el número no reemplaza la pregunta 7 de `COMPOSITOR.md` (quién conduce, contesta, recuerda).
+- **Cuando Canek pide una canción, se hace** («pasa a hacerla, no me propongas»): sin ronda de propuestas.
 - **La parada:** cuando se acuerda partitura y tomas, se entrega eso y se espera la crítica antes de la canción
   completa (`COMPOSITOR.md`, pregunta 20).
 - **El método:** las preguntas de `COMPOSITOR.md` de Rejilla. Música académica cruzada con teoría pop; «complejidad

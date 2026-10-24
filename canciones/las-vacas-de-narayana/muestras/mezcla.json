@@ -1,0 +1,438 @@
+{
+ "mezcla": {
+  "piano": [
+   -7,
+   0.2
+  ],
+  "contrabajo": [
+   -4,
+   0.1
+  ],
+  "fotones": [
+   -3,
+   0.15
+  ],
+  "trombon": [
+   -6,
+   0.3
+  ],
+  "trompeta": [
+   -6,
+   0.3
+  ],
+  "clarinete": [
+   -6,
+   0.3
+  ],
+  "organo": [
+   -9,
+   0.2
+  ],
+  "violin": [
+   -7,
+   0.2
+  ],
+  "tambor": [
+   -6,
+   0.25
+  ],
+  "garganta": [
+   -13,
+   0.4
+  ],
+  "cuerpo": [
+   -11,
+   0.2
+  ],
+  "tamtam": [
+   -13,
+   0.4
+  ],
+  "androide": [
+   -7,
+   0.1
+  ],
+  "viola": [
+   -13,
+   0.4
+  ],
+  "chelo": [
+   -13,
+   0.4
+  ],
+  "pajaro": [
+   -13,
+   0.4
+  ],
+  "agua": [
+   -13,
+   0.4
+  ],
+  "vozagua": [
+   -13,
+   0.4
+  ],
+  "waterphone": [
+   -13,
+   0.4
+  ],
+  "opera": [
+   -13,
+   0.4
+  ],
+  "fput": [
+   -13,
+   0.4
+  ],
+  "sampleador": [
+   -13,
+   0.4
+  ],
+  "trompo": [
+   -15,
+   0.3
+  ],
+  "boca": [
+   -13,
+   0.4
+  ],
+  "cuerdatt": [
+   -6,
+   0.3
+  ],
+  "pianott": [
+   -7,
+   0.2
+  ],
+  "arpa": [
+   -7,
+   0.2
+  ],
+  "cristal": [
+   -6,
+   0.3
+  ],
+  "estacion": [
+   -13,
+   0.4
+  ],
+  "terminal": [
+   -6,
+   0.3
+  ],
+  "plasma": [
+   -13,
+   0.4
+  ],
+  "sala": [
+   -13,
+   0.4
+  ],
+  "viento": [
+   -17,
+   0.3
+  ],
+  "coro": [
+   -9,
+   0.3
+  ],
+  "voz-principal": [
+   0,
+   0.25
+  ],
+  "voz-alta": [
+   -5,
+   0.3
+  ],
+  "voz-baja": [
+   -5,
+   0.3
+  ]
+ },
+ "automatizacion": {
+  "voz-principal": {
+   "intro": -3,
+   "año 1": 0,
+   "año 2": 2,
+   "año 3": 2,
+   "año 4": 4,
+   "año 5": 4,
+   "año 6": 4,
+   "coro A": 9,
+   "año 7": 4,
+   "año 8": 4,
+   "año 9": 7,
+   "año 10": 7,
+   "año 11": 7,
+   "año 12": 7,
+   "coro B": 9,
+   "año 13": 7,
+   "año 14": 7,
+   "año 15": 7,
+   "año 16": 7,
+   "año 17": 5,
+   "año 18": 5,
+   "año 19": 5,
+   "año 20": 5,
+   "coro final": 9,
+   "salida": 5
+  },
+  "voz-alta": {
+   "intro": -3,
+   "año 1": 0,
+   "año 2": 2,
+   "año 3": 2,
+   "año 4": 4,
+   "año 5": 4,
+   "año 6": 4,
+   "coro A": 9,
+   "año 7": 4,
+   "año 8": 4,
+   "año 9": 7,
+   "año 10": 7,
+   "año 11": 7,
+   "año 12": 7,
+   "coro B": 9,
+   "año 13": 7,
+   "año 14": 7,
+   "año 15": 7,
+   "año 16": 7,
+   "año 17": 5,
+   "año 18": 5,
+   "año 19": 5,
+   "año 20": 5,
+   "coro final": 9,
+   "salida": 5
+  },
+  "voz-baja": {
+   "intro": -3,
+   "año 1": 0,
+   "año 2": 2,
+   "año 3": 2,
+   "año 4": 4,
+   "año 5": 4,
+   "año 6": 4,
+   "coro A": 9,
+   "año 7": 4,
+   "año 8": 4,
+   "año 9": 7,
+   "año 10": 7,
+   "año 11": 7,
+   "año 12": 7,
+   "coro B": 9,
+   "año 13": 7,
+   "año 14": 7,
+   "año 15": 7,
+   "año 16": 7,
+   "año 17": 5,
+   "año 18": 5,
+   "año 19": 5,
+   "año 20": 5,
+   "coro final": 9,
+   "salida": 5
+  }
+ },
+ "faltan": [],
+ "informe": [
+  {
+   "seccion": "intro",
+   "ano": 0,
+   "vacas": 1,
+   "instrumentos_sonando": 2,
+   "total_db": -22.1,
+   "voces_sobre_resto_db": 4.1
+  },
+  {
+   "seccion": "año 1",
+   "ano": 1,
+   "vacas": 2,
+   "instrumentos_sonando": 3,
+   "total_db": -20.8,
+   "voces_sobre_resto_db": 2.9
+  },
+  {
+   "seccion": "año 2",
+   "ano": 2,
+   "vacas": 3,
+   "instrumentos_sonando": 4,
+   "total_db": -19.1,
+   "voces_sobre_resto_db": 1.2
+  },
+  {
+   "seccion": "año 3",
+   "ano": 3,
+   "vacas": 4,
+   "instrumentos_sonando": 5,
+   "total_db": -18.6,
+   "voces_sobre_resto_db": 1.6
+  },
+  {
+   "seccion": "año 4",
+   "ano": 4,
+   "vacas": 6,
+   "instrumentos_sonando": 7,
+   "total_db": -16.4,
+   "voces_sobre_resto_db": 1.4
+  },
+  {
+   "seccion": "año 5",
+   "ano": 5,
+   "vacas": 9,
+   "instrumentos_sonando": 10,
+   "total_db": -16.2,
+   "voces_sobre_resto_db": 1
+  },
+  {
+   "seccion": "año 6",
+   "ano": 6,
+   "vacas": 13,
+   "instrumentos_sonando": 14,
+   "total_db": -15.4,
+   "voces_sobre_resto_db": 1.3
+  },
+  {
+   "seccion": "coro A",
+   "ano": 6,
+   "vacas": 13,
+   "instrumentos_sonando": 15,
+   "total_db": -10.8,
+   "voces_sobre_resto_db": 2.1
+  },
+  {
+   "seccion": "año 7",
+   "ano": 7,
+   "vacas": 19,
+   "instrumentos_sonando": 20,
+   "total_db": -14.3,
+   "voces_sobre_resto_db": 1.3
+  },
+  {
+   "seccion": "año 8",
+   "ano": 8,
+   "vacas": 28,
+   "instrumentos_sonando": 29,
+   "total_db": -13.9,
+   "voces_sobre_resto_db": -1.4
+  },
+  {
+   "seccion": "año 9",
+   "ano": 9,
+   "vacas": 41,
+   "instrumentos_sonando": 35,
+   "total_db": -12.9,
+   "voces_sobre_resto_db": -2.7
+  },
+  {
+   "seccion": "año 10",
+   "ano": 10,
+   "vacas": 60,
+   "instrumentos_sonando": 35,
+   "total_db": -12.6,
+   "voces_sobre_resto_db": 1.1
+  },
+  {
+   "seccion": "año 11",
+   "ano": 11,
+   "vacas": 88,
+   "instrumentos_sonando": 35,
+   "total_db": -12.7,
+   "voces_sobre_resto_db": -0.8
+  },
+  {
+   "seccion": "año 12",
+   "ano": 12,
+   "vacas": 129,
+   "instrumentos_sonando": 35,
+   "total_db": -12.9,
+   "voces_sobre_resto_db": 0.4
+  },
+  {
+   "seccion": "coro B",
+   "ano": 12,
+   "vacas": 129,
+   "instrumentos_sonando": 36,
+   "total_db": -10.4,
+   "voces_sobre_resto_db": -0.7
+  },
+  {
+   "seccion": "año 13",
+   "ano": 13,
+   "vacas": 189,
+   "instrumentos_sonando": 27,
+   "total_db": -20,
+   "voces_sobre_resto_db": null
+  },
+  {
+   "seccion": "año 14",
+   "ano": 14,
+   "vacas": 277,
+   "instrumentos_sonando": 17,
+   "total_db": -20.9,
+   "voces_sobre_resto_db": null
+  },
+  {
+   "seccion": "año 15",
+   "ano": 15,
+   "vacas": 406,
+   "instrumentos_sonando": 17,
+   "total_db": -21.6,
+   "voces_sobre_resto_db": null
+  },
+  {
+   "seccion": "año 16",
+   "ano": 16,
+   "vacas": 595,
+   "instrumentos_sonando": 17,
+   "total_db": -20.8,
+   "voces_sobre_resto_db": null
+  },
+  {
+   "seccion": "año 17",
+   "ano": 17,
+   "vacas": 872,
+   "instrumentos_sonando": 35,
+   "total_db": -15,
+   "voces_sobre_resto_db": 0.3
+  },
+  {
+   "seccion": "año 18",
+   "ano": 18,
+   "vacas": 1278,
+   "instrumentos_sonando": 35,
+   "total_db": -15.2,
+   "voces_sobre_resto_db": 0.6
+  },
+  {
+   "seccion": "año 19",
+   "ano": 19,
+   "vacas": 1873,
+   "instrumentos_sonando": 35,
+   "total_db": -14.7,
+   "voces_sobre_resto_db": 1
+  },
+  {
+   "seccion": "año 20",
+   "ano": 20,
+   "vacas": 2745,
+   "instrumentos_sonando": 34,
+   "total_db": -16.2,
+   "voces_sobre_resto_db": 0.6
+  },
+  {
+   "seccion": "coro final",
+   "ano": 20,
+   "vacas": 2745,
+   "instrumentos_sonando": 35,
+   "total_db": -11.7,
+   "voces_sobre_resto_db": 2.3
+  },
+  {
+   "seccion": "salida",
+   "ano": 20,
+   "vacas": 2745,
+   "instrumentos_sonando": 28,
+   "total_db": -16.4,
+   "voces_sobre_resto_db": 4.2
+  }
+ ]
+}

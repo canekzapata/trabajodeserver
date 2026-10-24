@@ -1,0 +1,14 @@
+{
+ "mezcla": {
+  "I_LUFS": -30.8,
+  "LRA_LU": 11.5,
+  "pico_dBTP": -6.0
+ },
+ "ganancia_dB": 18.0,
+ "limite_dBFS": -2.3,
+ "master": {
+  "I_LUFS": -14.1,
+  "LRA_LU": 9.0,
+  "pico_verdadero_dBTP": -1.0
+ }
+}
