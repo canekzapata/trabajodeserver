@@ -11,8 +11,8 @@ import { Cuerda as CuerdaFPUT } from '../../instrumentos/cuerda-que-recuerda/mot
 
 const SR = 48000, R = process.env.REJILLA || '/home/user/canekzapata/rejilla', req = createRequire(import.meta.url);
 const OBJ = `${R}/research/rejilla/objetos/motor`, TRAS = `${R}/research/rejilla/lo-que-tapa-la-traspuesta/motor`;
-const Metal = req(`${OBJ}/metal.js`), CuerdaR = req(`${OBJ}/cuerda.js`), Gong = req(`${OBJ}/gong.js`), Garganta = req(`${TRAS}/garganta.js`), Viento = req(`${TRAS}/viento.js`);
-const { T, BAR, tDe, hzP, midiHz, LINEAS, ARMONIA, TROMBON, ARCO, RIOS, LAGOS, CORO, SECCIONES, GARGANTA, VIENTO, PULSOS, ESPACIO } = Pt;
+const Metal = req(`${OBJ}/metal.js`), CuerdaR = req(`${OBJ}/cuerda.js`), Gong = req(`${OBJ}/gong.js`), VozAgua = req(`${OBJ}/vozagua.js`), Tambor = req(`${OBJ}/tambor.js`), Pajaro = req(`${OBJ}/pajaro.js`), Garganta = req(`${TRAS}/garganta.js`), Viento = req(`${TRAS}/viento.js`);
+const { T, BAR, tDe, hzP, midiHz, LINEAS, ARMONIA, TROMBON, ARCO, RIOS, LAGOS, CORO, SECCIONES, GARGANTA, GARGANTAS, VIENTO, PULSOS, ESPACIO, TAMBOR } = Pt;
 const [carpeta, modo] = process.argv.slice(2);
 const DUR = Pt.tDe(Pt.COMPASES + 1) + 4, N = Math.round(DUR * SR), K = T.anchoKm;
 const nuevo = () => [new Float32Array(N), new Float32Array(N)];
@@ -25,7 +25,17 @@ const fundir = (y, ms = 30) => { const k = Math.round(ms * SR / 1000); for (let 
 const panDe = (nombre) => { const r = T.rasgos.find((x) => x.nombre === nombre), u = Array.isArray(r.km) ? r.km[0] : r.km; return Math.max(-0.9, Math.min(0.9, 2 * u / K - 1)); };
 
 const STEMS = {
-  voz: () => { const V = new Float32Array(readFileSync(`${carpeta}/voz.f32`).buffer.slice(0)), o = nuevo(); for (let i = 0; i < N && 2 * i + 1 < V.length; i++) { o[0][i] = V[2 * i]; o[1][i] = V[2 * i + 1]; } return o; },
+  ...Object.fromEntries([['voz', 'principal', 0], ['voz-alta', 'alta', -0.35], ['voz-baja', 'baja', 0.35]].map(([n, capa, pan]) => [n, () => {
+    const V = new Float32Array(readFileSync(`${carpeta}/voz-${capa}.f32`).buffer.slice(0)), m = new Float32Array(N); for (let i = 0; i < N && 2 * i + 1 < V.length; i++) m[i] = (V[2 * i] + V[2 * i + 1]) / 2;
+    const o = nuevo(); poner(o, m, 0, 1, pan); return o; }])),
+  // el coro de gargantas: tres Gargantas, una por tono del acorde, con el corte del rift de cada época de tubo
+  gargantas: () => {
+    const o = nuevo(), aCorte = (c) => { const mn = Math.min(...c), mx = Math.max(...c); return Float32Array.from(c, (x) => (mx - mn < 1 ? 0.6 : 0.15 + 0.85 * (x - mn) / (mx - mn))); };
+    const perfiles = SECCIONES.map((sc) => [tDe(sc.desde), aCorte(GARGANTA.cortes[sc.epoca])]);
+    GARGANTAS.forEach((linea, k) => { const y = Garganta.render({ dur: DUR, largo: 1, perfil: perfiles[0][1], perfiles, eventos: linea.map((e) => ({ ...e, t: e.t + 0.01 })) }, SR); poner(o, y, 0, 1, [-0.45, 0, 0.45][k]); });
+    return o;
+  },
+  tambor: () => { const o = nuevo(); poner(o, Tambor.render({ dur: DUR, semilla: 40, eventos: TAMBOR }, SR), 0, 1, -0.1); return o; },
   viola: () => { const y = CuerdaR.render({ dur: DUR, instrumento: 'viola', eventos: ARMONIA.flatMap((a) => a.tonos.map((x) => ({ t: a.t, m: midiHz(x.hz / 2), v: 0.42, dur: BAR * 0.97, tipo: 'tasto' }))) }, SR); const o = nuevo(); poner(o, y, 0, 1, 0.25); return o; },
   contrabajo: () => { const y = CuerdaR.render({ dur: DUR, instrumento: 'contrabajo', eventos: ARMONIA.map((a) => ({ t: a.t, m: midiHz(a.bajo), v: 0.6, dur: BAR * 0.95, tipo: 'arco' })) }, SR); const o = nuevo(); poner(o, y, 0, 1, -0.15); return o; },
   resonancia: () => {
@@ -59,8 +69,8 @@ const STEMS = {
     for (let i = 0; i < N; i++) { if (i === iG) c.golpear(0, 1); if (i === iP) c.mover(0, CORO.cm); const x = c.muestra(); o[0][i] = x.izq; o[1][i] = x.der; }
     return o;
   },
-  rios: () => { const o = nuevo(); for (const r of RIOS) poner(o, fundir(Metal.render({ dur: r.dur + 1.5, voz: 'trompeta', sordina: 'harmon', notas: [{ t: 0.02, dur: r.dur, m: midiHz(r.hzDe), m2: midiHz(r.hzA), tipo: 'normal', v: r.v }] }, SR)), r.t, 1, Math.abs(r.de - LINEAS[2][1]) < Math.abs(r.de - LINEAS[2][2]) ? panDe('hombro oeste') : panDe('hombro este')); return o; },
-  lagos: () => { const o = nuevo(); for (const l of LAGOS) { const y = Gong.render({ dur: 7, semilla: 40, eventos: [l.tipo === 'tamtam' ? { t: 0.01, tipo: 'tamtam', m: midiHz(l.hz), v: l.v, dureza: 0.3 } : { t: 0.01, tipo: 'cruce', m: midiHz(l.hz), v: l.v, abre: 1.5 }] }, SR); poner(o, fundir(y, 200), l.t, 1, panDe(l.lago.split(' (')[0])); } return o; },
+  rios: () => { const o = nuevo(); for (const r of RIOS) poner(o, fundir(Pajaro.render({ dur: r.dur + 1.2, eventos: [{ t: 0.02, tipo: 'silbido', m: midiHz(r.hzDe), m2: midiHz(r.hzA), dur: r.dur, v: r.v }] }, SR)), r.t, 1, Math.abs(r.de - LINEAS[2][1]) < Math.abs(r.de - LINEAS[2][2]) ? panDe('hombro oeste') : panDe('hombro este')); return o; },
+  lagos: () => { const o = nuevo(); for (const l of LAGOS) { const y = VozAgua.render({ dur: 3.5, eventos: [{ t: 0.02, dur: 1.4, texto: l.texto, nota: midiHz(l.hz), modo: l.modo, voz: 0.9, v: 0.4 + l.v }] }, SR); poner(o, fundir(y, 150), l.t, 1, panDe(l.lago.split(' (')[0])); } return o; },
   garganta: () => {
     const o = nuevo(), aCorte = (c) => { const mn = Math.min(...c), mx = Math.max(...c); return Float32Array.from(c, (x) => (mx - mn < 1 ? 0.6 : 0.15 + 0.85 * (x - mn) / (mx - mn))); };
     for (const e of GARGANTA.eventos) { const y = Garganta.render({ dur: e.dur + 1, largo: GARGANTA.largo, perfil: aCorte(GARGANTA.cortes[e.epoca]), eventos: [{ ...e, t: 0.02 }] }, SR); poner(o, fundir(y, 300), e.t, 0.5, 0); }
@@ -90,8 +100,8 @@ function espacio(entrada) {
 // la mezcla: ganancia (dB), envío al espacio
 // dB relativos a un mismo nivel activo. Partida: la voz conduce sin tapar; la armonía y la resonancia debajo
 // automatización por sección (dB sobre la tabla), con rampas de 1,5 s en los bordes
-export const AUTOM = { coro: { 'coro final': 6, final: 16 }, voz: { 'coro 1': 2, 'coro 2': 2, 'coro final': 2 }, resonancia: { final: -4 } };
-export const MEZCLA = { voz: [0, 0.16], viola: [-6, 0.3], contrabajo: [-8, 0.2], resonancia: [-6, 0.4], trombon: [-3, 0.35], arco: [-7, 0.25], coro: [-5, 0.2], rios: [-9, 0.35], lagos: [-9, 0.4], garganta: [-6, 0.3], viento: [-12, 0.2] };
+export const AUTOM = { coro: { 'coro final': 6, final: 16 }, voz: { 'coro 1': 1, 'coro 2': 1, 'coro final': 1 }, resonancia: { final: -4 }, gargantas: { 'verso 1': -3, 'verso 2': -3 } };
+export const MEZCLA = { voz: [0, 0.25], 'voz-alta': [-6, 0.35], 'voz-baja': [-6, 0.3], gargantas: [-6, 0.35], contrabajo: [-9, 0.2], resonancia: [-8, 0.4], trombon: [-3, 0.35], arco: [-7, 0.25], coro: [-5, 0.2], rios: [-10, 0.35], lagos: [-9, 0.4], tambor: [-8, 0.25], garganta: [-6, 0.3], viento: [-12, 0.2] };
 
 if (modo === 'stems') {
   mkdirSync(`${carpeta}/stems`, { recursive: true });

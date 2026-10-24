@@ -27,6 +27,8 @@ for a in P['armonia']:
     ax.plot([a['t'], a['t'] + 4 * 60 / P['bpm'] * 0.95], [a['bajo']] * 2, color=tenue, lw=2.2, alpha=0.8, solid_capstyle='butt')
 # la melodía
 for n in P['melodia']: ax.plot([n['t'], n['t'] + n['durS']], [n['hz']] * 2, color=voz, lw=3, solid_capstyle='butt')
+for n in P['voces']['alta']: ax.plot([n['t'], n['t'] + n['durS']], [n['hz']] * 2, color='#f0c08a', lw=3, solid_capstyle='butt')
+for n in P['voces']['baja']: ax.plot([n['t'], n['t'] + n['durS']], [n['hz']] * 2, color='#8fd19e', lw=3, solid_capstyle='butt')
 # los ríos y los lagos
 for r in P['rios']: ax.plot([r['t'], r['t'] + r['dur']], [r['hzDe'], r['hzA']], color='#6fa8d6', lw=0.8, alpha=0.8)
 for l in P['lagos']: ax.scatter([l['t']], [l['hz']], s=10 + 40 * l['v'], color='#6fa8d6' if l['tipo'] == 'tamtam' else oro, alpha=0.7, lw=0)
@@ -36,5 +38,5 @@ for a in P['arco']: ax.plot([a['t'], a['t'] + a['dur']], [a['hz']] * 2, color={'
 ax.plot([P['coro']['golpe'], P['coro']['puertas']], [DO1 * 8 * 1.0] * 2, color=oro, lw=1, ls=':'); ax.text(P['coro']['golpe'] + 1, DO1 * 8 * 1.04, 'el Coro guarda el I (do4 · mi4 · sol4) desde el compás 1', color=oro, fontsize=7.5)
 ax.axvline(P['coro']['puertas'], color=oro, lw=1.2); ax.text(P['coro']['puertas'] + 0.5, 60, 'puertas: sale el I', color=oro, fontsize=8)
 ax.set_xlabel('s', color=tenue); ax.set_ylabel('Hz', color=tenue)
-ax.set_title(f"{P['titulo']} · {P['subtitulo']} · lámina 40, {P['lamina']['nombre']} · {P['bpm']} bpm · azul: Sabina · blanco/cobre/rojo: acordes (desvío por el terreno: 0 / <30 / >30 cents) · oro: líneas del espectro de cada época", color=tinta, fontsize=8.5, loc='left')
+ax.set_title(f"{P['titulo']} · {P['subtitulo']} · lámina 40, {P['lamina']['nombre']} · {P['bpm']} bpm · azul: Sabina (melodía) · durazno: la que traduce · verde: el archivo · blanco/cobre/rojo: acordes (desvío por el terreno: 0 / <30 / >30 cents) · oro: líneas del espectro de cada época", color=tinta, fontsize=8.5, loc='left')
 plt.tight_layout(); plt.savefig(sys.argv[2], dpi=100, facecolor=fig.get_facecolor())

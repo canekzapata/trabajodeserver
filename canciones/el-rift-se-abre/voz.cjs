@@ -1,5 +1,5 @@
 /* voz.cjs — Sabina (Difonos de Rejilla, modo PSOLA) canta la melodía de partitura.json, fuera de línea en Chromium.
- *   REJILLA=/ruta/a/rejilla node voz.cjs [salida.f32]   → estéreo intercalado, 48 kHz, toda la canción
+ *   REJILLA=/ruta/a/rejilla node voz.cjs <salida.f32> [principal|doble|alta|baja]   → estéreo intercalado, 48 kHz, toda la canción
  * Voz de máquina por acuerdo: una sílaba por evento, sin melismas. */
 const fs = require('fs'), path = require('path'), { chromium } = require('playwright');
 const R = process.env.REJILLA || '/home/user/canekzapata/rejilla', D = path.join(R, 'difonos');
@@ -14,11 +14,12 @@ const A2ES = { AA: 'a', AE: 'a', AH: 'a', AO: 'o', AW: 'au', AY: 'ai', EH: 'e', 
   B: 'b', CH: 'ch', D: 'd', DH: 'd', F: 'f', G: 'g', HH: 'j', JH: 'y', K: 'k', L: 'l', M: 'm', N: 'n', NG: 'n', P: 'p', R: 'r', S: 's', SH: 'ch', T: 't', TH: 't', V: 'b', W: 'u', Y: 'i', Z: 's', ZH: 'y' };
 const aEspanol = (sil) => EN.word(sil).phones.map((f) => A2ES[f] || '').join('').replace(/(.)\1+/g, '$1');
 const LECTURAS = {};
-const eventos = P.melodia.map((n) => {
+const capa = process.argv[3] || 'principal', linea = capa === 'principal' ? P.melodia : P.voces[capa];
+const eventos = linea.map((n) => {
   const texto = n.idioma === 'en' ? (LECTURAS[n.silaba] = aEspanol(n.silaba)) : n.silaba;
   return { t: n.t, dur: +(n.durS * 0.9).toFixed(4), texto, nota: n.midi };
 });
-console.log('inglés leído:', LECTURAS);
+console.log(capa, 'inglés leído:', LECTURAS);
 (async () => {
   const b = await chromium.launch(); const page = await b.newPage();
   await page.setContent('<title>voz</title>');
@@ -26,10 +27,10 @@ console.log('inglés leído:', LECTURAS);
   const partes = [];
   await page.exposeFunction('guardar', (b64) => { partes.push(Buffer.from(b64, 'base64')); });
   const M = JSON.parse(fs.readFileSync(path.join(banco, 'manifiesto.json'), 'utf8')), audio = fs.readFileSync(path.join(banco, 'banco.flac')).toString('base64');
-  const r = await page.evaluate(async ({ eventos, dur, M, audio }) => {
+  const r = await page.evaluate(async ({ eventos, dur, M, audio, capa }) => {
     const sr = 48000, ctx = new OfflineAudioContext(2, Math.ceil(dur * sr), sr);
     const bin = Uint8Array.from(atob(audio), (c) => c.charCodeAt(0)), bank = new Difonos.Banco(ctx, await ctx.decodeAudioData(bin.buffer), M);
-    let semilla = 40; const rng = () => { semilla = (Math.imul(semilla, 1664525) + 1013904223) >>> 0; return semilla / 4294967296; };
+    let semilla = 40 + capa.length; const rng = () => { semilla = (Math.imul(semilla, 1664525) + 1013904223) >>> 0; return semilla / 4294967296; };
     const q = []; const g = ctx.createGain(); g.gain.value = 1; g.connect(ctx.destination);
     bank.cantar(g, eventos, { modo: 'psola', vibrato: [4.8, 0.0015], rng, agendar: (t, f) => q.push([t, f]) });
     q.sort((a, b) => a[0] - b[0]); const hasta = (t) => { while (q.length && q[0][0] < t) q.shift()[1](); }; hasta(3);
@@ -43,7 +44,7 @@ console.log('inglés leído:', LECTURAS);
       await window.guardar(btoa(s));
     }
     return { pico, segundos: N / sr };
-  }, { eventos, dur: P.duracion + 2, M, audio });
+  }, { eventos, dur: P.duracion + 2, M, audio, capa });
   fs.writeFileSync(salida, Buffer.concat(partes));
   console.log(path.basename(salida), r, eventos.length, 'sílabas');
   await b.close();

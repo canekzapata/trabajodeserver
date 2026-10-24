@@ -1,7 +1,7 @@
 // pruebas.mjs — lo que la partitura y las tomas afirman y puede fallar.  node pruebas.mjs [carpeta-con-voz.f32]
 import { execFileSync } from 'node:child_process';
 import { readFileSync, existsSync } from 'node:fs';
-import { T, LINEAS, MELODIA, ARMONIA, ARCO, CORO, SECCIONES, ACORDES, BEAT, hzP } from './partitura.mjs';
+import { T, LINEAS, MELODIA, ARMONIA, ARCO, CORO, SECCIONES, ACORDES, BEAT, hzP, VOCES } from './partitura.mjs';
 import { disenar } from '../../instrumentos/coro-inaudible/motor.mjs';
 import { Cuerpo, medir } from '../../instrumentos/cuerpo-de-accion/motor.mjs';
 
@@ -75,6 +75,19 @@ const cents = (a, b) => 1200 * Math.log2(a / b), SR = 48000;
     });
     prueba('Sabina afina las 12 notas más largas a menos de 20 cents', err.every((e) => Math.abs(e) < 20), err.map((e) => `${e >= 0 ? '+' : ''}${e.toFixed(0)}`).join(' ') + ' cents');
   } else console.log('salta  (sin voz.f32: node voz.cjs <carpeta>/voz.f32; node pruebas.mjs <carpeta>)');
+}
+// 8. las voces de apoyo están compuestas: silábicas, cortas, con su propio texto y ritmo, sobre el acorde caído
+{
+  const todas = [...VOCES.alta, ...VOCES.baja], maxDur = Math.max(...todas.map((n) => n.dur));
+  const onsetsM = new Set(MELODIA.map((n) => n.t.toFixed(3)));
+  const comunes = (v) => VOCES[v].filter((n) => onsetsM.has(n.t.toFixed(3))).length / VOCES[v].length;
+  const igual = (v) => VOCES[v].filter((n) => MELODIA.some((m) => Math.abs(m.t - n.t) < 1e-3 && Math.abs(m.dur - n.dur) < 1e-9)).length / VOCES[v].length;
+  const textoIgual = (v) => VOCES[v].filter((n) => MELODIA.some((m) => Math.abs(m.t - n.t) < 1e-3 && m.silaba === n.silaba)).length / VOCES[v].length;
+  // cada nota es un tono del acorde de su compás (caído), o del I donde no hay acorde
+  const tonos = (c) => { const a = ARMONIA.find((x) => x.compas === c); return a ? a.tonos.map((x) => x.hz) : ACORDES.I.map((p) => hzP(p)); };
+  const enAcorde = todas.every((n) => tonos(n.compas).some((f) => [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4, 5].some((k) => Math.abs(cents(n.hz, f * 2 ** k)) < 0.05)));
+  prueba('las dos voces de apoyo: silábicas, notas de 2 tiempos como máximo, texto y ritmo propios (menos del 30 % de notas iguales en ataque y duración), tonos del acorde caído', maxDur <= 2 && enAcorde && igual('alta') < 0.3 && igual('baja') < 0.3 && textoIgual('alta') < 0.2 && textoIgual('baja') < 0.2,
+    ['alta', 'baja'].map((v) => `${v} ${VOCES[v].length} sílabas: ${(100 * igual(v)).toFixed(0)} % con el mismo ataque y duración que la melodía, ${(100 * textoIgual(v)).toFixed(0)} % con la misma sílaba (${(100 * comunes(v)).toFixed(0)} % de ataques caen junto a uno de la melodía: ésta va en corcheas)`).join(' · '));
 }
 // 7. la mezcla y el master (de muestras/mezcla.json y muestras/master.json)
 {

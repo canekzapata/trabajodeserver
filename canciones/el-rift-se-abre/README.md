@@ -1,7 +1,7 @@
 # El rift se abre
 
 Canek Zapata · 24 de octubre de 2026 · 70 compases, 70 bpm, 4:02 ·
-[escuchar el master](muestras/el-rift-se-abre-f0a0a7fea55e.m4a)
+[escuchar el master](muestras/el-rift-se-abre-12913b3270c2.m4a)
 
 > Balada de K-pop por forma; Grisey y Murail por dentro. La lista de correo de
 > 1995–2001 sobre un rift que se abre: la plaza era un unísono, la progresión se
@@ -161,9 +161,77 @@ Canek eligió el coro espectral y la mezcla con las decisiones propuestas:
   la misma física de *Los testigos*: la puerta del cantor 1 suelta primero la
   nota del medio y la aguda.
 
+## Segunda mezcla: voces compuestas e instrumentos que vocalizan
+
+Canek, después de la primera mezcla, dijo tres cosas:
+
+- «hacer 2 líneas más de la voz principal y usar instrumentos que vocalizan
+  para que se sintiera más coherente»;
+- «la voz de Sabina desnuda es muy… desnuda»;
+- «no necesariamente son idénticas esas voces, las tienes que componer».
+
+### Las dos voces, compuestas
+
+Las canta Sabina. Las dos usan solo tonos del acorde ya caído en el terreno; en
+los compases sin acorde, el I. Son silábicas y ninguna nota pasa de 2 tiempos.
+Un primer intento de doble idéntica y de armonía paralela se descartó por la
+tercera indicación.
+
+**La alta, «la que traduce».** La lista del archivo se llama `still-here`.
+- **Texto:** responde en los huecos con el original en inglés:
+  - *still here* tras cada «aquí»;
+  - *leave the sentence* en el pre-coro 1;
+  - *after midnight* en el pre-coro 2, encima de «después de medianoche»;
+  - *is read*, *three lines missing* y *do not answer*;
+  - *keep the copy* contra «guarda la copia».
+- **Su última respuesta,** *still here*, cae sobre el I justo cuando el Coro lo
+  suelta.
+- **Regla de alturas:** empieza en el tono más cercano a mi5 y responde
+  bajando.
+- **Registro:** sol4–la5. Son 42 sílabas.
+
+**La baja, «el archivo».**
+- **En los versos dice las fechas de los mensajes:** «tres de noviembre, mil
+  novecientos noventa y cinco»; «dieciocho de junio, noventa y siete…
+  retenido».
+- **En los coros canta el estribillo en aumentación** (×2), con su contorno una
+  octava abajo, ajustado al tono más cercano.
+- **En el coro final dice «septiembre cero»,** la fecha imposible del archivo,
+  y termina en «aquí» sobre el I.
+- **Fuera del contorno compuesto,** la conducción es lisa: el tono más cercano
+  a la nota anterior. En las fechas eso la deja recitando sobre una nota.
+- **Registro:** sol2–re4. Son 85 sílabas.
+
+**Cuánto se parecen a la melodía:** solo el 7 % (alta) y el 13 % (baja) de sus
+notas coinciden con ella en ataque y duración, y casi ninguna en sílaba. El 78 %
+de los ataques de la baja cae junto a uno de la melodía, pero es inevitable: la
+melodía va en corcheas y la baja en negras y blancas.
+
+### Los instrumentos que vocalizan (Rejilla)
+
+| Antes | Ahora | Por qué |
+|---|---|---|
+| Viola | **Coro de gargantas:** tres *Gargantas de montaña*, una por tono del acorde, en vocales (u en los versos, o en los pre-coros, a en los coros) | El tubo de cada una es el corte del rift de la época: el rift canta los acordes |
+| Gong (lagos) | **Voz de agua:** burbujas en los formantes. Cada mensaje que llega a un lago dice una palabra de la nota del moderador («retenido», «aclaración», «acusación», «nombres», «fechas», «propuesta»); el lago colgado hace gárgaras, «todavía» | La bandeja de moderación se oye como agua que habla |
+| Trompeta con harmon (ríos) | **Pájaro:** una siringe física que silba deslizándose | El glissando lo hace un órgano vocal |
+| (sin percusión) | **Tambor que habla:** dice «retenido para aclaración», «acusación personal», «nombres, fechas y una propuesta» en el verso 2 y pregunta «¿para quién?» en el pre-coro 2 | La única percusión, y con frases (pregunta 8); habla la moderación |
+| Trombón abierto | **Trombón con plunger** en los cinco ataques | El «ua» de una boca |
+
+### La mezcla
+
+- **Voz:** el envío al espacio pasa de 0,16 a 0,25. La alta va a la izquierda
+  (−0,35) y la baja a la derecha (+0,35), las dos a −6 dB.
+- **Gargantas:** −3 dB en los versos, donde casi empataban con la voz.
+- **Master:** −14,0 LUFS, −1,1 dBTP, LRA 7,0 LU (la mezcla tenía 7,1).
+- **La voz principal** queda entre −0,7 y +2,3 dB sobre el resto mientras
+  canta, sin huecos.
+- **Los stems son 14 más el espacio:** voz, voz alta, voz baja, gargantas,
+  contrabajo, resonancia, trombón, arco, Coro, ríos (pájaro), lagos (voz de
+  agua), tambor, Garganta y viento.
+
 ## Qué se comprobó
 
-`node pruebas.mjs <carpeta-con-voz.f32>`: 7 pruebas, todas pasan.
+`node pruebas.mjs <carpeta-con-voz.f32>`: 8 pruebas, todas pasan.
 
 1. `terreno-40.json` es lo que da hoy el motor.
 2. **La voz de máquina:** 267 sílabas, una nota por sílaba. La más larga dura 2
@@ -175,7 +243,9 @@ Canek eligió el coro espectral y la mezcla con las decisiones propuestas:
 5. **El arco:** el coro 1 se sostiene en 1 deslizamiento por periodo; el coro 2
    empieza periódico y termina aperiódico; el coro final se queda en 2.
 6. **Sabina afina las 12 notas más largas** con un error de +0 a +3 cents.
-7. **El master** está a −14 LUFS y −1 dBTP sin perder rango; la voz no pasa
+7. **Las voces de apoyo** son silábicas, tienen notas de 2 tiempos como
+   máximo, texto y ritmo propios, y cantan tonos del acorde caído.
+8. **El master** está a −14 LUFS y −1 dBTP sin perder rango; la voz no pasa
    de +3 dB sobre el resto, y no hay huecos.
 
 ## Qué no se comprobó y qué falta
@@ -202,7 +272,8 @@ node datos.mjs                 # el terreno (necesita Rejilla: REJILLA=/ruta)
 node partitura.mjs             # partitura.json
 node voz.cjs <carpeta>/voz.f32 # Sabina en Chromium sin pantalla
 node tomas.mjs <carpeta>       # las 10 tomas (WAV) y tomas.json
-node mezcla.mjs <carpeta> stems   # los 11 stems completos (unos 3 min)
+node voz.cjs <carpeta>/voz-principal.f32 principal   # y alta, baja (las voces compuestas)
+node mezcla.mjs <carpeta> stems   # los 14 stems completos (unos 4 min)
 node mezcla.mjs <carpeta> mezcla  # mezcla.wav, stems-mezcla/ y mezcla.json
 sh master.sh <carpeta>            # master.wav y master.json
 python3 figura_master.py <carpeta>/master.wav partitura.json muestras/master.png

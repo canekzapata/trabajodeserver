@@ -2,18 +2,26 @@
  "mezcla": {
   "voz": [
    0,
-   0.16
+   0.25
   ],
-  "viola": [
+  "voz-alta": [
+   -6,
+   0.35
+  ],
+  "voz-baja": [
    -6,
    0.3
   ],
+  "gargantas": [
+   -6,
+   0.35
+  ],
   "contrabajo": [
-   -8,
+   -9,
    0.2
   ],
   "resonancia": [
-   -6,
+   -8,
    0.4
   ],
   "trombon": [
@@ -29,12 +37,16 @@
    0.2
   ],
   "rios": [
-   -9,
+   -10,
    0.35
   ],
   "lagos": [
    -9,
    0.4
+  ],
+  "tambor": [
+   -8,
+   0.25
   ],
   "garganta": [
    -6,
@@ -51,12 +63,16 @@
    "final": 16
   },
   "voz": {
-   "coro 1": 2,
-   "coro 2": 2,
-   "coro final": 2
+   "coro 1": 1,
+   "coro 2": 1,
+   "coro final": 1
   },
   "resonancia": {
    "final": -4
+  },
+  "gargantas": {
+   "verso 1": -3,
+   "verso 2": -3
   }
  },
  "espacio": [
@@ -89,122 +105,122 @@
  "informe": [
   {
    "seccion": "intro",
-   "total_db": -18.8,
+   "total_db": -18.9,
    "voz_sobre_resto_db": null,
    "hueco_max_s": 0,
    "conduce": [
     "coro -20.7",
     "garganta -25.2",
-    "resonancia -28.7"
+    "resonancia -30.7"
    ]
   },
   {
    "seccion": "verso 1",
-   "total_db": -18.5,
-   "voz_sobre_resto_db": 2.5,
+   "total_db": -17.1,
+   "voz_sobre_resto_db": -0.2,
    "hueco_max_s": 0,
    "conduce": [
     "voz -19.9",
-    "viola -26.3",
-    "contrabajo -29.2"
+    "gargantas -23.2",
+    "voz-baja -28.1"
    ]
   },
   {
    "seccion": "pre-coro 1",
-   "total_db": -18.3,
-   "voz_sobre_resto_db": 0.5,
+   "total_db": -18.5,
+   "voz_sobre_resto_db": 0.6,
    "hueco_max_s": 0,
    "conduce": [
     "voz -21.2",
-    "viola -25.9",
-    "contrabajo -26.9"
+    "contrabajo -27.9",
+    "gargantas -28.2"
    ]
   },
   {
    "seccion": "coro 1",
-   "total_db": -16.7,
-   "voz_sobre_resto_db": 0,
+   "total_db": -18,
+   "voz_sobre_resto_db": 0.8,
    "hueco_max_s": 0,
    "conduce": [
-    "voz -19.3",
-    "viola -23.5",
-    "resonancia -25.8"
+    "voz -20.3",
+    "resonancia -27.8",
+    "voz-baja -27.9"
    ]
   },
   {
    "seccion": "interludio",
-   "total_db": -19.3,
+   "total_db": -22.4,
    "voz_sobre_resto_db": null,
    "hueco_max_s": 0,
    "conduce": [
-    "resonancia -22.1",
-    "viola -23.3",
-    "contrabajo -29.3"
+    "resonancia -24.1",
+    "gargantas -30",
+    "contrabajo -30.3"
    ]
   },
   {
    "seccion": "verso 2",
-   "total_db": -18.1,
-   "voz_sobre_resto_db": 1.4,
+   "total_db": -17.5,
+   "voz_sobre_resto_db": 0.2,
    "hueco_max_s": 0,
    "conduce": [
     "voz -20.4",
-    "resonancia -25.2",
-    "viola -27"
+    "gargantas -26.3",
+    "resonancia -27.2"
    ]
   },
   {
    "seccion": "pre-coro 2",
-   "total_db": -16.4,
-   "voz_sobre_resto_db": -0.8,
+   "total_db": -16.8,
+   "voz_sobre_resto_db": -0.4,
    "hueco_max_s": 0,
    "conduce": [
     "voz -19.9",
-    "resonancia -23.1",
-    "viola -26.5"
+    "resonancia -25.1",
+    "contrabajo -27.9"
    ]
   },
   {
    "seccion": "coro 2",
-   "total_db": -17.7,
-   "voz_sobre_resto_db": -0.2,
+   "total_db": -18.2,
+   "voz_sobre_resto_db": -0.6,
    "hueco_max_s": 0,
    "conduce": [
-    "voz -20.4",
-    "resonancia -25.2",
-    "viola -27"
+    "voz -21.4",
+    "resonancia -27.2",
+    "voz-baja -27.9"
    ]
   },
   {
    "seccion": "puente",
-   "total_db": -17.8,
-   "voz_sobre_resto_db": 1.7,
+   "total_db": -18,
+   "voz_sobre_resto_db": 2.3,
    "hueco_max_s": 0,
    "conduce": [
     "voz -19.7",
-    "resonancia -25.4",
-    "garganta -26.9"
+    "garganta -26.9",
+    "resonancia -27.4"
    ]
   },
   {
    "seccion": "coro final",
-   "total_db": -16.8,
-   "voz_sobre_resto_db": 0.4,
+   "total_db": -17,
+   "voz_sobre_resto_db": -0.7,
    "hueco_max_s": 0,
    "conduce": [
-    "voz -19.2",
+    "voz -20.2",
     "coro -23.8",
-    "resonancia -27"
+    "voz-baja -28.2"
    ]
   },
   {
    "seccion": "final",
-   "total_db": -22.8,
+   "total_db": -23.5,
    "voz_sobre_resto_db": null,
    "hueco_max_s": 0,
    "conduce": [
     "garganta -26.7",
-    "resonancia -26.8",
+    "resonancia -28.8",
     "coro -29.2"
    ]
   }

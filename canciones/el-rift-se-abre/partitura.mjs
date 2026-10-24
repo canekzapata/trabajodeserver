@@ -114,11 +114,70 @@ for (const s of SECCIONES) PROGRESION[s.nombre].forEach((g, k) => {
   ARMONIA.push({ compas: s.desde + k, t: +tDe(s.desde + k).toFixed(4), grado: g, seccion: s.nombre, epoca: s.epoca, tonos, bajo: +hzP(ACORDES[g][0] / 8).toFixed(3) });
 });
 
+// ── las dos voces de apoyo (Sabina otra vez), compuestas: no copian la melodía ──
+// Canek: «la voz de Sabina desnuda es muy… desnuda» y «no necesariamente son idénticas esas voces, las tienes que
+// componer». Cada una tiene su texto, su ritmo y su regla de alturas; las dos cantan tonos del acorde ya caído en el
+// terreno (en los compases sin acorde, el I). Silábicas, sin notas de más de 2 tiempos.
+//  · ALTA, «la que traduce»: la lista se llama still-here; responde en los huecos con el original en inglés.
+//    Regla: la primera nota de cada grupo es el tono más cercano a mi5; las siguientes bajan al tono siguiente (responde
+//    cayendo). Registro sol4–la5.
+//  · BAJA, «el archivo»: dice las fechas de los mensajes en los versos y canta el estribillo en aumentación (×2) en los
+//    coros. Regla: conducción lisa, el tono del acorde más cercano a su nota anterior. Registro sol2–re4.
+function tonoDe(compas) {
+  const a = ARMONIA.find((x) => x.compas === compas);
+  return a ? a.tonos.map((x) => x.hz) : ACORDES.I.map((p) => hzP(p));
+}
+function candidatos(compas, lo, hi) { const c = []; for (const f of tonoDe(compas)) for (let k = -5; k <= 5; k++) { const g = f * 2 ** k; if (g >= lo && g <= hi) c.push(g); } return c.sort((a, b) => a - b); }
+function componer(txt, desde, regla) {
+  const out = []; let beat = 0, prev = null, enGrupo = false;
+  for (const tok of txt.trim().split(/\s+/)) {
+    const [sil0, d, meta] = tok.split('/');
+    if (sil0 === '_') { beat += +d; enGrupo = false; continue; }
+    const compas = desde + Math.floor(beat / 4), t = tDe(desde, beat), idioma = sil0.startsWith('@') ? 'en' : 'es', sil = sil0.replace('@', '');
+    const c = candidatos(compas, ...regla.rango), f = meta ? cerca(c, nota(meta).hz) : regla(c, prev, enGrupo);   // con meta: el contorno compuesto
+    out.push({ idioma, compas, beat: +(beat % 4).toFixed(3), t: +t.toFixed(4), dur: +d, durS: +(d * BEAT).toFixed(4), silaba: sil, hz: +f.toFixed(3), midi: +midiHz(f).toFixed(3) });
+    prev = f; enGrupo = true; beat += +d;
+  }
+  return { notas: out, beats: beat };
+}
+const cerca = (c, x) => c.reduce((a, b) => (Math.abs(cents(b / x)) < Math.abs(cents(a / x)) ? b : a));
+const ALTA = Object.assign((c, prev, enGrupo) => { if (!enGrupo || !prev) return cerca(c, 659.3); const abajo = c.filter((f) => f < prev * 0.98); return abajo.length ? abajo[abajo.length - 1] : cerca(c, prev); }, { rango: [392, 880] });
+const BAJA = Object.assign((c, prev) => cerca(c, prev || 196), { rango: [98, 294] });
+// el estribillo en aumentación (4 compases): su contorno una octava abajo, ajustado al tono del acorde caído más cercano
+const AUM = 'to/1/mi3 da/1/fa3 ví/2/do4 aes/1/si3 ta/2/la3 mos/1/sol3 a/1/sol3 quí/2/re4 _/5';
+const ALTA_CORO = (l6) => `_/4 _/2 @still/1 @here/1 _/4 _/2 @still/1 @here/1 _/4 ${l6} _/4 _/1 @still/1 @here/2`;
+const TXT = {
+  alta: {
+    'pre-coro 1': '_/4 _/3 @leave/.5 @the/.5 @sen/1 @tence/1 _/2 _/4',
+    'coro 1': ALTA_CORO('_/2 @is/1 @read/1'),
+    'pre-coro 2': '_/4 _/3.5 @af/.5 @ter/1 @mid/1 @night/2 _/4',
+    'coro 2': ALTA_CORO('_/1 @three/1 @lines/1 @miss/.5 @ing/.5'),
+    'coro final': ALTA_CORO('_/1 @do/1 @not/1 @an/.5 @swer/.5') + ' _/4 _/2 @keep/.5 @the/.5 @co/.5 @py/.5 _/4 _/.5 @still/.5 @here/2 _/1',
+  },
+  baja: {
+    'verso 1': '_/4 tres/1 de/1 no/1 viem/1 bre/2 _/2 _/4 mil/1 no/1 ve/1 cien/1 tos/1 no/1 ven/1 tay/1 cin/2 co/2 _/4',
+    'verso 2': '_/4 die/1 cio/1 cho/1 de/1 ju/1 nio/1 _/2 no/1 ven/1 tay/1 sie/1 te/2 _/2 _/4 re/1 te/1 ni/1 do/1 _/4',
+    'coro 1': `${AUM} ${AUM}`, 'coro 2': `${AUM} ${AUM}`,
+    'coro final': `${AUM} ${AUM} sep/1 tiem/1 bre/1 ce/1 ro/2 _/2 _/3 a/1 quí/2 _/2`,
+  },
+};
+export const VOCES = { principal: MELODIA, alta: [], baja: [] };
+for (const [voz, secciones] of Object.entries(TXT)) for (const [nombre, txt] of Object.entries(secciones)) {
+  const sc = SECCIONES.find((x) => x.nombre === nombre), { notas, beats } = componer(txt, sc.desde, voz === 'alta' ? ALTA : BAJA);
+  if (Math.abs(beats - (sc.hasta - sc.desde) * 4) > 1e-9) throw new Error(`${voz} · ${nombre}: ${beats} tiempos, la sección tiene ${(sc.hasta - sc.desde) * 4}`);
+  VOCES[voz].push(...notas.map((n) => ({ ...n, seccion: nombre })));
+}
+VOCES.alta.sort((a, b) => a.t - b.t); VOCES.baja.sort((a, b) => a.t - b.t);
+
+// ── el coro de gargantas: tres Gargantas cantan cada acorde en una vocal, con el corte del rift de su época de tubo ──
+const VOCAL = { 'verso 1': 'u', 'pre-coro 1': 'o', 'coro 1': 'a', interludio: 'o', 'verso 2': 'u', 'pre-coro 2': 'o', 'coro 2': 'a', 'coro final': 'a' };
+export const GARGANTAS = [0, 1, 2].map((k) => ARMONIA.map((a) => ({ t: a.t, dur: BAR - 0.08, hz: a.tonos[k].hz / 2, nota: +midiHz(a.tonos[k].hz / 2).toFixed(3), fonemas: [VOCAL[a.seccion] || 'a'], v: 0.5, aprende: 0.7, ronco: 0.15, epoca: a.epoca })));
+
 // ── los instrumentos ──
 // el Coro inaudible guarda el I (8 : 10 : 12 de do1 = do4 · mi4 · sol4) desde el primer compás; la sala oye 9 : 11 : 13
 export const CORO = { armonicos: [8, 10, 12], base: DO1, golpe: tDe(1, 0.5), puertas: tDe(65), cm: 40, gammaInterna: 1 / 240 };
-// el trombón abre cada época (do2 = parcial 2); en la supercaldera, con plunger y fortísimo
-export const TROMBON = SECCIONES.filter((s, k) => k === 0 || s.epoca !== SECCIONES[k - 1].epoca).map((s) => ({ t: +tDe(s.desde).toFixed(4), epoca: s.epoca, nota: 'do2', hz: hzP(2), sordina: s.epoca === 4 ? 'plunger' : 'abierta', v: s.epoca === 4 ? 1 : 0.55 }));
+// el trombón abre cada época (do2 = parcial 2), siempre con plunger: el «ua» de una boca; fortísimo en la supercaldera
+export const TROMBON = SECCIONES.filter((s, k) => k === 0 || s.epoca !== SECCIONES[k - 1].epoca).map((s) => ({ t: +tDe(s.desde).toFixed(4), epoca: s.epoca, nota: 'do2', hz: hzP(2), sordina: 'plunger', v: s.epoca === 4 ? 1 : 0.55 }));
 // el Cuerpo de acción dobla la nota alta de cada coro dos octavas abajo; la fuerza del arco decide si se sostiene
 export const ARCO = MELODIA.filter((n) => n.nota === 'mi5').map((n) => {
   const s = n.seccion;
@@ -129,7 +188,7 @@ export const ARCO = MELODIA.filter((n) => n.nota === 'mi5').map((n) => {
   // dos octavas abajo: mi3 = parcial 5, la altura de la meseta. En mi5 (654 Hz) el modelo no da un régimen medible
   return { t: n.t, dur: +dur.toFixed(4), hz: +(n.hz / 4).toFixed(3), voz: n.hz, seccion: s, ...plan, F: plan.F.map(([u, f]) => [+(u * dur / 1.7).toFixed(3), f]) };
 });
-// los ríos (la trompeta con harmon): mensajes que bajan de un hombro a un lago, en el hundimiento
+// los ríos (el Pájaro de Rejilla: una siringe que silba deslizándose): mensajes que bajan de un hombro a un lago
 const lin = LINEAS[2], idx = (nom) => T.rasgos.findIndex((r) => r.nombre === nom);
 const hombros = [lin[idx('hombro oeste')], lin[idx('hombro este')]], lagosFondo = [lin[idx('lago 1')], lin[idx('lago 3')], lin[idx('lago 4')]];
 export const RIOS = [];
@@ -155,6 +214,15 @@ for (const s of SECCIONES.filter((x) => x.nombre.startsWith('pre-coro'))) {
   for (let i = 0; i < n; i++) { const tt = tDe(s.desde) + (i / n) ** 0.7 * (s.hasta - s.desde) * BAR; const l = LINEAS[s.epoca === 0 ? 1 : s.epoca][ls[i % 3]]; LAGOS.push({ t: +tt.toFixed(3), tipo: 'tamtam', hz: +hzP(l).toFixed(2), v: +(0.15 + 0.35 * i / n).toFixed(2), lago: T.rasgos[ls[i % 3]].nombre }); }
 }
 for (const s of SECCIONES.filter((x) => x.nombre === 'coro 2' || x.nombre === 'coro final')) LAGOS.push({ t: +tDe(s.desde + 2).toFixed(3), tipo: 'cruce', hz: +hzP(LINEAS[s.epoca][idx('lago 2')]).toFixed(2), v: 0.5, lago: 'lago 2 (colgado)' });
+// los lagos hablan (Voz de agua, Rejilla): cada mensaje que llega al fondo es una palabra de la nota del moderador
+// («The message was held for clarification. Reason: personal accusation… Please resend with names, dates and a concrete
+// proposal»), dicha por burbujas en los formantes, a la altura de su lago. El lago colgado hace gárgaras: «todavía».
+const PALABRAS = ['retenido', 'para', 'aclaración', 'acusación', 'personal', 'nombres', 'fechas', 'propuesta'];
+LAGOS.forEach((l, k) => { l.texto = l.tipo === 'cruce' ? 'todavía' : PALABRAS[k % PALABRAS.length]; l.modo = l.tipo === 'cruce' ? 'gargara' : 'canto'; });
+// la moderación habla (Tambor que habla, Rejilla): la única percusión, y con frases (COMPOSITOR, pregunta 8). Dice la
+// nota del moderador en el verso 2 y pregunta «¿para quién?» en el pre-coro 2, a la altura del bajo de su compás
+export const TAMBOR = [[28, 'retenido para aclaración'], [30, 'acusación personal'], [32, 'nombres, fechas y una propuesta'], [36, '¿para quién?'], [37, '¿para quién?']]
+  .map(([c, texto]) => { const a = ARMONIA.find((x) => x.compas === c); return { t: +tDe(c, 0.5).toFixed(4), tipo: 'habla', texto, m: +midiHz(a.bajo * 2).toFixed(3), dur: 0.2, v: 0.7, alto: 3, compas: c }; });
 // la resonancia: Cuerda que recuerda en cada línea del espectro de la época (después de cada ataque del trombón)
 export const RESONANCIA = TROMBON.map((a, k) => ({ t: a.t, hasta: k + 1 < TROMBON.length ? TROMBON[k + 1].t : tDe(COMPASES + 1), epoca: a.epoca, lineas: LINEAS[a.epoca].map((p) => ({ p: +p.toFixed(3), hz: +hzP(p).toFixed(2) })) }));
 // la garganta canta con el corte del rift de su época; el viento sopla sobre el corte de la supercaldera en el puente
@@ -173,8 +241,9 @@ export const ESPACIO = T.epocas.map((e, k) => ({ epoca: e.epoca, hondura_km: +ho
 export const VIENTO = { desde: tDe(47), hasta: tDe(55), corte: T.epocas[4].corte };
 
 if (import.meta.url === `file://${process.argv[1]}`) {
-  const P = { titulo: 'El rift se abre', subtitulo: 'balada de K-pop por forma; Grisey y Murail por dentro', bpm: BPM, compas: '4/4', do1: DO1, unidad_m_por_parcial: UNIDAD, duracion: tDe(COMPASES + 1), lamina: T.lamina, historia: T.historia, secciones: SECCIONES, lineas: LINEAS.map((l) => l.map((p) => +p.toFixed(3))), rasgos: T.rasgos.map((r) => r.nombre), acordes: ACORDES, armonia: ARMONIA, melodia: MELODIA, letra_fuentes: LETRA_FUENTES, coro: CORO, trombon: TROMBON, arco: ARCO, rios: RIOS, lagos: LAGOS, resonancia: RESONANCIA, garganta: GARGANTA, viento: VIENTO, pulsos: PULSOS, espacio: ESPACIO };
+  const P = { titulo: 'El rift se abre', subtitulo: 'balada de K-pop por forma; Grisey y Murail por dentro', bpm: BPM, compas: '4/4', do1: DO1, unidad_m_por_parcial: UNIDAD, duracion: tDe(COMPASES + 1), lamina: T.lamina, historia: T.historia, secciones: SECCIONES, lineas: LINEAS.map((l) => l.map((p) => +p.toFixed(3))), rasgos: T.rasgos.map((r) => r.nombre), acordes: ACORDES, armonia: ARMONIA, melodia: MELODIA, letra_fuentes: LETRA_FUENTES, coro: CORO, trombon: TROMBON, arco: ARCO, rios: RIOS, lagos: LAGOS, resonancia: RESONANCIA, garganta: GARGANTA, viento: VIENTO, pulsos: PULSOS, espacio: ESPACIO, voces: { alta: VOCES.alta, baja: VOCES.baja }, gargantas: GARGANTAS, tambor: TAMBOR };
   writeFileSync(new URL('./partitura.json', import.meta.url), JSON.stringify(P, null, 1) + '\n');
+  console.log(`voces compuestas: alta ${VOCES.alta.length} sílabas, baja ${VOCES.baja.length}; coro de gargantas: 3 × ${GARGANTAS[0].length} acordes`);
   console.log(`partitura.json · ${COMPASES} compases · ${(P.duracion / 60).toFixed(2)} min · ${MELODIA.length} sílabas · ${ARMONIA.length} acordes · ${RIOS.length} ríos · ${LAGOS.length} lagos`);
   console.log('épocas (parciales):'); LINEAS.forEach((l, k) => console.log(' ', T.historia[k].padEnd(17), l.map((p) => p.toFixed(2)).join(' ')));
   for (const g of ['IV', 'V', 'iii', 'vi']) console.log(g.padEnd(4), [1, 3, 4].map((e) => `${T.historia[e].slice(0, 6)}: ` + ARMONIA.find((a) => a.grado === g && a.epoca === e)?.tonos.map((x) => `${x.parcial}${x.desvio ? (x.desvio > 0 ? '+' : '') + x.desvio.toFixed(0) + 'c' : ''}`).join(' ')).join(' | '));
