@@ -94,7 +94,7 @@ Ocho, como se acordó, con tres cambios que se explican abajo.
 | [ataques y resonancias](tomas/ataques-y-resonancias-e802c268d0e3.m4a) | Los cinco ataques del trombón con la resonancia de cada época | 26 s |
 | [arco, tres notas altas](tomas/arco-tres-notas-altas-cd0de2ce9b3d.m4a) | Isla, rompe, rampa | 14 s |
 | [coro inaudible](tomas/coro-inaudible-db68aaf9d1f7.m4a) | El golpe del compás 1 y las puertas del compás 65 (la simulación corre los 225 s; se guarda el 0,38 del golpe y le queda 0,17 al abrir) | 23 s |
-| [ríos](tomas/rios-823203fc46ea.m4a) | Los primeros 7 ríos del verso 2 | 22 s |
+| [ríos](tomas/rios-823203fc46ea.m4a) | Los primeros 10 ríos del verso 2 | 22 s |
 | [lagos](tomas/lagos-2ca5992ced75.m4a) | El gong se llena en el pre-coro 2; el lago colgado en el coro 2 | 28 s |
 | [puente](tomas/puente-8aeea489cb41.m4a) | Garganta, Viento y Sabina | 27 s |
 | [coro convencional](tomas/coro-convencional-9adfb64a7b50.m4a) | La prueba de la pregunta 5: piano y cuerdas en temperado, sin terreno | 29 s |
